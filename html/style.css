@@ -227,7 +227,7 @@ body > div.container-fluid {
 }
 
 .post-name #name-tag {
-    color: var(--gray); /* TODO: Olhem pra isto */
+    color: var(--bs-gray); /* TODO: Olhem pra isto */
 }
 
 .post-text {
