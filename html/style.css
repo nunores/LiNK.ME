@@ -1,0 +1,77 @@
+body {
+    --pink: #FF3366;
+    --green: #1AB2A8;
+    --light_green: #D1F0EE;
+}
+
+header {
+    /*background-color: var(--light_green);*/
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    color: inherit;
+}
+
+header > .navbar {
+    padding: 2rem 4%;
+    border-bottom: solid lightgray 2px;
+}
+
+body > .container-fluid {
+    margin-top: 3rem;
+}
+
+#left-col .profile-picture{
+    height: 12.5rem;
+}
+
+.rounded {
+    border-radius: 100%!important;
+}
+
+.form-check > .form-check-input {
+
+}
+
+.form-control{
+    border-radius: 0%;
+    border: solid grey 0.1rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.1rem var(--green);
+    border: none;
+}
+
+.link-primary {
+    color: var(--green);
+}
+
+.link-primary:hover {
+    color: var(--green);
+}
+
+.link-primary:visited {
+    color: var(--green);
+}
+
+.bi-plus-circle {
+    color: aqua;
+}
+
+.post-profile-pic {
+    height: 5rem;
+}
+
+.post-header > * {
+    display: inline-block;
+}
+
+.post-name > * {
+    display: grid;
+}
+
