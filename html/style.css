@@ -1,11 +1,25 @@
 body {
     --pink: #FF3366;
     --green: #1AB2A8;
-    --light_green: #D1F0EE;
+    --light_green: #e8e8e8;
+    --gray: #f2f2f2;
+    font-family: 'Helvetica', 'Open Sans', sans-serif;
+
+    /*font-weight: 600;*/
 }
 
-header {
-    /*background-color: var(--light_green);*/
+html {
+    height:100%
+}
+
+body {
+    background-color: var(--gray);
+    min-height:100%;
+    color: var(--bs-dark);
+}
+
+header, #left-col, .post {
+    background-color: white;
 }
 
 a {
@@ -21,16 +35,28 @@ header > .navbar {
     border-bottom: solid lightgray 2px;
 }
 
-body > .container-fluid {
-    margin-top: 1rem;
+body > div.container-fluid {
+    min-height: 100%;
+}
+
+.col-10 {
+    width: 81%;
+}
+
+#left-col {
+    padding-top: 1rem;
+    border-right: solid lightgray 2px;
+}
+
+#left-col {
+    position: sticky;
+    top: 0;
+    height: 100vh;
 }
 
 #left-col .profile-picture{
     height: 12.5rem;
-}
-
-.rounded {
-    border-radius: 100%!important;
+    width: 12.5rem;
 }
 
 .feed-change {
@@ -44,14 +70,23 @@ body > .container-fluid {
     margin-bottom: 2rem;
 }
 
+.form-check-input:checked {
+    background-color: var(--green) !important;
+}
+
 #notifications {
     width: 60%;
-    margin: 2rem auto 0 auto;
+    margin: 1.5rem auto 0 auto;
+    border-bottom: solid lightgray 2px;
+}
+
+#notifications-title > p {
+    display: inline-block;
 }
 
 #notifications .card {
     padding: 0;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 }
 
 #notifications .card-body {
@@ -71,6 +106,7 @@ body > .container-fluid {
 
 .bi {
     display: inline-block;
+    margin: auto;
 }
 
 .bi-check {
@@ -86,19 +122,52 @@ body > .container-fluid {
     color: var(--green);
 }
 
+#groups {
+    width:70%;
+    text-align: center;
+    margin: 0 auto 2rem auto;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e") !important;
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+}
+
+.group-carousel {
+    display: inline-block;
+    padding: 1rem;
+}
+
+.group-image-name {
+    display: grid;
+    margin: auto;
+}
+
+#create-group-button {
+    width: 100%;
+}
+
 .form-check {
     text-align: left;
 }
 
 .form-control{
     border-radius: 0%;
-    border: solid grey 0.1rem;
+    border: solid lightgray 2px;
 }
 
 .form-control:focus {
     box-shadow: 0 0 0 0.1rem var(--green);
     border: none;
 }
+
+.d-flex {
+    width: 20%
+}
+
 
 .link-primary {
     color: var(--green);
@@ -113,18 +182,125 @@ body > .container-fluid {
 }
 
 .bi-plus-circle {
-    color: aqua;
+    color: var(--green);
+}
+
+#center-col {
+    margin: 2rem auto 0 auto;
+    width: 50%;
 }
 
 .post-profile-pic {
-    height: 5rem;
+    height: 4rem;
+    width: 4rem;
+}
+
+.post {
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+}
+
+.bi-hand-thumbs-down,
+.bi-hand-thumbs-up,
+.bi-chat-dots {
+    color: var(--bs-gray-dark);
+}
+
+#name-tag {
+    text-align: left;
+    font-size: 70%;
 }
 
 .post-header > * {
     display: inline-block;
 }
 
-.post-name > * {
-    display: grid;
+.post-name {
+    vertical-align: middle;
 }
 
+.post-name > * {
+    display: grid;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
+.post-name #name-tag {
+    color: gray; /* TODO: Olhem pra isto */
+}
+
+.post-text {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.post-content {
+    text-align: center;
+}
+
+.post-content > * {
+    width: 100%;
+}
+
+.post-date-date,
+.post-date-time {
+    text-align: right;
+    color: var(--bs-gray);
+}
+
+.post-date-div {
+    padding: 0;
+}
+
+.three-dots {
+    text-align: right;
+}
+
+#add-post-icon {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+}
+
+.post-icons {
+    margin: 0.5rem 0;
+}
+
+
+#post-like > * {
+    vertical-align: middle;
+}
+
+#post-dislike > * {
+    vertical-align: middle;
+}
+
+.post-comments > hr {
+    width: 92%;
+    margin: auto;
+}
+
+#post-comment-icon > * {
+    vertical-align: middle;
+}
+
+.post-comment-pic {
+    width: 3rem;
+    height: 3rem;
+}
+
+.comment > hr {
+    width: 70%;
+    margin: auto;
+}
+
+.comment .container-fluid {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding-top: 0.5rem;
+}
+
+.post-comment-div{
+    vertical-align: middle;
+    margin: auto;
+}
