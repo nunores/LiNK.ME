@@ -17,12 +17,12 @@ a:hover {
 }
 
 header > .navbar {
-    padding: 2rem 4%;
+    padding: 1.5rem 5rem;
     border-bottom: solid lightgray 2px;
 }
 
 body > .container-fluid {
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 #left-col .profile-picture{
@@ -33,8 +33,61 @@ body > .container-fluid {
     border-radius: 100%!important;
 }
 
-.form-check > .form-check-input {
+.feed-change {
+    width: 60%;
+    margin: 2rem auto 0 auto;
+    border-bottom: solid lightgray 2px;
+}
 
+#feed-type {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+#notifications {
+    width: 60%;
+    margin: 2rem auto 0 auto;
+}
+
+#notifications .card {
+    padding: 0;
+    margin: 1rem 0;
+}
+
+#notifications .card-body {
+    font-size: 0.7rem;
+    text-align: left;
+    padding: 0.3rem;
+}
+
+#notifications .row {
+    margin: 0;
+}
+
+.notification-friend-request {
+    padding: 0;
+    margin: auto;
+}
+
+.bi {
+    display: inline-block;
+}
+
+.bi-check {
+    color: var(--green);
+}
+
+.bi-x{
+    color: var(--pink);
+}
+
+.bi-arrow-up-right-circle{
+    margin: auto;
+    color: var(--green);
+}
+
+.form-check {
+    text-align: left;
 }
 
 .form-control{
