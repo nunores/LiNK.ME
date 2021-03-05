@@ -2,7 +2,8 @@ body {
     --pink: #FF3366;
     --green: #1AB2A8;
     --light_green: #e8e8e8;
-    --gray: #f2f2f2;
+    --gray: #c2c2c2;
+    --dark-gray: #292d32;
     font-family: 'Helvetica', 'Open Sans', sans-serif;
 
     /*font-weight: 600;*/
@@ -13,13 +14,13 @@ html {
 }
 
 body {
-    background-color: var(--gray);
+    background-color: var(--bs-dark);
     min-height:100%;
-    color: var(--bs-dark);
+    color: var(--bs-light);
 }
 
-header, #left-col, .post {
-    background-color: white;
+header, #left-col, .post, #search {
+    background-color: var(--dark-gray);
 }
 
 a {
@@ -32,7 +33,7 @@ a:hover {
 
 header > .navbar {
     padding: 1.5rem 5rem;
-    border-bottom: solid lightgray 2px;
+    border-bottom: solid black 2px;
 }
 
 body > div.container-fluid {
@@ -45,7 +46,7 @@ body > div.container-fluid {
 
 #left-col {
     padding-top: 1rem;
-    border-right: solid lightgray 2px;
+    border-right: solid black 2px;
 }
 
 #left-col {
@@ -62,7 +63,7 @@ body > div.container-fluid {
 .feed-change {
     width: 60%;
     margin: 2rem auto 0 auto;
-    border-bottom: solid lightgray 2px;
+    border-bottom: solid black 2px;
 }
 
 #feed-type {
@@ -77,7 +78,7 @@ body > div.container-fluid {
 #notifications {
     width: 60%;
     margin: 1.5rem auto 0 auto;
-    border-bottom: solid lightgray 2px;
+    border-bottom: solid black 2px;
 }
 
 #notifications-title > p {
@@ -156,7 +157,7 @@ body > div.container-fluid {
 
 .form-control{
     border-radius: 0%;
-    border: solid lightgray 2px;
+    border: solid black 2px;
 }
 
 .form-control:focus {
@@ -203,7 +204,7 @@ body > div.container-fluid {
 .bi-hand-thumbs-down,
 .bi-hand-thumbs-up,
 .bi-chat-dots {
-    color: var(--bs-gray-dark);
+    color: var(--bs-light);
 }
 
 #name-tag {
@@ -226,7 +227,7 @@ body > div.container-fluid {
 }
 
 .post-name #name-tag {
-    color: gray; /* TODO: Olhem pra isto */
+    color: var(--gray); /* TODO: Olhem pra isto */
 }
 
 .post-text {

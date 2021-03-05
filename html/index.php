@@ -23,7 +23,7 @@
 				</h1>
 
 				<form class="d-flex">
-					<input class="form-control" type="search" placeholder="Search" aria-label="Search">
+					<input class="form-control" id="search" type="search" placeholder="Search" aria-label="Search">
 				</form>
 				<div>
 					<a href="#" class="link-primary">My Profile</a>
@@ -76,7 +76,7 @@
 							<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
 						</svg>
 					</div>
-					<div class="card border-secondary container-fluid">
+					<div class="card bg-dark border-secondary container-fluid">
 						<div class="row">
 							<div class="card-body col-8">
 								@JLopes has sent you a friend request
@@ -91,7 +91,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="card border-secondary container-fluid">
+					<div class="card bg-dark border-secondary container-fluid">
 						<div class="row">
 							<div class="card-body col-8">
 								You have new comments in a post
@@ -142,12 +142,12 @@
 							<span class="carousel-control-next-icon" aria-hidden="false"></span>
 							<span class="visually-hidden">Next</span>
 					</div>
-					<button type="button" id="create-group-button" class="btn btn-secondary">Create Group</button>
+					<button type="button" id="create-group-button" class="btn btn-dark">Create Group</button>
 				</div>
 				<div>
-					<a href="#" class="link-dark">About</a>
-					<span class="link-dark"> | </span>
-					<a href="#" class="link-dark">FAQ</a>
+					<a href="#" class="link-light">About</a>
+					<span class="link-light"> | </span>
+					<a href="#" class="link-light">FAQ</a>
 				</div>
 			</div>
 			<div class="col-8">
