@@ -3,11 +3,15 @@
 		<div class="row">
 			<div class="post-header">
 				<div class="col-1">
-					<img src="./images/jlopes.png" class="rounded-circle post-profile-pic" alt="Profile picture">
+					<a href="#">
+						<img src="./images/jlopes.png" class="rounded-circle post-profile-pic" alt="Profile picture">
+					</a>
 				</div>
 				<div class="post-name col-10">
-					<span id="name-tag"> @JLopes </span>
-					<span id="person-name"> João Correia Lopes </span>
+					<a href="#">
+						<span id="name-tag"> @JLopes </span>
+						<span id="person-name"> João Correia Lopes </span>
+					</a>
 				</div>
 				<div class="col-1 three-dots">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -17,12 +21,14 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="post-text">
-				<span id="text-description"> Um dia no zoo</span>
-			</div>
-			<div class="post-content">
-				<img src="./images/pandas.png" alt="Zoo Image">
-			</div>
+			<a href="#">
+				<div class="post-text">
+					<span id="text-description"> Um dia no zoo</span>
+				</div>
+				<div class="post-content">
+					<img src="./images/pandas.png" alt="Zoo Image">
+				</div>
+			</a>
 		</div>
 		<div class="row">
 			<div class="post-icons">
@@ -74,7 +80,9 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-2">
-						<img src="./images/joao0903.png" class="rounded-circle post-comment-pic" alt="Profile picture">
+						<a href="#">
+							<img src="./images/joao0903.png" class="rounded-circle post-comment-pic" alt="Profile picture">
+						</a>
 					</div>
 					<div class="col-9 post-comment-div">
 						<span class="post-comment-text"> Ahahah </span>
@@ -93,7 +101,9 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-2">
-						<img src="./images/lizandroSilva.png" class="rounded-circle post-comment-pic" alt="Profile picture">
+						<a href="#">
+							<img src="./images/lizandroSilva.png" class="rounded-circle post-comment-pic" alt="Profile picture">
+						</a>
 					</div>
 					<div class="col-9 post-comment-div">
 						<span class="post-comment-text"> Deve ser divertido! </span>
