@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="./css/mobile.css" />
 	<link rel="stylesheet" href="./css/post.css" />
+	<link rel="stylesheet" href="./css/left_col.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
 	<title>LiNK.ME</title>
