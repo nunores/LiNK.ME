@@ -1,0 +1,57 @@
+.feed-change {
+    display: none;
+}
+
+#center-col {
+    width: 100%;
+}
+
+.search-options {
+    text-align: center;;
+}
+
+.search-options > * {
+    display: inline-block;
+}
+
+.search-option-posts {
+    color: #1AB2A8;
+}
+
+.search-option-posts:hover {
+    color: #1AB2A8;
+}
+
+.search-options-row {
+    color: inherit;
+    display: contents;
+    width: 50%;
+    font-size: 180%;
+}
+
+.people-section {
+    margin-top: 5rem;
+}
+
+.people-row {
+    margin-bottom: 3rem;
+}
+
+.search-people {
+    text-align: center;
+}
+
+.post-name {
+    font-size: 120%;
+    text-align: left;
+}
+
+#person-name {
+    font-weight: 400;
+}
+
+.search-profile-pic {
+    height: 5rem;
+    width: 5rem;
+}
+
