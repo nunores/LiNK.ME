@@ -1,0 +1,46 @@
+@media only screen and (max-width: 1000px) {
+    #left-col {
+        display: none;
+    }
+
+    #left-col + .col-8,
+    .col-8 > #center-col {
+        width: 100%;
+        margin: 0;
+    }
+
+    nav form.d-flex {
+        width: auto;
+    }
+
+    .navbar #search {
+        display: none;
+    }
+
+    header > .navbar {
+        padding: 5% 0;
+    }
+
+    .navbar h1 {
+        margin-bottom: 0;
+    }
+
+    .navbar #search-icon-phone {
+        display: inline;
+        margin: auto;
+    }
+
+    .bi-plus-circle {
+        width: 80%;
+    }
+
+    body > #add-post-icon {
+        bottom: 1%;
+        left: 75%;
+    }
+
+	.navbar #list-icon {
+		display: inline;
+	}
+
+}
