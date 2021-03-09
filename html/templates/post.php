@@ -3,12 +3,12 @@
 		<div class="row">
 			<div class="post-header">
 				<div class="col-1">
-					<a href="#">
+					<a href="other_profile.php">
 						<img src="./images/jlopes.png" class="rounded-circle post-profile-pic" alt="Profile picture">
 					</a>
 				</div>
 				<div class="post-name col-10">
-					<a href="#">
+					<a href="other_profile.php">
 						<span id="name-tag"> @JLopes </span>
 						<span id="person-name"> João Correia Lopes </span>
 					</a>

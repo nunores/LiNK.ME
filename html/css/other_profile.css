@@ -1,0 +1,38 @@
+.feed-change {
+	padding-bottom: 2rem;
+}
+
+#feed-order {
+	width: 60%;
+	margin: auto;
+}
+
+.person-friends-profile-pic {
+	width: 4rem;
+	height: 4rem;
+}
+
+#name-tag.person-friends-name-tag {
+	font-size: 80%;
+	color: var(--bs-light);
+}
+
+.person-friends-header {
+	padding: 0.5rem 0;
+}
+
+.person-friends {
+	max-height: 30%;
+	overflow: auto;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
+}
+
+.person-friends::-webkit-scrollbar {
+	width: 2px;
+	border: solid #000 1px;
+}
+
+.person-friends::-webkit-scrollbar-thumb {
+	border: solid var(--bs-light) 1px;
+}
