@@ -56,7 +56,7 @@
                                     <div class="col-title">
                                         <span>Our Team</span>
                                     </div>
-                                    <div class="row">
+                                    <div class="row developers-first-row">
                                         <div class="col-6 developer">
                                             <img src="./images/calves.png" class="rounded-circle post-profile-pic developer-pic" height="300" width="300" alt="Profile picture">
                                             <div class="developer-name">
@@ -76,7 +76,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row  developers-second-row">
                                         <div class="col-6 developer">
                                             <img src="./images/coelho.png" class="rounded-circle post-profile-pic developer-pic" height="300" width="300" alt="Profile picture">
                                             <div class="developer-name">
