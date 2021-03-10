@@ -217,7 +217,7 @@
 						<br>
 						<span id="profile-person-name">João Gonçalves</span>
 						<br>
-						<button type="button" class="btn btn-outline-primary">LiNK US</button>
+						<button type="button" id="link-us" class="btn btn-outline-primary">LiNK US</button>
 					</div>
 					<div class="post">
 						<div class="container-fluid">

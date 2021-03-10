@@ -1,3 +1,14 @@
+@media only screen and (max-width: 1000px) {
+	.profile-info .profile-info-picture {
+		width: 10rem;
+		height: 10rem;
+	}
+
+	.col-8 > #center-col {
+		margin-top: 1rem;
+	}
+}
+
 .feed-change {
 	padding-bottom: 2rem;
 }
@@ -42,8 +53,8 @@
 }
 
 .profile-info-picture {
-	height: 20rem;
-	width: 20rem;
+	height: 15vw;
+	width: 15vw;
 }
 
 #profile-name-tag {
@@ -58,6 +69,10 @@
 
 .profile-info {
 	padding-bottom: 2rem;
+}
+
+#link-us {
+	margin-top: 1rem;
 }
 
 .btn-outline-primary {
