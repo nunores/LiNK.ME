@@ -1,0 +1,63 @@
+#feed-order {
+    margin-bottom: 2rem;
+}
+
+#credentials-input > form > input{
+    margin: 1rem;
+    width: 80%;
+}
+
+#credentials-input {
+    margin-top: 1rem;
+}
+
+.form-input {
+    background-color: var(--dark-gray);
+    border: solid black 2px;
+    color: var(--green);
+    padding: .375rem .75rem;
+}
+
+.form-input:focus {
+    box-shadow: 0 0 0 0.1rem var(--green);
+    outline: 0;
+	color: var(--green);
+}
+
+#login-button {
+    width: 80%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#login-button:hover {
+    
+    box-shadow: 0 0 0 0.1rem var(--green);
+    outline: 0;
+	color: var(--green);
+}
+
+.about-split {
+    margin-top: 1rem;
+}
+
+#login-messages > p{
+    margin-top: 0.3em;
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.navbar > .container-fluid div:nth-child(4) > * {
+    display: none;
+}
+
+.navbar > .container-fluid form:nth-child(3){
+    margin-right: 9rem;
+}
+
+@media only screen and (max-width: 1000px) {
+    .navbar > .container-fluid div:nth-child(4){
+        display: none;
+    }
+}
