@@ -27,8 +27,8 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-3"></div>
-            <div class="col-6">
+            <div class="col-3 space-col-3"></div>
+            <div class="col-6 main-col">
                 <div id="center-col">
                     <div class="container-fluid">
                         <div class="row">
