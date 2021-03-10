@@ -8,8 +8,8 @@
 }
 
 .person-friends-profile-pic {
-	width: 4rem;
-	height: 4rem;
+	width: 3rem;
+	height: 3rem;
 }
 
 #name-tag.person-friends-name-tag {
@@ -35,4 +35,46 @@
 
 .person-friends::-webkit-scrollbar-thumb {
 	border: solid var(--bs-light) 1px;
+}
+
+.profile-info {
+	text-align: center;
+}
+
+.profile-info-picture {
+	height: 20rem;
+	width: 20rem;
+}
+
+#profile-name-tag {
+	color: var(--bs-gray);
+	font-size: 200%;
+}
+
+#profile-person-name {
+	font-size: 200%;
+	font-weight: 700;
+}
+
+.profile-info {
+	padding-bottom: 2rem;
+}
+
+.btn-outline-primary {
+	width: 50%;
+	color: var(--green);
+	border-color: var(--green);
+}
+
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+	color: var(--bs-light);
+	border-color: var(--green);
+	background-color: var(--green);
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary:active:focus {
+	box-shadow: none;
 }
