@@ -110,7 +110,7 @@
 				<span class="carousel-control-next-icon" aria-hidden="false"></span>
 				<span class="visually-hidden">Next</span>
 		</div>
-		<button type="button" id="create-group-button" class="btn btn-dark">Create Group</button>
+		<a href="./create_group.php" type="button" id="create-group-button" class="btn btn-dark">Create Group</a>
 	</div>
 	<div>
 		<a href="#" class="link-light">About</a>
