@@ -24,7 +24,7 @@
 		<div>
 			<a href="#" class="link-primary">My Profile</a>
 			<span class="link-primary"> | </span>
-			<a href="#" class=" link-primary">Log Out</a>
+			<a href="../login.php" class=" link-primary">Log Out</a>
 		</div>
 	</div>
 </nav>
