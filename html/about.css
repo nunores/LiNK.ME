@@ -1,3 +1,35 @@
+@media only screen and (max-width: 1000px) {
+    .both-col {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first-col {
+        width: 100%;
+    }
+
+    .about-description {
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    .second-col {
+        width: 100%;
+    }
+
+    .bacalhau {
+        width: 100% !important;
+    }
+
+    .developers-second-row{
+        padding-top: 3rem !important;
+    }
+
+    .developers-second-row {
+        margin-bottom: 2rem !important;
+    }
+}
+
 #center-col {
     width: 100%;
 }

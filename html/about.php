@@ -40,7 +40,7 @@
                         <div class="row people-section">
                             <div class="container-fluid both-col">
                                 <!--------------------------------------------->
-                                <div class="col-6 full-screen-col">
+                                <div class="col-6 full-screen-col first-col">
                                     <div class="col-title">
                                         <span>About Us</span>
                                     </div>
@@ -52,7 +52,7 @@
                                     </div>
                                     <img src="./images/bacalhau.png" class="bacalhau" alt="Bacalhau">
                                 </div>
-                                <div class="col-6 full-screen-col">
+                                <div class="col-6 full-screen-col second-col">
                                     <div class="col-title">
                                         <span>Our Team</span>
                                     </div>
