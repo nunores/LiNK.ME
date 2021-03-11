@@ -1,3 +1,9 @@
+@media only screen and (min-width: 1000px) {
+    #left-col.col-2 {
+        display: block;
+    }
+}
+
 #left-col {
     padding-top: 1rem;
     border-right: solid black 2px;
