@@ -3,6 +3,10 @@
         display: none;
     }
 
+    .group-name.col-2 {
+        display: none;
+    }
+
     #left-col + .col-8,
     .col-8 > #center-col {
         width: 100%;
@@ -42,5 +46,24 @@
 	.navbar #list-icon {
 		display: inline;
 	}
+
+    #center-col > .invite-card {
+        display: inherit;
+        max-height: auto;
+    }
+
+
+    .post-name > a >#name-tag.person-friends-name-tag{
+        font-size: 50%;
+    }
+
+    .invite-button {
+        max-height: 50vh;
+        overflow: auto;
+    }
+
+    .invite-card {
+        max-height: auto;
+    }
 
 }
