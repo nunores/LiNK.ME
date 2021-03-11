@@ -32,6 +32,10 @@
         margin-bottom: 1rem;
         width:100%;
     }
+
+    .search-options {
+        padding: 0;
+    }
 }
 
 .feed-change {
@@ -94,4 +98,3 @@
     height: 5rem;
     width: 5rem;
 }
-
