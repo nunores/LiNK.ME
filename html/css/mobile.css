@@ -38,7 +38,7 @@
         width: 80%;
     }
 
-    body > #add-post-icon {
+    body > .add-post-icon {
         bottom: 1%;
         left: 75%;
     }

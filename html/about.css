@@ -1,0 +1,109 @@
+@media only screen and (max-width: 1000px) {
+    .both-col {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first-col {
+        width: 100%;
+    }
+
+    .about-description {
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    .second-col {
+        width: 100%;
+    }
+
+    .bacalhau {
+        width: 100% !important;
+    }
+
+    .developers-second-row{
+        padding-top: 3rem !important;
+    }
+
+    .developers-second-row {
+        margin-bottom: 2rem !important;
+    }
+}
+
+#center-col {
+    width: 100%;
+}
+
+.about {
+    text-align: center;
+}
+
+.about-text {
+    font-size: 200%;
+    color: #1AB2A8;
+}
+
+.both-col {
+    display: flex;
+}
+
+.full-screen-col {
+    text-align: center;
+}
+
+.col-title {
+    font-size: 200%;
+    color: #1AB2A8;
+}
+
+.about-description {
+    text-align: justify;
+    margin-top: 2rem;
+    display: inline-block;
+    width: 70%;
+    font-size: 150%;
+    color: var(--bs-light);
+}
+
+.second-paragraph {
+    margin-top: 1.5srem;
+}
+
+.bacalhau {
+    margin-top: 1.5rem;
+    width: 70%;
+    margin-bottom: 3rem;
+}
+
+.developer {
+    text-align: center;
+}
+
+.developers-first-row {
+    padding-top: 2rem;
+}
+
+.developers-second-row {
+    padding-top: 7rem;
+}
+
+.developer-pic {
+    text-align: center;
+    height: 6rem;
+    width: 6rem;
+}
+
+.developer-name {
+    margin-top: 1rem;
+    color: var(--bs-light);
+    font-size: 150%;
+    font-weight: 500;
+}
+
+.developer-user {
+    color: var(--bs-gray);
+    font-size: 90%;
+    font-weight: 400;
+}
+
+
