@@ -7,6 +7,11 @@
 	.col-8 > #center-col {
 		margin-top: 1rem;
 	}
+
+	.my-profile > #change-password-form {
+		right: 0vw;
+	}
+
 }
 
 .feed-change {
@@ -122,5 +127,14 @@
 	color: var(--green);
 }
 
+#change-password-form {
+	position: absolute;
+	top: 2rem;
+	right: -6vw;
+	width: 15rem;
+}
 
-
+.change-password-input {
+	margin: 1rem 0.5rem;
+	width: calc(15rem - 2rem);
+}
