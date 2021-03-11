@@ -1,6 +1,40 @@
 @media only screen and (max-width: 1000px) {
-    .search-option {
-        font-size: 50%;
+    .post-header > .col-4 {
+        display: none;
+    }
+
+    .text-center + .col-10 {
+        width: 100%;
+    }
+
+    .people-section {
+        margin-top: 2rem !important;
+    }
+
+    .search-options {
+        font-size: 80%;
+    }
+
+    .post-name {
+        width: 80%;
+    }
+
+    .post-name > * {
+        padding-right: 0rem;
+        padding-left: 4rem;
+    }
+
+    .people-row {
+        margin-bottom: 0rem !important;
+    }
+
+    .search-people {
+        margin-bottom: 1rem;
+        width:100%;
+    }
+
+    .search-options {
+        padding: 0;
     }
 }
 
@@ -64,4 +98,3 @@
     height: 5rem;
     width: 5rem;
 }
-
