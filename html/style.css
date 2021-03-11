@@ -106,3 +106,6 @@ body > div.container-fluid {
 .link-danger {
 	color: var(--pink);
 }
+.container-fluid {
+    display: relative;
+}

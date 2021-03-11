@@ -1,6 +1,8 @@
 @media only screen and (max-width: 1000px) {
-    #left-col {
-        display: none;
+    #left-col.col-2 {
+        width: 100%;
+        position: relative;
+        margin-bottom: 1rem;
     }
 
     #left-col + .col-8, #left-col + .col-10,

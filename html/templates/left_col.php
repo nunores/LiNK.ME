@@ -1,4 +1,4 @@
-<div class="col-2 text-center" id="left-col">
+<div class="col-2 text-center collapse" id="left-col">
 	<a href="./my_profile.php">
 		<img src="./images/pauloSeixo.png" class="rounded-circle profile-picture" alt="Profile picture">
 		<h2>Paulo Seixo</h2>
