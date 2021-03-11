@@ -21,7 +21,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<a href="#">
+			<a href="./post_page.php">
 				<div class="post-text">
 					<span id="text-description"> Um dia no zoo</span>
 				</div>

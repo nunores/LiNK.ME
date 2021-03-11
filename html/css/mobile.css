@@ -3,12 +3,8 @@
         display: none;
     }
 
-    .group-name.col-2 {
-        display: none;
-    }
-
-    #left-col + .col-8,
-    .col-8 > #center-col {
+    #left-col + .col-8, #left-col + .col-10,
+    .col-8 > #center-col, .col-10 > #center-col {
         width: 100%;
         margin: 0;
     }
