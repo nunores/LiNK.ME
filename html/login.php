@@ -31,7 +31,7 @@
                 <div id="credentials-input">
                     <form>
                         <input class="form-input" type="text" id="fname" name="fname" placeholder="Username"><br>
-                        <input class="form-input" type="text" id="lname" name="lname" placeholder="Password"><br>
+                        <input class="form-input" type="password" id="lname" name="lname" placeholder="Password"><br>
                     </form>
                 </div>
                 <div id="login-button" class="card bg-dark border-secondary container-fluid">
