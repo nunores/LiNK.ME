@@ -137,9 +137,6 @@
                 <div id="center-col">
                     <div class="invite-card">
                         <div class="container-fluid">
-                            <div class="row">
-                                <p>Add people to your group</p>
-                            </div>
                             <div class="card bg-dark border-secondary container-fluid invite-dropdown">
                                 <div class="row">
                                     <div class="card-body col-8 invite-button">
