@@ -13,12 +13,12 @@
 						<span id="person-name"> João Correia Lopes </span>
 					</a>
 				</div>
-				<a class="col-1 three-dots" type="link" data-bs-toggle="collapse" data-bs-target="#ban-options-post" aria-expanded="false" aria-controls="ban-options-post">
+				<a class="col-1 three-dots collapsed" type="link" data-bs-toggle="collapse" data-bs-target="#ban-options-post" aria-expanded="false" aria-controls="ban-options-post">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
 						<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
 					</svg>
 				</a>
-				<div id="ban-options-post" class="ban-options">
+				<div id="ban-options-post" class="ban-options collapse">
 					<div class="card card-body bg-dark">
 						<a href="#" class="link link-danger">Ban post</a>
 					</div>
@@ -93,13 +93,13 @@
 						<span class="post-comment-text"> Ahahah </span>
 					</div>
 					<div class="col-1 three-dots post-comment-div">
-						<a class="col-1 three-dots" type="link" data-bs-toggle="collapse" data-bs-target="#ban-options-comment" aria-expanded="false" aria-controls="ban-options-comment">
+						<a class="col-1 three-dots collapsed" type="link" data-bs-toggle="collapse" data-bs-target="#ban-options-comment" aria-expanded="false" aria-controls="ban-options-comment">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
 								<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
 							</svg>
 						</a>
 					</div>
-					<div id="ban-options-comment" class="ban-options">
+					<div id="ban-options-comment" class="ban-options collapse">
 						<div class="card card-body bg-dark">
 							<a href="#" class="link link-danger">Ban comment</a>
 						</div>
