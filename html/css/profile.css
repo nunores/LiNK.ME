@@ -9,7 +9,16 @@
 	}
 
 	.my-profile > #change-password-form {
-		right: 0vw;
+		left: 30vw;
+	}
+
+	.my-profile > #change-password {
+		right: -70vw;
+	}
+
+	.my-profile > * {
+		position: relative;
+		left: -10vw;
 	}
 
 }
