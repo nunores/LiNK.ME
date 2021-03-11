@@ -1,3 +1,9 @@
+@media only screen and (max-width: 1000px) {
+    .search-option {
+        font-size: 50%;
+    }
+}
+
 .feed-change {
     display: none;
 }
