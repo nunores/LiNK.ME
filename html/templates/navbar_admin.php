@@ -8,10 +8,10 @@
 		</div>
 
 		<h1 class="link-primary">
-			<a href="index.php">LiNK.ME</a>
+			<a href="#">LiNK.ME</a>
 		</h1>
 
-		<form class="d-flex" action="search_people.php">
+		<form class="d-flex">
 			<input class="form-control" id="search" type="search" placeholder="Search" aria-label="Search">
 			<div id="search-icon-phone">
 				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -22,9 +22,9 @@
 
 
 		<div>
-			<a href="#" class="link-primary">My Profile</a>
+			<span class="link-primary">Admin</span>
 			<span class="link-primary"> | </span>
-			<a href="../login.php" class=" link-primary">Log Out</a>
+			<a href="#" class=" link-primary">Log Out</a>
 		</div>
 	</div>
 </nav>
