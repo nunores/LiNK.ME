@@ -101,8 +101,7 @@ body > div.container-fluid {
 
 .add-post-icon {
     position: fixed;
-    bottom: 5%;
-    left: 88%;
+    left: 75%;
 }
 
 .link-danger {
