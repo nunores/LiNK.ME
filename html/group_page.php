@@ -143,6 +143,164 @@
 			</div>
             <div class = "col-2 group-name">
                 <p>MIEIC</p>
+                    <div class="person-friends">
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/jlopes.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @JLopes </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/lizandroSilva.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Lizaaandro </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xavierMontanelas.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @XM </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/maria.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Maria </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xavierLopes.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @XLopes </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xicoXavier.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Xico </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xicoXavier.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Xico </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xicoXavier.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Xico </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xicoXavier.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Xico </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xicoXavier.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Xico </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xicoXavier.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Xico </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xicoXavier.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Xico </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="post-header person-friends-header">
+                            <div class="col-1">
+                                <a href="#">
+                                    <img src="./images/xicoXavier.jpg" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                                </a>
+                            </div>
+                            <div class="post-name col-6">
+                                <a href="#">
+                                    <span id="name-tag" class="person-friends-name-tag"> @Xico </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
             </div>
 
 		</div>
