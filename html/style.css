@@ -19,7 +19,7 @@ body {
     color: var(--bs-light);
 }
 
-header, #left-col, .post, #search {
+header, #left-col, .post, #search, .add-post {
     background-color: var(--dark-gray);
 }
 
@@ -65,7 +65,7 @@ body > div.container-fluid {
 
 .form-control:focus {
     box-shadow: 0 0 0 0.1rem var(--green);
-    border: none;
+    border-color: var(--green);
 
 	color: var(--green);
 }
@@ -99,8 +99,12 @@ body > div.container-fluid {
     width: 50%;
 }
 
-#add-post-icon {
+.add-post-icon {
     position: fixed;
     bottom: 5%;
     left: 88%;
+}
+
+.link-danger {
+	color: var(--pink);
 }
