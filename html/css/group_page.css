@@ -129,6 +129,11 @@
 .invite-button {
     text-align: center;
     font-size: 1.7rem;
+
+}
+
+.invite-button:hover {
+    cursor: pointer;
 }
 
 .invite-button > *{
@@ -137,4 +142,12 @@
     margin: 0;
     display: inline;
     width: max-content;
+}
+
+.invite-card {
+    display: none;
+}
+
+.dropdown {
+	margin-top: 0.8rem;
 }

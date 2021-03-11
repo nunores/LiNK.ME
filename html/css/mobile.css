@@ -47,4 +47,23 @@
 		display: inline;
 	}
 
+    #center-col > .invite-card {
+        display: inherit;
+        max-height: auto;
+    }
+
+
+    .post-name > a >#name-tag.person-friends-name-tag{
+        font-size: 50%;
+    }
+
+    .invite-button {
+        max-height: 50vh;
+        overflow: auto;
+    }
+
+    .invite-card {
+        max-height: auto;
+    }
+
 }
