@@ -50,6 +50,11 @@
 
 .profile-info {
 	text-align: center;
+	position: relative;
+}
+
+.profile-info > * {
+	position: relative;
 }
 
 .profile-info-picture {
@@ -93,3 +98,29 @@
 .btn-outline-primary:active:focus {
 	box-shadow: none;
 }
+
+.bi-pencil {
+	color: var(--green);
+	position: absolute;
+	cursor: pointer;
+}
+
+#change-photo {
+	top: 0;
+	right: 35%;
+}
+
+#change-password {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	color: var(--bs-light);
+}
+
+#change-password:hover {
+	color: var(--green);
+}
+
+
+

@@ -27,6 +27,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-2 text-center" id="left-col">
+
 				<div class="feed-change">
 					<div id="feed-order">
 						<div class="form-check">
@@ -40,6 +41,39 @@
 								<input class="form-check-input" type="radio" name="feedOrder" id="feedOrderRecent" checked>
 								Recent
 							</label>
+						</div>
+					</div>
+				</div>
+				<div id="notifications">
+					<div id="notifications-title">
+						<p class="text-center">Notifications</p>
+						<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+							<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+						</svg>
+					</div>
+					<div class="card bg-dark border-secondary container-fluid">
+						<div class="row">
+							<div class="card-body col-8">
+								@JLopes has sent you a friend request
+							</div>
+							<div class="notification-friend-request col-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+									<path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
+								</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+									<path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+								</svg>
+							</div>
+						</div>
+					</div>
+					<div class="card bg-dark border-secondary container-fluid">
+						<div class="row">
+							<div class="card-body col-8">
+								You have new comments in a post
+							</div>
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="col-4 bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+								<path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
+							</svg>
 						</div>
 					</div>
 				</div>
@@ -201,23 +235,80 @@
 						</div>
 					</div>
 				</div>
+				<div id="groups">
+					<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<div class="group-carousel">
+									<a href="#">
+										<div class="group-image-name">
+											<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+												<path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+											</svg>
+											MIEIC
+										</div>
+									</a>
+								</div>
+								<div class="group-carousel">
+									<a href="#">
+										<div class="group-image-name">
+											<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+												<path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+											</svg>
+											LBAW
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<div class="group-carousel">
+									<div class="group-image-name">
+										<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+											<path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+										</svg>
+										Manus
+									</div>
+								</div>
+							</div>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="false"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="false"></span>
+							<span class="visually-hidden">Next</span>
+					</div>
+					<button type="button" id="create-group-button" class="btn btn-dark">Create Group</button>
+				</div>
 				<div>
 					<a href="#" class="link-light">About</a>
 					<span class="link-light"> | </span>
 					<a href="#" class="link-light">FAQ</a>
+				</div>
+				<div>
+					<a href="#" class="link-danger">Delete account</a>
 				</div>
 			</div>
 			<div class="col-8">
 				<div id="center-col">
 					<div class="profile-info">
 						<div>
-							<img src="./images/joao0903.png" class="rounded-circle profile-info-picture" alt="joao0903 profile picture">
+							<img src="./images/pauloSeixo.png" class="rounded-circle profile-info-picture" alt="joao0903 profile picture">
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil" id="change-photo" viewBox="0 0 16 16">
+								<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+							</svg>
 						</div>
-						<span id="profile-name-tag">@joao0903</span>
+						<span id="profile-name-tag">@SeixoPaulo</span>
 						<br>
-						<span id="profile-person-name">João Gonçalves</span>
-						<br>
-						<button type="button" id="link-us" class="btn btn-outline-primary">LiNK US</button>
+						<span id="profile-person-name">Paulo Seixo
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pencil" id="change-name" viewBox="0 0 16 16">
+								<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
+							</svg>
+						</span>
+						<a class="link-primary" id="change-password">
+							Change password
+						</a>
 					</div>
 					<div class="post">
 						<div class="container-fluid">
@@ -225,13 +316,13 @@
 								<div class="post-header">
 									<div class="col-1">
 										<a href="other_profile.php">
-											<img src="./images/joao0903.png" class="rounded-circle post-profile-pic" alt="Profile picture">
+											<img src="./images/pauloSeixo.png" class="rounded-circle post-profile-pic" alt="Profile picture">
 										</a>
 									</div>
 									<div class="post-name col-10">
 										<a href="other_profile.php">
-											<span id="name-tag"> @joao0903 </span>
-											<span id="person-name"> João Gonçalves </span>
+											<span id="name-tag"> @SeixoPaulo </span>
+											<span id="person-name"> Paulo Seixo </span>
 										</a>
 									</div>
 									<div class="col-1 three-dots">
@@ -244,7 +335,10 @@
 							<div class="row">
 								<a href="#">
 									<div class="post-text">
-										<span id="text-description">Estou na A1, na A2, na A5 a chegar a Lisabona </span>
+										<span id="text-description">Já só faltam 4 dias!!!</span>
+									</div>
+									<div class="post-content">
+										<img src="./images/timesSquare.png" alt="Times Square">
 									</div>
 								</a>
 							</div>
@@ -279,12 +373,12 @@
 										<div class="col">
 											<div class="row">
 												<div class="post-date-date">
-													<span> 21-02-2021 </span>
+													<span> 20-12-2019 </span>
 												</div>
 											</div>
 											<div class="row">
 												<div class="post-date-time">
-													<span> 12:55 </span>
+													<span> 17:32 </span>
 												</div>
 											</div>
 										</div>
@@ -299,11 +393,11 @@
 									<div class="row">
 										<div class="col-2">
 											<a href="#">
-												<img src="./images/maria.png" class="rounded-circle post-comment-pic" alt="Profile picture">
+												<img src="./images/xavierCarvalho.jpg" class="rounded-circle post-comment-pic" alt="Profile picture">
 											</a>
 										</div>
 										<div class="col-9 post-comment-div">
-											<span class="post-comment-text"> Duas mãos no volante </span>
+											<span class="post-comment-text"> Mal posso esperar!!!! </span>
 										</div>
 										<div class="col-1 three-dots post-comment-div">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -320,11 +414,11 @@
 									<div class="row">
 										<div class="col-2">
 											<a href="#">
-												<img src="./images/lizandroSilva.png" class="rounded-circle post-comment-pic" alt="Profile picture">
+												<img src="./images/maria.png" class="rounded-circle post-comment-pic" alt="Profile picture">
 											</a>
 										</div>
 										<div class="col-9 post-comment-div">
-											<span class="post-comment-text"> Estás a chegar a Lizaaabbooona? </span>
+											<span class="post-comment-text"> Não te esqueças de mim depois ahah </span>
 										</div>
 										<div class="col-1 three-dots post-comment-div">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
@@ -338,7 +432,16 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
+	</div>
+	<div id="add-post-icon">
+		<a href="#">
+			<svg xmlns="http://www.w3.org/2000/svg" width="125" height="125" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+				<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+				<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+			</svg>
+		</a>
 	</div>
 </body>
 
