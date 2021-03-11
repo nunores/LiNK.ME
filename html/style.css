@@ -64,9 +64,8 @@ body > div.container-fluid {
 }
 
 .form-control:focus {
-    box-shadow: 0 0 0 0.1rem var(--green);
-    border: none;
-
+    box-shadow: 0 0 0 0.01rem var(--green);
+    border-color: var(--green);
 	color: var(--green);
 }
 

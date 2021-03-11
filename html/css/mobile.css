@@ -3,6 +3,10 @@
         display: none;
     }
 
+    .group-name.col-2 {
+        display: none;
+    }
+
     #left-col + .col-8,
     .col-8 > #center-col {
         width: 100%;
