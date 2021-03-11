@@ -8,7 +8,7 @@
 		</div>
 
 		<h1 class="link-primary">
-			<a href="#">LiNK.ME</a>
+			<a href="index.php">LiNK.ME</a>
 		</h1>
 
 		<form class="d-flex">
