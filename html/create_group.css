@@ -19,7 +19,7 @@
 
 #name-input-group {
     margin-right: 10%;
-    padding: 1rem 1rem;
+    font-size: 1.5rem;
 }
 
 #create-button-final.btn-dark {
@@ -106,14 +106,14 @@ h2 {
     }
 
     .people-row {
-        margin-bottom: 1rem;
+        margin-bottom: 0rem;
     }
 
     .post-name {
         margin-bottom: 1rem;
     }
 
-    
+
     #create-button-final.btn-dark {
         margin-right: 1rem;
     }
