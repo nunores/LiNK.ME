@@ -114,3 +114,27 @@
 .add-person:hover {
     cursor: pointer ;
 }
+
+.invite-people {
+    display: inline-block;
+}
+
+
+.invite-card {
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.invite-button {
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+.invite-button > *{
+
+    color: var(--green);
+    margin: 0;
+    display: inline;
+    width: max-content;
+}
