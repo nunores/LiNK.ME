@@ -85,11 +85,46 @@ h2 {
     margin: auto 0;
 }
 
-/* 
+
 @media only screen and (max-width: 1000px) {
     .search-people {
-        display: none;
+        width: 90%;
     }
 
 
-} */
+    .col-8{
+        width: 100%;
+    }
+
+    .col-4 {
+        display: none;
+    }
+
+    .post-header {
+        text-align: left;
+        margin-left: 1.3rem;
+    }
+
+    .people-row {
+        margin-bottom: 1rem;
+    }
+
+    .post-name {
+        margin-bottom: 1rem;
+    }
+
+    
+    #create-button-final.btn-dark {
+        margin-right: 1rem;
+    }
+
+    #search-friends-group .d-flex {
+        width: 60%;
+    }
+
+    .input-group.mb-3{
+        margin-left: 0rem;
+        padding-left: 0.5rem;
+    }
+
+}
