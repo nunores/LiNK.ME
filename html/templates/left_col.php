@@ -1,5 +1,5 @@
 <div class="col-2 text-center" id="left-col">
-	<a href="#">
+	<a href="./my_profile.php">
 		<img src="./images/pauloSeixo.png" class="rounded-circle profile-picture" alt="Profile picture">
 		<h2>Paulo Seixo</h2>
 	</a>
@@ -110,7 +110,7 @@
 				<span class="carousel-control-next-icon" aria-hidden="false"></span>
 				<span class="visually-hidden">Next</span>
 		</div>
-		<button type="button" id="create-group-button" class="btn btn-dark">Create Group</button>
+		<a href="./create_group.php" type="button" id="create-group-button" class="btn btn-dark">Create Group</a>
 	</div>
 	<div>
 		<a href="about.php" class="link-light">About</a>

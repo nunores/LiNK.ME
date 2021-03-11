@@ -103,3 +103,7 @@ body > div.container-fluid {
     bottom: 5%;
     left: 88%;
 }
+
+.link-danger {
+	color: var(--pink);
+}

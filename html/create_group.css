@@ -1,0 +1,130 @@
+/*Removing obosolete left column elements*/
+
+.feed-change {
+    display: none;
+}
+
+#create-group-button {
+    display: none;
+}
+
+#create-group-final {
+    width: 100%;
+    color: var(--dark-gray);
+}
+
+#search-group, #name-input-group {
+    background-color: var(--dark-gray);
+}
+
+#name-input-group {
+    margin-right: 10%;
+    font-size: 1.5rem;
+}
+
+#create-button-final.btn-dark {
+    width: 25%;
+    font-size: 1.2rem;
+}
+
+#search-friends-group {
+    margin-bottom: 5%;
+}
+
+.btn-dark {
+    background-color: var(--bs-gray);
+}
+
+.search-people {
+    text-align: center;
+}
+
+.post-name {
+    font-size: 120%;
+    text-align: left;
+}
+
+.post-name > * {
+    padding-left: 6rem;
+}
+
+.search-profile-pic {
+    height: 5rem;
+    width: 5rem;
+}
+
+.input-group.mb-3 {
+    margin-bottom: 10% !important;
+    margin-left: 10%;
+}
+
+h2 {
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+#search-friends-group .d-flex {
+    width: 30%;
+    margin: auto;
+}
+
+.search-profile-pic {
+    height: 5rem;
+    width: 5rem;
+}
+
+.people-row {
+    margin-bottom: 3rem;
+}
+
+#center-col-friends {
+    width: 100%;
+}
+
+.checkbox {
+    margin: auto 0;
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .search-people {
+        width: 90%;
+    }
+
+
+    .col-8{
+        width: 100%;
+    }
+
+    .col-4 {
+        display: none;
+    }
+
+    .post-header {
+        text-align: left;
+        margin-left: 1.3rem;
+    }
+
+    .people-row {
+        margin-bottom: 0rem;
+    }
+
+    .post-name {
+        margin-bottom: 1rem;
+    }
+
+
+    #create-button-final.btn-dark {
+        margin-right: 1rem;
+    }
+
+    #search-friends-group .d-flex {
+        width: 60%;
+    }
+
+    .input-group.mb-3{
+        margin-left: 0rem;
+        padding-left: 0.5rem;
+    }
+
+}
