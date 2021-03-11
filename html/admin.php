@@ -11,12 +11,12 @@
 	<link rel="stylesheet" href="style.css" />
 	<link rel="stylesheet" href="./css/mobile.css" />
 	<link rel="stylesheet" href="./css/post.css" />
-	<link rel="stylesheet" href="./css/left_col_admin.css" />
+	<link rel="stylesheet" href="./css/admin.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 
 	<title>LiNK.ME</title>
 </head>
- 
+
 <body>
 	<header>
 		<?php
@@ -32,8 +32,8 @@
 			<div class="col-8">
 				<div id="center-col">
 					<?php
-					include('./templates/post.php');
-					include('./templates/post.php');
+					include('./templates/admin_post.php');
+					include('./templates/admin_post.php');
 					?>
 				</div>
 			</div>

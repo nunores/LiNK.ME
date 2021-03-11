@@ -1,3 +1,10 @@
+@media only screen and (max-width: 1000px) {
+    #ban-options-post {
+        top: 2.5rem!important;
+        right: 2.5rem!important;
+    }
+}
+
 #left-col {
     padding-top: 1rem;
     border-right: solid black 2px;
@@ -56,4 +63,30 @@
 
 .bi-exclamation-triangle {
     margin-left: 1rem;
+}
+
+.post {
+    position: relative;
+}
+
+#ban-options-post {
+    position: absolute;
+    right: 3rem;
+    top: 2rem
+}
+
+#ban-options-post > .card,
+#ban-options-comment > .card {
+    padding: 0.3rem;
+}
+
+.comment {
+    position: relative;
+}
+
+#ban-options-comment {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    width: 9rem;
 }
