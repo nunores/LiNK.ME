@@ -26,7 +26,7 @@
 	</header>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-2 text-center" id="left-col">
+			<div class="col-2 text-center collapse" id="left-col">
 
 				<div class="feed-change">
 					<div id="feed-order">

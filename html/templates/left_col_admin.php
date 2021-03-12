@@ -1,4 +1,4 @@
-<div class="col-2 text-center" id="left-col">
+<div class="col-2 text-center collapse" id="left-col">
     <div id="notifications">
         <div id="notifications-title">
             <p class="text-center">Reports</p>

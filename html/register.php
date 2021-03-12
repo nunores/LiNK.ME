@@ -27,7 +27,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 text-center" id="left-col">
+            <div class="col-2 text-center collapse" id="left-col">
                 <div id="credentials-input">
                     <form action="index.php">
                         <input required class="form-input" type="text" id="fname" name="fname" placeholder="Name"><br>

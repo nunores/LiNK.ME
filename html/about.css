@@ -4,6 +4,10 @@
         flex-direction: column;
     }
 
+    #list-icon {
+        display:none!important;
+    }
+
     .first-col {
         width: 100%;
     }

@@ -31,8 +31,10 @@
     margin-bottom: 5%;
 }
 
-.btn-dark {
-    background-color: var(--bs-gray);
+#create-button-final {
+    background-color: #1AB2A8;
+    border-bottom-left-radius: 0.25rem;
+    border-top-left-radius: 0.25rem;
 }
 
 .search-people {
@@ -89,15 +91,44 @@ h2 {
 @media only screen and (max-width: 1000px) {
     .search-people {
         width: 90%;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    #center-col > h2,
+    #center-col-friends > h2 {
+        font-size: 1.3rem;
     }
 
 
     .col-8{
         width: 100%;
+        margin-top: 1.5rem!important;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .people-row .checkbox .form-check {
+        padding-left: 0;
     }
 
     .col-4 {
         display: none;
+    }
+
+    #name-input-group {
+        height: 2.5rem;
+        font-size: 120%;
+    }
+
+    #create-button-final {
+        height: 2.5rem;
+        background-color: #1AB2A8;
+    }
+
+    #search-group {
+        font-size: 120%;
+        height: 2.5rem;
     }
 
     .post-header {
@@ -111,6 +142,10 @@ h2 {
 
     .post-name {
         margin-bottom: 1rem;
+    }
+
+    #person-name {
+        font-size: 1rem;
     }
 
 

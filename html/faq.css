@@ -6,6 +6,10 @@
     .main-col {
         width: 100%;
     }
+
+    #list-icon {
+        display: none!important;
+    }
 }
 
 #center-col {
