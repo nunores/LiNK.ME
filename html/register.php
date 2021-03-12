@@ -32,20 +32,12 @@
                     <form action="index.php">
                         <input required class="form-input" type="text" id="fname" name="fname" placeholder="Name"><br>
                         <input required class="form-input" type="text" id="lname" name="lname" placeholder="Username" minlength="4"><br>
-                        <input required class="form-input" type="text" id="lname" name="lname" placeholder="Email" minlength="4"><br>
+                        <input required class="form-input" type="email" id="lname" name="lname" placeholder="Email"><br>
                         <input required class="form-input" type="password" id="lname" name="lname" placeholder="Password" minlength="6"><br>
                         <input required class="form-input" type="password" id="lname" name="lname" placeholder="Repeat Password" minlength="6"><br>
                         <button id="login-button" class="card bg-dark border-secondary"><span id="login-string">Register<span></button>
                     </form>
                 </div>
-                <!--<div id="login-button" class="card bg-dark border-secondary container-fluid">
-
-                    <a href="index.php">
-                        <div class="card-body">
-                            <p class="card-text">Register</p>
-                        </div>
-                    </a>
-                </div>-->
                 <div id="login-messages">
                     <p> <a href="login.php"> Already have an account? </a></p>
                 </div>

@@ -33,20 +33,11 @@
                         <input required class="form-input" type="text" id="fname" name="fname" placeholder="Username"><br>
                         <input required class="form-input" type="password" id="lname" name="lname" placeholder="Password"><br>
                         <button id="login-button" class="card bg-dark border-secondary"><span id="login-string">Log-In<span></button>
-                        <!--
-                        <div id="login-button" class="card bg-dark border-secondary container-fluid">
-                            <button href="index.php">
-                                <div class="card-body">
-                                    <p class="card-text"> Log-In </p>
-                                </div>
-                            </button>
-                        </div>
--->
                     </form>
                 </div>
 
                 <div id="login-messages">
-                    <p>Recover your password</p>
+                    <p> <a href="./recover_password.php">Recover your password</a></p>
                     <p> <a href="register.php">Don't have an account? </a> </p>
                 </div>
                 <div class="feed-change">
