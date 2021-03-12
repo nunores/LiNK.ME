@@ -1,0 +1,25 @@
+#center-col {
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 7rem;
+}
+
+#error-number-4 {
+	font-size: 7rem;
+	color: var(--gray);
+}
+
+
+#error-number-1 {
+	font-size: 7rem;
+	color: var(--gray);
+}
+
+#error-text {
+	color: var(--gray);
+	font-size: 3rem;
+}
+
+#broken-chain {
+	height: 20rem;
+}
