@@ -8,7 +8,7 @@
 		</div>
 
 		<h1 class="link-primary">
-			<a href="#">LiNK.ME</a>
+			<a href="./index.php">LiNK.ME</a>
 		</h1>
 
 		<form class="d-flex">
@@ -24,7 +24,7 @@
 		<div>
 			<span class="link-primary">Admin</span>
 			<span class="link-primary"> | </span>
-			<a href="#" class=" link-primary">Log Out</a>
+			<a href="./login.php" class=" link-primary">Log Out</a>
 		</div>
 	</div>
 </nav>

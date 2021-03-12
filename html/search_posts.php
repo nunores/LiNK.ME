@@ -61,12 +61,12 @@
                                             <div class="col-4">
                                             </div>
                                             <div class="col-1">
-                                                <a href="#">
+                                                <a href="./other_profile.php">
                                                     <img src="./images/jlopes.png" class="rounded-circle search-profile-pic" alt="Profile picture">
                                                 </a>
                                             </div>
                                             <div class="post-name col-6">
-                                                <a href="#">
+                                                <a href="./post_page.php">
                                                     <span id="name-tag"> @JLopes </span>
                                                     <span id="person-name"> Eu e o Xavier fomos à moita </span>
                                                 </a>
@@ -78,12 +78,12 @@
                                             <div class="col-4">
                                             </div>
                                             <div class="col-1">
-                                                <a href="#">
+                                                <a href="./other_profile.php">
                                                     <img src="./images/xavierPisco.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
                                                 </a>
                                             </div>
                                             <div class="post-name col-6">
-                                                <a href="#">
+                                                <a href="./post_page.php">
                                                     <span id="name-tag"> @psico </span>
                                                     <span id="person-name"> Mais um dia mais uma tarde a mamar finos </span>
                                                 </a>
@@ -97,12 +97,12 @@
                                             <div class="col-4">
                                             </div>
                                             <div class="col-1">
-                                                <a href="#">
+                                                <a href="./other_profile.php">
                                                     <img src="./images/joao0903.png" class="rounded-circle search-profile-pic" alt="Profile picture">
                                                 </a>
                                             </div>
                                             <div class="post-name col-6">
-                                                <a href="#">
+                                                <a href="./post_page.php">
                                                     <span id="name-tag"> @joao0903 </span>
                                                     <span id="person-name"> Eu e o Xavier :) </span>
                                                 </a>
@@ -110,16 +110,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!--------------------------------------------->
-
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>

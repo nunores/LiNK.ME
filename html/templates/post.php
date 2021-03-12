@@ -80,7 +80,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-2">
-						<a href="#">
+						<a href="./other_profile.php">
 							<img src="./images/joao0903.png" class="rounded-circle post-comment-pic" alt="Profile picture">
 						</a>
 					</div>
@@ -101,7 +101,7 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-2">
-						<a href="#">
+						<a href="./other_profile.php">
 							<img src="./images/lizandroSilva.png" class="rounded-circle post-comment-pic" alt="Profile picture">
 						</a>
 					</div>

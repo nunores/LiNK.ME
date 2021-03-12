@@ -29,21 +29,23 @@
         <div class="row">
             <div class="col-2 text-center" id="left-col">
                 <div id="credentials-input">
-                    <form>
-                        <input class="form-input" type="text" id="fname" name="fname" placeholder="Name"><br>
-                        <input class="form-input" type="text" id="lname" name="lname" placeholder="Username"><br>
-                        <input class="form-input" type="password" id="lname" name="lname" placeholder="Password"><br>
-                        <input class="form-input" type="password" id="lname" name="lname" placeholder="Repeat Password"><br>
+                    <form action="index.php">
+                        <input required class="form-input" type="text" id="fname" name="fname" placeholder="Name"><br>
+                        <input required class="form-input" type="text" id="lname" name="lname" placeholder="Username" minlength="4"><br>
+                        <input required class="form-input" type="text" id="lname" name="lname" placeholder="Email" minlength="4"><br>
+                        <input required class="form-input" type="password" id="lname" name="lname" placeholder="Password" minlength="6"><br>
+                        <input required class="form-input" type="password" id="lname" name="lname" placeholder="Repeat Password" minlength="6"><br>
+                        <button id="login-button" class="card bg-dark border-secondary"><span id="login-string">Register<span></button>
                     </form>
                 </div>
-                <div id="login-button" class="card bg-dark border-secondary container-fluid">
+                <!--<div id="login-button" class="card bg-dark border-secondary container-fluid">
 
                     <a href="index.php">
                         <div class="card-body">
                             <p class="card-text">Register</p>
                         </div>
                     </a>
-                </div>
+                </div>-->
                 <div id="login-messages">
                     <p> <a href="login.php"> Already have an account? </a></p>
                 </div>
@@ -64,9 +66,9 @@
                     </div>
                 </div>
                 <div class="about-split">
-                    <a href="#" class="link-light">About</a>
+                    <a href="./about.php" class="link-light">About</a>
                     <span class="link-light"> | </span>
-                    <a href="#" class="link-light">FAQ</a>
+                    <a href="./faq.php" class="link-light">FAQ</a>
                 </div>
             </div>
             <div class="col-8">

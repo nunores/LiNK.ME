@@ -202,9 +202,9 @@
 					</div>
 				</div>
 				<div>
-					<a href="#" class="link-light">About</a>
+					<a href="./about.php" class="link-light">About</a>
 					<span class="link-light"> | </span>
-					<a href="#" class="link-light">FAQ</a>
+					<a href="./faq.php" class="link-light">FAQ</a>
 				</div>
 			</div>
 			<div class="col-8">
@@ -242,7 +242,7 @@
 								</div>
 							</div>
 							<div class="row">
-								<a href="#">
+								<a href="./post_page.php">
 									<div class="post-text">
 										<span id="text-description">Estou na A1, na A2, na A5 a chegar a Lisabona </span>
 									</div>

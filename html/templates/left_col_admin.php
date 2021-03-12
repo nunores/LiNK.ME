@@ -46,8 +46,8 @@
         </div>
     </div>
     <div id="about-faq">
-        <a href="#" class="link-light">About</a>
+        <a href="./about.php" class="link-light">About</a>
         <span class="link-light"> | </span>
-        <a href="#" class="link-light">FAQ</a>
+        <a href="./faq.php" class="link-light">FAQ</a>
     </div>
 </div>

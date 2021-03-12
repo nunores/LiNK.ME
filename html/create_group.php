@@ -63,12 +63,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xavierGoncalves.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @SouOÇalves </span>
 										<span id="person-name"> Ricardo Gonçalves </span>
 									</a>
@@ -85,12 +85,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xavierLopes.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @LLopes </span>
 										<span id="person-name"> Leandro Lopes </span>
 									</a>
@@ -109,12 +109,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xavierCoelho.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @Mine4Phantom </span>
 										<span id="person-name"> Hilário Coelho </span>
 									</a>
@@ -131,12 +131,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xavierMontanelas.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @PMM </span>
 										<span id="person-name"> Paulo Montanelas </span>
 									</a>
@@ -155,12 +155,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xavierResende.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @gares </span>
 										<span id="person-name"> Gabriel Resende </span>
 									</a>
@@ -177,12 +177,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/nunoXavier.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @nunoxavier </span>
 										<span id="person-name"> Nuno Xavier </span>
 									</a>
@@ -201,12 +201,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xavierPisco.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @psico </span>
 										<span id="person-name"> Xavier Pisco </span>
 									</a>
@@ -223,12 +223,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xavierCarvalho.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @Carvalho </span>
 										<span id="person-name"> Fernando Carvalho </span>
 									</a>
@@ -247,12 +247,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/abelXavier.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @OAbel </span>
 										<span id="person-name"> Abel Xavier </span>
 									</a>
@@ -269,12 +269,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xavierFernandes.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @Nando </span>
 										<span id="person-name"> Fernando Fernandes </span>
 									</a>
@@ -293,12 +293,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xicoXavier.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @Xico </span>
 										<span id="person-name"> Xico Pereira </span>
 									</a>
@@ -315,12 +315,12 @@
 								<div class="col-4">
 								</div>
 								<div class="col-1">
-									<a href="#">
+									<a href="./other_profile.php">
 										<img src="./images/xavierSeixo.jpg" class="rounded-circle search-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-6">
-									<a href="#">
+									<a href="./other_profile.php">
 										<span id="name-tag"> @monteiroM </span>
 										<span id="person-name"> Miguel Monteiro </span>
 									</a>

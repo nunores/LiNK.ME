@@ -25,10 +25,15 @@
 }
 
 #login-button {
+    color: var(--bs-light);
     width: 80%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 0;
+    margin: 1rem auto;
+    padding: 1rem;
+}
+
+#login-string {
+    margin: 0 auto;
+    font-size: 1.3rem;
 }
 
 #login-button:hover {

@@ -28,7 +28,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-2 text-center" id="left-col">
-                <a href="#">
+                <a href="./my_profile.php">
                     <img src="./images/pauloSeixo.png" class="rounded-circle profile-picture" alt="Profile picture">
                     <h2>Paulo Seixo</h2>
                 </a>
@@ -128,9 +128,9 @@
                     <button type="button" id="create-group-button" class="btn btn-dark">Create Group</button>
                 </div>
                 <div>
-                    <a href="#" class="link-light">About</a>
+                    <a href="./about.php" class="link-light">About</a>
                     <span class="link-light"> | </span>
-                    <a href="#" class="link-light">FAQ</a>
+                    <a href="./faq.php" class="link-light">FAQ</a>
                 </div>
             </div>
             <div class="col-8">
@@ -628,7 +628,7 @@
 
         </div>
     </div>
-    <div id="add-post-icon">
+    <div id="add-post-icon" class="add-post-icon">
         <a href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="125" height="125" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />

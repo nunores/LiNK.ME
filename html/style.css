@@ -98,9 +98,10 @@ body > div.container-fluid {
     width: 50%;
 }
 
-#add-post-icon {
+.add-post-icon {
     position: fixed;
-    left: 75%;
+    left: 90%;
+    bottom: 2%;
 }
 
 .link-danger {

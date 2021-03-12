@@ -36,12 +36,12 @@
 						<div class="add-post-header">
 							<div class="row">
 								<div class="col-1">
-									<a href="#">
+									<a href="./my_profile.php">
 										<img src="./images/pauloSeixo.png" class="rounded-circle post-profile-pic" alt="Profile picture">
 									</a>
 								</div>
 								<div class="post-name col-10">
-									<a href="#">
+									<a href="./my_profile.php">
 										<span id="name-tag"> @SeixoPaulo </span>
 										<span id="person-name"> Paulo Seixo </span>
 									</a>
@@ -50,15 +50,17 @@
 						</div>
 						<form>
 							<textarea class="form-control add-post-textarea" aria-label="With textarea" placeholder="Insert text here..."></textarea>
-							<label><input type="file" class="form-control" id="add-post-file">
+							<label data-bs-toggle="tooltip" data-bs-placement="top" title="Add a photo"><input type="file" class="form-control" id="add-post-file">
 								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
 									<path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z" />
 								</svg>
 							</label>
-							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-								<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-								<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-							</svg>
+							<label data-bs-toggle="tooltip" data-bs-placement="top" title="Submit your post">
+								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+									<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+									<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+								</svg>
+							</label>
 							<span class="glyphicon glyphicon-send"></span>
 						</form>
 					</div>
