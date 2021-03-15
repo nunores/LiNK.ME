@@ -1,11 +1,26 @@
 body {
     --pink: #FF3366;
     --green: #1AB2A8;
-    --light_green: #D1F0EE;
+    --light_green: #e8e8e8;
+    --gray: #c2c2c2;
+    --dark-gray: #292d32;
+    font-family: 'Helvetica', 'Open Sans', sans-serif;
+
+    /*font-weight: 600;*/
 }
 
-header {
-    /*background-color: var(--light_green);*/
+html {
+    height:100%
+}
+
+body {
+    background-color: var(--bs-dark);
+    min-height:100%;
+    color: var(--bs-light);
+}
+
+header, #left-col, .post, #search, .add-post, .invite-card {
+    background-color: var(--dark-gray);
 }
 
 a {
@@ -16,35 +31,50 @@ a:hover {
     color: inherit;
 }
 
-header > .navbar {
-    padding: 2rem 4%;
-    border-bottom: solid lightgray 2px;
+.navbar {
+    padding: 1.5rem 5rem;
+    border-bottom: solid black 2px;
 }
 
-body > .container-fluid {
-    margin-top: 3rem;
+body > div.container-fluid {
+    min-height: 100%;
 }
 
-#left-col .profile-picture{
-    height: 12.5rem;
+.col-10 {
+    width: 80%;
 }
 
-.rounded {
-    border-radius: 100%!important;
+.form-check-input:checked {
+    background-color: var(--green) !important;
 }
 
-.form-check > .form-check-input {
+.bi {
+    display: inline-block;
+    margin: auto;
+}
 
+.form-check {
+    text-align: left;
 }
 
 .form-control{
     border-radius: 0%;
-    border: solid grey 0.1rem;
+    border: solid black 2px;
+	color: var(--green);
 }
 
 .form-control:focus {
-    box-shadow: 0 0 0 0.1rem var(--green);
-    border: none;
+    box-shadow: 0 0 0 0.01rem var(--green);
+    border-color: var(--green);
+	color: var(--green);
+}
+
+.d-flex {
+    width: 20%;
+}
+
+#search-icon-phone, #list-icon {
+    display: none;
 }
 
 .link-primary {
@@ -60,18 +90,23 @@ body > .container-fluid {
 }
 
 .bi-plus-circle {
-    color: aqua;
+    color: var(--green);
 }
 
-.post-profile-pic {
-    height: 5rem;
+#center-col {
+    margin: 2rem auto 0 auto;
+    width: 50%;
 }
 
-.post-header > * {
-    display: inline-block;
+.add-post-icon {
+    position: fixed;
+    left: 90%;
+    bottom: 2%;
 }
 
-.post-name > * {
-    display: grid;
+.link-danger {
+	color: var(--pink);
 }
-
+.container-fluid {
+    display: relative;
+}
