@@ -334,12 +334,8 @@ Figure 19: [Error](http://lbaw2145-piu.lbaw-prod.fe.up.pt/404.php)
 
 ## Revision history
 
-Changes made to the first submission:
-
-
-
 ***
-GROUP2145, 19/02/2021
+GROUP2145, 16/03/2021
 
 * João Miguel Gomes Gonçalves, up201806796@fe.up.pt
 * Nuno Filipe Ferreira de Sousa Resende, up201806825@fe.up.pt

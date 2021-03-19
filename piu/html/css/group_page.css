@@ -1,0 +1,153 @@
+#feed-order {
+    margin-bottom: 1rem;
+}
+
+.group-name  > p{
+    font-size: 5rem;
+    margin-top: 1rem;
+}
+
+@media only screen and (max-width: 1000px) {
+	.profile-info .profile-info-picture {
+		width: 10rem;
+		height: 10rem;
+	}
+
+	.col-8 > #center-col {
+		margin-top: 1rem;
+	}
+}
+
+.feed-change {
+	padding-bottom: 2rem;
+}
+
+#feed-order {
+	width: 60%;
+	margin: auto;
+}
+
+.person-friends-profile-pic {
+	width: 3rem;
+	height: 3rem;
+}
+
+#name-tag.person-friends-name-tag {
+	font-size: 80%;
+	color: var(--bs-light);
+}
+
+.person-friends-header {
+	padding: 0.5rem 0;
+}
+
+.person-friends {
+	max-height: 30%;
+	overflow: auto;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
+}
+
+.person-friends::-webkit-scrollbar {
+	width: 2px;
+	border: solid #000 1px;
+}
+
+.person-friends::-webkit-scrollbar-thumb {
+	border: solid var(--bs-light) 1px;
+}
+
+.profile-info {
+	text-align: center;
+}
+
+.profile-info-picture {
+	height: 15vw;
+	width: 15vw;
+}
+
+#profile-name-tag {
+	color: var(--bs-gray);
+	font-size: 200%;
+}
+
+#profile-person-name {
+	font-size: 200%;
+	font-weight: 700;
+}
+
+.profile-info {
+	padding-bottom: 2rem;
+}
+
+#link-us {
+	margin-top: 1rem;
+}
+
+.btn-outline-primary {
+	width: 50%;
+	color: var(--green);
+	border-color: var(--green);
+}
+
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+	color: var(--bs-light);
+	border-color: var(--green);
+	background-color: var(--green);
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary:active:focus {
+	box-shadow: none;
+}
+
+#add-search {
+    width: 95%;
+}
+
+.add-person {
+    margin-left: 2.5rem;
+}
+
+.add-person:hover {
+    cursor: pointer ;
+}
+
+.invite-people {
+    display: inline-block;
+}
+
+
+.invite-card {
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.invite-button {
+    text-align: center;
+    font-size: 1.7rem;
+
+}
+
+.invite-button:hover {
+    cursor: pointer;
+}
+
+.invite-button > *{
+
+    color: var(--green);
+    margin: 0;
+    display: inline;
+    width: max-content;
+}
+
+.invite-card {
+    display: none;
+}
+
+.dropdown {
+	margin-top: 0.8rem;
+}

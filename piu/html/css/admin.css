@@ -1,0 +1,94 @@
+@media only screen and (max-width: 1000px) {
+    #ban-options-post {
+        top: 2.5rem!important;
+        right: 2.5rem!important;
+    }
+}
+
+#left-col {
+    padding-top: 1rem;
+    border-right: solid black 2px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+#left-col .profile-picture{
+    height: 12.5rem;
+    width: 12.5rem;
+}
+
+.feed-change {
+    width: 60%;
+    margin: 1rem auto 0 auto;
+    border-bottom: solid black 2px;
+    padding-bottom: 1rem;
+}
+
+#feed-order {
+    width: 80%;
+    margin: auto;
+}
+
+#notifications {
+    width: 60%;
+    margin: 1.5rem auto 0 auto;
+    border-bottom: solid black 2px;
+    padding-bottom: 1rem;
+}
+
+#notifications-title > p {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+#notifications .card {
+    padding: 0.3rem;
+    margin: 1rem 0;
+}
+
+#notifications .card-body {
+    font-size: 0.8rem;
+    text-align: left;
+    padding: 0.3rem;
+}
+
+#notifications .row {
+    margin: 0;
+}
+
+#about-faq {
+    margin-top: 1rem;
+}
+
+.bi-exclamation-triangle {
+    margin-left: 1rem;
+}
+
+.post {
+    position: relative;
+}
+
+#ban-options-post {
+    position: absolute;
+    right: 3rem;
+    top: 2rem
+}
+
+#ban-options-post > .card,
+#ban-options-comment > .card {
+    padding: 0.3rem;
+}
+
+.comment {
+    position: relative;
+}
+
+#ban-options-comment {
+    position: absolute;
+    right: 1.5rem;
+    top: 1rem;
+    width: 7rem;
+    padding: 0;
+    margin: 0 1rem
+}

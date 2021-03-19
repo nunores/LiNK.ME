@@ -1,0 +1,112 @@
+body {
+    --pink: #FF3366;
+    --green: #1AB2A8;
+    --light_green: #e8e8e8;
+    --gray: #c2c2c2;
+    --dark-gray: #292d32;
+    font-family: 'Helvetica', 'Open Sans', sans-serif;
+
+    /*font-weight: 600;*/
+}
+
+html {
+    height:100%
+}
+
+body {
+    background-color: var(--bs-dark);
+    min-height:100%;
+    color: var(--bs-light);
+}
+
+header, #left-col, .post, #search, .add-post, .invite-card {
+    background-color: var(--dark-gray);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    color: inherit;
+}
+
+.navbar {
+    padding: 1.5rem 5rem;
+    border-bottom: solid black 2px;
+}
+
+body > div.container-fluid {
+    min-height: 100%;
+}
+
+.col-10 {
+    width: 80%;
+}
+
+.form-check-input:checked {
+    background-color: var(--green) !important;
+}
+
+.bi {
+    display: inline-block;
+    margin: auto;
+}
+
+.form-check {
+    text-align: left;
+}
+
+.form-control{
+    border-radius: 0%;
+    border: solid black 2px;
+	color: var(--green);
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.01rem var(--green);
+    border-color: var(--green);
+	color: var(--green);
+}
+
+.d-flex {
+    width: 20%;
+}
+
+#search-icon-phone, #list-icon {
+    display: none;
+}
+
+.link-primary {
+    color: var(--green);
+}
+
+.link-primary:hover {
+    color: var(--green);
+}
+
+.link-primary:visited {
+    color: var(--green);
+}
+
+.bi-plus-circle {
+    color: var(--green);
+}
+
+#center-col {
+    margin: 2rem auto 0 auto;
+    width: 50%;
+}
+
+.add-post-icon {
+    position: fixed;
+    left: 90%;
+    bottom: 2%;
+}
+
+.link-danger {
+	color: var(--pink);
+}
+.container-fluid {
+    display: relative;
+}
