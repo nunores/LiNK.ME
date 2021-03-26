@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS group_accepted_request CASCADE;
 DROP TABLE IF EXISTS group_request CASCADE;
 DROP TABLE IF EXISTS banned_comment CASCADE;
 DROP TABLE IF EXISTS banned_post CASCADE;
@@ -7,14 +6,12 @@ DROP TABLE IF EXISTS post_comment CASCADE;
 DROP TABLE IF EXISTS friend_request CASCADE;
 DROP TABLE IF EXISTS notification CASCADE;
 DROP TABLE IF EXISTS user_group CASCADE;
-DROP TABLE IF EXISTS report_notification CASCADE;
 DROP TABLE IF EXISTS report CASCADE;
 DROP TABLE IF EXISTS comment CASCADE;
 DROP TABLE IF EXISTS "like" CASCADE;
 DROP TABLE IF EXISTS "post" CASCADE;
 DROP TABLE IF EXISTS "group" CASCADE;
 DROP TABLE IF EXISTS link CASCADE;
-DROP TABLE IF EXISTS admin CASCADE;
 DROP TABLE IF EXISTS "user" CASCADE;
 DROP TABLE IF EXISTS person CASCADE;
 
@@ -23,26 +20,22 @@ DROP TABLE IF EXISTS person CASCADE;
 CREATE TABLE person (
 	id SERIAL PRIMARY KEY,
 	username text NOT NULL CONSTRAINT uk_person_username UNIQUE,
-	password text NOT NULL
+	password text NOT NULL,
+    is_admin boolean NOT NULL DEFAULT FALSE
 );
  
 CREATE TABLE "user" (
     id INTEGER PRIMARY KEY REFERENCES person (id) ON UPDATE CASCADE ON DELETE CASCADE,
     mail text NOT NULL CONSTRAINT uk_user_email UNIQUE,
     name text NOT NULL,
-    picture text NOT NULL, --path
     deleted boolean DEFAULT FALSE
-);
-
-CREATE TABLE admin (
-    id SERIAL PRIMARY KEY REFERENCES person (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
  
 CREATE TABLE link (
-    id SERIAL PRIMARY KEY,
     user1_id INTEGER REFERENCES "user" (id) NOT NULL,
     user2_id INTEGER REFERENCES "user" (id),
+    PRIMARY KEY (user1_id, user2_id),
     CONSTRAINT ck_link_different_users CHECK (user1_id != user2_id)
 );
 
@@ -53,6 +46,7 @@ CREATE TABLE "group" (
 
 CREATE TABLE "post" (
 	id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES "user" (id) NOT NULL,
 	picture text,
 	description text CONSTRAINT ck_post_description_size CHECK (length(description) <= 250) ,
 	"date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL CONSTRAINT ck_post_date_before_now CHECK ("date" <= now()),
@@ -64,15 +58,15 @@ CREATE TABLE "post" (
 
 
 CREATE TABLE "like" (
-    id SERIAL PRIMARY KEY,
     post_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE,
     user_id INTEGER NOT NULL REFERENCES "user" (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    likes boolean, --false means dislike, true means like 
-    CONSTRAINT uk_like_post_user UNIQUE(post_id, user_id)
+    likes boolean NOT NULL, --false means dislike, true means like 
+    PRIMARY KEY (post_id, user_id)
 );
 
 CREATE TABLE comment (
     id SERIAL PRIMARY KEY,
+    post_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE,
     "text" text NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE,
     CONSTRAINT ck_comment_text_length CHECK (length(text) <= 250)
@@ -80,17 +74,10 @@ CREATE TABLE comment (
 
 CREATE TABLE report (
     id SERIAL PRIMARY KEY,
-    post_id INTEGER REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE,
     user_id INTEGER NOT NULL REFERENCES "user" (id) ON UPDATE CASCADE ON DELETE CASCADE,
+    post_id INTEGER REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE,
     comment_id INTEGER REFERENCES comment (id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT ck_report_postid_commentid_xor CHECK ( (post_id IS NOT NULL AND comment_id IS NULL) OR (post_id IS NULL AND comment_id IS NOT NULL) )
-);
-
-CREATE TABLE report_notification (
-    id SERIAL PRIMARY KEY,
-	admin_id INTEGER NOT NULL REFERENCES admin (id) ON UPDATE CASCADE ON DELETE CASCADE,
-	report_id INTEGER NOT NULL REFERENCES report (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT uk_report_notifications_admin_report UNIQUE(admin_id, report_id)
 );
 
 CREATE TABLE user_group (
@@ -131,11 +118,6 @@ CREATE TABLE banned_comment (
 );
 
 CREATE TABLE group_request (
-    id INTEGER PRIMARY KEY REFERENCES notification (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    group_id INTEGER NOT NULL REFERENCES "group" (id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE group_accepted_request (
     id INTEGER PRIMARY KEY REFERENCES notification (id) ON UPDATE CASCADE ON DELETE CASCADE,
     group_id INTEGER NOT NULL REFERENCES "group" (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
