@@ -27,10 +27,10 @@ INSERT INTO "like" (post_id, user_id, likes) VALUES(2, 3, TRUE);
 INSERT INTO "like" (post_id, user_id, likes) VALUES(3, 1, FALSE);
 INSERT INTO "like" (post_id, user_id, likes) VALUES(3, 2, FALSE);
 
-INSERT INTO "comment" (post_id, "text") VALUES(1, 'A comment');
-INSERT INTO "comment" (post_id, "text") VALUES(1, 'Another comment');
-INSERT INTO "comment" (post_id, "text") VALUES(2, 'Comment on another post');
-INSERT INTO "comment" (post_id, "text", deleted) VALUES(2, 'A VERY LARGE COMMENT THAT DOES NOT HAVE 250 + CHARACTERS AND HAS VERY WEIRD SYMBOLS LIKE $ AND % AND /// ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAh', TRUE);
+INSERT INTO "comment" (post_id, "user_id", "text") VALUES(1, 1, 'A comment');
+INSERT INTO "comment" (post_id, "user_id", "text") VALUES(1, 1, 'Another comment');
+INSERT INTO "comment" (post_id, "user_id", "text") VALUES(2, 2, 'Comment on another post');
+INSERT INTO "comment" (post_id, "user_id", "text", deleted) VALUES(2, 3, 'A VERY LARGE COMMENT THAT DOES NOT HAVE 250 + CHARACTERS AND HAS VERY WEIRD SYMBOLS LIKE $ AND % AND /// ZAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAh', TRUE);
 
 INSERT INTO "report" (user_id, post_id) VALUES(2, 2);
 INSERT INTO "report" (user_id, comment_id) VALUES(3, 2);
@@ -55,15 +55,15 @@ INSERT INTO "notification" (user_id) VALUES (3);
 INSERT INTO "friend_request" (id, user_id_request) VALUES (1, 2);
 INSERT INTO "friend_request" (id, user_id_request) VALUES (2, 3);
 
-INSERT INTO "post_comment" (id, post_id) VALUES (3, 1);
-INSERT INTO "post_comment" (id, post_id) VALUES (4, 3);
+INSERT INTO "post_comment" (id, post_comment_id) VALUES (3, 1);
+INSERT INTO "post_comment" (id, post_comment_id) VALUES (4, 3);
 
-INSERT INTO "liked_post" (id, post_id) VALUES(5, 1);
-INSERT INTO "liked_post" (id, post_id) VALUES(6, 2);
+INSERT INTO "liked_post" (id, liked_post_id) VALUES(5, 1);
+INSERT INTO "liked_post" (id, liked_post_id) VALUES(6, 2);
 
-INSERT INTO "banned_post" (id, post_id) VALUES (7, 1);
+INSERT INTO "banned_post" (id, banned_post_id) VALUES (7, 1);
 
-INSERT INTO "banned_comment" (id, comment_id) VALUES (8, 4);
+INSERT INTO "banned_comment" (id, banned_comment_id) VALUES (8, 4);
 
 INSERT INTO "group_request" (id, group_id) VALUES (9, 1);
 INSERT INTO "group_request" (id, group_id) VALUES (10, 2);

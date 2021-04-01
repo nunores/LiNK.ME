@@ -23,7 +23,7 @@ CREATE TABLE person (
 	password text NOT NULL,
     is_admin boolean NOT NULL DEFAULT FALSE
 );
- 
+
 CREATE TABLE "user" (
     id INTEGER PRIMARY KEY REFERENCES person (id) ON UPDATE CASCADE ON DELETE CASCADE,
     mail text NOT NULL CONSTRAINT uk_user_email UNIQUE,
@@ -31,7 +31,7 @@ CREATE TABLE "user" (
     deleted boolean DEFAULT FALSE
 );
 
- 
+
 CREATE TABLE link (
     user1_id INTEGER REFERENCES "user" (id) NOT NULL,
     user2_id INTEGER REFERENCES "user" (id),
@@ -53,20 +53,21 @@ CREATE TABLE "post" (
 	banned boolean NOT NULL DEFAULT FALSE,
 	private boolean NOT NULL DEFAULT FALSE,
  	group_id INTEGER REFERENCES "group" (id)
-	CONSTRAINT ck_post_picture_andor_description CHECK (description != NULL OR picture != NULL) 	
+	CONSTRAINT ck_post_picture_andor_description CHECK (description != NULL OR picture != NULL)
 );
 
 
 CREATE TABLE "like" (
     post_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE,
     user_id INTEGER NOT NULL REFERENCES "user" (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    likes boolean NOT NULL, --false means dislike, true means like 
+    likes boolean NOT NULL, --false means dislike, true means like
     PRIMARY KEY (post_id, user_id)
 );
 
 CREATE TABLE comment (
     id SERIAL PRIMARY KEY,
     post_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE,
+    user_id INTEGER NOT NULL REFERENCES "user" (id) ON UPDATE CASCADE ON DELETE CASCADE,
     "text" text NOT NULL,
     deleted boolean NOT NULL DEFAULT FALSE,
     CONSTRAINT ck_comment_text_length CHECK (length(text) <= 250)
@@ -98,23 +99,23 @@ CREATE TABLE friend_request (
 
 CREATE TABLE post_comment (
     id INTEGER PRIMARY KEY REFERENCES notification (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    post_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE
+    post_comment_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
 CREATE TABLE liked_post (
     id INTEGER PRIMARY KEY REFERENCES notification (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    post_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE
+    liked_post_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE banned_post (
     id INTEGER PRIMARY KEY REFERENCES notification (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    post_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE
+    banned_post_id INTEGER NOT NULL REFERENCES "post" (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE banned_comment (
     id INTEGER PRIMARY KEY REFERENCES notification (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    comment_id INTEGER NOT NULL REFERENCES comment (id) ON UPDATE CASCADE ON DELETE CASCADE
+    banned_comment_id INTEGER NOT NULL REFERENCES comment (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE group_request (
