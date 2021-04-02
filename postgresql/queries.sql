@@ -50,46 +50,6 @@ FROM "post" JOIN "comment" on "post"."id" = "comment"."post_id"
 WHERE "post"."id" = $id and "comment"."deleted" = false
 
 
-/*
--- Select General Relevant Posts
-
--- Select Friends Relevant Posts
-
--- TODO Ask about this
-
-SELECT "id", "user_id", "picture", "description", "date", "private", "group_id"
-FROM "post"
-WHERE "banned" = false and
-	"user_id" in (
-		SELECT "user2_id" as "friend_id" FROM link WHERE "user1_id" = $id
-		UNION ALL
-		SELECT "user1_id" as "friend_id" FROM link WHERE "user2_id" = $id)
-ORDER BY
-SELECT * FROM
-(SELECT likes FROM (SELECT SUM(CASE WHEN "likes" = true THEN 1 ELSE 0 END) AS likes,
-	SUM(CASE WHEN "likes" = false THEN 1 ELSE 0 END ) AS dislikes
-FROM "like" JOIN "post" on "post"."id" = "like"."post_id"
-WHERE "post"."id" = $id)
-MINUS
-SELECT dislikes FROM (SELECT SUM(CASE WHEN "likes" = true THEN 1 ELSE 0 END) AS likes,
-	SUM(CASE WHEN "likes" = false THEN 1 ELSE 0 END ) AS dislikes
-FROM "like" JOIN "post" on "post"."id" = "like"."post_id"
-WHERE "post"."id" = $id)) AS ratio
-
-SELECT "id", "user_id", "picture", "description", "date", "private", "group_id", "likes" - "dislike" as "ratio"
-FROM "post" JOIN (
-	SELECT SUM(CASE WHEN "likes" = true THEN 1 ELSE 0 END) AS likes,
-		SUM(CASE WHEN "likes" = false THEN 1 ELSE 0 END ) AS dislikes,
-		"post_id"
-	FROM "like" JOIN "post" on "post"."id" = "like"."post_id"
-	WHERE "post"."id" = $id)
-WHERE "banned" = false and
-	"user_id" in (
-		SELECT "user2_id" as "friend_id" FROM link WHERE "user1_id" = $id
-		UNION ALL
-		SELECT "user1_id" as "friend_id" FROM link WHERE "user2_id" = $id)
-ORDER BY ratio
-*/
 
 
 
@@ -128,9 +88,66 @@ SELECT "group"."name" FROM "user_group" JOIN "user" ON "user"."id" = "user_group
 SELECT "user_id", "post_id", "comment_id"
 FROM "report"
 
+
+-- SELECT13 General Relevant Posts
+
+SELECT "id", "user_id", "picture", "description", "date", "private", "group_id", "likes" - "dislikes" as "ratio"
+FROM "post" JOIN (
+	SELECT SUM(CASE WHEN "likes" = true THEN 1 ELSE 0 END) AS likes,
+		SUM(CASE WHEN "likes" = false THEN 1 ELSE 0 END ) AS dislikes,
+		"post_id"
+	FROM "like" GROUP BY "post_id") as "table"
+	ON "post"."id" = "table"."post_id"
+WHERE "banned" = false and ("private" = false  or 
+	"user_id" in (
+		SELECT "user2_id" as "friend_id" FROM link WHERE "user1_id" = $user_id
+		UNION ALL
+		SELECT "user1_id" as "friend_id" FROM link WHERE "user2_id" = $user_id)) 
+ORDER BY ratio
+
+-- SELECT14 Friends Relevant Posts
+
+
+SELECT "id", "user_id", "picture", "description", "date", "private", "group_id", "likes" - "dislikes" as "ratio"
+FROM "post" JOIN (
+	SELECT SUM(CASE WHEN "likes" = true THEN 1 ELSE 0 END) AS likes,
+		SUM(CASE WHEN "likes" = false THEN 1 ELSE 0 END ) AS dislikes,
+		"post_id"
+	FROM "like" GROUP BY "post_id") as "table"
+	ON "post"."id" = "table"."post_id"
+WHERE "banned" = false and
+	"user_id" in (
+		SELECT "user2_id" as "friend_id" FROM link WHERE "user1_id" = $user_id
+		UNION ALL
+		SELECT "user1_id" as "friend_id" FROM link WHERE "user2_id" = $user_id)
+ORDER BY ratio
+
+
+-- SELECT15 Search by user
+
+SELECT *
+FROM "user" JOIN "person" on "user"."id" = "person"."id"
+WHERE UPPER(name) LIKE UPPER(CONCAT($search, '%')) OR UPPER(username) LIKE UPPER(CONCAT($search, '%'))
+OR to_tsvector("name" || ' ' || "username") @@ plainto_tsquery($search)
+
+-- SELECT16 Search by post
+
+SELECT *
+FROM "post" JOIN "user" ON "user"."id" = "post"."user_id"
+WHERE to_tsvector("post"."description" || ' ' || "user"."name") @@ plainto_tsquery($search)
+
+-- SELECT17 Search by group
+
+SELECT *
+FROM "group"
+WHERE UPPER(name) LIKE UPPER(CONCAT($search, '%'))
+
 ----------INSERTS---------
 
--- TODO ADD Person/User
+--INSERT01 Add user
+
+INSERT INTO 'person' ("id", "username", "password") VALUES($id, $username, $password)
+INSERT INTO 'user' ("id", "mail", "name") VALUES($id, $mail, $name)
 
 --INSERT02 Add post
 
@@ -166,11 +183,37 @@ INSERT INTO "user_group" ("user_id", "group_id") VALUES($user_id, $group_id)
 
 -- INSERT10 Add a friend request notification
 
+INSERT INTO "notification" ("id", "user_id") VALUE($id, $user_id)
+INSERT INTO "friend_request" ("id", "user_id_request") VALUES ($id, $user_id_request)
+
 -- INSERT11 Add a post comment notification
+
+INSERT INTO "notification" ("id", "user_id") VALUE($id, $user_id)
+INSERT INTO "post_comment" ("id", "post_comment_id") VALUES (3, 1)
+
 -- INSERT12 Add a liked notification
+
+INSERT INTO "notification" ("id", "user_id") VALUE($id, $user_id)
+INSERT INTO "liked_post" ("id", "liked_post_id") VALUES($id, $liked_post_id)
+
+
 -- INSERT13 Add a banned post notification
+
+INSERT INTO "notification" ("id", "user_id") VALUE($id, $user_id)
+INSERT INTO "banned_post" ("id", "banned_post_id") VALUES ($id, $banned_post_id)
+
 -- INSERT14 Add a banned comment notification
+
+INSERT INTO "notification" ("id", "user_id") VALUE($id, $user_id)
+INSERT INTO "banned_comment" ("id", "banned_comment_id") VALUES ($id, $banned_comment_id)
+
+
 -- INSERT15 Add a group requesst notification
+
+INSERT INTO "notification" ("id", "user_id") VALUE($id, $user_id)
+INSERT INTO "group_request" ("id", 'group_id') VALUES ($id, $group_id)
+
+
 
 -----------DELETES---------
 
