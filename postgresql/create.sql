@@ -69,7 +69,8 @@ CREATE TABLE "post" (
 	banned boolean NOT NULL DEFAULT FALSE,
 	private boolean NOT NULL DEFAULT FALSE,
  	group_id INTEGER REFERENCES "group" (id)
-	CONSTRAINT ck_post_picture_andor_description CHECK (description != NULL OR picture != NULL)
+	CONSTRAINT ck_post_picture_andor_description CHECK (description != NULL OR picture != NULL),
+    CONSTRAINT ck_group_post_private CHECK ((group_id != NULL AND private is FALSE) OR (group_id = NULL))
 );
 
 
@@ -167,11 +168,11 @@ CREATE INDEX description_idx ON post USING GIST (to_tsvector('english', "descrip
 CREATE FUNCTION auto_ban() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF EXISTS (SELECT SUM(CASE WHEN "banned" = true THEN 1 ELSE 0 END)
-        as banned_count, user_id FROM post
-        WHERE banned_count >= 3 AND NEW."user_id" = "post"."user_id") THEN
+    IF EXISTS (SELECT user_id, COUNT(*) FROM "post"
+        WHERE NEW."user_id" = "post"."user_id" AND "banned" = TRUE GROUP BY "user_id" HAVING COUNT(*) >= 3) THEN
         UPDATE "user" SET "banned" = true WHERE "user"."id" = NEW."user_id";
     END IF;
+	RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
@@ -221,7 +222,7 @@ CREATE TRIGGER one_report_per_comment_per_user
     EXECUTE PROCEDURE one_report_per_comment_per_user();
 
 
-
+/*
 CREATE FUNCTION comment_notification() RETURNS TRIGGER AS
 $BODY$
 BEGIN
@@ -246,17 +247,16 @@ BEGIN
         WHERE id in (
             SELECT notification.id
             FROM liked_post JOIN notification on liked_post.id = notification.id
-            WHERE post_id = New.post_id);
+            WHERE liked_post_id = New.post_id);
     DELETE FROM liked_post
         WHERE id in (
             SELECT liked_post.id
             FROM liked_post JOIN notification on liked_post.id = notification.id
-            WHERE post_id = New.post_id);
+            WHERE liked_post_id = New.post_id);
 
-    INSERT INTO notification (
-        SELECT user_id FROM post WHERE post.id = New.post_id)
-        RETURNING id AS new_id;
-    INSERT INTO liked_post (id, post_id) VALUES (new_id, New.post_id);
+    INSERT INTO notification(user_id) (
+        SELECT user_id FROM post WHERE post.id = New.post_id);
+    INSERT INTO liked_post (id, liked_post_id) VALUES (currval('notitfication_id_seq'), New.post_id);
     RETURN NEW;
 END
 $BODY$
@@ -321,3 +321,5 @@ CREATE TRIGGER banned_comment_notification
     AFTER INSERT OR UPDATE ON comment
     FOR EACH ROW
     EXECUTE PROCEDURE banned_comment_notification();
+*/
+
