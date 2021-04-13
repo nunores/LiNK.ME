@@ -98,11 +98,11 @@ FROM "post" JOIN (
 		"post_id"
 	FROM "like" GROUP BY "post_id") as "table"
 	ON "post"."id" = "table"."post_id"
-WHERE "banned" = false and ("private" = false  or 
+WHERE "banned" = false and ("private" = false  or
 	"user_id" in (
 		SELECT "user2_id" as "friend_id" FROM link WHERE "user1_id" = $user_id
 		UNION ALL
-		SELECT "user1_id" as "friend_id" FROM link WHERE "user2_id" = $user_id)) 
+		SELECT "user1_id" as "friend_id" FROM link WHERE "user2_id" = $user_id))
 ORDER BY ratio
 
 -- SELECT14 Friends Relevant Posts
@@ -134,7 +134,7 @@ OR to_tsvector("name" || ' ' || "username") @@ plainto_tsquery($search)
 
 SELECT *
 FROM "post" JOIN "user" ON "user"."id" = "post"."user_id"
-WHERE to_tsvector("post"."description" || ' ' || "user"."name") @@ plainto_tsquery($search)
+WHERE to_tsvector("post"."description" || ' ' || "user"."name" || ' ' || "user"."username") @@ plainto_tsquery($search)
 
 -- SELECT17 Search by group
 

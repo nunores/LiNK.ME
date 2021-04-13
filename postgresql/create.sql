@@ -15,6 +15,22 @@ DROP TABLE IF EXISTS link CASCADE;
 DROP TABLE IF EXISTS "user" CASCADE;
 DROP TABLE IF EXISTS person CASCADE;
 
+DROP FUNCTION IF EXISTS one_report_per_post_per_user();
+DROP FUNCTION IF EXISTS one_report_per_comment_per_user();
+DROP FUNCTION IF EXISTS auto_ban();
+DROP FUNCTION IF EXISTS comment_notification();
+DROP FUNCTION IF EXISTS liked_post_notification();
+DROP FUNCTION IF EXISTS banned_comment_notification();
+DROP FUNCTION IF EXISTS banned_post_notification();
+
+DROP TRIGGER IF EXISTS one_report_per_post_per_user ON report;
+DROP TRIGGER IF EXISTS one_report_per_comment_per_user on report;
+DROP TRIGGER IF EXISTS auto_ban on post;
+DROP TRIGGER IF EXISTS comment_notification on "comment";
+DROP TRIGGER IF EXISTS liked_notification on "like";
+DROP TRIGGER IF EXISTS banned_comment_notification on comment;
+DROP TRIGGER IF EXISTS banned_post_notification on "post";
+
 -- Tables
 
 CREATE TABLE person (
@@ -122,3 +138,186 @@ CREATE TABLE group_request (
     id INTEGER PRIMARY KEY REFERENCES notification (id) ON UPDATE CASCADE ON DELETE CASCADE,
     group_id INTEGER NOT NULL REFERENCES "group" (id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+
+----- INDEXES -----
+
+CREATE INDEX link_id1 ON "link" USING hash(user1_id);
+
+CREATE INDEX link_id2 ON "link" USING hash(user2_id);
+
+CREATE INDEX comment_post_id ON "comment" USING hash(post_id);
+
+CREATE INDEX like_post_id ON "like" USING hash(post_id);
+
+CREATE INDEX post_user_id ON "post" USING hash(user_id);
+
+CREATE INDEX user_group_user_id ON "user_group" USING hash(user_id);
+
+CREATE INDEX user_name_idx ON "user" USING GIN (to_tsvector('english', "name"));
+
+CREATE INDEX person_username_idx ON "person" USING GIN (to_tsvector('english', "username"));
+
+CREATE INDEX description_idx ON post USING GIST (to_tsvector('english', "description"));
+
+
+
+----- TRIGGERS ------
+
+CREATE FUNCTION auto_ban() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF EXISTS (SELECT SUM(CASE WHEN "banned" = true THEN 1 ELSE 0 END)
+        as banned_count, user_id FROM post
+        WHERE banned_count >= 3 AND NEW."user_id" = "post"."user_id") THEN
+        UPDATE "user" SET "banned" = true WHERE "user"."id" = NEW."user_id";
+    END IF;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER auto_ban
+    AFTER INSERT OR UPDATE ON post
+    FOR EACH ROW
+    EXECUTE PROCEDURE auto_ban();
+
+
+
+CREATE FUNCTION one_report_per_post_per_user() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF EXISTS (SELECT * FROM "report" WHERE NEW.user_id = user_id AND NEW.post_id = post_id AND post_id != NULL) THEN
+    RAISE EXCEPTION 'A post cannot be reported twice by the same user.';
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER one_report_per_post_per_user
+    BEFORE INSERT OR UPDATE ON report
+    FOR EACH ROW
+    EXECUTE PROCEDURE one_report_per_post_per_user();
+
+
+
+
+CREATE FUNCTION one_report_per_comment_per_user() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF EXISTS (SELECT * FROM report
+                WHERE NEW.comment_id = comment_id AND comment_id != NULL
+                    AND New.user_id = user_id ) THEN
+            RAISE EXCEPTION 'A comment cannot be reported twice by the same user.';
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER one_report_per_comment_per_user
+    BEFORE INSERT OR UPDATE ON report
+    FOR EACH ROW
+    EXECUTE PROCEDURE one_report_per_comment_per_user();
+
+
+
+CREATE FUNCTION comment_notification() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    INSERT INTO notification (SELECT user_id FROM post WHERE post.id = New.post_id) RETURNING id AS new_id;
+    INSERT INTO "post_comment" (id, post_comment_id) VALUES (new_id, New.post_id);
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER comment_notification
+    AFTER INSERT OR UPDATE ON "comment"
+    FOR EACH ROW
+    EXECUTE PROCEDURE comment_notification();
+
+
+
+
+CREATE FUNCTION liked_post_notification() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    DELETE FROM notification
+        WHERE id in (
+            SELECT notification.id
+            FROM liked_post JOIN notification on liked_post.id = notification.id
+            WHERE post_id = New.post_id);
+    DELETE FROM liked_post
+        WHERE id in (
+            SELECT liked_post.id
+            FROM liked_post JOIN notification on liked_post.id = notification.id
+            WHERE post_id = New.post_id);
+
+    INSERT INTO notification (
+        SELECT user_id FROM post WHERE post.id = New.post_id)
+        RETURNING id AS new_id;
+    INSERT INTO liked_post (id, post_id) VALUES (new_id, New.post_id);
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER liked_notification
+    AFTER INSERT ON "like"
+    FOR EACH ROW
+    EXECUTE PROCEDURE liked_post_notification();
+
+
+
+
+CREATE FUNCTION banned_post_notification() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF New.banned = true THEN
+        DELETE FROM notification
+            WHERE id in (
+                SELECT notification.id
+                FROM banned_post JOIN notification on banned_post.id = notification.id
+                WHERE post_id = New.post_id);
+        DELETE FROM banned_post
+            WHERE id in (
+                SELECT banned_post.id
+                FROM banned_post JOIN notification on banned_post.id = notification.id
+                WHERE post_id = New.post_id);
+
+        INSERT INTO notification (
+            SELECT user_id FROM post WHERE post.id = New.post_id)
+            RETURNING id AS new_id;
+        INSERT INTO banned_post (id, post_id) VALUES (new_id, New.post_id);
+    END IF;
+    RETURN NEW;
+
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER banned_post_notification
+    AFTER INSERT OR UPDATE ON post
+    FOR EACH ROW
+    EXECUTE PROCEDURE banned_post_notification();
+
+
+
+CREATE FUNCTION banned_comment_notification() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF New.deleted = true THEN
+        INSERT INTO notification (
+            SELECT user_id FROM post WHERE post.id = New.post_id)
+            RETURNING id AS new_id;
+        INSERT INTO banned_comment (id, post_id) VALUES (new_id, New.comment_id);
+    END IF;
+    RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER banned_comment_notification
+    AFTER INSERT OR UPDATE ON comment
+    FOR EACH ROW
+    EXECUTE PROCEDURE banned_comment_notification();
