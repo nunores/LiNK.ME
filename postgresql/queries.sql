@@ -257,3 +257,120 @@ WHERE "id" = $id
 UPDATE "comments"
 SET "deleted" = $deleted
 WHERE "id" = $id
+
+----------------- TRANSCTIONS --------------------------
+
+-- TRANSACTION01
+
+BEGIN TRANSACTION;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+WITH "return" as (
+	INSERT INTO person (username, password)
+	VALUES ($username, $password) RETURNING "id"
+)
+INSERT INTO "user" (id, name, mail) SELECT "return"."id", $name, $mail FROM "return";
+
+
+COMMIT;
+
+
+-- TRANSACTION02
+
+BEGIN TRANSACTION;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+WITH "return" as (INSERT INTO notifications (user_id)
+  VALUES ($user_id) RETURNING "id")
+ INSERT INTO friend_request (id, user_id_request) SELECT "return"."id", $user_id_request FROM "return";
+
+COMMIT;
+
+
+-- TRANSACTION03
+
+BEGIN TRANSACTION;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+WITH "return" as (
+    INSERT INTO notifications (user_id)
+    VALUES ($user_id)
+    RETURNING "id"
+)
+INSERT INTO post_comment (id, post_comment_id)
+SELECT "return"."id", $post_id
+FROM "return";
+
+
+COMMIT;
+
+
+-- TRANSACTION04
+
+BEGIN TRANSACTION;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+WITH "return" as (
+    INSERT INTO notification (user_id)
+    VALUES ($user_id)
+    RETURNING "id"
+)
+INSERT INTO liked_post (id, liked_post_id)
+SELECT "return"."id", $post_id
+FROM "return";
+
+COMMIT;
+
+
+-- TRANSACTION05
+
+BEGIN TRANSACTION;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+
+WITH "return" as (
+	INSERT INTO notification (user_id)
+  	VALUES ($user_id)
+	RETURNING "id"
+)
+INSERT INTO banned_post (id, banned_post_id)
+SELECT "return"."id", $post_id
+FROM "return";
+
+
+COMMIT;
+
+
+-- TRANSACTION06
+
+BEGIN TRANSACTION;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+
+WITH "return" as (
+	INSERT INTO notification (user_id)
+  	VALUES ($user_id)
+	RETURNING "id"
+)
+INSERT INTO banned_comment (id, banned_comment_id)
+SELECT "return"."id", $comment_id
+FROM "return";
+
+COMMIT;
+
+
+-- TRANSACTION07
+
+BEGIN TRANSACTION;
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+
+WITH "return" as (
+	INSERT INTO notification (user_id)
+  	VALUES ($user_id)
+    RETURNING "id"
+)
+INSERT INTO group_request (id, group_id)
+SELECT "return"."id", $group_id
+FROM "return";
+
+COMMIT;

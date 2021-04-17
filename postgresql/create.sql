@@ -222,22 +222,26 @@ CREATE TRIGGER one_report_per_comment_per_user
     EXECUTE PROCEDURE one_report_per_comment_per_user();
 
 
-/*
 CREATE FUNCTION comment_notification() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    INSERT INTO notification (SELECT user_id FROM post WHERE post.id = New.post_id) RETURNING id AS new_id;
-    INSERT INTO "post_comment" (id, post_comment_id) VALUES (new_id, New.post_id);
+    WITH "return" as (
+        INSERT INTO notification (user_id) (
+            SELECT user_id
+            FROM post
+            WHERE post.id = New.post_id)
+        RETURNING "id")
+    INSERT INTO "post_comment" (id, post_comment_id) SELECT "return"."id", New.post_id FROM "return";
+	RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
+
 CREATE TRIGGER comment_notification
-    AFTER INSERT OR UPDATE ON "comment"
+    AFTER INSERT OR UPDATE ON comment
     FOR EACH ROW
     EXECUTE PROCEDURE comment_notification();
-
-
 
 
 CREATE FUNCTION liked_post_notification() RETURNS TRIGGER AS
@@ -254,44 +258,35 @@ BEGIN
             FROM liked_post JOIN notification on liked_post.id = notification.id
             WHERE liked_post_id = New.post_id);
 
-    INSERT INTO notification(user_id) (
-        SELECT user_id FROM post WHERE post.id = New.post_id);
-    INSERT INTO liked_post (id, liked_post_id) VALUES (currval('notitfication_id_seq'), New.post_id);
+    WITH "return" as (
+        INSERT INTO notification (user_id) (
+            SELECT user_id
+            FROM post
+            WHERE post."id" = New.post_id)
+        RETURNING "notification"."id" as "id")
+    INSERT INTO liked_post ("id", liked_post_id) SELECT "return"."id", New.post_id FROM "return";
     RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
-CREATE TRIGGER liked_notification
-    AFTER INSERT ON "like"
+CREATE TRIGGER liked_post_notification
+    AFTER INSERT OR UPDATE ON "like"
     FOR EACH ROW
     EXECUTE PROCEDURE liked_post_notification();
-
-
 
 
 CREATE FUNCTION banned_post_notification() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    IF New.banned = true THEN
-        DELETE FROM notification
-            WHERE id in (
-                SELECT notification.id
-                FROM banned_post JOIN notification on banned_post.id = notification.id
-                WHERE post_id = New.post_id);
-        DELETE FROM banned_post
-            WHERE id in (
-                SELECT banned_post.id
-                FROM banned_post JOIN notification on banned_post.id = notification.id
-                WHERE post_id = New.post_id);
-
-        INSERT INTO notification (
-            SELECT user_id FROM post WHERE post.id = New.post_id)
-            RETURNING id AS new_id;
-        INSERT INTO banned_post (id, post_id) VALUES (new_id, New.post_id);
-    END IF;
-    RETURN NEW;
-
+    WITH "return" as (
+        INSERT INTO notification (user_id) (
+            SELECT user_id
+            FROM post
+            WHERE post.id = New.id)
+        RETURNING "id")
+    INSERT INTO "banned_post" (id, banned_post_id) SELECT "return"."id", New.id FROM "return";
+	RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
@@ -300,26 +295,4 @@ CREATE TRIGGER banned_post_notification
     AFTER INSERT OR UPDATE ON post
     FOR EACH ROW
     EXECUTE PROCEDURE banned_post_notification();
-
-
-
-CREATE FUNCTION banned_comment_notification() RETURNS TRIGGER AS
-$BODY$
-BEGIN
-    IF New.deleted = true THEN
-        INSERT INTO notification (
-            SELECT user_id FROM post WHERE post.id = New.post_id)
-            RETURNING id AS new_id;
-        INSERT INTO banned_comment (id, post_id) VALUES (new_id, New.comment_id);
-    END IF;
-    RETURN NEW;
-END
-$BODY$
-LANGUAGE plpgsql;
-
-CREATE TRIGGER banned_comment_notification
-    AFTER INSERT OR UPDATE ON comment
-    FOR EACH ROW
-    EXECUTE PROCEDURE banned_comment_notification();
-*/
 
