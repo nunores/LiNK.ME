@@ -3156,16 +3156,3 @@ INSERT INTO "user_group" (user_id, group_id) VALUES (45,4);
 INSERT INTO "user_group" (user_id, group_id) VALUES (48,6);
 INSERT INTO "user_group" (user_id, group_id) VALUES (44,1);
 INSERT INTO "user_group" (user_id, group_id) VALUES (15,1);
-
-
-INSERT INTO "notification" (user_id) VALUES (3);
-INSERT INTO "notification" (user_id) VALUES (4);
-INSERT INTO "notification" (user_id) VALUES (3);
-INSERT INTO "notification" (user_id) VALUES (4);
-
-
-INSERT INTO "friend_request" (id, user_id_request) VALUES (1, 4);
-INSERT INTO "friend_request" (id, user_id_request) VALUES (2, 5);
-
-INSERT INTO "group_request" (id, group_id) VALUES (3, 1);
-INSERT INTO "group_request" (id, group_id) VALUES (4, 2);
