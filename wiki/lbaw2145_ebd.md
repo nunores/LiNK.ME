@@ -9,7 +9,7 @@ In this artefact we present a conceptualization of the project's database model.
 
 ### 1. Class diagram
 
-<img src="https://git.fe.up.pt/lbaw/lbaw2021/lbaw2145/-/raw/master/docs/conceptual_data_model.png">
+<img src="../docs/conceptual_data_model.png">
 
 
 Draw.io was the online tool used to develop this diagram.
