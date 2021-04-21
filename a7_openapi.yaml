@@ -1,40 +1,39 @@
 openapi: 3.0.0
 
 info:
-  version: '1.0'
-  title: 'LBAW LiNK.ME Web API'
-  description: 'Web Resources Specification (A7) for LiNK.ME'
-  
+    version: "1.0"
+    title: "LBAW LiNK.ME Web API"
+    description: "Web Resources Specification (A7) for LiNK.ME"
+
 servers:
-- url: http://lbaw-prod.fe.up.pt
-  description: Production server  
-  
-  
+    -   url: http://lbaw-prod.fe.up.pt
+        description: Production server
+
 tags:
-  - name: 'M01: Authentication and Registration'
-  - name: 'M02: Search'
-  - name: 'M03: Post'
-  - name: 'M04: Individual profiles and Links'
-  - name: 'M05: Administration'
+    -   name: "M01: Authentication and Registration"
+    -   name: "M02: Users and Links"
+    -   name: "M03: Posts"
+    -   name: "M04: Comments"
+    -   name: "M05: Groups"
+    -   name: "M06: Administration"
 
 paths:
-
     /login:
         get:
             operationId: R101
-            summary: 'R101: Login Form'
-            description: 'Provide login form. Access: PUB'
+            summary: "R101: Login Form"
+            description: "Provide login form. Access: PUB"
             tags:
-                - 'M01: Authentication and Registration'
+                - "M01: Authentication and Registration"
             responses:
-                '200':
-                    description: 'Ok. Show [UI04](http://lbaw2145-piu.lbaw-prod.fe.up.pt/login.php)'
+                "200":
+                    description: "Ok. Show [UI04](http://lbaw2145-piu.lbaw-prod.fe.up.pt/login.php)"
         post:
             operationId: R102
-            summary: 'R102: Login Action'
-            description: 'Processes the login form submission. Access: PUB'
+            summary: "R102: Login Action"
+            description: "Processes the login form submission. Access: PUB"
             tags:
-                - 'M01: Authentication and Registration'
+                - "M01: Authentication and Registration"
 
             requestBody:
                 required: true
@@ -51,37 +50,289 @@ paths:
                                 - username
                                 - password
             responses:
-                '302':
-                    description: 'Redirect after processing the login credentials.'
+                "302":
+                    description: "Redirect after processing the login credentials."
                     headers:
                         Location:
                             schema:
                                 type: string
-                            examples:
-                                302Success:
-                                    description: 'Successful authentication. Redirect to Home.'
-                                    value: '/home'
-                                302Error:
-                                    description: 'Failed authentication. Redirect to login.'
-                                    value: '/login'
+                                example:
+                                    302Success:
+                                        description: "Successful authentication. Redirect to Home."
+                                        value: "/home"
+                                    302Error:
+                                        description: "Failed authentication. Redirect to login."
+                                        value: "/login"
 
-    /home:
-        operationId: R103
-        summary: 'R103: Logout Action'
-        description: 'Logout the current authenticated user. Access: USR, ADM'
-        tags:
-            - 'M01: Authentication and Registration'
-        responses:
-            '302':
-            description: 'Redirect after processing logout.'
-            headers:
-                Location:
-                    schema:
-                        type: string
-                    examples:
-                        302Success:
-                            description: 'Successful logout. Redirect                                         to login form.'
-                            value: '/login'
-                        302Error:
-                            description: 'Failed authentication. Redirect to login.'
-                            value: '/login'
+    /logout:
+        post:
+            operationId: R103
+            summary: "R103: Logout Action"
+            description: "Logout the current authenticated user. Access: USR, ADM"
+            tags:
+                - "M01: Authentication and Registration"
+            responses:
+                "302":
+                    description: "Redirect after processing logout."
+                    headers:
+                        Location:
+                            schema:
+                                type: string
+                                example:
+                                    302Success:
+                                        description: "Successful logout. Redirect to login form."
+                                        value: "/login"
+
+    /register:
+        get:
+            operationId: R104
+            summary: "R104: Register Form"
+            description: "Provide register form. Access: PUB"
+            tags:
+                - "M01: Authentication and Registration"
+            responses:
+                "200":
+                    description: "Ok. Show [UI05](http://lbaw2145-piu.lbaw-prod.fe.up.pt/register.php)"
+        post:
+            operationId: R105
+            summary: 'R105: Register Action'
+            description: 'Processes the new user registration form submission. Access: PUB'
+            tags:
+                - 'M01: Authentication and Registration'
+
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                name:
+                                    type: string
+                                email:
+                                    type: string
+                                password:
+                                    type: string
+                            required:
+                                - name
+                                - email
+                                - password
+            responses:
+                '302':
+                    description: 'Redirect after processing the new user information.'
+                    headers:
+                        Location:
+                            schema:
+                                type: string
+                                example:
+                                    302Success:
+                                        description: 'Successful authentication. Redirect to user profile.'
+                                        value: '/users/{id}'
+                                    302Failure:
+                                        description: 'Failed authentication. Redirect to login page.'
+                                        value: '/login'
+    
+    /user/{id}:
+        get:
+            operationId: R201
+            summary: "R201: User profile"
+            description: "Provide individual user profile page. Access: PUB"
+            tags:
+                - "M02: Users and Links"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from user'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "200":
+                    description: "Ok. Show [UI07](http://lbaw2145-piu.lbaw-prod.fe.up.pt/profile.php)"
+    /user:
+        post:
+            operationId: R202
+            summary: "R202: User Info"
+            description: "Provide individual user info in JSON. Access: PUB"
+            tags:
+                - "M02: Users and Links"
+            
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                            required:
+                                - id
+            responses:
+                '200':
+                    description: 'Success.'
+                    content:
+                        application/json:  
+                            schema:
+                                type: object
+                                properties:
+                                    user_id:
+                                        type: integer
+                                    username:
+                                        type: string
+                                    name:
+                                        type: string
+                                example:
+                                  - user_id: 1
+                                    username: "xamas"
+                                    name: "Xavier"
+
+    /link:
+        post:
+            operationId: R202
+            summary: "R202: Get links from a specific user"
+            description: "Provide links of a specific user in JSON format. Access: USR, ADM"
+            tags:
+                - "M02: Users and Links"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                            required:
+                                - id
+            responses:
+                "200":
+                    description: "Success."
+                    content:
+                        application/json:  
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        user_id:
+                                            type: integer
+                                        username:
+                                            type: string
+                                        name:
+                                            type: string
+                                example:
+                                  - user_id: 1
+                                    username: "xamas"
+                                    name: "Xavier"
+                                  - user_id: 5
+                                    username: "johnlewis"
+                                    name: "John Lewis"
+                                  - user_id: 19
+                                    username: "mike"
+                                    name: "Litoris"
+
+
+    /search/user:
+        get:
+            operationId: R203
+            summary: "R203: Search for a user from a string"
+            description: "Shows all users that have a name or username similar to the search. Access: PUB"
+            tags:
+                - "M02: Users and Links"
+            parameters:
+              - in: query
+                name: searched
+                description: String to use for full-text search
+                schema:
+                    type: string
+                required: true
+
+            responses:
+                "200":
+                    description: "Ok. Show [UI09](http://lbaw2145-piu.lbaw-prod.fe.up.pt/search_people.php)"
+
+    /post/{id}:
+        get:
+            operationId: R301
+            summary: "R301: Post page"
+            description: "Provide individual post page. Access: PUB"
+            tags:
+                - "M03: Posts"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "200":
+                    description: "Ok. Show [UI06](http://lbaw2145-piu.lbaw-prod.fe.up.pt/post.php)"
+
+    /post:
+        post:
+            operationId: R302
+            summary: "R302: Individual post"
+            description: "Provide individual post. Access: PUB"
+            tags:
+                - "M03: Posts"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                            required:
+                                - id
+            responses:
+                '200':
+                    description: 'Success.'
+                    content:
+                        application/json:  
+                            schema:
+                                type: object
+                                properties:
+                                    user_id:
+                                        type: integer
+                                    picture:
+                                        type: string
+                                    descritpion:
+                                        type: string
+                                    date:
+                                        type: string
+                                    group_id:
+                                        type: integer
+                                example:
+                                  - user_id: 1
+                                    picture: Null
+                                    description: "What a nice shot!!"
+                                    date: "10-04-2020"
+                                    group_id: Null
+                                  - user_id: 25
+                                    picture: "./25.jpg"
+                                    description: "Such a good day to visit Paris."
+                                    date: "5-8-2020"
+                                    group_id: Null
+
+    /search/post:
+        get:
+            operationId: R303
+            summary: "R303: Search for a post from a string"
+            description: "Shows all posts that have a name or username similar to the search. Access: PUB"
+            tags:
+                - "M03: Posts"
+            parameters:
+              - in: query
+                name: searched
+                description: String to use for full-text search
+                schema:
+                    type: string
+                required: true
+
+            responses:
+                "200":
+                    description: "Ok. Show [UI09](http://lbaw2145-piu.lbaw-prod.fe.up.pt/search_people.php)"
