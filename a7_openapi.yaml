@@ -12,10 +12,9 @@ servers:
 tags:
     -   name: "M01: Authentication and Registration"
     -   name: "M02: Users and Links"
-    -   name: "M03: Posts"
-    -   name: "M04: Comments"
-    -   name: "M05: Groups"
-    -   name: "M06: Administration"
+    -   name: "M03: Posts and Comments"
+    -   name: "M04: Groups"
+    -   name: "M05: Administration"
 
 paths:
     /login:
@@ -149,7 +148,7 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI07](http://lbaw2145-piu.lbaw-prod.fe.up.pt/profile.php)"
-    /user:
+    /api/user:
         post:
             operationId: R202
             summary: "R202: User Info"
@@ -186,14 +185,13 @@ paths:
                                   - user_id: 1
                                     username: "xamas"
                                     name: "Xavier"
-
-    /link:
-        post:
-            operationId: R202
-            summary: "R202: Get links from a specific user"
-            description: "Provide links of a specific user in JSON format. Access: USR, ADM"
+        put:
+            operationId: R203
+            summary: "R203: Change user info"
+            description: "Change a users info. Access: OWN"
             tags:
                 - "M02: Users and Links"
+            
             requestBody:
                 required: true
                 content:
@@ -203,8 +201,50 @@ paths:
                             properties:
                                 id:
                                     type: integer
+                                name:
+                                    type: string
+                                password:
+                                    type: string
                             required:
                                 - id
+            responses:
+                "200":
+                    description: "Ok. Show [UI07](http://lbaw2145-piu.lbaw-prod.fe.up.pt/profile.php)"
+    
+    /api/user/{id}:
+        delete:
+            operationId: R204
+            summary: "R204: Delete user"
+            description: "Delete a user account. Access OWN"
+            tags:
+                - "M02: Users and Links"
+            
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from user'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "200":
+                    description: "Ok. Show [UI04](http://lbaw2145-piu.lbaw-prod.fe.up.pt/login.php)"  
+
+
+    /api/link:
+        get:
+            operationId: R205
+            summary: "R205: Get links from a specific user"
+            description: "Provide links of a specific user in JSON format. Access: USR, ADM"
+            tags:
+                - "M02: Users and Links"
+            parameters:
+              - in: query
+                name: id
+                description: "Identifier from user"
+                schema:
+                    type: integer
+                required: true
             responses:
                 "200":
                     description: "Success."
@@ -231,12 +271,36 @@ paths:
                                   - user_id: 19
                                     username: "mike"
                                     name: "Litoris"
+        post:
+            operationId: R206
+            summary: "R206: Link 2 users"
+            description: "Create a friendship between 2 users. Access: USR"
+            tags:
+                - "M02: Users and Links"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                user1_id:
+                                    type: integer
+                                user2_id:
+                                    type: integer
+                            required:
+                                - user1_id
+                                - user2_id
+            responses:
+                "204":
+                    description: "No Content" 
 
+        
 
     /search/user:
         get:
-            operationId: R203
-            summary: "R203: Search for a user from a string"
+            operationId: R207
+            summary: "R207: Search for a user from a string"
             description: "Shows all users that have a name or username similar to the search. Access: PUB"
             tags:
                 - "M02: Users and Links"
@@ -258,7 +322,7 @@ paths:
             summary: "R301: Post page"
             description: "Provide individual post page. Access: PUB"
             tags:
-                - "M03: Posts"
+                - "M03: Posts and Comments"
             parameters:
               - in: path
                 name: id
@@ -270,24 +334,20 @@ paths:
                 "200":
                     description: "Ok. Show [UI06](http://lbaw2145-piu.lbaw-prod.fe.up.pt/post.php)"
 
-    /post:
-        post:
+    /api/post:
+        get:
             operationId: R302
-            summary: "R302: Individual post"
-            description: "Provide individual post. Access: PUB"
+            summary: "R302: Post info"
+            description: "Provide individual post info in JSON format. Access: PUB"
             tags:
-                - "M03: Posts"
-            requestBody:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: query
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
                 required: true
-                content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                            type: object
-                            properties:
-                                id:
-                                    type: integer
-                            required:
-                                - id
             responses:
                 '200':
                     description: 'Success.'
@@ -306,25 +366,196 @@ paths:
                                         type: string
                                     group_id:
                                         type: integer
+                                    likes:
+                                        type: integer
+                                    dislikes:
+                                        type: integer
                                 example:
                                   - user_id: 1
                                     picture: Null
                                     description: "What a nice shot!!"
                                     date: "10-04-2020"
                                     group_id: Null
-                                  - user_id: 25
-                                    picture: "./25.jpg"
-                                    description: "Such a good day to visit Paris."
-                                    date: "5-8-2020"
-                                    group_id: Null
+                                    likes: 12
+                                    dislikes: 2
+        post:
+            operationId: R303
+            summary: "R303: Create a post"
+            description: "Create a post. Access: USR"
+            tags:
+                - "M03: Posts and Comments"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                user_id:
+                                    type: integer
+                                picture:
+                                    type: string
+                                description:
+                                    type: string
+                                private:
+                                    type: boolean
+                                group_id:
+                                    type: integer
+                            required:
+                                - user_id
+            responses:
+                "200":
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
+
+    /api/post/{id}:
+        delete:
+            operationId: R304
+            summary: "R304: Delete post"
+            description: "Delete a post from user. Access OWN"
+            tags:
+                - "M03: Posts and Comments"
+            
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "200":
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
+        put:
+            operationId: R305
+            summary: "R305: Edit a post"
+            description: "Edit a post. Access: USR"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                description:
+                                    type: string
+                                private:
+                                    type: boolean
+            responses:
+                "200":
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
+
+    /api/like/{id}:
+        get:
+            operationId: R306
+            summary: "R306: Likes and dislikes from a post"
+            description: "Get likes and dislikes from a post. Access: USR"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+                
+            responses:
+                "200":
+                    description: "Success"
+                    content:
+                        application/json:  
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        user_id:
+                                            type: integer
+                                        likes:
+                                            type: boolean
+                                example:
+                                  - user_id: 15
+                                    likes: true
+                                  - user_id: 32
+                                    likes: false
+                                  - user_id: 27
+                                    likes: true
+
+        put:
+            operationId: R307
+            summary: "R307: Like or dislike a post"
+            description: "Like or dislike a post. Access: USR"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+              - in: query
+                name: likes
+                description: "Like or dislike"
+                schema:
+                    type: boolean
+                required: true
+            responses:
+                "204":
+                    description: "No content"
+        
+        delete:
+            operationId: R308
+            summary: "R308: Remove a like or a dislike"
+            description: "Remove a like or a dislike from a post. Access: USR"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "204":
+                    description: "No content"
+
+ 
+    /api/report/post/{id}:
+        post:
+            operationId: R309
+            summary: "R309: Report a post"
+            description: "Report a post. Access: USR"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "204":
+                    description: "No content"
 
     /search/post:
         get:
-            operationId: R303
-            summary: "R303: Search for a post from a string"
+            operationId: R310
+            summary: "R310: Search for a post from a string"
             description: "Shows all posts that have a name or username similar to the search. Access: PUB"
             tags:
-                - "M03: Posts"
+                - "M03: Posts and Comments"
             parameters:
               - in: query
                 name: searched
@@ -336,3 +567,298 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI09](http://lbaw2145-piu.lbaw-prod.fe.up.pt/search_people.php)"
+
+    /api/comment:
+        get:
+            operationId: R311
+            summary: "R311: Comments from post"
+            description: "Provide comments from a post in JSON format. Access: PUB"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: query
+                name: searched
+                description: String to use for full-text search
+                schema:
+                    type: string
+                required: true
+            responses:
+                '200':
+                    description: 'Success.'
+                    content:
+                        application/json:  
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        id:
+                                            type: integer
+                                        user_id:
+                                            type: integer
+                                        text:
+                                            type: string
+                                example:
+                                  - id: 1
+                                    user_id: 7
+                                    text: "Fabulous!"
+                                  - id: 5
+                                    user_id: 9
+                                    text: "Kinda boring"
+        post:
+            operationId: R312
+            summary: "R312: Create a comment"
+            description: "Create a comment. Access: USR"
+            tags:
+                - "M03: Posts and Comments"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                user_id:
+                                    type: integer
+                                post_id:
+                                    type: integer
+                                text:
+                                    type: string
+                            required:
+                                - user_id
+                                - post_id
+                                - text
+            responses:
+                "200":
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
+
+    /api/comment/{id}:
+        delete:
+            operationId: R313
+            summary: "R313: Delete comment"
+            description: "Delete a comment from user. Access OWN"
+            tags:
+                - "M03: Posts and Comments"
+            
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from comment'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "200":
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)" 
+        put:
+            operationId: R314
+            summary: "R314: Edit a comment"
+            description: "Edit a comment. Access: OWN"
+            tags:
+                - "M03: Posts and Comments"
+            
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from comment'
+                schema:
+                    type: integer
+                required: true
+
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                text:
+                                    type: string
+                            required:
+                                - text
+            responses:
+                "200":
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)" 
+
+    /api/report/comment/{id}:
+        post:
+            operationId: R315
+            summary: "R315: Report a comment"
+            description: "Report a comment. Access: USR"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from comment'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "204":
+                    description: "No content"
+
+    /group/{id}:
+        get:
+            operationId: R401
+            summary: "R401: Group page"
+            description: "Provide individual group page. Access: USR, ADM"
+            tags:
+                - "M04: Groups"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from group'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "200":
+                    description: "Ok. Show [UI11](http://lbaw2145-piu.lbaw-prod.fe.up.pt/group_page.php)"
+
+    /api/group:
+        get:
+            operationId: R402
+            summary: "R402: Group info for user"
+            description: "Provide user's groups info in JSON format. Access: USR, ADM"
+            tags:
+                - "M04: Groups"
+            parameters:
+              - in: query
+                name: id
+                description: 'Identifier from group'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                '200':
+                    description: 'Success.'
+                    content:
+                        application/json:  
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        id:
+                                            type: integer
+                                        name:
+                                            type: string
+                                example:
+                                  - id: 2
+                                    name: MIEIC
+                                  - id: 5
+                                    name: LBAW
+        post:
+            operationId: R404
+            summary: "R404: Create a group"
+            description: "Create a group. Access: USR"
+            tags:
+                - "M04: Groups"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                name:
+                                    type: integer
+                            required:
+                                - name
+            responses:
+                "200":
+                    description: "Ok. Show [UI11](http://lbaw2145-piu.lbaw-prod.fe.up.pt/group_page.php)"
+
+
+    /search/group:
+        get:
+            operationId: R405
+            summary: "R405: Search for a group from a string"
+            description: "Shows all groups that have a name similar to the search. Access: PUB"
+            tags:
+                - "M04: Groups"
+            parameters:
+              - in: query
+                name: searched
+                description: String to use for full-text search
+                schema:
+                    type: string
+                required: true
+
+            responses:
+                "200":
+                    description: "Ok. Show [UI09](http://lbaw2145-piu.lbaw-prod.fe.up.pt/search_groups.php)"
+
+    /api/ban/comment/{id}:
+        delete:
+            operationId: R501
+            summary: "R501: Ban comment"
+            description: "Ban a comment from user. Access ADM"
+            tags:
+                - "M05: Administration"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from comment'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "200":
+                    description: "Ok. Show [UI12](http://lbaw2145-piu.lbaw-prod.fe.up.pt/admin.php)" 
+
+    /api/ban/post/{id}:
+        delete:
+            operationId: R502
+            summary: "R502: Ban post"
+            description: "Ban a post from user. Access ADM"
+            tags:
+                - "M05: Administration"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                "200":
+                    description: "Ok. Show [UI12](http://lbaw2145-piu.lbaw-prod.fe.up.pt/admin.php)" 
+
+    /api/reports:
+        get:
+            operationId: R503
+            summary: "R502: Get all reports"
+            description: "Get all reports. Access ADM"
+            tags:
+                - "M05: Administration"
+            responses:
+                "200":
+                    description: 'Success.'
+                    content:
+                        application/json:  
+                            schema:
+                                type: array
+                                items:
+                                    type: object
+                                    properties:
+                                        id:
+                                            type: integer
+                                        user_id:
+                                            type: integer
+                                        post_id:
+                                            type: integer
+                                        comment_id:
+                                            type: integer
+                                example:
+                                  - id: 2
+                                    user_id: 4
+                                    post_id: 25
+                                    comment_id: Null
+                                  - id: 5
+                                    user_id: 27
+                                    post_id: Null
+                                    comment_id: 13
+
+                    
