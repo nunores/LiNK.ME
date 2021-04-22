@@ -15,6 +15,7 @@ tags:
     -   name: "M03: Posts and Comments"
     -   name: "M04: Groups"
     -   name: "M05: Administration"
+    -   name: "M06: Other routes"
 
 paths:
     /login:
@@ -862,3 +863,44 @@ paths:
                                     comment_id: 13
 
                     
+    /home:
+        get:
+            operationId: R601
+            summary: "R601: Home page"
+            description: "Provide home page. Access: PUB"
+            tags:
+                - "M06: Other routes"
+            responses:
+                "200":
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt/)"
+        
+    /create_group:
+        get:
+            operationId: R602
+            summary: "R602: Create group page"
+            description: "Provide create group page. Access: PUB"
+            tags:
+                - "M06: Other routes"
+            responses:
+                "200":
+                    description: "Ok. Show [UI10](http://lbaw2145-piu.lbaw-prod.fe.up.pt/create_group.php)"
+    /about:
+        get:
+            operationId: R603
+            summary: "R603: About page"
+            description: "Provide about page. Access: PUB"
+            tags:
+                - "M06: Other routes"
+            responses:
+                "200":
+                    description: "Ok. Show [UI02](http://lbaw2145-piu.lbaw-prod.fe.up.pt/about.php)"
+    /faq:
+        get:
+            operationId: R604
+            summary: "R604: FAQ page"
+            description: "Provide FAQ page. Access: PUB"
+            tags:
+                - "M06: Other routes"
+            responses:
+                "200":
+                    description: "Ok. Show [UI03](http://lbaw2145-piu.lbaw-prod.fe.up.pt/faq.php)"
