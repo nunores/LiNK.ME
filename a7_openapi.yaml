@@ -147,7 +147,7 @@ paths:
                     type: integer
                 required: true
             responses:
-                "200":
+                "302":
                     description: "Ok. Show [UI07](http://lbaw2145-piu.lbaw-prod.fe.up.pt/profile.php)"
     /api/user:
         post:
@@ -209,7 +209,7 @@ paths:
                             required:
                                 - id
             responses:
-                "200":
+                "302":
                     description: "Ok. Show [UI07](http://lbaw2145-piu.lbaw-prod.fe.up.pt/profile.php)"
     
     /api/user/{id}:
@@ -228,7 +228,7 @@ paths:
                     type: integer
                 required: true
             responses:
-                "200":
+                "302":
                     description: "Ok. Show [UI04](http://lbaw2145-piu.lbaw-prod.fe.up.pt/login.php)"  
 
 
@@ -405,7 +405,7 @@ paths:
                             required:
                                 - user_id
             responses:
-                "200":
+                "302":
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
 
     /api/post/{id}:
@@ -451,7 +451,7 @@ paths:
                                 private:
                                     type: boolean
             responses:
-                "200":
+                "302":
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
 
     /api/like/{id}:
@@ -566,7 +566,7 @@ paths:
                 required: true
 
             responses:
-                "200":
+                "302":
                     description: "Ok. Show [UI09](http://lbaw2145-piu.lbaw-prod.fe.up.pt/search_people.php)"
 
     /api/comment:
@@ -630,7 +630,7 @@ paths:
                                 - post_id
                                 - text
             responses:
-                "200":
+                "302":
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
 
     /api/comment/{id}:
@@ -678,7 +678,7 @@ paths:
                             required:
                                 - text
             responses:
-                "200":
+                "302":
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)" 
 
     /api/report/comment/{id}:
@@ -768,7 +768,7 @@ paths:
                             required:
                                 - name
             responses:
-                "200":
+                "302":
                     description: "Ok. Show [UI11](http://lbaw2145-piu.lbaw-prod.fe.up.pt/group_page.php)"
 
 
@@ -904,3 +904,4 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI03](http://lbaw2145-piu.lbaw-prod.fe.up.pt/faq.php)"
+
