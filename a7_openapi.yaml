@@ -131,6 +131,45 @@ paths:
                                     302Failure:
                                         description: 'Failed authentication. Redirect to login page.'
                                         value: '/login'
+
+    /recover:
+        get:
+            operationId: R106
+            summary: "R106: Get Password Recovery Form"
+            tags:
+                - "M01: Authentication and Registration"
+            responses:
+                "200":
+                    description: "Ok. Show password recovery UI"
+        post:
+            operationId: R107
+            summary: 'R107: Password Recovery Action'
+            description: 'Processes the password recovery form submission. Access: PUB'
+            tags:
+                - 'M01: Authentication and Registration'
+
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                            required:
+                                - email
+            responses:
+                "302":
+                    description: "Redirect after processing password recovery."
+                    headers:
+                        Location:
+                            schema:
+                                type: string
+                                example:
+                                    302Success:
+                                        description: "Successful password recovery. Redirect to login form."
+                                        value: "/login"
     
     /user/{id}:
         get:
@@ -222,8 +261,6 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI07](http://lbaw2145-piu.lbaw-prod.fe.up.pt/profile.php)"
-                "403":
-                    description: "Forbidden. User is not owner."
     
     /api/user/{id}:
         delete:
@@ -242,9 +279,7 @@ paths:
                 required: true
             responses:
                 "200":
-                    description: "Ok. Show [UI04](http://lbaw2145-piu.lbaw-prod.fe.up.pt/login.php)" 
-                "403":
-                    description: "Forbidden. User is not owner." 
+                    description: "Ok. Show [UI04](http://lbaw2145-piu.lbaw-prod.fe.up.pt/login.php)"
 
 
     /api/link:
@@ -287,8 +322,6 @@ paths:
                                   - user_id: 19
                                     username: "mike"
                                     name: "Litoris"
-                "401":
-                    description: "Unauthorized. User is not autheticated."
         post:
             operationId: R206
             summary: "R206: Link 2 users"
@@ -312,12 +345,10 @@ paths:
             responses:
                 "204":
                     description: "No Content"
-                "401":
-                    description: "Unauthorized. User is not autheticated."
 
         
 
-    /search/user:
+    /users:
         get:
             operationId: R207
             summary: "R207: Search for a user from a string"
@@ -446,8 +477,6 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
-                "401":
-                    description: "Unauthorized. User is not autheticated."
 
     /api/post/{id}:
         delete:
@@ -467,8 +496,6 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
-                "403":
-                    description: "Forbidden. User is not owner."
 
         put:
             operationId: R305
@@ -497,8 +524,6 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
-                "403":
-                    description: "Forbidden. User is not owner."
 
     /api/like/{id}:
         get:
@@ -559,8 +584,6 @@ paths:
             responses:
                 "204":
                     description: "No content"
-                "401":
-                    description: "Unauthorized. User is not autheticated."
         
         delete:
             operationId: R308
@@ -578,11 +601,8 @@ paths:
             responses:
                 "204":
                     description: "No content"
-                "401":
-                    description: "Unauthorized. User is not autheticated."
-
  
-    /api/report/post/{id}:
+    /api/post/report/{id}:
         post:
             operationId: R309
             summary: "R309: Report a post"
@@ -599,10 +619,8 @@ paths:
             responses:
                 "204":
                     description: "No content"
-                "401":
-                    description: "Unauthorized. User is not autheticated."
 
-    /search/post:
+    /posts:
         get:
             operationId: R310
             summary: "R310: Search for a post from a string"
@@ -694,8 +712,6 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
-                "401":
-                    description: "Unauthorized. User is not autheticated."
 
     /api/comment/{id}:
         delete:
@@ -714,9 +730,7 @@ paths:
                 required: true
             responses:
                 "200":
-                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)" 
-                "403":
-                    description: "Forbidden. User is not owner." 
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
         put:
             operationId: R314
             summary: "R314: Edit a comment"
@@ -745,11 +759,9 @@ paths:
                                 - text
             responses:
                 "200":
-                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)" 
-                "403":
-                    description: "Forbidden. User is not owner." 
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
 
-    /api/report/comment/{id}:
+    /api/comment/report/{id}:
         post:
             operationId: R315
             summary: "R315: Report a comment"
@@ -766,8 +778,6 @@ paths:
             responses:
                 "204":
                     description: "No content"
-                "401":
-                    description: "Unauthorized. User is not autheticated."
 
     /group/{id}:
         get:
@@ -798,10 +808,31 @@ paths:
                                         value: "/login"
 
 
-    /api/group:
+    /group:
         get:
             operationId: R402
-            summary: "R402: Group info for user"
+            summary: "R402: Create group page"
+            description: "Provide create group page. Access: PUB"
+            tags:
+                - "M04: Groups"
+            responses:
+                "200":
+                    description: "Ok. Show [UI10](http://lbaw2145-piu.lbaw-prod.fe.up.pt/create_group.php)"
+                "302":
+                    description: "User is not authenticated."
+                    headers:
+                        Location:
+                            schema:
+                                type: string
+                                example:
+                                    302Error:
+                                        description: "Not authenticated. Redirect to login."
+                                        value: "/login"
+
+    /api/group:
+        get:
+            operationId: R403
+            summary: "R403: Group info for user"
             description: "Provide user's groups info in JSON format. Access: MMB, ADM"
             tags:
                 - "M04: Groups"
@@ -831,8 +862,6 @@ paths:
                                     name: MIEIC
                                   - id: 5
                                     name: LBAW
-                "403":
-                    description: "Forbidden. User is not a member." 
         post:
             operationId: R404
             summary: "R404: Create a group"
@@ -853,11 +882,9 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI11](http://lbaw2145-piu.lbaw-prod.fe.up.pt/group_page.php)"
-                "401":
-                    description: "Unauthorized. User is not autheticated."
 
 
-    /search/group:
+    /groups:
         get:
             operationId: R405
             summary: "R405: Search for a group from a string"
@@ -875,19 +902,9 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI09](http://lbaw2145-piu.lbaw-prod.fe.up.pt/search_groups.php)"
-                "302":
-                    description: "User is not authenticated."
-                    headers:
-                        Location:
-                            schema:
-                                type: string
-                                example:
-                                    302Error:
-                                        description: "Not authenticated. Redirect to login."
-                                        value: "/login"
 
 
-    /api/ban/comment/{id}:
+    /api/comment/ban/{id}:
         delete:
             operationId: R501
             summary: "R501: Ban comment"
@@ -903,11 +920,9 @@ paths:
                 required: true
             responses:
                 "200":
-                    description: "Ok. Show [UI12](http://lbaw2145-piu.lbaw-prod.fe.up.pt/admin.php)" 
-                "403":
-                    description: "Forbidden. User is not an admin." 
+                    description: "Ok. Show [UI12](http://lbaw2145-piu.lbaw-prod.fe.up.pt/admin.php)"
 
-    /api/ban/post/{id}:
+    /api/post/ban/{id}:
         delete:
             operationId: R502
             summary: "R502: Ban post"
@@ -923,9 +938,7 @@ paths:
                 required: true
             responses:
                 "200":
-                    description: "Ok. Show [UI12](http://lbaw2145-piu.lbaw-prod.fe.up.pt/admin.php)" 
-                "403":
-                    description: "Forbidden. User is not an admin." 
+                    description: "Ok. Show [UI12](http://lbaw2145-piu.lbaw-prod.fe.up.pt/admin.php)"
 
     /api/reports:
         get:
@@ -961,8 +974,6 @@ paths:
                                     user_id: 27
                                     post_id: Null
                                     comment_id: 13
-                "403":
-                    description: "Forbidden. User is not an admin." 
 
                     
     /home:
@@ -986,31 +997,10 @@ paths:
                                         description: "Not authenticated. Redirect to login."
                                         value: "/login"
 
-        
-    /create_group:
-        get:
-            operationId: R602
-            summary: "R602: Create group page"
-            description: "Provide create group page. Access: PUB"
-            tags:
-                - "M06: Other routes"
-            responses:
-                "200":
-                    description: "Ok. Show [UI10](http://lbaw2145-piu.lbaw-prod.fe.up.pt/create_group.php)"
-                "302":
-                    description: "User is not authenticated."
-                    headers:
-                        Location:
-                            schema:
-                                type: string
-                                example:
-                                    302Error:
-                                        description: "Not authenticated. Redirect to login."
-                                        value: "/login"
     /about:
         get:
-            operationId: R603
-            summary: "R603: About page"
+            operationId: R602
+            summary: "R602: About page"
             description: "Provide about page. Access: PUB"
             tags:
                 - "M06: Other routes"
@@ -1019,8 +1009,8 @@ paths:
                     description: "Ok. Show [UI02](http://lbaw2145-piu.lbaw-prod.fe.up.pt/about.php)"
     /faq:
         get:
-            operationId: R604
-            summary: "R604: FAQ page"
+            operationId: R603
+            summary: "R603: FAQ page"
             description: "Provide FAQ page. Access: PUB"
             tags:
                 - "M06: Other routes"
