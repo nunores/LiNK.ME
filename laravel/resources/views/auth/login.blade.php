@@ -1,32 +1,56 @@
 @extends('layouts.app')
 
+@push('css_links')    
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/mobile.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/post.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/left_col.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/login.css') }}" />
+@endpush
+
 @section('content')
-<form method="POST" action="{{ route('login') }}">
-    {{ csrf_field() }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 text-center collapse" id="left-col">
+            <div id="credentials-input">
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <input required class="form-input" type="text" id="fname" name="fname" placeholder="Username"><br>
+                    <input required class="form-input" type="password" id="lname" name="lname" placeholder="Password"><br>
+                    <button id="login-button" class="card bg-dark border-secondary"><span id="login-string">Log-In<span></button>
+                </form>
+            </div>
 
-    <label for="email">E-mail</label>
-    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
-    @if ($errors->has('email'))
-        <span class="error">
-          {{ $errors->first('email') }}
-        </span>
-    @endif
-
-    <label for="password" >Password</label>
-    <input id="password" type="password" name="password" required>
-    @if ($errors->has('password'))
-        <span class="error">
-            {{ $errors->first('password') }}
-        </span>
-    @endif
-
-    <label>
-        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-    </label>
-
-    <button type="submit">
-        Login
-    </button>
-    <a class="button button-outline" href="{{ route('register') }}">Register</a>
-</form>
+            <div id="login-messages">
+                <p> <a href="{{ route('register') }}">Recover your password</a></p> <!-- TODO: Change link -->
+                <p> <a href="{{ route('register') }}">Don't have an account? </a> </p>
+            </div>
+            <div class="feed-change">
+                <div id="feed-order">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="feedOrder" id="feedOrderRelevance">
+                            Relevance
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="radio" name="feedOrder" id="feedOrderRecent" checked>
+                            Recent
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="about-split">
+                <a href="{{ route('about') }}" class="link-light">About</a>
+                <span class="link-light"> | </span>
+                <a href="{{ route('faq') }}" class="link-light">FAQ</a>
+            </div>
+        </div>
+        <div class="col-8">
+            <div id="center-col">
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

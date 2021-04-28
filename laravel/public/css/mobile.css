@@ -1,0 +1,67 @@
+@media only screen and (max-width: 1000px) {
+    #left-col.col-2 {
+        width: 100%;
+        position: relative;
+        margin-bottom: 1rem;
+    }
+
+    #left-col + .col-8, #left-col + .col-10,
+    .col-8 > #center-col, .col-10 > #center-col {
+        width: 100%;
+        margin: 0;
+    }
+
+    nav form.d-flex {
+        width: auto;
+    }
+
+    .navbar #search {
+        display: none;
+    }
+
+    header > .navbar {
+        padding: 5% 0;
+    }
+
+    .navbar h1 {
+        margin-bottom: 0;
+    }
+
+    .navbar #search-icon-phone {
+        display: inline;
+        margin: auto;
+    }
+
+    .bi-plus-circle {
+        width: 80%;
+    }
+
+    body > .add-post-icon {
+        bottom: 1%;
+        left: 75%;
+    }
+
+	.navbar #list-icon {
+		display: inline;
+	}
+
+    #center-col > .invite-card {
+        display: inherit;
+        max-height: auto;
+    }
+
+
+    .post-name > a >#name-tag.person-friends-name-tag{
+        font-size: 50%;
+    }
+
+    .invite-button {
+        max-height: 50vh;
+        overflow: auto;
+    }
+
+    .invite-card {
+        max-height: auto;
+    }
+
+}

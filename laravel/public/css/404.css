@@ -1,0 +1,49 @@
+@media only screen and (max-width: 1000px) {
+	#center-col #error-text {
+		font-size: 1.5rem;
+	}
+
+	#center-col #broken-chain {
+		height: 10rem;
+	}
+
+	#center-col {
+		width: 80%;
+	}
+
+	#list-icon {
+		display: none!important;
+	}
+
+	.navbar {
+		padding-left: 2rem!important;
+		padding-right: 2rem!important;
+	}
+
+}
+
+#center-col {
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 7rem;
+}
+
+#error-number-4 {
+	font-size: 7rem;
+	color: var(--gray);
+}
+
+
+#error-number-1 {
+	font-size: 7rem;
+	color: var(--gray);
+}
+
+#error-text {
+	color: var(--gray);
+	font-size: 3rem;
+}
+
+#broken-chain {
+	height: 20rem;
+}

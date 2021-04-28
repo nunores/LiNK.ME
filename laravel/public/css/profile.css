@@ -1,0 +1,149 @@
+@media only screen and (max-width: 1000px) {
+	.profile-info .profile-info-picture {
+		width: 10rem;
+		height: 10rem;
+	}
+
+	.col-8 > #center-col {
+		margin-top: 1rem;
+	}
+
+	.my-profile > #change-password-form {
+		left: 30vw;
+	}
+
+	.my-profile > #change-password {
+		right: -70vw;
+	}
+
+	.my-profile > * {
+		position: relative;
+		left: -10vw;
+	}
+
+}
+
+.feed-change {
+	padding-bottom: 2rem;
+}
+
+#feed-order {
+	width: 60%;
+	margin: auto;
+}
+
+.person-friends-profile-pic {
+	width: 3rem;
+	height: 3rem;
+}
+
+#name-tag.person-friends-name-tag {
+	font-size: 80%;
+	color: var(--bs-light);
+}
+
+.person-friends-header {
+	padding: 0.5rem 0;
+}
+
+.person-friends {
+	max-height: 30%;
+	overflow: auto;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
+}
+
+.person-friends::-webkit-scrollbar {
+	width: 2px;
+	border: solid #000 1px;
+}
+
+.person-friends::-webkit-scrollbar-thumb {
+	border: solid var(--bs-light) 1px;
+}
+
+.profile-info {
+	text-align: center;
+	position: relative;
+}
+
+.profile-info > * {
+	position: relative;
+}
+
+.profile-info-picture {
+	height: 15vw;
+	width: 15vw;
+}
+
+#profile-name-tag {
+	color: var(--bs-gray);
+	font-size: 200%;
+}
+
+#profile-person-name {
+	font-size: 200%;
+	font-weight: 700;
+}
+
+.profile-info {
+	padding-bottom: 2rem;
+}
+
+#link-us {
+	margin-top: 1rem;
+}
+
+.btn-outline-primary {
+	width: 50%;
+	color: var(--green);
+	border-color: var(--green);
+}
+
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+	color: var(--bs-light);
+	border-color: var(--green);
+	background-color: var(--green);
+}
+
+.btn-outline-primary:focus,
+.btn-outline-primary:active:focus {
+	box-shadow: none;
+}
+
+.bi-pencil {
+	color: var(--green);
+	position: absolute;
+	cursor: pointer;
+}
+
+#change-photo {
+	top: 0;
+	right: 35%;
+}
+
+#change-password {
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	color: var(--bs-light);
+}
+
+#change-password:hover {
+	color: var(--green);
+}
+
+#change-password-form {
+	position: absolute;
+	top: 2rem;
+	right: -6vw;
+	width: 15rem;
+}
+
+.change-password-input {
+	margin: 1rem 0.5rem;
+	width: calc(15rem - 2rem);
+}

@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginController extends Controller
+class HomeController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Login Controller
+    | Home Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
@@ -37,13 +36,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
-    public function username()
-    {
-        return 'username';
+
+    public function getUser(){
+        return $request->user();
     }
 
     public function home() {
         return redirect('login');
     }
+
 }
