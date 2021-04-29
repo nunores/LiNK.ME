@@ -25,7 +25,7 @@ class Person extends Model
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password', 'is_admin'
     ];
 
     /**
