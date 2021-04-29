@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'mail', 'name',
+        'id', 'email', 'name',
     ];
 
     /**
@@ -112,7 +112,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Link::class, 'link', 'user1_id', 'user2_id');
     }
 
-    
+
     /**
      * Get all of the notifications for the User
      *

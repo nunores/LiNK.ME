@@ -20,7 +20,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        $this->authorize('show', $user);
+        //$this->authorize('show', $user);
         return view('pages.profile', ['user' => $user]);
     }
 
@@ -32,7 +32,7 @@ class UserController extends Controller
         return $user;
     }
 
-    
+
 
     /**
      * Creates a new user.

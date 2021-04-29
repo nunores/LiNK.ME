@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@push('css_links')    
+@push('css_links')
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/mobile.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/post.css') }}" />
@@ -15,8 +15,20 @@
             <div id="credentials-input">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <input required class="form-input" type="text" id="fname" name="fname" placeholder="Username"><br>
-                    <input required class="form-input" type="password" id="lname" name="lname" placeholder="Password"><br>
+                    <input required class="form-input" type="text" id="fname" name="name" placeholder="Username"><br>
+                    @if ($errors->has('name'))
+                      <span class="error">
+                          {{ $errors->first('name') }}
+                      </span>
+                    @endif
+
+                    <input required class="form-input" type="password" id="lname" name="password" placeholder="Password"><br>
+                    @if ($errors->has('password'))
+                      <span class="error">
+                          {{ $errors->first('password') }}
+                      </span>
+                    @endif
+
                     <button id="login-button" class="card bg-dark border-secondary"><span id="login-string">Log-In<span></button>
                 </form>
             </div>

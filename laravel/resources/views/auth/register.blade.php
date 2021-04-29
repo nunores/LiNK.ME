@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@push('css_links')    
+@push('css_links')
 <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/mobile.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/post.css') }}" />
@@ -16,10 +16,40 @@
               <form method="POST" action="{{ route('register') }}">
                   @csrf
                   <input required class="form-input" type="text" id="fname" name="name" placeholder="Name"><br>
+                  @if ($errors->has('name'))
+                    <span class="error">
+                        {{ $errors->first('name') }}
+                    </span>
+                  @endif
+
                   <input required class="form-input" type="text" id="lname" name="username" placeholder="Username" minlength="4"><br>
-                  <input required class="form-input" type="email" id="lname" name="mail" placeholder="Email"><br>
+                  @if ($errors->has('username'))
+                    <span class="error">
+                        {{ $errors->first('username') }}
+                    </span>
+                  @endif
+
+                  <input required class="form-input" type="email" id="lname" name="email" placeholder="Email"><br>
+                  @if ($errors->has('email'))
+                    <span class="error">
+                        {{ $errors->first('email') }}
+                    </span>
+                  @endif
+
                   <input required class="form-input" type="password" id="lname" name="password" placeholder="Password" minlength="6"><br>
-                  <input required class="form-input" type="password" id="lname" name="passwordConfirm" placeholder="Repeat Password" minlength="6"><br>
+                  @if ($errors->has('password'))
+                    <span class="error">
+                        {{ $errors->first('password') }}
+                    </span>
+                  @endif
+
+                  <input required class="form-input" type="password" id="lname" name="password_confirmation" placeholder="Repeat Password" minlength="6"><br>
+                  @if ($errors->has('password_confirmation'))
+                    <span class="error">
+                        {{ $errors->first('password_confirmation') }}
+                    </span>
+                  @endif
+
                   <button id="login-button" class="card bg-dark border-secondary"><span id="login-string">Register<span></button>
               </form>
           </div>

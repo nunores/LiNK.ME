@@ -36,13 +36,13 @@ DROP TRIGGER IF EXISTS banned_post_notification on "post";
 CREATE TABLE person (
 	id SERIAL PRIMARY KEY,
 	username text NOT NULL CONSTRAINT uk_person_username UNIQUE,
-	password text NOT NULL,
+	"password" text NOT NULL,
     is_admin boolean NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE "user" (
     id INTEGER PRIMARY KEY REFERENCES person (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    mail text NOT NULL CONSTRAINT uk_user_email UNIQUE,
+    email text NOT NULL CONSTRAINT uk_user_email UNIQUE,
     name text NOT NULL,
     deleted boolean DEFAULT FALSE
 );
@@ -298,107 +298,107 @@ CREATE TRIGGER banned_post_notification
 
 ---------------------------------------------- PERSON (50) ----------------------------------------------------------
 
-INSERT INTO "person" (id, username, password, is_admin) VALUES (1, 'zaphrak', 'safest', true);
-INSERT INTO "person" (id, username, password, is_admin) VALUES (2, 'adminzeco', '12345678', true);
-INSERT INTO "person" (id, username, password) VALUES (3, 'xamas', 'password');
-INSERT INTO "person" (id, username, password) VALUES (4, 'mine4phatom', 'strong');
-INSERT INTO "person" (id, username, password) VALUES (5, 'ranhocas', '2000');
-INSERT INTO "person" (id, username, password) VALUES (6, 'ajeskins0', 'JPMMhh0');
-INSERT INTO "person" (id, username, password) VALUES (7, 'ccosby1', 'HPiRkE');
-INSERT INTO "person" (id, username, password) VALUES (8, 'sgonin2', 'fzty3P');
-INSERT INTO "person" (id, username, password) VALUES (9, 'sscupham3', 'lsNZA4YPSV');
-INSERT INTO "person" (id, username, password) VALUES (10, 'rhew4', 'jLycWg');
-INSERT INTO "person" (id, username, password) VALUES (11, 'pbullerwell5', '66uzY2dF');
-INSERT INTO "person" (id, username, password) VALUES (12, 'mswinn6', 'lLHUFNbND');
-INSERT INTO "person" (id, username, password) VALUES (13, 'wgillebert7', 'F4b2TE4yA0ZS');
-INSERT INTO "person" (id, username, password) VALUES (14, 'mbrigden8', 'HPGtqMQITTr');
-INSERT INTO "person" (id, username, password) VALUES (15, 'psimoncello9', 'bhWPxv');
-INSERT INTO "person" (id, username, password) VALUES (16, 'tabazia', '8VlJ3VU');
-INSERT INTO "person" (id, username, password) VALUES (17, 'acysterb', '3w1hTTMdr');
-INSERT INTO "person" (id, username, password) VALUES (18, 'ihowellsc', 'p0NF2F3f9rV');
-INSERT INTO "person" (id, username, password) VALUES (19, 'tgladdend', 'kYqHMX45');
-INSERT INTO "person" (id, username, password) VALUES (20, 'bwarrilowe', 'kD64IjY5HO');
-INSERT INTO "person" (id, username, password) VALUES (21, 'dblythingf', 'UA4E5x0fWDCu');
-INSERT INTO "person" (id, username, password) VALUES (22, 'scowdryg', '0wja1Y');
-INSERT INTO "person" (id, username, password) VALUES (23, 'smostinh', 'UsvBTc0nXI');
-INSERT INTO "person" (id, username, password) VALUES (24, 'lbrombyi', 'ReImRt3');
-INSERT INTO "person" (id, username, password) VALUES (25, 'ofardoej', '0dUl2gKlw');
-INSERT INTO "person" (id, username, password) VALUES (26, 'scockink', 'AuzwHVJogN');
-INSERT INTO "person" (id, username, password) VALUES (27, 'hmainsl', 'jg6vuR2TI6');
-INSERT INTO "person" (id, username, password) VALUES (28, 'eboakem', 'P9Dn1L6C1Vc2');
-INSERT INTO "person" (id, username, password) VALUES (29, 'rthornleyn', '786WaoZrReq');
-INSERT INTO "person" (id, username, password) VALUES (30, 'kpelzero', '3Tudv7uwJn');
-INSERT INTO "person" (id, username, password) VALUES (31, 'imackibbonp', 'zcTEyW3w');
-INSERT INTO "person" (id, username, password) VALUES (32, 'hkibbleq', '2Iwwpl');
-INSERT INTO "person" (id, username, password) VALUES (33, 'jmacfarlanr', 'f2vlnc6QYM');
-INSERT INTO "person" (id, username, password) VALUES (34, 'obalnavess', 'hzGBP0c');
-INSERT INTO "person" (id, username, password) VALUES (35, 'rturbittt', 'jucozk');
-INSERT INTO "person" (id, username, password) VALUES (36, 'vhedauu', 'MHW5FgCUniD');
-INSERT INTO "person" (id, username, password) VALUES (37, 'aoxleev', '2z0RYqXgJ');
-INSERT INTO "person" (id, username, password) VALUES (38, 'iquarrellw', '2re8HbX6W3C');
-INSERT INTO "person" (id, username, password) VALUES (39, 'clathyx', 'GytX95');
-INSERT INTO "person" (id, username, password) VALUES (40, 'isiney', 'g00OEi');
-INSERT INTO "person" (id, username, password) VALUES (41, 'kkirckmanz', 'h0Kd0quIaTJM');
-INSERT INTO "person" (id, username, password) VALUES (42, 'oantonazzi10', '5JzUZYgWi');
-INSERT INTO "person" (id, username, password) VALUES (43, 'sweth11', 'uqmgMaq');
-INSERT INTO "person" (id, username, password) VALUES (44, 'jdaborne12', 'TYg4d9JD');
-INSERT INTO "person" (id, username, password) VALUES (45, 'shalfpenny13', 'vH68Mw1kPi');
-INSERT INTO "person" (id, username, password) VALUES (46, 'ymargaritelli14', 'dTdAffzatNBa');
-INSERT INTO "person" (id, username, password) VALUES (47, 'kcocklin15', 'jsgb3HwooKIl');
-INSERT INTO "person" (id, username, password) VALUES (48, 'daisthorpe16', 'TJun5j98gd');
-INSERT INTO "person" (id, username, password) VALUES (49, 'eprynne17', '3WIdkBE3g');
-INSERT INTO "person" (id, username, password) VALUES (50, 'zzsa18', 'mxiVVPDooU');
+INSERT INTO "person" (username, password, is_admin) VALUES ('zaphrak', 'safest', true);
+INSERT INTO "person" (username, password, is_admin) VALUES ('adminzeco', '12345678', true);
+INSERT INTO "person" (username, password) VALUES ('xamas', 'password');
+INSERT INTO "person" (username, password) VALUES ('mine4phatom', 'strong');
+INSERT INTO "person" (username, password) VALUES ('ranhocas', '2000');
+INSERT INTO "person" (username, password) VALUES ('ajeskins0', 'JPMMhh0');
+INSERT INTO "person" (username, password) VALUES ('ccosby1', 'HPiRkE');
+INSERT INTO "person" (username, password) VALUES ('sgonin2', 'fzty3P');
+INSERT INTO "person" (username, password) VALUES ('sscupham3', 'lsNZA4YPSV');
+INSERT INTO "person" (username, password) VALUES ('rhew4', 'jLycWg');
+INSERT INTO "person" (username, password) VALUES ('pbullerwell5', '66uzY2dF');
+INSERT INTO "person" (username, password) VALUES ('mswinn6', 'lLHUFNbND');
+INSERT INTO "person" (username, password) VALUES ('wgillebert7', 'F4b2TE4yA0ZS');
+INSERT INTO "person" (username, password) VALUES ('mbrigden8', 'HPGtqMQITTr');
+INSERT INTO "person" (username, password) VALUES ('psimoncello9', 'bhWPxv');
+INSERT INTO "person" (username, password) VALUES ('tabazia', '8VlJ3VU');
+INSERT INTO "person" (username, password) VALUES ('acysterb', '3w1hTTMdr');
+INSERT INTO "person" (username, password) VALUES ('ihowellsc', 'p0NF2F3f9rV');
+INSERT INTO "person" (username, password) VALUES ('tgladdend', 'kYqHMX45');
+INSERT INTO "person" (username, password) VALUES ('bwarrilowe', 'kD64IjY5HO');
+INSERT INTO "person" (username, password) VALUES ('dblythingf', 'UA4E5x0fWDCu');
+INSERT INTO "person" (username, password) VALUES ('scowdryg', '0wja1Y');
+INSERT INTO "person" (username, password) VALUES ('smostinh', 'UsvBTc0nXI');
+INSERT INTO "person" (username, password) VALUES ('lbrombyi', 'ReImRt3');
+INSERT INTO "person" (username, password) VALUES ('ofardoej', '0dUl2gKlw');
+INSERT INTO "person" (username, password) VALUES ('scockink', 'AuzwHVJogN');
+INSERT INTO "person" (username, password) VALUES ('hmainsl', 'jg6vuR2TI6');
+INSERT INTO "person" (username, password) VALUES ('eboakem', 'P9Dn1L6C1Vc2');
+INSERT INTO "person" (username, password) VALUES ('rthornleyn', '786WaoZrReq');
+INSERT INTO "person" (username, password) VALUES ('kpelzero', '3Tudv7uwJn');
+INSERT INTO "person" (username, password) VALUES ('imackibbonp', 'zcTEyW3w');
+INSERT INTO "person" (username, password) VALUES ('hkibbleq', '2Iwwpl');
+INSERT INTO "person" (username, password) VALUES ('jmacfarlanr', 'f2vlnc6QYM');
+INSERT INTO "person" (username, password) VALUES ('obalnavess', 'hzGBP0c');
+INSERT INTO "person" (username, password) VALUES ('rturbittt', 'jucozk');
+INSERT INTO "person" (username, password) VALUES ('vhedauu', 'MHW5FgCUniD');
+INSERT INTO "person" (username, password) VALUES ('aoxleev', '2z0RYqXgJ');
+INSERT INTO "person" (username, password) VALUES ('iquarrellw', '2re8HbX6W3C');
+INSERT INTO "person" (username, password) VALUES ('clathyx', 'GytX95');
+INSERT INTO "person" (username, password) VALUES ('isiney', 'g00OEi');
+INSERT INTO "person" (username, password) VALUES ('kkirckmanz', 'h0Kd0quIaTJM');
+INSERT INTO "person" (username, password) VALUES ('oantonazzi10', '5JzUZYgWi');
+INSERT INTO "person" (username, password) VALUES ('sweth11', 'uqmgMaq');
+INSERT INTO "person" (username, password) VALUES ('jdaborne12', 'TYg4d9JD');
+INSERT INTO "person" (username, password) VALUES ('shalfpenny13', 'vH68Mw1kPi');
+INSERT INTO "person" (username, password) VALUES ('ymargaritelli14', 'dTdAffzatNBa');
+INSERT INTO "person" (username, password) VALUES ('kcocklin15', 'jsgb3HwooKIl');
+INSERT INTO "person" (username, password) VALUES ('daisthorpe16', 'TJun5j98gd');
+INSERT INTO "person" (username, password) VALUES ('eprynne17', '3WIdkBE3g');
+INSERT INTO "person" (username, password) VALUES ('zzsa18', 'mxiVVPDooU');
 
 ---------------------------------------------- USERS (48) ----------------------------------------------------------
 
-INSERT INTO "user" (id, mail, name) VALUES(3,'xamasamigo@gmail.com', 'Xamas');
-INSERT INTO "user" (id, mail, name) VALUES(4, 'mine4ghosts@gmail.com', 'Minecraft');
-INSERT INTO "user" (id, mail, name) VALUES(5, 'zezocazaah@outlook.com', 'ZEZOCA');
-INSERT INTO "user" (id, mail, name) VALUES(6, 'ajeskins0@independent.co.uk', 'Abey Jeskins');
-INSERT INTO "user" (id, mail, name) VALUES(7, 'ccosby1@discovery.com', 'Cordy Cosby');
-INSERT INTO "user" (id, mail, name) VALUES(8, 'sgonin2@spiegel.de', 'Shay Gonin');
-INSERT INTO "user" (id, mail, name) VALUES(9, 'sscupham3@blogtalkradio.com', 'Shirlene Scupham');
-INSERT INTO "user" (id, mail, name) VALUES(10, 'rhew4@123-reg.co.uk', 'Reena Hew');
-INSERT INTO "user" (id, mail, name) VALUES(11, 'pbullerwell5@boston.com', 'Penni Bullerwell');
-INSERT INTO "user" (id, mail, name) VALUES(12, 'mswinn6@bluehost.com', 'Marlow Swinn');
-INSERT INTO "user" (id, mail, name) VALUES(13, 'wgillebert7@friendfeed.com', 'Wenona Gillebert');
-INSERT INTO "user" (id, mail, name) VALUES(14, 'mbrigden8@ask.com', 'Marje Brigden');
-INSERT INTO "user" (id, mail, name) VALUES(15, 'psimoncello9@quantcast.com', 'Pincus Simoncello');
-INSERT INTO "user" (id, mail, name) VALUES(16, 'tabazia@ycombinator.com', 'Tamqrah Abazi');
-INSERT INTO "user" (id, mail, name) VALUES(17, 'acysterb@samsung.com', 'Averell Cyster');
-INSERT INTO "user" (id, mail, name) VALUES(18, 'ihowellsc@bloglines.com', 'Ignacius Howells');
-INSERT INTO "user" (id, mail, name) VALUES(19, 'tgladdend@oaic.gov.au', 'Tyrone Gladden');
-INSERT INTO "user" (id, mail, name) VALUES(20, 'bwarrilowe@slashdot.org', 'Bail Warrilow');
-INSERT INTO "user" (id, mail, name) VALUES(21, 'dblythingf@dot.gov', 'David Blything');
-INSERT INTO "user" (id, mail, name) VALUES(22, 'scowdryg@craigslist.org', 'Saleem Cowdry');
-INSERT INTO "user" (id, mail, name) VALUES(23, 'smostinh@multiply.com', 'Sapphire Mostin');
-INSERT INTO "user" (id, mail, name) VALUES(24, 'lbrombyi@google.com.hk', 'Libbey Bromby');
-INSERT INTO "user" (id, mail, name) VALUES(25, 'ofardoej@diigo.com', 'Otha Fardoe');
-INSERT INTO "user" (id, mail, name) VALUES(26, 'scockink@ucla.edu', 'Sheffield Cockin');
-INSERT INTO "user" (id, mail, name) VALUES(27, 'hmainsl@geocities.jp', 'Hi Mains');
-INSERT INTO "user" (id, mail, name) VALUES(28, 'eboakem@list-manage.com', 'Erik Boake');
-INSERT INTO "user" (id, mail, name) VALUES(29, 'rthornleyn@pagesperso-orange.fr', 'Rogers Thornley');
-INSERT INTO "user" (id, mail, name) VALUES(30, 'kpelzero@walmart.com', 'Konstantine Pelzer');
-INSERT INTO "user" (id, mail, name) VALUES(31, 'imackibbonp@redcross.org', 'Isaac MacKibbon');
-INSERT INTO "user" (id, mail, name) VALUES(32, 'hkibbleq@wunderground.com', 'Hillary Kibble');
-INSERT INTO "user" (id, mail, name) VALUES(33, 'jmacfarlanr@seattletimes.com', 'Jarib MacFarlan');
-INSERT INTO "user" (id, mail, name) VALUES(34, 'obalnavess@unblog.fr', 'Osbert Balnaves');
-INSERT INTO "user" (id, mail, name) VALUES(35, 'rturbittt@irs.gov', 'Rianon Turbitt');
-INSERT INTO "user" (id, mail, name) VALUES(36, 'vhedauu@reverbnation.com', 'Viviene Hedau');
-INSERT INTO "user" (id, mail, name) VALUES(37, 'aoxleev@bloglines.com', 'Anderson Oxlee');
-INSERT INTO "user" (id, mail, name) VALUES(38, 'iquarrellw@go.com', 'Ilse Quarrell');
-INSERT INTO "user" (id, mail, name) VALUES(39, 'clathyx@sina.com.cn', 'Cammy Lathy');
-INSERT INTO "user" (id, mail, name) VALUES(40, 'isiney@intel.com', 'Ivie Sine');
-INSERT INTO "user" (id, mail, name) VALUES(41, 'kkirckmanz@icio.us', 'Konstanze Kirckman');
-INSERT INTO "user" (id, mail, name) VALUES(42, 'oantonazzi10@java.com', 'Owen Antonazzi');
-INSERT INTO "user" (id, mail, name) VALUES(43, 'sweth11@163.com', 'Steffie Weth');
-INSERT INTO "user" (id, mail, name) VALUES(44, 'jdaborne12@yahoo.com', 'Jaye Daborne');
-INSERT INTO "user" (id, mail, name) VALUES(45, 'shalfpenny13@mashable.com', 'Stanfield Halfpenny');
-INSERT INTO "user" (id, mail, name) VALUES(46, 'ymargaritelli14@ifeng.com', 'Yolane Margaritelli');
-INSERT INTO "user" (id, mail, name) VALUES(47, 'kcocklin15@usgs.gov', 'Kiah Cocklin');
-INSERT INTO "user" (id, mail, name) VALUES(48, 'daisthorpe16@msn.com', 'De Aisthorpe');
-INSERT INTO "user" (id, mail, name) VALUES(49, 'eprynne17@businessweek.com', 'Emile Prynne');
-INSERT INTO "user" (id, mail, name) VALUES(50, 'zzsa18@salon.com', 'Zsa zsa Atwool');
+INSERT INTO "user" (id, email, name) VALUES(3,'xamasamigo@gmail.com', 'Xamas');
+INSERT INTO "user" (id, email, name) VALUES(4, 'mine4ghosts@gmail.com', 'Minecraft');
+INSERT INTO "user" (id, email, name) VALUES(5, 'zezocazaah@outlook.com', 'ZEZOCA');
+INSERT INTO "user" (id, email, name) VALUES(6, 'ajeskins0@independent.co.uk', 'Abey Jeskins');
+INSERT INTO "user" (id, email, name) VALUES(7, 'ccosby1@discovery.com', 'Cordy Cosby');
+INSERT INTO "user" (id, email, name) VALUES(8, 'sgonin2@spiegel.de', 'Shay Gonin');
+INSERT INTO "user" (id, email, name) VALUES(9, 'sscupham3@blogtalkradio.com', 'Shirlene Scupham');
+INSERT INTO "user" (id, email, name) VALUES(10, 'rhew4@123-reg.co.uk', 'Reena Hew');
+INSERT INTO "user" (id, email, name) VALUES(11, 'pbullerwell5@boston.com', 'Penni Bullerwell');
+INSERT INTO "user" (id, email, name) VALUES(12, 'mswinn6@bluehost.com', 'Marlow Swinn');
+INSERT INTO "user" (id, email, name) VALUES(13, 'wgillebert7@friendfeed.com', 'Wenona Gillebert');
+INSERT INTO "user" (id, email, name) VALUES(14, 'mbrigden8@ask.com', 'Marje Brigden');
+INSERT INTO "user" (id, email, name) VALUES(15, 'psimoncello9@quantcast.com', 'Pincus Simoncello');
+INSERT INTO "user" (id, email, name) VALUES(16, 'tabazia@ycombinator.com', 'Tamqrah Abazi');
+INSERT INTO "user" (id, email, name) VALUES(17, 'acysterb@samsung.com', 'Averell Cyster');
+INSERT INTO "user" (id, email, name) VALUES(18, 'ihowellsc@bloglines.com', 'Ignacius Howells');
+INSERT INTO "user" (id, email, name) VALUES(19, 'tgladdend@oaic.gov.au', 'Tyrone Gladden');
+INSERT INTO "user" (id, email, name) VALUES(20, 'bwarrilowe@slashdot.org', 'Bail Warrilow');
+INSERT INTO "user" (id, email, name) VALUES(21, 'dblythingf@dot.gov', 'David Blything');
+INSERT INTO "user" (id, email, name) VALUES(22, 'scowdryg@craigslist.org', 'Saleem Cowdry');
+INSERT INTO "user" (id, email, name) VALUES(23, 'smostinh@multiply.com', 'Sapphire Mostin');
+INSERT INTO "user" (id, email, name) VALUES(24, 'lbrombyi@google.com.hk', 'Libbey Bromby');
+INSERT INTO "user" (id, email, name) VALUES(25, 'ofardoej@diigo.com', 'Otha Fardoe');
+INSERT INTO "user" (id, email, name) VALUES(26, 'scockink@ucla.edu', 'Sheffield Cockin');
+INSERT INTO "user" (id, email, name) VALUES(27, 'hmainsl@geocities.jp', 'Hi Mains');
+INSERT INTO "user" (id, email, name) VALUES(28, 'eboakem@list-manage.com', 'Erik Boake');
+INSERT INTO "user" (id, email, name) VALUES(29, 'rthornleyn@pagesperso-orange.fr', 'Rogers Thornley');
+INSERT INTO "user" (id, email, name) VALUES(30, 'kpelzero@walmart.com', 'Konstantine Pelzer');
+INSERT INTO "user" (id, email, name) VALUES(31, 'imackibbonp@redcross.org', 'Isaac MacKibbon');
+INSERT INTO "user" (id, email, name) VALUES(32, 'hkibbleq@wunderground.com', 'Hillary Kibble');
+INSERT INTO "user" (id, email, name) VALUES(33, 'jmacfarlanr@seattletimes.com', 'Jarib MacFarlan');
+INSERT INTO "user" (id, email, name) VALUES(34, 'obalnavess@unblog.fr', 'Osbert Balnaves');
+INSERT INTO "user" (id, email, name) VALUES(35, 'rturbittt@irs.gov', 'Rianon Turbitt');
+INSERT INTO "user" (id, email, name) VALUES(36, 'vhedauu@reverbnation.com', 'Viviene Hedau');
+INSERT INTO "user" (id, email, name) VALUES(37, 'aoxleev@bloglines.com', 'Anderson Oxlee');
+INSERT INTO "user" (id, email, name) VALUES(38, 'iquarrellw@go.com', 'Ilse Quarrell');
+INSERT INTO "user" (id, email, name) VALUES(39, 'clathyx@sina.com.cn', 'Cammy Lathy');
+INSERT INTO "user" (id, email, name) VALUES(40, 'isiney@intel.com', 'Ivie Sine');
+INSERT INTO "user" (id, email, name) VALUES(41, 'kkirckmanz@icio.us', 'Konstanze Kirckman');
+INSERT INTO "user" (id, email, name) VALUES(42, 'oantonazzi10@java.com', 'Owen Antonazzi');
+INSERT INTO "user" (id, email, name) VALUES(43, 'sweth11@163.com', 'Steffie Weth');
+INSERT INTO "user" (id, email, name) VALUES(44, 'jdaborne12@yahoo.com', 'Jaye Daborne');
+INSERT INTO "user" (id, email, name) VALUES(45, 'shalfpenny13@mashable.com', 'Stanfield Halfpenny');
+INSERT INTO "user" (id, email, name) VALUES(46, 'ymargaritelli14@ifeng.com', 'Yolane Margaritelli');
+INSERT INTO "user" (id, email, name) VALUES(47, 'kcocklin15@usgs.gov', 'Kiah Cocklin');
+INSERT INTO "user" (id, email, name) VALUES(48, 'daisthorpe16@msn.com', 'De Aisthorpe');
+INSERT INTO "user" (id, email, name) VALUES(49, 'eprynne17@businessweek.com', 'Emile Prynne');
+INSERT INTO "user" (id, email, name) VALUES(50, 'zzsa18@salon.com', 'Zsa zsa Atwool');
 
 ---------------------------------------------- LINKS (500) ----------------------------------------------------------
 
@@ -907,16 +907,16 @@ INSERT INTO "link" (user1_id, user2_id) VALUES(6,43);
 
 ---------------------------------------------- GROUPS (10) ----------------------------------------------------------
 
-INSERT INTO "group" (id, name) VALUES(1, 'MIEIC');
-INSERT INTO "group" (id, name) VALUES(2, 'LBAW');
-INSERT INTO "group" (id, name) VALUES(3, 'MOITA');
-INSERT INTO "group" (id, name) VALUES(4, 'TUGA');
-INSERT INTO "group" (id, name) VALUES(5, 'TRIP');
-INSERT INTO "group" (id, name) VALUES(6, 'ERASMUS');
-INSERT INTO "group" (id, name) VALUES(7, 'DRIP');
-INSERT INTO "group" (id, name) VALUES(8, 'VACATION');
-INSERT INTO "group" (id, name) VALUES(9, 'MEMES');
-INSERT INTO "group" (id, name) VALUES(10, 'FOOD');
+INSERT INTO "group" (name) VALUES('MIEIC');
+INSERT INTO "group" (name) VALUES('LBAW');
+INSERT INTO "group" (name) VALUES('MOITA');
+INSERT INTO "group" (name) VALUES('TUGA');
+INSERT INTO "group" (name) VALUES('TRIP');
+INSERT INTO "group" (name) VALUES('ERASMUS');
+INSERT INTO "group" (name) VALUES('DRIP');
+INSERT INTO "group" (name) VALUES('VACATION');
+INSERT INTO "group" (name) VALUES('MEMES');
+INSERT INTO "group" (name) VALUES( 'FOOD');
 
 ---------------------------------------------- POSTS (250) ----------------------------------------------------------
 
