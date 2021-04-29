@@ -15,10 +15,10 @@
             <div id="credentials-input">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
-                    <input required class="form-input" type="text" id="fname" name="name" placeholder="Username"><br>
-                    @if ($errors->has('name'))
+                    <input required class="form-input" type="text" id="fname" name="username" placeholder="Username"><br>
+                    @if ($errors->has('username'))
                       <span class="error">
-                          {{ $errors->first('name') }}
+                          {{ $errors->first('username') }}
                       </span>
                     @endif
 

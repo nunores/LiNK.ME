@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Person extends Model
+class Person extends Authenticatable
 {
     // Don't add create and update timestamps in database.
     // Created_at and updated_at not expected
