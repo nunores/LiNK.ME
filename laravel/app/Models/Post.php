@@ -28,7 +28,7 @@ class Post extends Model
     protected $hidden = [
         'banned', 'private', 'group_id'
     ];
-    
+
 
     /**
      * The table associated with the model.
@@ -36,6 +36,15 @@ class Post extends Model
      * @var string
      */
     protected $table = 'post';
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'date' => 'datetime:Y-m-d',
+    ];
 
     /**
      * Get the user that owns the Post

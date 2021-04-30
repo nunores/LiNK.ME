@@ -112,7 +112,7 @@ for i in range(len(reports)):
 
 
 # Comment Reports
-
+'''
 def checkExists(links, first, second):
 	for i in range(len(links)):
 		if (links[i] == (first, second)):
@@ -134,7 +134,7 @@ while (i < 30):
 for i in range(len(reports)):
 	(first, second) = reports[i]
 	out.write("INSERT INTO \"report\" (user_id, comment_id) VALUES(" + str(first) + "," + str(second) + ");\n")
-
+'''
 
 # User_group
 '''
@@ -185,27 +185,27 @@ for i in range(0, len(comments)):
         out.write("INSERT INTO \"comment\" (post_id, \"user_id\", \"text\") VALUES (" + str(randrange(1, 250)) + ", " + str(randrange(3, 50)) + ", " + "'" + comments[i] + "'" + ");\n")
 '''
 # Posts
-'''
+""" 
 for i in range(0, len(desc)):
     if (randrange(1, 6) == 1):
         if (randrange(1, 4) == 1):
-            out.write("INSERT INTO \"post\" (user_id, picture, description, date, private) VALUES (" + str(randrange(3, 50)) + ", " + "'" + "./html/images/posts/" + str(i+1) +  "',"  + "'" + desc[i] + "', '" + x[i] + "', TRUE);\n")
+            out.write("INSERT INTO \"post\" (user_id, picture, description, date, private) VALUES (" + str(randrange(3, 50)) + ", " + "'" + "images/posts/" + str(i+1) +  "',"  + "'" + desc[i] + "', '" + x[i] + ' ' + str(randrange(0, 23)).zfill(2) + ":" + str(randrange(0, 60)).zfill(2) + "', TRUE);\n")
         else:
-            out.write("INSERT INTO \"post\" (user_id, description, date, private) VALUES (" + str(randrange(3, 50)) + ", '" + desc[i] + "', '" + x[i] + "', TRUE);\n")
+            out.write("INSERT INTO \"post\" (user_id, description, date, private) VALUES (" + str(randrange(3, 50)) + ", '" + desc[i] + "', '" + x[i] + ' ' + str(randrange(0, 23)).zfill(2) + ":" + str(randrange(0, 60)).zfill(2)  + "', TRUE);\n")
     elif (randrange(1, 11) == 5):
         if (randrange(1, 4) == 1):
-            out.write("INSERT INTO \"post\" (user_id, picture, description, date, group_id) VALUES (" + str(randrange(3, 50)) + ", " + "'" + "./html/images/posts/" + str(i+1) +  "',"  + "'" + desc[i] + "', '" + x[i] + "', " + str(randrange(1, 11)) + ");\n")
+            out.write("INSERT INTO \"post\" (user_id, picture, description, date, group_id) VALUES (" + str(randrange(3, 50)) + ", " + "'" + "images/posts/" + str(i+1) +  "',"  + "'" + desc[i] + "', '" + x[i] + ' ' + str(randrange(0, 23)).zfill(2) + ":" + str(randrange(0, 60)).zfill(2)  + "', " + str(randrange(1, 11)) + ");\n")
         else:
-            out.write("INSERT INTO \"post\" (user_id, description, date, group_id) VALUES (" + str(randrange(3, 50)) + ", '" + desc[i] + "', '" + x[i] + "', " + str(randrange(1, 11)) + ");\n")
+            out.write("INSERT INTO \"post\" (user_id, description, date, group_id) VALUES (" + str(randrange(3, 50)) + ", '" + desc[i] + "', '" + x[i] + ' ' + str(randrange(0, 23)).zfill(2) + ":" + str(randrange(0, 60)).zfill(2)  + "', " + str(randrange(1, 11)) + ");\n")
     else:
         if (randrange(1, 4) == 1):
-            out.write("INSERT INTO \"post\" (user_id, picture, description, date) VALUES (" + str(randrange(3, 50)) + ", " + "'" + "./html/images/posts/" + str(i+1) +  "',"  + "'" + desc[i] + "', '" + x[i] + "');\n")
+            out.write("INSERT INTO \"post\" (user_id, picture, description, date) VALUES (" + str(randrange(3, 50)) + ", " + "'" + "images/posts/" + str(i+1) +  "',"  + "'" + desc[i] + "', '" + x[i] + ' ' + str(randrange(0, 23)).zfill(2) + ":" + str(randrange(0, 60)).zfill(2)  + "');\n")
         else:
-            out.write("INSERT INTO \"post\" (user_id, description, date) VALUES (" + str(randrange(3, 50)) + ", '" + desc[i] + "', '" + x[i] + "');\n")
-'''
+            out.write("INSERT INTO \"post\" (user_id, description, date) VALUES (" + str(randrange(3, 50)) + ", '" + desc[i] + "', '" + x[i] + ' ' + str(randrange(0, 23)).zfill(2) + ":" + str(randrange(0, 60)).zfill(2)  + "');\n")
+"""
 
-'''
 # Create passwords scripted
+'''
 from passlib.hash import bcrypt
 
 f = open("laravel/resources/sql/seed.sql", "r")

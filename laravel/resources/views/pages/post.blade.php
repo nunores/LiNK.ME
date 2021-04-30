@@ -17,7 +17,7 @@
 			@include('partials.sidebar')
 			<div class="col-10">
 				<div id="center-col">
-					@include('partials.post')
+					@include('partials.post', ['post' => $post])
 				</div>
 			</div>
 		</div>

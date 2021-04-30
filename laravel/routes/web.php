@@ -49,7 +49,7 @@ Route::put('api/comment/{id}', 'CommentController@update');
 
 //Groups
 Route::get('group/{id}', 'GroupController@getInfo')->name('group');
-Route::get('group', 'GroupController@show');
+Route::get('group', 'GroupController@show')->name('create_group');
 Route::get('api/group', 'GroupController@getUserGroups');
 Route::post('api/group', 'GroupController@create');
 //Route::get('groups', 'GroupController@search');
