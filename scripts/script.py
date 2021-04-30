@@ -203,3 +203,28 @@ for i in range(0, len(desc)):
         else:
             out.write("INSERT INTO \"post\" (user_id, description, date) VALUES (" + str(randrange(3, 50)) + ", '" + desc[i] + "', '" + x[i] + "');\n")
 '''
+
+'''
+# Create passwords scripted
+from passlib.hash import bcrypt
+
+f = open("laravel/resources/sql/seed.sql", "r")
+temp = open("temp", "w")
+
+while(True):
+    line = f.readline()
+    if (line == ''):
+        break;
+    if (line.startswith("INSERT INTO \"person\" (username, password")):
+        print(line)
+        parts = line.split('\'')
+        temp.write(parts[0])
+        temp.write("'")
+        temp.write(parts[1])
+        temp.write("'")
+        temp.write(parts[2])
+        temp.write("'")
+        temp.write(bcrypt.hash(parts[3]))
+        temp.write("'")
+        temp.write(parts[4])
+'''

@@ -14,7 +14,7 @@
 Route::get('/', 'Auth\HomeController@home')->name('home');
 
 //Users
-Route::get('user/{id}', 'UserController@show');
+Route::get('user/{id}', 'UserController@show')->name('user');
 Route::post('api/user', 'UserController@getUserInfo');
 Route::put('api/user', 'UserController@create');
 Route::delete('api/user/{id}', 'UserController@delete');
@@ -48,7 +48,7 @@ Route::delete('api/comment/{id}', 'CommentController@delete');
 Route::put('api/comment/{id}', 'CommentController@update');
 
 //Groups
-Route::get('group/{id}', 'GroupController@getInfo');
+Route::get('group/{id}', 'GroupController@getInfo')->name('group');
 Route::get('group', 'GroupController@show');
 Route::get('api/group', 'GroupController@getUserGroups');
 Route::post('api/group', 'GroupController@create');

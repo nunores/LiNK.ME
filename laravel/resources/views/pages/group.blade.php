@@ -5,13 +5,25 @@
 <link rel="stylesheet" href="{{ asset('css/mobile.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/post.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/left_col.css') }}" />
-<link rel="stylesheet" href="{{ asset('css/profile.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/group_page.css') }}" />
 @endpush
 
+
 @section('content')
-@if (Auth::user()->user == $user)
-    {{-- @include("partials.profile.myprofile") --}}
-@else
-    {{-- @include("partials.profile.otherprofile") --}}
-@endif
+
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			@include('partials.sidebar')
+			<div class="col-10">
+				<div id="center-col">
+					@include('partials.post')
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
 @endsection
