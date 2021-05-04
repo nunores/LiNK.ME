@@ -20,7 +20,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        //$this->authorize('show', $user);
+        $this->authorize('show', $user);
         return view('pages.profile', ['user' => $user]);
     }
 
@@ -28,7 +28,7 @@ class UserController extends Controller
     {
         $id = $request->input('id');
         $user = User::find($id);
-        //$this->authorize('getUserInfo', $user);
+        $this->authorize('getUserInfo', $user);
         return $user;
     }
 

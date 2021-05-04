@@ -34,6 +34,7 @@ Route::put('api/post/{id}', 'PostController@update');
 
 //Likes
 Route::get('api/like/{id}', 'LikeController@getLikesDislikes');
+Route::post('api/like/{id}', 'LikeController@createLike');
 Route::put('api/like/{id}', 'LikeController@likeDislike');
 Route::delete('api/like/{id}', 'LikeController@delete');
 

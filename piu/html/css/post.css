@@ -50,7 +50,7 @@
 }
 
 .post-name #name-tag {
-    color: var(--bs-gray); /* TODO: Olhem pra isto */
+    color: var(--bs-gray);
 }
 
 .post-text {

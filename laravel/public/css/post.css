@@ -50,7 +50,7 @@
 }
 
 .post-name #name-tag {
-    color: var(--bs-gray); /* TODO: Olhem pra isto */
+    color: var(--bs-gray);
 }
 
 .post-text {
@@ -127,3 +127,34 @@
 .post-comment-text {
     font-size: 110%;
 }
+
+.add-comment {
+    padding: 1.5em;
+    padding-top: 1.0em;
+}
+
+.add-comment > textarea {
+    overflow: hidden;
+    border: none;
+    resize: none;
+    background-color: var(--bs-dark);
+    border-color: var(--green);
+    border-width: 1px;
+    color: var(--bs-light);
+}
+
+.add-comment > textarea:focus {
+    background-color: var(--bs-dark);
+    color: var(--bs-light);
+}
+
+.clickable-pointer {
+    cursor: pointer;
+    color: var(--green);
+}
+
+.send-button {
+    margin: auto 0;
+    margin-top: 1.15rem;
+}
+

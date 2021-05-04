@@ -7,6 +7,7 @@ use App\Models\Person;
 use App\Models\Post;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class LikePolicy
 {
@@ -17,13 +18,18 @@ class LikePolicy
         return true;
     }
 
-    public function likeDislike(Person $person)
-    {
-        return Auth::user() == $person;
+    public function createLike(Person $person) {
+        return Auth::check();
     }
 
-    public function delete(Person $person, Post $post)
+    public function likeDislike(Person $person)
     {
-        return Auth::user() == $person && (Like::table('like')->where('post_id', '=', $post->id)->where('user_id', '=', $person->id) != null);
+        return Auth::check();
+    }
+
+    public function delete(Person $person)
+    {
+        return Auth::check();
+        //return Auth::user() == $person && (Like::table('like')->where('post_id', '=', $post->id)->where('user_id', '=', $person->id) != null);
     }
 }

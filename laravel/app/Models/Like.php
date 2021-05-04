@@ -10,13 +10,17 @@ class Like extends Model
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
 
+    // Primary key is not needed in laravel
+    protected $primaryKey = null;
+    public $incrementing = false;
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'likes',
+        'post_id', 'user_id', 'likes',
     ];
 
     /**

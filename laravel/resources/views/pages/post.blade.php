@@ -8,10 +8,17 @@
 <link rel="stylesheet" href="{{ asset('css/post_page.css') }}" />
 @endpush
 
+@push('js_scripts')
+<script src="{{ asset('js/likes.js') }}" defer></script>
+<script src="{{ asset('js/commentTextArea.js') }}" defer></script>
+<script src="{{ asset('js/comments.js') }}" defer></script>
+@endpush
+
 
 @section('content')
 
 <body>
+    @csrf
 	<div class="container-fluid">
 		<div class="row">
 			@include('partials.sidebar')

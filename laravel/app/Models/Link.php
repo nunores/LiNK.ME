@@ -12,6 +12,9 @@ class Link extends Model
     public $timestamps  = false;
 
     // TODO: Não sei meter primary key nesta badalhoquice
+    // Primary key might not be needed in laravel
+    protected $primaryKey = null;
+    public $incrementing = false;
 
     /**
      * The table associated with the model.
