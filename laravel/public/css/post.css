@@ -131,6 +131,7 @@
 .add-comment {
     padding: 1.5em;
     padding-top: 1.0em;
+    width: 90%;
 }
 
 .add-comment > textarea {
@@ -158,3 +159,6 @@
     margin-top: 1.15rem;
 }
 
+.bi-arrow-right-circle {
+    width: auto;
+}

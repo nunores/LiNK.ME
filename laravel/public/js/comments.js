@@ -2,7 +2,7 @@ const comment_button = document.querySelector(".bi-chat-dots");
 const comment_box = document.querySelector(".add-comment-form");
 const submit_button = document.querySelector(".bi-arrow-right-circle");
 
-comment_button.addEventListener("click", showAddComment);
+comment_button.onclick = showAddComment;
 
 submit_button.onclick = sendComment;
 
@@ -17,7 +17,7 @@ function sendComment(){
     const text = document.querySelector("#comment-textarea").value;
     const user = document.querySelector('#comment-textarea').getAttribute("data-user-id");
 
-    request.addEventListener("load", function() { // TODO: "refresh" page
+    request.addEventListener("load", function() {
         console.log(this.responseText);
 
         addCommentHTML(text, user);
@@ -41,7 +41,7 @@ function addCommentHTML(text, user){
 
     //First row child
     const col_2 = document.createElement("div");
-    col_2.className = "col-2"; // Maybe use another name
+    col_2.className = "col-2";
 
     const a_element = document.createElement("a");
     a_element.setAttribute("href", "/user/" + user);
@@ -62,15 +62,15 @@ function addCommentHTML(text, user){
     const col_1_three_dots_post_comment_div = document.createElement("div");
     col_1_three_dots_post_comment_div.className = "col-1 three-dots post-comment-div";
 
-    const svg_element = document.createElement("svg");
-    svg_element.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    const svg_element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg_element.setAttribute("height", "16");
     svg_element.setAttribute("width", "16");
     svg_element.setAttribute("fill", "currentColor");
     svg_element.setAttribute("viewBox", "0 0 16 16");
     svg_element.setAttribute("class", "bi bi-three-dots-vertical");
 
-    const path_element = document.createElement("path");
+    const path_element = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
     path_element.setAttribute("d", "M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z");
 
     div.innerHTML = "";

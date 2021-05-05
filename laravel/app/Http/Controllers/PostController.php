@@ -39,7 +39,7 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $this->authorize('delete', $post);
-        $post->update(["banned" => true]);
+        $post->update(["banned" => 'true']);
 
         return $post;
     }

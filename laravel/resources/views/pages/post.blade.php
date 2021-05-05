@@ -13,6 +13,7 @@
 <script src="{{ asset('js/commentTextArea.js') }}" defer></script>
 <script src="{{ asset('js/comments.js') }}" defer></script>
 <script src="{{ asset('js/delete_post.js') }}" defer></script>
+<script src="{{ asset('js/delete_comment.js') }}" defer></script>
 @endpush
 
 

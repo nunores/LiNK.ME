@@ -26,7 +26,7 @@ Route::get('api/link', 'LinkController@showUserLinks');
 Route::post('api/link', 'LinkController@create');
 
 //Posts
-Route::get('post/{id}', 'PostController@show');
+Route::get('post/{id}', 'PostController@show')->name('post');
 Route::get('api/post', 'PostController@showPostInfo');
 Route::post('api/post', 'PostController@create');
 Route::delete('api/post/{id}', 'PostController@delete');

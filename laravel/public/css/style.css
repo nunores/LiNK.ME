@@ -110,3 +110,29 @@ body > div.container-fluid {
 .container-fluid {
     display: relative;
 }
+
+
+.comment,
+.post {
+    position: relative;
+}
+
+.delete-comment{
+    position: absolute;
+    right: 4rem;
+    top: 1rem;
+    display: inline-block;
+    width: auto;
+}
+
+.delete-post {
+    position: absolute;
+    right: 4rem;
+    top: 2rem
+}
+
+.delete-comment > .card,
+.delete-post > .card {
+    padding: 0.3rem;
+    cursor: pointer;
+}

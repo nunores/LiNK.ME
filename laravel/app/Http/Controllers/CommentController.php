@@ -36,7 +36,7 @@ class CommentController extends Controller
         $comment = Comment::find($id);
 
         $this->authorize('delete', $comment);
-        $comment->delete();
+        $comment->update(['deleted' => true]);
 
         return $comment;
     }

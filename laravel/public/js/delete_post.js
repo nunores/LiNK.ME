@@ -1,11 +1,10 @@
-const delete_button = document.querySelector("#delete-post");
+const delete_post_button = document.querySelector("#delete-post");
 
-if (delete_button != null)
-    delete_button.onclick = delete_post;
+delete_post_button.onclick = delete_post;
 
 
 function delete_post() {
-    const post_id =this.getAttribute("data-post-id");
+    const post_id = this.getAttribute("data-post-id");
 
     const request = new XMLHttpRequest();
     request.addEventListener("load", function() {

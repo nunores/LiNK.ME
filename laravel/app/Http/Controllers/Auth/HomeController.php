@@ -8,18 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
-    }
-
     public function home() {
-        return view('pages.home');
+        if (Auth::check()) {
+            return view('pages.home');
+        } else {
+            return redirect('login');
+        }
     }
-
 }
