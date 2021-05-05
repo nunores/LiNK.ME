@@ -13,11 +13,19 @@
 						<span id="person-name"> {{ $post->user->name }} </span>
 					</a>
 				</div>
-				<div class="col-1 three-dots">
+				<div class="col-1 three-dots collapsed" type="link" data-bs-toggle="collapse" data-bs-target="#delete-post" aria-expanded="false" aria-controls="delete-post">
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
 						<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
 					</svg>
 				</div>
+				@if (Auth::user()->id == $post->user->id)
+				<!-- Only shows if owner of the post is the current user -->
+				<div id="delete-post" data-post-id="{{ $post->id }}" class="post-options collapse">
+					<div class="card card-body bg-dark">
+						<span class="link link-danger">Delete Post</span>
+					</div>
+				</div>
+				@endif
 			</div>
 		</div>
 		<div class="row">
@@ -105,7 +113,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-11 add-comment">
-							<textarea class="form-control" id="comment-textarea" rows="1" placeholder="Add a comment..." maxlength="250"></textarea>
+							<textarea class="form-control" id="comment-textarea" data-user-id="{{ Auth::user()->id }}" rows="1" placeholder="Add a comment..." maxlength="250"></textarea>
 						</div>
 					  	<div class="col send-button">
 							<span class="clickable-pointer">
@@ -118,9 +126,11 @@
 				</div>
 			</div>
 		</form>
-		@for ($i = count($comments) - 1; $i >= 0; $i--) <!-- Reverse Order for inverse chronological sorting -->
+		<!-- Reverse Order for inverse chronological sorting -->
+		@for ($i = count($comments) - 1; $i >= 0; $i--)
 			@include('partials.comment', ['comment' => $comments[$i]])
 		@endfor
+
 
 
 	</div>

@@ -15,7 +15,7 @@ class PostPolicy
 
     public function show(Person $person, Post $post)
     {
-        return true;
+        return !$post->banned;
     }
 
     public function showPostInfo(Person $person)
@@ -30,7 +30,7 @@ class PostPolicy
 
     public function delete(Person $person, Post $post)
     {
-        return Auth::user() == $person && $person->id == $post->user_id;
+        return Auth::user()->id == $post->user_id;
     }
 
     public function update(Person $person, Post $post)

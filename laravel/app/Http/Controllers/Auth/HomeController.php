@@ -3,30 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
-    use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/cards';
-
     /**
      * Create a new controller instance.
      *
@@ -37,12 +18,8 @@ class HomeController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function getUser(){
-        return $request->user();
-    }
-
     public function home() {
-        return redirect('login');
+        return view('pages.home');
     }
 
 }

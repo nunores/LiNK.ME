@@ -11,7 +11,8 @@
 |
 */
 // Home
-Route::get('/', 'Auth\HomeController@home')->name('home');
+Route::get('home', 'Auth\HomeController@home')->name('home');
+Route::get('/', 'Auth\HomeController@home');
 
 //Users
 Route::get('user/{id}', 'UserController@show')->name('user');
