@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Faker\Provider\ar_JO\Person;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Model
