@@ -18,7 +18,7 @@
 						<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
 					</svg>
 				</div>
-				@if (Auth::user()->id == $post->user->id)
+				@if (Auth::check() && Auth::user()->id == $post->user->id)
 				<!-- Only shows if owner of the post is the current user -->
 				<div id="delete-post{{ $post->id }}" data-post-id="{{ $post->id }}" class="post-options collapse delete-post">
 					<div class="card card-body bg-dark">
@@ -44,7 +44,7 @@
 			<div class="post-icons">
 				<div class="row align-items-center">
                     @php
-                        $like = Auth::user()->user->likes->where('post_id', '=', $post->id)->first();
+                        $like = Auth::check() ? Auth::user()->user->likes->where('post_id', '=', $post->id)->first() : null;
                         $likes = $like === null ? null : $like->likes;
                     @endphp
 					<div class="col-2">
@@ -108,6 +108,7 @@
         @if (count($comments) > 0)
             <hr>
         @endif
+        @if (Auth::check())
         <form>
             <div class="form-group add-comment-form add-comment collapse" id="add-comment-{{ $post->id }}" data-post-id="{{ $post->id }}" >
                 <div class="container">
@@ -126,6 +127,7 @@
                 </div>
             </div>
         </form>
+        @endif
 		<!-- Reverse Order for inverse chronological sorting -->
 		@for ($i = count($comments) - 1; $i >= max(0, count($comments) - 2); $i--)
 			@include('partials.comment', ['comment' => $comments[$i]])

@@ -61,6 +61,13 @@
         </div>
         <div class="col-8">
             <div id="center-col">
+                @php
+                use App\Models\Post;
+                    $posts = Post::all()->where('id', '>', '0')->where('id', '<', '10');
+                @endphp
+                @foreach ($posts as $post)
+                    @include('partials.homePost', ['post' => $post])
+                @endforeach
             </div>
         </div>
     </div>
