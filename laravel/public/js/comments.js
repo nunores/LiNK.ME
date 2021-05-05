@@ -1,12 +1,18 @@
-const comment_button = document.querySelector(".bi-chat-dots");
-const comment_box = document.querySelector(".add-comment-form");
-const submit_button = document.querySelector(".bi-arrow-right-circle");
+const comment_buttons = document.querySelectorAll(".bi-chat-dots");
+const comment_boxes = document.querySelector(".add-comment-form");
+const submit_buttons = document.querySelectorAll(".bi-arrow-right-circle");
 
-comment_button.onclick = showAddComment;
+/*
+comment_buttons.forEach(comment_button => {
+    comment_button.onclick = showAddComment;
+});
+*/
 
-submit_button.onclick = sendComment;
+submit_buttons.forEach(submit_button => {
+    submit_button.onclick = sendComment;
+});
 
-function showAddComment(){ comment_box.hidden ? comment_box.hidden = false : comment_box.hidden = true; }
+//function showAddComment(){ comment_box.hidden ? comment_box.hidden = false : comment_box.hidden = true; }
 
 function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
@@ -14,8 +20,10 @@ function insertAfter(newNode, referenceNode) {
 
 function sendComment(){
     const request = new XMLHttpRequest();
-    const text = document.querySelector("#comment-textarea").value;
-    const user = document.querySelector('#comment-textarea').getAttribute("data-user-id");
+
+    const row = this.parentNode.parentNode.parentNode;
+    const text = row.querySelector("#comment-textarea").value;
+    const user = row.querySelector('#comment-textarea').getAttribute("data-user-id");
 
     request.addEventListener("load", function() {
         console.log(this.responseText);

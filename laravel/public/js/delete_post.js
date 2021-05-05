@@ -1,6 +1,8 @@
-const delete_post_button = document.querySelector("#delete-post");
+const delete_post_buttons = document.querySelectorAll("#delete-post");
 
-delete_post_button.onclick = delete_post;
+delete_post_buttons.forEach(delete_post_button => {
+    delete_post_button.onclick = delete_post;
+});
 
 
 function delete_post() {

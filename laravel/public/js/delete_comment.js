@@ -1,6 +1,8 @@
-const delete_comment_button = document.querySelector("#delete-comment");
+const delete_comment_buttons = document.querySelectorAll("#delete-comment");
 
-delete_comment_button.onclick = delete_comment;
+delete_comment_buttons.forEach(delete_comment_button => {
+    delete_comment_button.onclick = delete_comment;
+});
 
 function delete_comment() {
     const comment_id = this.getAttribute("data-comment-id");
