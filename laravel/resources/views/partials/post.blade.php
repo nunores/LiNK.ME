@@ -111,7 +111,7 @@
 	</div>
 	<div class="post-comments">
 		@php
-        	$comments = $post->comments->where('deleted', '=', false);
+        	$comments = $post->comments;
 	    @endphp
         @if (count($comments) > 0)
             <hr>
@@ -136,7 +136,7 @@
 		</form>
 		<!-- Reverse Order for inverse chronological sorting -->
 		@for ($i = count($comments) - 1; $i >= 0; $i--)
-			@if(isset($comments[$i]))
+			@if($comments[$i]->deleted == false)
 				@include('partials.comment', ['comment' => $comments[$i]])
 			@endif
 		@endfor

@@ -1,3 +1,4 @@
+
 openapi: 3.0.0
 
 info:
@@ -714,9 +715,27 @@ paths:
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
 
     /api/comment/{id}:
-        delete:
+        get:
             operationId: R313
-            summary: "R313: Delete comment"
+            summary: "R313: HTML comment"
+            description: "Get the html for a specific comment. Access PUB"
+            tags:
+                - "M03: Posts and Comments"
+            
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from comment'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                '200':
+                    description: 'Success.'
+                    content: "HTML for the comment"
+        delete:
+            operationId: R314
+            summary: "R314: Delete comment"
             description: "Delete a comment from user. Access OWN"
             tags:
                 - "M03: Posts and Comments"
@@ -732,8 +751,8 @@ paths:
                 "200":
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
         put:
-            operationId: R314
-            summary: "R314: Edit a comment"
+            operationId: R315
+            summary: "R315: Edit a comment"
             description: "Edit a comment. Access: OWN"
             tags:
                 - "M03: Posts and Comments"
@@ -763,8 +782,8 @@ paths:
 
     /api/comment/report/{id}:
         post:
-            operationId: R315
-            summary: "R315: Report a comment"
+            operationId: R316
+            summary: "R316: Report a comment"
             description: "Report a comment. Access: USR"
             tags:
                 - "M03: Posts and Comments"
@@ -1017,4 +1036,3 @@ paths:
             responses:
                 "200":
                     description: "Ok. Show [UI03](http://lbaw2145-piu.lbaw-prod.fe.up.pt/faq.php)"
-
