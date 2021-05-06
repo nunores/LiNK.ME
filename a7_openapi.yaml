@@ -563,6 +563,33 @@ paths:
                                   - user_id: 27
                                     likes: true
 
+        post:
+            operationId: R317
+            summary: "R317: Like or dislike a post"
+            description: "Like or dislike a post. Access: USR"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                description:
+                                    type: string
+                                private:
+                                    type: boolean
+            responses:
+                "204":
+                    description: "No content"
         put:
             operationId: R307
             summary: "R307: Like or dislike a post"
@@ -731,8 +758,7 @@ paths:
                 required: true
             responses:
                 '200':
-                    description: 'Success.'
-                    content: "HTML for the comment"
+                    description: 'Success. Returns HTML for the comment'
         delete:
             operationId: R314
             summary: "R314: Delete comment"
