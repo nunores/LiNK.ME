@@ -4,7 +4,11 @@
 			<div class="post-header">
 				<div class="col-1">
 					<a href="{{ route('user', ['id' => $post->user->id])}}">
-						<img src="{{ asset('images/profile/' . $post->user->id . '.png') }}" class="rounded-circle post-profile-pic" alt="Profile picture">
+                        @if (file_exists('images/profile/' . $post->user->id . '.png'))
+						    <img src="{{ asset('images/profile/' . $post->user->id . '.png') }}" class="rounded-circle post-profile-pic" alt="Profile picture">
+                        @else
+						    <img src="{{ asset('images/profile/default.png') }}" class="rounded-circle post-profile-pic" alt="Profile picture">
+                        @endif
 					</a>
 				</div>
 				<div class="post-name col-10">
@@ -35,7 +39,11 @@
 				</div>
                 @if ($post->picture != null)
                     <div class="post-content">
-                        <img src="{{ asset($post->picture) . '.png' }}" alt="Post image">
+                        @if (file_exists('images/posts/' . $post->user->id . '.png'))
+                            <img src="{{ asset($post->picture) . '.png' }}" alt="Post image">
+                        @else
+                            <img src="{{ asset('images/posts/default.png') }}" alt="Post image">
+                        @endif
                     </div>
                 @endif
 			</a>
@@ -82,7 +90,7 @@
 								<path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
 								<path d="M2.165 15.803l.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z" />
 							</svg>
-							<span> {{ count($post->comments->where('deleted', '=', false)) }} </span>
+							<span id="comments-number-{{ $post->id }}"> {{ count($post->comments->where('deleted', '=', false)) }} </span>
 						</div>
 					</div>
 					<div class="col">
@@ -112,7 +120,7 @@
 			<div class="form-group add-comment-form add-comment collapse" id="add-comment-{{ $post->id }}" data-post-id="{{ $post->id }}">
 				<div class="container">
 					<div class="row">
-						<div class="col-11 add-comment">
+						<div class="col-11 add-comment-textarea">
 							<textarea class="form-control" id="comment-textarea" data-user-id="{{ Auth::user()->id }}" rows="1" placeholder="Add a comment..." maxlength="250"></textarea>
 						</div>
 					  	<div class="col send-button">
@@ -128,7 +136,9 @@
 		</form>
 		<!-- Reverse Order for inverse chronological sorting -->
 		@for ($i = count($comments) - 1; $i >= 0; $i--)
-			@include('partials.comment', ['comment' => $comments[$i]])
+			@if(isset($comments[$i]))
+				@include('partials.comment', ['comment' => $comments[$i]])
+			@endif
 		@endfor
 
 	</div>

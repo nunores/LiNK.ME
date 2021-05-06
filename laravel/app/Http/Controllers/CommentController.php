@@ -20,6 +20,13 @@ class CommentController extends Controller
         return $comments;
     }
 
+    public function showComment(Request $request, $id)
+    {
+        $comment = Comment::find($id);
+        $this->authorize('showComment', $comment);
+        return view('partials.comment', ['comment' => $comment]);
+    }
+
     public function create(Request $request)
     {
         $comment = new Comment();
@@ -36,7 +43,7 @@ class CommentController extends Controller
         $comment = Comment::find($id);
 
         $this->authorize('delete', $comment);
-        $comment->update(['deleted' => true]);
+        $comment->update(["deleted" => 'true']);
 
         return $comment;
     }

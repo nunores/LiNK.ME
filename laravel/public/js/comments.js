@@ -20,85 +20,42 @@ function insertAfter(newNode, referenceNode) {
 
 function sendComment(){
     const request = new XMLHttpRequest();
-
     const row = this.parentNode.parentNode.parentNode;
     const text = row.querySelector("#comment-textarea").value;
     const user = row.querySelector('#comment-textarea').getAttribute("data-user-id");
+    const post_id = row.parentNode.parentNode.getAttribute('data-post-id');
+    const number_comments = document.querySelector("#comments-number-" + post_id);
 
     request.addEventListener("load", function() {
         console.log(this.responseText);
+        const json = JSON.parse(this.responseText);
 
-        addCommentHTML(text, user);
+        addCommentHTML(json.id);
+        row.querySelector("#comment-textarea").value = "";
+        number_comments.innerHTML = parseInt(number_comments.innerHTML) + 1;
     });
     request.open("POST", "http://localhost:8000/api/comment/", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.send(encodeForAjax({ post_id: post_id, text: text, _token: _token }));
 }
 
-function addCommentHTML(text, user){
-    const form = document.querySelector('.post-comments > form');
+function addCommentHTML(id){
+    const request = new XMLHttpRequest();
 
-    const div = document.createElement('div');
-    div.className = "comment";
+    request.addEventListener('load', function() {
+        const html = this.responseText;
 
-    const container_fluid = document.createElement("div");
-    container_fluid.className = "container-fluid";
-
-    const row = document.createElement("div");
-    row.className = "row";
-
-    //First row child
-    const col_2 = document.createElement("div");
-    col_2.className = "col-2";
-
-    const a_element = document.createElement("a");
-    a_element.setAttribute("href", "/user/" + user);
-    const img = document.createElement("img");
-
-    img.setAttribute("src", "/images/profile/" + user + ".png");
-    img.className = "rounded-circle post-comment-pic";
-    img.setAttribute("alt", "Profile picture");
-
-    //Second row child
-    const col_9_post_comment_div = document.createElement("div");
-    col_9_post_comment_div.className = "col-9 post-comment-div";
-
-    const span_element = document.createElement("span");
-    span_element.className = "post-comment-text"
-
-    //Third row child
-    const col_1_three_dots_post_comment_div = document.createElement("div");
-    col_1_three_dots_post_comment_div.className = "col-1 three-dots post-comment-div";
-
-    const svg_element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    svg_element.setAttribute("height", "16");
-    svg_element.setAttribute("width", "16");
-    svg_element.setAttribute("fill", "currentColor");
-    svg_element.setAttribute("viewBox", "0 0 16 16");
-    svg_element.setAttribute("class", "bi bi-three-dots-vertical");
-
-    const path_element = document.createElementNS("http://www.w3.org/2000/svg", "path");
-
-    path_element.setAttribute("d", "M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z");
-
-    div.innerHTML = "";
+        const div = document.createElement('div');
+        div.innerHTML = html.trim();
 
 
-    div.appendChild(container_fluid);
-    container_fluid.appendChild(row);
-    row.appendChild(col_2);
-    col_2.appendChild(a_element);
-    a_element.appendChild(img);
-    row.appendChild(col_9_post_comment_div);
-    col_9_post_comment_div.appendChild(span_element);
-    span_element.innerHTML += text;
-    row.appendChild(col_1_three_dots_post_comment_div);
-    col_1_three_dots_post_comment_div.appendChild(svg_element);
-    svg_element.appendChild(path_element);
+        const form = document.querySelector('.post-comments > form');
+        insertAfter(div.firstChild, form);
+    })
 
-
-    insertAfter(div, form);
-
+    request.open("GET", "http://localhost:8000/api/comment/" + id, true);
+    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    request.send(encodeForAjax({ _token: _token }));
 }
 
 

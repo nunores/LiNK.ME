@@ -23,4 +23,8 @@ class CommentPolicy
         return Auth::user()->id == $comment->user->id;
     }
 
+    public function showComment(Person $person, Comment $comment) {
+        return true;
+    }
+
 }

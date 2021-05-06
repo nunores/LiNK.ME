@@ -128,13 +128,12 @@
     font-size: 110%;
 }
 
-.add-comment {
+.add-comment-textarea {
     padding: 1.5em;
     padding-top: 1.0em;
-    width: 90%;
 }
 
-.add-comment > textarea {
+.add-comment-textarea > textarea {
     overflow: hidden;
     border: none;
     resize: none;
@@ -144,7 +143,7 @@
     color: var(--bs-light);
 }
 
-.add-comment > textarea:focus {
+.add-comment-textarea > textarea:focus {
     background-color: var(--bs-dark);
     color: var(--bs-light);
 }

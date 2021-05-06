@@ -16,7 +16,7 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'text',
+        'text', 'deleted',
     ];
 
     /**
