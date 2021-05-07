@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Person;
 use App\Models\Group;
+use App\Models\GroupRequest;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -37,5 +38,10 @@ class GroupPolicy
     public function create(Person $person, Group $group)
     {
         return true; //TODO: Fazer isto
+    }
+
+    public function request(Person $person, GroupRequest $group_request)
+    {
+        return Auth::check();
     }
 }

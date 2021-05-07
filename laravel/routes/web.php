@@ -55,6 +55,7 @@ Route::get('group/{id}', 'GroupController@show')->name('group');
 Route::get('group', 'GroupController@createForm')->name('create_group');
 Route::get('api/group', 'GroupController@getUserGroups');
 Route::post('api/group', 'GroupController@create');
+Route::post('api/group/request', 'GroupController@request');
 //Route::get('groups', 'GroupController@search');
 /*
 // Cards

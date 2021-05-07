@@ -10,6 +10,7 @@ use App\Models\Person;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Group;
+use App\Models\GroupRequest;
 use App\Models\User_group;
 
 class GroupController extends Controller
@@ -44,5 +45,14 @@ class GroupController extends Controller
         $this->authorize('create', $group);
         $group->name = $request->input('name');
         return $group;
+    }
+
+    public function request(Request $request) {
+        $group_request = new GroupRequest();
+        $this->authorize('request', $group_request);
+        $group_request->user_id = Auth::user()->id;
+        $group_request->group_id = $request->input('group_id');
+        $group_request->save();
+        return $group_request;
     }
 }
