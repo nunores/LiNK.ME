@@ -30,3 +30,11 @@ function AJAX(method, relative_url, parameters, onLoadFunction) {
     request.send(encodeForAjax(parameters));
 }
 
+/**
+ * Iserts the newNode after the referenceNode
+ * @param {Element} newNode Node to insert
+ * @param {Element} referenceNode No to insert after
+ */
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}

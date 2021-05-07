@@ -2,21 +2,9 @@ const comment_buttons = document.querySelectorAll(".bi-chat-dots");
 const comment_boxes = document.querySelector(".add-comment-form");
 const submit_buttons = document.querySelectorAll(".bi-arrow-right-circle");
 
-/*
-comment_buttons.forEach(comment_button => {
-    comment_button.onclick = showAddComment;
-});
-*/
-
 submit_buttons.forEach(submit_button => {
     submit_button.onclick = sendComment;
 });
-
-//function showAddComment(){ comment_box.hidden ? comment_box.hidden = false : comment_box.hidden = true; }
-
-function insertAfter(newNode, referenceNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
 
 function sendComment(){
     const row = this.parentNode.parentNode.parentNode;

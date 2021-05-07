@@ -20,7 +20,7 @@ class CommentController extends Controller
         return $comments;
     }
 
-    public function showComment(Request $request, $id)
+    public function showComment($id)
     {
         $comment = Comment::find($id);
         $this->authorize('showComment', $comment);
