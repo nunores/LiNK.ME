@@ -8,16 +8,25 @@
 <link rel="stylesheet" href="{{ asset('css/group_page.css') }}" />
 @endpush
 
+@push('js_scripts')
+<script src="{{ asset('js/likes.js') }}" defer></script>
+<script src="{{ asset('js/delete_post.js') }}" defer></script>
+<script src="{{ asset('js/delete_comment.js') }}" defer></script>
+<script src="{{ asset('js/comments.js') }}" defer></script>
+<script src="{{ asset('js/commentTextArea.js') }}" defer></script>
+
+@endpush
 
 @section('content')
 
 <body>
+    @csrf
 	<div class="container-fluid">
 		<div class="row">
 			@include('partials.sidebar')
             <div class="col-8">
                 <div id="center-col">
-					@foreach ($group->posts as $post)
+					@foreach ($posts as $post)
 						@include('partials.homePost', ['post' => $post])
 					@endforeach
 				</div>
@@ -34,7 +43,9 @@
                     </div>
                 </form>
                 <div class="person-friends">
-                    {{Auth::user()->links}}
+                    @foreach ($links as $link)
+                        @include('partials.add_link_group', ["user" => $link])
+                    @endforeach
                 </div>
             </div>
 

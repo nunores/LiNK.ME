@@ -1,12 +1,16 @@
 <div class="post-header person-friends-header">
     <div class="col-1">
         <a href="{{ route('user', ["id" => $user->id]) }}">
-            <img src="./images/jlopes.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+            @if (file_exists('images/profile/' . $post->user->id . '.png'))
+                <img src="{{ asset('images/profile/' . $post->user->id . '.png') }}" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+            @else
+                <img src="{{ asset('images/profile/default.png') }}" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+            @endif
         </a>
     </div>
     <div class="post-name col-6">
         <a href="{{ route('user', ["id" => $user->id]) }}">
-            <span id="name-tag" class="person-friends-name-tag"> @{{ $user->person->username }} </span>
+            <span id="name-tag" class="person-friends-name-tag"> {{ '@' . $user->person->username }} </span>
         </a>
     </div>
     <div class="add-person">

@@ -19,7 +19,9 @@ class GroupController extends Controller
         if (!Auth::check()) redirect("login");
         $group = Group::find($id);
         $this->authorize('show', $group);
-        return view('pages.group', ['group' => $group]);
+        $links = Auth::user()->user->links;
+        $posts = $group->posts;
+        return view('pages.group', ['group' => $group, 'posts' => $posts, 'links' => $links]);
     }
 
     public function createForm()

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Log;
 
 class User extends Model
 {
@@ -108,7 +109,7 @@ class User extends Model
      */
     public function links()
     {
-        return $this->belongsToManyThrough(User::class, Link::class);
+        return $this->belongsToMany(User::class, 'link', 'user1_id', 'user2_id');
     }
 
 

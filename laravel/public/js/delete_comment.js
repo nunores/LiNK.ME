@@ -10,14 +10,10 @@ function delete_comment() {
     const post_id = this.getAttribute('data-post-id');
     const number_comments = document.querySelector("#comments-number-" + post_id);
 
-    const request = new XMLHttpRequest();
-    request.addEventListener("load", function() {
+    AJAX("DELETE", "/api/comment/" + comment_id, {_token: _token }, function() {
         console.log(this.responseText);
         const comment = clicked_button.parentNode.parentNode.parentNode;
         comment.remove();
         number_comments.innerHTML = parseInt(number_comments.innerHTML) - 1;
     });
-    request.open("DELETE", host + "/api/comment/" + comment_id, true);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    request.send(encodeForAjax({_token: _token }));
 }
