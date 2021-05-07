@@ -88,7 +88,7 @@
         </div>
         <div class="col-8">
             <div id="center-col">
-                @include('partials.user_info', ['user' => Auth::user()]) <!-- TODO FInd a way to get the profile user -->
+                @include('partials.user_info', ['user' => $user]) <!-- TODO FInd a way to get the profile user -->
                 @php
                 use App\Models\Post;
                     $posts = Post::all()->where('banned', '=', false);
