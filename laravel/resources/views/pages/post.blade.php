@@ -26,7 +26,7 @@
 			@include('partials.sidebar')
 			<div class="col-10">
 				<div id="center-col">
-					@include('partials.post', ['post' => $post])
+					@include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)])
 				</div>
 			</div>
 		</div>

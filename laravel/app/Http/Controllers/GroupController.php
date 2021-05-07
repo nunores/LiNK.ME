@@ -19,7 +19,7 @@ class GroupController extends Controller
         if (!Auth::check()) redirect("login");
         $group = Group::find($id);
         $this->authorize('show', $group);
-        $links = Auth::user()->user->links;
+        $links = Auth::user()->user->getLinks();
         $posts = $group->posts;
         return view('pages.group', ['group' => $group, 'posts' => $posts, 'links' => $links]);
     }

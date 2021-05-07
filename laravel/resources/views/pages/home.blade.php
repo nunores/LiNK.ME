@@ -28,7 +28,7 @@
                     $posts = Post::all()->where('id', '>', '173')->where('id', '<', '185')->where('banned', '=', false);
                 @endphp
                 @foreach ($posts as $post)
-                    @include('partials.homePost', ['post' => $post])
+                    @include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->take(2)])
                 @endforeach
             </div>
         </div>

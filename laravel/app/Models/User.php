@@ -114,6 +114,25 @@ class User extends Model
 
 
     /**
+     * The reversed links that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function reversedLinks()
+    {
+        return $this->belongsToMany(User::class, 'link', 'user2_id', 'user1_id');
+    }
+
+    /**
+     * returns all links
+     */
+    public function getLinks()
+    {
+        return $this->links->merge($this->reversedLinks);
+    }
+
+
+    /**
      * Get all of the notifications for the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
