@@ -8,6 +8,8 @@ const _token = document.getElementsByName("_token")[0].getAttribute("value");
 like_button.onclick = clickedLike;
 dislike_button.onclick = clickedDislike;
 
+const host = location.href.split(location.pathname)[0];
+
 const encodeForAjax = (data) => {
 	return Object.keys(data).map(function (k) {
 		return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
@@ -15,6 +17,7 @@ const encodeForAjax = (data) => {
 }
 
 function clickedLike() {
+    console.log("Welelelel");
     const request = new XMLHttpRequest();
     if (like_button.style.color == "var(--green)") {
         // API call to unlike
@@ -23,7 +26,7 @@ function clickedLike() {
             number_likes.innerHTML = parseInt(number_likes.innerHTML) - 1;
             like_button.style.color = "var(--bs-light)";
         });
-        request.open("DELETE", "http://localhost:8000/api/like/" + post_id, true);
+        request.open("DELETE", host + "/api/like/" + post_id, true);
         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         request.send(encodeForAjax({ _token: _token }));
     } else {
@@ -37,7 +40,7 @@ function clickedLike() {
                 number_dislikes.innerHTML = parseInt(number_dislikes.innerHTML) - 1;
                 dislike_button.style.color = "var(--bs-light)";
             });
-            request.open("PUT", "http://localhost:8000/api/like/" + post_id, true);
+            request.open("PUT", host + "/api/like/" + post_id, true);
             request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             request.send(encodeForAjax({ id: post_id, likes: true, _token: _token }));
         } else {
@@ -47,7 +50,7 @@ function clickedLike() {
                 number_likes.innerHTML = parseInt(number_likes.innerHTML) + 1;
                 like_button.style.color = "var(--green)";
             });
-            request.open("POST", "http://localhost:8000/api/like/" + post_id, true);
+            request.open("POST", host + "/api/like/" + post_id, true);
             request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             request.send(encodeForAjax({ id: post_id, likes: true, _token: _token }));
         }
@@ -63,7 +66,7 @@ function clickedDislike() {
             number_dislikes.innerHTML = parseInt(number_dislikes.innerHTML) - 1;
             dislike_button.style.color = "var(--bs-light)";
         });
-        request.open("DELETE", "http://localhost:8000/api/like/" + post_id, true);
+        request.open("DELETE", host + "/api/like/" + post_id, true);
         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         request.send(encodeForAjax({ _token: _token }));
     } else {
@@ -77,7 +80,7 @@ function clickedDislike() {
                 like_button.style.color = "var(--bs-light)";
                 number_likes.innerHTML = parseInt(number_likes.innerHTML) - 1;
             });
-            request.open("PUT", "http://localhost:8000/api/like/" + post_id, true);
+            request.open("PUT", host + "/api/like/" + post_id, true);
             request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             request.send(encodeForAjax({ id: post_id, likes: false, _token: _token }));
         } else {
@@ -87,7 +90,7 @@ function clickedDislike() {
                 number_dislikes.innerHTML = parseInt(number_dislikes.innerHTML) + 1;
                 dislike_button.style.color = "var(--pink)";
             });
-            request.open("POST", "http://localhost:8000/api/like/" + post_id, true);
+            request.open("POST", host + "/api/like/" + post_id, true);
             request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             request.send(encodeForAjax({ id: post_id, likes: false, _token: _token }));
 

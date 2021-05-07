@@ -34,7 +34,7 @@ function sendComment(){
         row.querySelector("#comment-textarea").value = "";
         number_comments.innerHTML = parseInt(number_comments.innerHTML) + 1;
     });
-    request.open("POST", "http://localhost:8000/api/comment/", true);
+    request.open("POST", host + "/api/comment/", true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.send(encodeForAjax({ post_id: post_id, text: text, _token: _token }));
 }
@@ -53,7 +53,7 @@ function addCommentHTML(id){
         insertAfter(div.firstChild, form);
     })
 
-    request.open("GET", "http://localhost:8000/api/comment/" + id, true);
+    request.open("GET", host + "/api/comment/" + id, true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.send(encodeForAjax({ _token: _token }));
 }

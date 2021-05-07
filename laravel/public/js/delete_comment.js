@@ -17,7 +17,7 @@ function delete_comment() {
         comment.remove();
         number_comments.innerHTML = parseInt(number_comments.innerHTML) - 1;
     });
-    request.open("DELETE", "http://localhost:8000/api/comment/" + comment_id, true);
+    request.open("DELETE", host + "/api/comment/" + comment_id, true);
     request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     request.send(encodeForAjax({_token: _token }));
 }

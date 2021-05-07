@@ -26,7 +26,7 @@ class Post extends Model
      * @var array
      */
     protected $hidden = [
-        'banned', 'private', 'group_id'
+        'private', 'group_id'
     ];
 
 

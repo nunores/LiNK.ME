@@ -16,7 +16,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $this->authorize('show', $post);
-        return view('pages.post', ['post' => $post]);
+        return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)]);
     }
 
     public function create(Request $request)

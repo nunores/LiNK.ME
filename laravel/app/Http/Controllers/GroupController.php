@@ -14,21 +14,24 @@ use App\Models\User_group;
 
 class GroupController extends Controller
 {
-    public function getInfo($id)
+    public function show($id)
     {
+        if (!Auth::check()) redirect("login");
         $group = Group::find($id);
-        $this->authorize('getInfo', $group);
+        $this->authorize('show', $group);
         return view('pages.group', ['group' => $group]);
     }
 
-    public function show()
+    public function createForm()
     {
-        return redirect('create_group');
+        $users = Auth::user()->links;
+        //$this->authorize('createForm'); //TODO: arranjar isto
+        return view('pages.create_group', ['suggested_users' => $users]);
     }
 
     public function getUserGroups(Request $request)
     {
-        $groups = User_group::table('user_group')->where('user_id', '=', Auth::user()->id);
+        $groups = User_group::table('user_group')->where('user_id', '=', $request->input("id"));
         $this->authorize('getUserGroups', $groups);
         return $groups;
     }

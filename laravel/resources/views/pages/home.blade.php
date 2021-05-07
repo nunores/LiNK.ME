@@ -18,13 +18,14 @@
 @section('content')
 
 <div class="container-fluid">
+    @csrf
     <div class="row">
         @include('partials.sidebar')
         <div class="col-8">
             <div id="center-col">
                 @php
                 use App\Models\Post;
-                    $posts = Post::all()->where('id', '>', '173')->where('id', '<', '185');
+                    $posts = Post::all()->where('id', '>', '173')->where('id', '<', '185')->where('banned', '=', false);
                 @endphp
                 @foreach ($posts as $post)
                     @include('partials.homePost', ['post' => $post])

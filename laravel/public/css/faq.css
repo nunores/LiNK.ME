@@ -22,64 +22,29 @@
 
 .faq-text {
     font-size: 200%;
-    color: #1AB2A8;
+    color: var(--green);
 }
 
-.first-question {
+.faq-answer {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 120%;
+    border-style: hidden solid solid solid;
+    border-color: var(--green);
+}
+
+
+#first-question {
     margin-top: 3rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    width: 100%;
     border-style: solid;
-    border-color: #1AB2A8;
-    cursor: pointer;
-    font-size: 120%;
 }
 
-.first-answer {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    font-size: 120%;
-    border-style: hidden solid solid solid;
-    border-color: #1AB2A8;
-}
-
-.second-question {
+.faq-question {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     width: 100%;
     border-style: hidden solid solid solid;
-    border-color: #c2c2c2;
-    cursor: pointer;
-    font-size: 120%;
-}
-
-.third-question {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    width: 100%;
-    border-style: hidden solid solid solid;
-    border-color: #c2c2c2;
-    cursor: pointer;
-    font-size: 120%;
-}
-
-.fourth-question {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    width: 100%;
-    border-style: hidden solid solid solid;
-    border-color: #c2c2c2;
-    cursor: pointer;
-    font-size: 120%;
-}
-
-.fifth-question {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    width: 100%;
-    border-style: hidden solid solid solid;
-    border-color: #c2c2c2;
+    border-color: var(--bs-light);
     cursor: pointer;
     font-size: 120%;
 }

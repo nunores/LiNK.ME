@@ -113,7 +113,7 @@
 		@php
         	$comments = $post->comments;
 	    @endphp
-        @if (count($comments) > 0)
+        @if (count($comments->where('deleted', '=', false)) > 0)
             <hr>
         @endif
 		<form>

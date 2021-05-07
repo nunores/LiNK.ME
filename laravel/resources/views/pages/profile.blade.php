@@ -10,8 +10,8 @@
 
 @section('content')
 @if (Auth::user()->user == $user)
-    {{-- @include("partials.profile.myprofile") --}}
+    @include("partials.myprofile")
 @else
-    {{-- @include("partials.profile.otherprofile") --}}
+    @include("partials.other_profile")
 @endif
 @endsection

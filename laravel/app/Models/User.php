@@ -108,7 +108,7 @@ class User extends Model
      */
     public function links()
     {
-        return $this->belongsToMany(Link::class, 'link', 'user1_id', 'user2_id');
+        return $this->belongsToManyThrough(User::class, Link::class);
     }
 
 

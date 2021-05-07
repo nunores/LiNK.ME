@@ -3377,7 +3377,7 @@ INSERT INTO "report" (user_id, comment_id) VALUES(46,77);
 
 
 
----------------------------------------------- GROUP USERS (75) ----------------------------------------------------------
+---------------------------------------------- GROUP USERS (75 + 2) ----------------------------------------------------------
 
 INSERT INTO "user_group" (user_id, group_id) VALUES (14,6);
 INSERT INTO "user_group" (user_id, group_id) VALUES (16,3);
@@ -3454,3 +3454,6 @@ INSERT INTO "user_group" (user_id, group_id) VALUES (45,4);
 INSERT INTO "user_group" (user_id, group_id) VALUES (48,6);
 INSERT INTO "user_group" (user_id, group_id) VALUES (44,1);
 INSERT INTO "user_group" (user_id, group_id) VALUES (15,1);
+-- For tests with user 3
+INSERT INTO "user_group" (user_id, group_id) VALUES (3,1);
+INSERT INTO "user_group" (user_id, group_id) VALUES (3,5);

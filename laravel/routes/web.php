@@ -51,8 +51,8 @@ Route::delete('api/comment/{id}', 'CommentController@delete');
 Route::put('api/comment/{id}', 'CommentController@update');
 
 //Groups
-Route::get('group/{id}', 'GroupController@getInfo')->name('group');
-Route::get('group', 'GroupController@show')->name('create_group');
+Route::get('group/{id}', 'GroupController@show')->name('group');
+Route::get('group', 'GroupController@createForm')->name('create_group');
 Route::get('api/group', 'GroupController@getUserGroups');
 Route::post('api/group', 'GroupController@create');
 //Route::get('groups', 'GroupController@search');
@@ -78,3 +78,5 @@ Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
+
+// Profile Pages
