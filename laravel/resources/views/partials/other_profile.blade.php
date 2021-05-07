@@ -33,7 +33,7 @@
         </div>
         <div class="col-8">
             <div id="center-col">
-                @include('partials.user_info', ['user' => $user]) <!-- TODO Find a way to get the profile user -->
+                @include('partials.user_info', ['user' => $user])
                 @php
                     $posts = $user->posts->where('banned', '=', false)
                 @endphp

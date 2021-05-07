@@ -13,7 +13,7 @@
             </svg>
         @endif
     </div>
-    <span id="profile-name-tag">{{$user->person->username}}</span> <!-- TODO Add a @ -->
+    <span id="profile-name-tag">{{ '@' . $user->person->username}}</span>
     <br>
     <span id="profile-person-name">{{$user->name}}
         @if (Auth::user()->user->id == $user->id)
