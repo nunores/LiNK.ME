@@ -10,7 +10,7 @@
 
 @section('content')
 @if (Auth::user()->user == $user)
-    @include("partials.myprofile")
+    @include("partials.myprofile") <!-- TODO Allow for profile information edit
 @else
     @include("partials.other_profile")
 @endif
