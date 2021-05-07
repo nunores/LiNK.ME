@@ -11,7 +11,9 @@ use App\Models\User;
 use App\Models\Post;
 use App\Models\Group;
 use App\Models\GroupRequest;
+use App\Models\Notification;
 use App\Models\User_group;
+use Illuminate\Support\Facades\Log;
 
 class GroupController extends Controller
 {
@@ -48,11 +50,24 @@ class GroupController extends Controller
     }
 
     public function request(Request $request) {
+        $notification = new Notification();
         $group_request = new GroupRequest();
-        $this->authorize('request', $group_request);
-        $group_request->user_id = Auth::user()->id;
+        $this->authorize('request', Group::class);
+
+        $old_group_requests = GroupRequest::all()->where("group_id", "=", $request->input('group_id'));
+
+        foreach ($old_group_requests as $old_group_request) {
+            if ($old_group_request->notification->user_id == $request->input('user_id')) {
+                $old_group_request->notification->delete();
+                $old_group_request->delete();
+            }
+        }
+
+        $notification->user_id = $request->input('user_id');
+        $notification->save();
+        $group_request->id = $notification->id;
         $group_request->group_id = $request->input('group_id');
         $group_request->save();
-        return $group_request;
+        return [$notification, $group_request];
     }
 }

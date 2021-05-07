@@ -17,7 +17,7 @@ class GroupRequest extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'group_id',
+        'id', 'group_id',
     ];
 
     /**

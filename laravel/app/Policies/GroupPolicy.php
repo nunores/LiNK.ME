@@ -40,7 +40,7 @@ class GroupPolicy
         return true; //TODO: Fazer isto
     }
 
-    public function request(Person $person, GroupRequest $group_request)
+    public function request(Person $person)
     {
         return Auth::check();
     }
