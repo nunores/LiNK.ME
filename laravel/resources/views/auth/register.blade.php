@@ -85,7 +85,7 @@
                 $posts = Post::all()->where('id', '>', '0')->where('id', '<', '10');
             @endphp
             @foreach ($posts as $post)
-                @include('partials.homePost', ['post' => $post])
+                @include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->take(2)])
             @endforeach
           </div>
       </div>
