@@ -15,7 +15,26 @@ class PostPolicy
 
     public function show(Person $person, Post $post)
     {
-        return !$post->banned;
+        if ($post->banned) return false; // Banned post
+        if (!Auth::check()) return !$post->private; // For guests
+        if (Auth::user()->is_admin) return true; // For admins
+
+        if ($post->group_id != null) {
+            foreach(Auth::user()->user->groups as $group) {
+                if ($group->id === $post->group_id)
+                    return true; // Post is for a group and user is on that group
+            }
+            return false; // Post is for a group and user is not on that group
+        } else {
+            if ($post->private) {
+                foreach(Auth::user()->user->links as $link) {
+                    if ($link->id === $post->user_id)
+                        return true; // Post is private and user if friend
+                }
+                return false; // Post is private and user is not friend
+            } else
+                return true; // Post is public
+        }
     }
 
     public function showPostInfo(Person $person)
