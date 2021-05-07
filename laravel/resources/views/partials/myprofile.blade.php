@@ -265,7 +265,7 @@
                 @endphp
                 @foreach ($posts as $post)
                     @if($post->user->id == Auth::user()->user->id)
-                        @include('partials.homePost', ['post' => $post])
+                        @include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->take(2)])
                     @endif
                 @endforeach
             </div>
