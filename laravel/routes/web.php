@@ -31,6 +31,7 @@ Route::get('api/post', 'PostController@showPostInfo');
 Route::post('api/post', 'PostController@create');
 Route::delete('api/post/{id}', 'PostController@delete');
 Route::put('api/post/{id}', 'PostController@update');
+Route::get('api/post/form', 'PostController@showPostForm');
 //Route::get('posts', 'PostController@search');
 
 //Likes

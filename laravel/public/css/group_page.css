@@ -42,7 +42,7 @@
 }
 
 .person-friends {
-	max-height: 30%;
+	max-height: 20%;
 	overflow: auto;
 	margin-top: 1rem;
 	margin-bottom: 3rem;
