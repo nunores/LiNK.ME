@@ -34,7 +34,8 @@ class PostController extends Controller
             $post->private = $request->input('private');
             $post->group_id = null;
         }
-        $post->picture = public_path() . "images/posts/" . $post->id . ".png";
+        if ($request->input('picture') != null)
+            $post->picture = public_path() . "images/posts/" . $post->id . ".png";
 
         $this->authorize('create', $post);
 
@@ -53,15 +54,15 @@ class PostController extends Controller
         return $post;
     }
 
-    public function showPostInfo(Request $request)
+    public function showPostInfo(Request $request, $id)
     {
-        $post = Post::find($request->query('id'));
+        $post = Post::find($id);
 
         if ($post == null) {
             return null;
         }
 
-        return view("partials.post", ["post" => $post, "comments" => $post->comments->take(2)]);
+        return view("partials.post", ["post" => $post, "comments" => $post->comments->where("deleted", "=", false)->take(2)]);
     }
 
     public function update(Request $request, $id)

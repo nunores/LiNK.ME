@@ -1,6 +1,8 @@
 const add_post_button = document.querySelector("#add-post-icon");
+const return_button = document.querySelector("#return-icon");
 
 add_post_button.onclick = add_post_form;
+return_button.onclick = return_form;
 
 function add_post_form() {
     AJAX("GET", "/api/post/form", {_token: _token}, function () {
@@ -12,7 +14,15 @@ function add_post_form() {
         div.querySelector("#add-post-file").onchange = add_image;
 
         first_post.parentNode.insertBefore(div.firstChild, first_post);
+        add_post_button.hidden = true;
+        return_button.hidden = false;
     });
+}
+
+function return_form() {
+    document.querySelector("#add-post-form").parentNode.remove();
+    add_post_button.hidden = false;
+    return_button.hidden = true;
 }
 
 async function add_post() {
@@ -28,7 +38,7 @@ async function add_post() {
         });
         const group_id = document.querySelector("#group-name").getAttribute("data-group-id");
 
-        parameters = {_token: _token, description: text, image: image, group_id: group_id};
+        parameters = {_token: _token, description: text, picture: image, group_id: group_id};
     } else {
         parameters = {_token: _token, description: text, group_id: group_id};
     }
@@ -36,6 +46,7 @@ async function add_post() {
         console.log(this.responseText);
         const response = JSON.parse(this.responseText);
         insert_added_post(response["id"]);
+        form.parentNode.remove();
     });
 }
 
@@ -65,8 +76,18 @@ function add_image(event) {
 }
 
 function insert_added_post(post_id) {
-    AJAX("GET", "/api/post", {_token: _token, id: post_id}, function () {
+    AJAX("GET", "/api/post/" + post_id, {_token: _token }, function () {
         console.log(this.responseText);
 
+        const div = document.createElement("div");
+        div.innerHTML = this.responseText.trim();
+        div.querySelector(".bi-arrow-right-circle").onclick = sendComment;
+        div.querySelector(".bi-hand-thumbs-up").onclick = clickedLike;
+        div.querySelector(".bi-hand-thumbs-down").onclick = clickedDislike;
+        div.querySelector(".delete-post").onclick = delete_post;
+
+        const first_post = document.querySelectorAll(".post")[0];
+
+        first_post.parentNode.insertBefore(div.firstChild, first_post);
     });
 }

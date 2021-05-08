@@ -27,11 +27,11 @@ Route::post('api/link', 'LinkController@create');
 
 //Posts
 Route::get('post/{id}', 'PostController@show')->name('post');
-Route::get('api/post', 'PostController@showPostInfo');
+Route::get('api/post/form', 'PostController@showPostForm');
 Route::post('api/post', 'PostController@create');
+Route::get('api/post/{id}', 'PostController@showPostInfo');
 Route::delete('api/post/{id}', 'PostController@delete');
 Route::put('api/post/{id}', 'PostController@update');
-Route::get('api/post/form', 'PostController@showPostForm');
 //Route::get('posts', 'PostController@search');
 
 //Likes
