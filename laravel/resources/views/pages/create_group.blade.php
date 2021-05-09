@@ -8,6 +8,10 @@
 <link rel="stylesheet" href="{{ asset('css/create_group.css') }}" />
 @endpush
 
+@push('js_scripts')
+<script src="{{ asset('js/create_group.js') }}" defer></script>
+@endpush
+
 @section('content')
 
 <body>

@@ -46,6 +46,9 @@ class GroupController extends Controller
         $group = new Group();
         $this->authorize('create', $group);
         $group->name = $request->input('name');
+
+
+
         return $group;
     }
 
