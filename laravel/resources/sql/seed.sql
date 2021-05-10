@@ -279,13 +279,15 @@ CREATE TRIGGER liked_post_notification
 CREATE FUNCTION banned_post_notification() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    WITH "return" as (
-        INSERT INTO notification (user_id) (
-            SELECT user_id
-            FROM post
-            WHERE post.id = New.id)
-        RETURNING "id")
-    INSERT INTO "banned_post" (id, banned_post_id) SELECT "return"."id", New.id FROM "return";
+    IF EXISTS (SELECT * FROM post WHERE post.id = NEW.id AND NEW.banned = true)
+        THEN WITH "return" as (
+            INSERT INTO notification (user_id) (
+                SELECT user_id
+                FROM post
+                WHERE post.id = New.id)
+            RETURNING "id")
+        INSERT INTO "banned_post" (id, banned_post_id) SELECT "return"."id", New.id FROM "return";
+    END IF;
 	RETURN NEW;
 END
 $BODY$
