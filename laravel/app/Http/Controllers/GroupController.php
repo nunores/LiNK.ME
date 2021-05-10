@@ -46,8 +46,9 @@ class GroupController extends Controller
         $group = new Group();
         $this->authorize('create', $group);
         $group->name = $request->input('name');
+        $group->save();
 
-
+        $group->users()->attach(Auth::user()->id);
 
         return $group;
     }

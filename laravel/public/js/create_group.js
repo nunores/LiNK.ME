@@ -1,4 +1,5 @@
 const createButton = document.querySelector("#create-button-final");
+const _token = document.getElementsByName("_token")[0].getAttribute("value");
 createButton.onclick = createGroup;
 
 function createGroup() {
@@ -16,10 +17,19 @@ function createGroup() {
 
         AJAX("POST", "/api/group", {'name': groupName, _token: _token}, function() {
             console.log(this.responseText);
-            window.location = "/home";
-        });
+            console.log(JSON.parse(this.responseText));
 
-        // Aqui preciso de pegar no ID do grupo que é criado e meter entries na base de dados com cada user_id e o group_id
+            const groupId = JSON.parse(this.responseText)['id'];
+
+            userIds.forEach(userId => {
+                AJAX("POST", "/api/group/request", {'user_id': userId, 'group_id': groupId, _token: _token}, function() {
+                    console.log(this.responseText);
+
+                });
+            });
+
+            window.location = "/group/" + groupId;
+        });
 
     }
     else{
