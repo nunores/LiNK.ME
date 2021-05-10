@@ -1,3 +1,10 @@
+
+@php
+
+@endphp (Auth::user()->user == $user)
+    $checker = true
+@endif
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-2 text-center collapse" id="left-col">
