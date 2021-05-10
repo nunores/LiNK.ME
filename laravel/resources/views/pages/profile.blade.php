@@ -10,8 +10,6 @@
 
 @section('content')
 
-    @include("partials.myprofile") <!-- TODO Allow for profile information edit
-@else
-    @include("partials.other_profile")
-@endif
+@include("partials.profile")
+
 @endsection
