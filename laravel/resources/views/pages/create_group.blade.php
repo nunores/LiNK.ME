@@ -8,9 +8,13 @@
 <link rel="stylesheet" href="{{ asset('css/create_group.css') }}" />
 @endpush
 
-@section('content')
+@push('js_scripts')
+<script src="{{ asset('js/create_group.js') }}" defer></script>
+@endpush
 
+@section('content')
 <body>
+    @csrf
 	<div class="container-fluid">
 		<div class="row">
 			@include('partials.sidebar')
