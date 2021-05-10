@@ -1,7 +1,7 @@
 <div class="card bg-dark border-secondary container-fluid">
     <div class="row">
         <div class="card-body col-8">
-            @JLopes has sent you a friend request
+            {{$notification->friendRequest->user->person->username has sent you a friend request /* TODO Check this after we have friend requests in db */}}
         </div>
         <div class="notification-friend-request col-4">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
@@ -13,4 +13,3 @@
         </div>
     </div>
 </div>
-

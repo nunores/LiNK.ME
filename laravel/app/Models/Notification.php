@@ -75,7 +75,7 @@ class Notification extends Model
      */
     public function bannedComment()
     {
-        return $this->hasOne(BannedComment::class, 'banned_comment_idd');
+        return $this->hasOne(BannedComment::class, 'banned_comment_id');
     }
 
     /**
