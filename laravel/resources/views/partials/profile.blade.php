@@ -46,7 +46,7 @@
             @endif
             <div class="person-friends">
                 @php
-                    $links = Auth::user()->user->links;
+                    $links = $user->links;
                     @endphp
                 @for ($i = 0; $i < count($links) && $i < 10; $i++) <!-- TODO Change limit number or remove -->
                 @include('partials.friend', ['user' => $links[$i] ])
