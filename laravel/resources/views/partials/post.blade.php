@@ -110,7 +110,7 @@
 		</div>
 	</div>
 	<div class="post-comments">
-        @if (count($comments->where('deleted', '=', false)) > 0)
+        @if (count($comments) > 0)
             <hr>
         @endif
         @if (Auth::check())

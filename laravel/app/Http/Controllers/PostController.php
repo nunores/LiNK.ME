@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Person;
 use App\Models\User;
 use App\Models\Post;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -22,13 +24,21 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $post = new Post();
+        $post->user_id = Auth::user()->id;
+
+        $post->description = $request->input('description');
+        if ($request->input("group_id") != null) {
+            $post->private = "false";
+            $post->group_id = $request->input('group_id');
+        } else {
+            $post->private = $request->input('private');
+            $post->group_id = null;
+        }
+        if ($request->input('picture') != null)
+            $post->picture = public_path() . "images/posts/" . $post->id . ".png";
+
         $this->authorize('create', $post);
 
-        $post->user_id = Auth::user()->id;
-        $post->picture = $request->input('picture');
-        $post->description = $request->input('description');
-        $post->private = $request->input('private');
-        $post->group_id = $request->input('group_id');
         $post->save();
 
         return $post;
@@ -44,15 +54,15 @@ class PostController extends Controller
         return $post;
     }
 
-    public function showPostInfo(Request $request)
+    public function showPostInfo(Request $request, $id)
     {
-        $post = Post::find($request->query('id'));
+        $post = Post::find($id);
 
         if ($post == null) {
             return null;
         }
 
-        return $post;
+        return view("partials.post", ["post" => $post, "comments" => $post->comments->where("deleted", "=", false)->take(2)]);
     }
 
     public function update(Request $request, $id)
@@ -64,5 +74,11 @@ class PostController extends Controller
         $post->private = $request->input('private');
 
         return $post;
+    }
+
+    public function showPostForm()
+    {
+        $this->authorize('form', Post::class);
+        return view("partials.post_form");
     }
 }

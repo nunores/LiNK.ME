@@ -23,7 +23,7 @@ class GroupController extends Controller
         $group = Group::find($id);
         $this->authorize('show', $group);
         $links = Auth::user()->user->getLinks();
-        $posts = $group->posts;
+        $posts = $group->posts->sortByDesc('id');
         return view('pages.group', ['group' => $group, 'posts' => $posts, 'links' => $links]);
     }
 
@@ -54,8 +54,8 @@ class GroupController extends Controller
         $group_request = new GroupRequest();
         $this->authorize('request', Group::class);
 
+        // Removes all group request notifications similiar to the one being created
         $old_group_requests = GroupRequest::all()->where("group_id", "=", $request->input('group_id'));
-
         foreach ($old_group_requests as $old_group_request) {
             if ($old_group_request->notification->user_id == $request->input('user_id')) {
                 $old_group_request->notification->delete();
