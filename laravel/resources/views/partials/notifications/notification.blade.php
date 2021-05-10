@@ -21,5 +21,3 @@
 @if ($notification->groupRequest != null)
     @include('partials.notifications.notification_types.', ['notification' => $notification])
 @endif
-
-

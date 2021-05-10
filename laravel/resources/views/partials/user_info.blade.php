@@ -37,7 +37,7 @@
     @endfor
     @if ($checker1 && !$checker)
         <br>
-        <button type="button" id="link-us" class="btn btn-outline-primary">LiNK US</button>
+        <button type="button" id="link-us" class="btn btn-outline-primary">LiNK US</button> <!-- TODO Make this button work -->
     @endif
     <div class="collapse" id="change-password-form">
         <div class="card bg-dark border-secondary">
