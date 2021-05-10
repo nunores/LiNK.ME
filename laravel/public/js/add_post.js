@@ -6,14 +6,14 @@ return_button.onclick = return_form;
 
 function add_post_form() {
     AJAX("GET", "/api/post/form", {_token: _token}, function () {
-        const first_post = document.querySelectorAll(".post")[0];
+        const center_col = document.querySelector("#center-col");
 
         const div = document.createElement("div");
         div.innerHTML = this.responseText.trim();
         div.querySelector("#add-post-icon").onclick = add_post;
         div.querySelector("#add-post-file").onchange = add_image;
 
-        first_post.parentNode.insertBefore(div.firstChild, first_post);
+        center_col.prepend(div.firstChild);
         add_post_button.hidden = true;
         return_button.hidden = false;
     });
@@ -86,8 +86,10 @@ function insert_added_post(post_id) {
         div.querySelector(".bi-hand-thumbs-down").onclick = clickedDislike;
         div.querySelector(".delete-post").onclick = delete_post;
 
-        const first_post = document.querySelectorAll(".post")[0];
+        const center_col = document.querySelector("#center-col");
 
-        first_post.parentNode.insertBefore(div.firstChild, first_post);
+        center_col.prepend(div.firstChild);
+        add_post_button.hidden = false;
+        return_button.hidden = true;
     });
 }
