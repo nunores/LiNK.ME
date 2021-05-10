@@ -23,7 +23,7 @@ class GroupController extends Controller
         $group = Group::find($id);
         $this->authorize('show', $group);
         $links = Auth::user()->user->getLinks();
-        $posts = $group->posts;
+        $posts = $group->posts->sortByDesc('id');
         return view('pages.group', ['group' => $group, 'posts' => $posts, 'links' => $links]);
     }
 

@@ -99,6 +99,7 @@ body > div.container-fluid {
 }
 
 .add-post-icon {
+    cursor: pointer;
     position: fixed;
     left: 90%;
     bottom: 2%;

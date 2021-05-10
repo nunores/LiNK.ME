@@ -30,7 +30,7 @@ function addCommentHTML(id){
 
         const div = document.createElement('div');
         div.innerHTML = html.trim();
-
+        div.querySelector(".delete-comment").onclick = delete_comment;
 
         const form = document.querySelector('.post-comments > form');
         insertAfter(div.firstChild, form);

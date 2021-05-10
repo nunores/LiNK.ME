@@ -42,9 +42,19 @@ class PostPolicy
         return true;
     }
 
-    public function create(Person $person)
+    public function create(Person $person, Post $post)
     {
-        return Auth::user() == $person && !Auth::user()->isAdmin;
+        if (!Auth::check() || Auth::user()->is_admin) return false; // Guests and admins can't create posts
+        if (Auth::user()->id != $post->user_id) return false; // If post is not from user it can't create id
+        if ($post->group_id != null) {
+            foreach(Auth::user()->user->groups as $group) {
+                if ($group->id == $post->group_id) {
+                    return true; // If post is for a group and user is in that group
+                }
+            }
+            return false; // If user is not in the group of the post
+        }
+        return true; // Post is not for a group and user is valid
     }
 
     public function delete(Person $person, Post $post)
@@ -55,5 +65,10 @@ class PostPolicy
     public function update(Person $person, Post $post)
     {
         return Auth::user() == $person && $person->id == $post->user_id;
+    }
+
+    public function form(Person $person)
+    {
+        return Auth::check();
     }
 }
