@@ -36,11 +36,10 @@ async function add_post() {
             image = new File([buf], "image",{ type: "image/png" })
             console.log(image);
         });
-        const group_id = document.querySelector("#group-name").getAttribute("data-group-id");
 
-        parameters = {_token: _token, description: text, picture: image, group_id: group_id};
+        parameters = {_token: _token, description: text, picture: image};
     } else {
-        parameters = {_token: _token, description: text, group_id: group_id};
+        parameters = {_token: _token, description: text};
     }
     AJAX("POST", "/api/post", parameters, function () {
         console.log(this.responseText);

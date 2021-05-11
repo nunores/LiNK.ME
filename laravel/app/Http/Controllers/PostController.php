@@ -31,7 +31,13 @@ class PostController extends Controller
             $post->private = "false";
             $post->group_id = $request->input('group_id');
         } else {
-            $post->private = $request->input('private');
+            if ($request->input('private') !== null)
+            {
+                $post->private = $request->input('private');
+            }
+            else{
+                $post->private = false;
+            }
             $post->group_id = null;
         }
         if ($request->input('picture') != null)
