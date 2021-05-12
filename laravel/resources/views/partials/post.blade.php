@@ -133,10 +133,11 @@
             </div>
         </form>
         @endif
+
 		<!-- Reverse Order for inverse chronological sorting -->
-		@for ($i = count($comments) - 1; $i >= 0; $i--)
-			@include('partials.comment', ['comment' => $comments[$i]])
-		@endfor
+        @foreach ($comments as $comment)
+            @include('partials.comment', ['comment' => $comment])
+        @endforeach
 
 	</div>
 </div>
