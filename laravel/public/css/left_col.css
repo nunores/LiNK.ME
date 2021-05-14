@@ -71,6 +71,10 @@
     color: var(--green);
 }
 
+.bi-people {
+    margin-left: 1rem;
+}
+
 /*Carousel*/
 
 #groups {
@@ -90,6 +94,10 @@
 .group-carousel {
     display: inline-block;
     padding: 1rem;
+    width: 70px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .group-image-name {

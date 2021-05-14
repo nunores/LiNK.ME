@@ -27,11 +27,7 @@ class RecoverController extends Controller
         if ($user == null) {
             return view("auth.recover");
         }
-        $data = array('name'=>"LiNK.ME");
-        Mail::send('mail', $data, function($message, $user) {
-            $message->to($user->email, $user->username)->subject('Test Mail');
-            $message->from('noreply@link.me','LiNK.ME');
-        });
-        return view("login");
+        // Send Mail
+        return redirect("login");
     }
 }

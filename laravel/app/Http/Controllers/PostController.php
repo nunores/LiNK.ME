@@ -88,6 +88,9 @@ class PostController extends Controller
         $this->authorize('form', Post::class);
         return view("partials.post_form");
     }
+
+
+
 }
 
 

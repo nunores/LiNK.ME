@@ -28,14 +28,16 @@
 			@include('partials.sidebar')
             <div class="col-8">
                 <div id="center-col">
+                    <div class="group-name">
+                        <p>{{ $group->name }}</p>
+                    </div>
 					@foreach ($posts as $post)
 						@include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->take(2)])
 					@endforeach
 				</div>
 			</div>
 
-            <div id="group-name" class="col-2 group-name" data-group-id="{{ $group->id }}">
-                <p>{{ $group->name }}</p>
+            <div id="add-friends-group" class="col-2" data-group-id="{{ $group->id }}">
                 <form id="add-search" class="d-flex">
                     <input class="form-control search" type="search" placeholder="Search" aria-label="Search">
                     <div id="search-icon-phone">

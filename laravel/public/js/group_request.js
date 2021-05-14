@@ -1,5 +1,5 @@
 const group_request_buttons = document.querySelectorAll(".group-request-button");
-const group_id = document.querySelector("#group-name").getAttribute("data-group-id");
+const group_id = document.querySelector("#add-friends-group").getAttribute("data-group-id");
 
 group_request_buttons.forEach(button => {
     button.onclick = send_group_request;

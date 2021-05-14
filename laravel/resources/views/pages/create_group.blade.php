@@ -22,7 +22,7 @@
 				<div id="center-col">
 					<h2>Choose the name of your group</h2>
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" id="name-input-group" placeholder="Group name" aria-label="Group name" aria-describedby="basic-addon2">
+						<input type="text" class="form-control" id="name-input-group" placeholder="Group name" aria-label="Group name" aria-describedby="basic-addon2" maxlength="15">
 						<button type="button" id="create-button-final" class="btn btn-dark">Create</button>
 					</div>
 				</div>
