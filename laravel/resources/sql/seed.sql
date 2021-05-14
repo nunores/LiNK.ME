@@ -353,7 +353,7 @@ INSERT INTO "person" (username, password) VALUES ('zzsa18', '$2b$12$3gi7zi6NXP5o
 
 ---------------------------------------------- USERS (48) ----------------------------------------------------------
 
-INSERT INTO "user" (id, email, name) VALUES(3,'xamasamigo@gmail.com', 'Xamas');
+INSERT INTO "user" (id, email, name) VALUES(3,'x.pisco@gmail.com', 'Xamas');
 INSERT INTO "user" (id, email, name) VALUES(4, 'mine4ghosts@gmail.com', 'Minecraft');
 INSERT INTO "user" (id, email, name) VALUES(5, 'zezocazaah@outlook.com', 'ZEZOCA');
 INSERT INTO "user" (id, email, name) VALUES(6, 'ajeskins0@independent.co.uk', 'Abey Jeskins');

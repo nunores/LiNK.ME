@@ -60,6 +60,7 @@ class PostController extends Controller
         return $post;
     }
 
+
     public function showPostInfo(Request $request, $id)
     {
         $post = Post::find($id);
@@ -88,3 +89,5 @@ class PostController extends Controller
         return view("partials.post_form");
     }
 }
+
+
