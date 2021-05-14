@@ -89,6 +89,29 @@ class PostController extends Controller
         return view("partials.post_form");
     }
 
+    public function search(Request $request)
+    {
+        //$posts = DB::table('post')->join('user', "post.user_id", "=", "user.id")->whereRaw('to_tsvector("post"."description" || \' \' || "user"."name") @@ plainto_tsquery(?)', ['paper'])->get();
+        $posts = DB::select('SELECT post.* FROM "post" JOIN "user" ON "user"."id" = "post"."user_id" WHERE to_tsvector("post"."description" || \' \' || "user"."name") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
+
+        // $posts = Post::all()->where('to_tsvector(post.description)', '@@', 'plainto_tsquery(' . 'paper' .')');
+        // $users = User::all()->where('to_tsvector("user".name)', '@@', 'plainto_tsquery(' . 'paper' .')');
+
+        // foreach($users as $user) {
+            // $posts->merge($user->posts);
+        // }
+
+        $final = [];
+        foreach ($posts as $post) {
+            array_push($final, Post::find($post->id));
+        }
+
+        if (Auth::check()) {
+            return view('pages.home', ['posts' => $final]);
+        } else {
+            return redirect('login');
+        }
+    }
 
 
 }
