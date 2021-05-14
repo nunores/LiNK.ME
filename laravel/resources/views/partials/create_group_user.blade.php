@@ -16,6 +16,7 @@
                 <span id="name-tag"> {{ '@' . $user->person->username }} </span>
                 <span id="person-name"> {{ $user->name }} </span>
             </a>
+            <span hidden>{{$user->id}}</span>
         </div>
     </div>
 </div>

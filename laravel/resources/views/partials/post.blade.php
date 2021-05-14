@@ -39,8 +39,8 @@
 				</div>
                 @if ($post->picture != null)
                     <div class="post-content">
-                        @if (file_exists('images/posts/' . $post->user->id . '.png'))
-                            <img src="{{ asset($post->picture) . '.png' }}" alt="Post image">
+                        @if (file_exists('images/posts/' . $post->id . '.png'))
+                            <img src="{{ $post->picture . '.png' }}" alt="Post image">
                         @else
                             <img src="{{ asset('images/posts/default.png') }}" alt="Post image">
                         @endif
@@ -133,10 +133,11 @@
             </div>
         </form>
         @endif
+
 		<!-- Reverse Order for inverse chronological sorting -->
-		@for ($i = count($comments) - 1; $i >= 0; $i--)
-			@include('partials.comment', ['comment' => $comments[$i]])
-		@endfor
+        @foreach ($comments as $comment)
+            @include('partials.comment', ['comment' => $comment])
+        @endforeach
 
 	</div>
 </div>

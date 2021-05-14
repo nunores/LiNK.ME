@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Person;
 use App\Models\User;
 use App\Models\Post;
+use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,14 +32,22 @@ class PostController extends Controller
             $post->private = "false";
             $post->group_id = $request->input('group_id');
         } else {
-            $post->private = $request->input('private');
+            if ($request->input('private') !== null)
+            {
+                $post->private = $request->input('private');
+            }
+            else{
+                $post->private = false;
+            }
             $post->group_id = null;
         }
-        if ($request->input('picture') != null)
-            $post->picture = public_path() . "images/posts/" . $post->id . ".png";
-
         $this->authorize('create', $post);
+        $post->save();
 
+        if ($request->has('picture')) {
+            $post->picture = asset("/images/posts/" . $post->id);
+            $request->file('picture')->move(public_path() . "/images/posts/", $post->id . ".png");
+        }
         $post->save();
 
         return $post;
@@ -53,6 +62,7 @@ class PostController extends Controller
 
         return $post;
     }
+
 
     public function showPostInfo(Request $request, $id)
     {
@@ -81,4 +91,32 @@ class PostController extends Controller
         $this->authorize('form', Post::class);
         return view("partials.post_form");
     }
+
+    public function search(Request $request)
+    {
+        //$posts = DB::table('post')->join('user', "post.user_id", "=", "user.id")->whereRaw('to_tsvector("post"."description" || \' \' || "user"."name") @@ plainto_tsquery(?)', ['paper'])->get();
+        $posts = DB::select('SELECT post.* FROM "post" JOIN "user" ON "user"."id" = "post"."user_id" WHERE to_tsvector("post"."description" || \' \' || "user"."name") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
+
+        // $posts = Post::all()->where('to_tsvector(post.description)', '@@', 'plainto_tsquery(' . 'paper' .')');
+        // $users = User::all()->where('to_tsvector("user".name)', '@@', 'plainto_tsquery(' . 'paper' .')');
+
+        // foreach($users as $user) {
+            // $posts->merge($user->posts);
+        // }
+
+        $final = [];
+        foreach ($posts as $post) {
+            array_push($final, Post::find($post->id));
+        }
+
+        if (Auth::check()) {
+            return view('pages.home', ['posts' => $final]);
+        } else {
+            return redirect('login');
+        }
+    }
+
+
 }
+
+

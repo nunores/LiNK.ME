@@ -10,7 +10,7 @@
     </div>
     <div class="post-name col-6">
         <a href="{{ route('user', ["id" => $user->id]) }}">
-            <span id="name-tag-{{ $user->id }}" class="person-friends-name-tag"> {{ '@' . $user->person->username }} </span>
+            <span id="name-tag-{{ $user->id }}" data-user-name="{{ $user->name }}" class="person-friends-name-tag"> {{ '@' . $user->person->username }} </span>
         </a>
     </div>
     <div class="add-person">

@@ -3,8 +3,16 @@
 }
 
 .group-name  > p{
-    font-size: 5rem;
+    font-size: 3rem;
     margin-top: 1rem;
+    vertical-align: middle;
+}
+
+#add-friends-group{
+    margin-top: 2rem;
+    position: sticky;
+    top: 2rem;
+    max-height: 60vh;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -42,7 +50,7 @@
 }
 
 .person-friends {
-	max-height: 20%;
+    height: 100%;
 	overflow: auto;
 	margin-top: 1rem;
 	margin-bottom: 3rem;

@@ -47,7 +47,7 @@
                     @php
                         $links = $user->links;
                         @endphp
-                    @for ($i = 0; $i < count($links) && $i < 300; $i++) <!-- TODO Change limit number or remove -->
+                    @for ($i = 0; $i < count($links) && $i < 300; $i++)
                     @include('partials.friend', ['user' => $links[$i] ])
                     @endfor
                 </div>

@@ -13,6 +13,8 @@ function delete_post() {
         console.log(this.responseText);
         const post = clickedButton.parentNode.parentNode.parentNode.parentNode;
         post.remove();
-        window.location = "/home";
+        if (location.pathname.startsWith("/post")) {
+            window.location = "/home";
+        }
     })
 }
