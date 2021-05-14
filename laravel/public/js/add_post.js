@@ -5,7 +5,8 @@ add_post_button.onclick = add_post_form;
 return_button.onclick = return_form;
 
 function add_post_form() {
-    AJAX("GET", "/api/post/form", {_token: _token}, function () {
+    AJAX("GET", "/api/post/form", { _token: _token }, function () {
+        const group_name = document.querySelector(".group-name");
         const center_col = document.querySelector("#center-col");
 
         const div = document.createElement("div");
@@ -13,7 +14,11 @@ function add_post_form() {
         div.querySelector("#add-post-icon").onclick = add_post;
         div.querySelector("#add-post-file").onchange = add_image;
 
-        center_col.prepend(div.firstChild);
+        if (group_name != null) {
+            insertAfter(div.firstChild, group_name);
+        } else {
+            center_col.prepend(div.firstChild);
+        }
         add_post_button.hidden = true;
         return_button.hidden = false;
     });
@@ -33,13 +38,25 @@ async function add_post() {
     if (url != null) {
         var image;
         await fetch(url).then(res => res.arrayBuffer()).then(buf => {
-            image = new File([buf], "image",{ type: "image/png" })
+            image = new File([buf], "image", { type: "image/png" })
             console.log(image);
         });
 
-        parameters = {_token: _token, description: text, picture: image};
+        if (location.pathname.startsWith("/group")) {
+            const group_id = document.querySelector(".group-name").getAttribute("data-group-id");
+
+            parameters = { _token: _token, description: text, picture: image, group_id: group_id };
+        } else {
+            parameters = { _token: _token, description: text, picture: image };
+        }
     } else {
-        parameters = {_token: _token, description: text};
+        if (location.pathname.startsWith("/group")) {
+            const group_id = document.querySelector(".group-name").getAttribute("data-group-id");
+
+            parameters = { _token: _token, description: text, group_id: group_id };
+        } else {
+            parameters = { _token: _token, description: text };
+        }
     }
     AJAX("POST", "/api/post", parameters, function () {
         console.log(this.responseText);
@@ -75,7 +92,7 @@ function add_image(event) {
 }
 
 function insert_added_post(post_id) {
-    AJAX("GET", "/api/post/" + post_id, {_token: _token }, function () {
+    AJAX("GET", "/api/post/" + post_id, { _token: _token }, function () {
         console.log(this.responseText);
 
         const div = document.createElement("div");
@@ -85,9 +102,14 @@ function insert_added_post(post_id) {
         div.querySelector(".bi-hand-thumbs-down").onclick = clickedDislike;
         div.querySelector(".delete-post").onclick = delete_post;
 
+        const group_name = document.querySelector(".group-name");
         const center_col = document.querySelector("#center-col");
 
-        center_col.prepend(div.firstChild);
+        if (group_name != null) {
+            insertAfter(div.firstChild, group_name);
+        } else {
+            center_col.prepend(div.firstChild);
+        }
         add_post_button.hidden = false;
         return_button.hidden = true;
     });

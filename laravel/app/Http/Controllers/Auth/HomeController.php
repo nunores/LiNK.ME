@@ -17,7 +17,7 @@ class HomeController extends Controller
             $links = Auth::user()->user->getLinks()->map(function($link) {
                 return $link->id;
             });
-            $posts = Post::all()->whereIn('user_id', $links)->where('banned', '=', false);
+            $posts = Post::all()->whereIn('user_id', $links)->where('banned', '=', false)->take(20);
             return view('pages.home', ['posts' => $posts]);
         } else {
             return redirect('login');

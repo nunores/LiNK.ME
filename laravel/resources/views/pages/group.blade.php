@@ -28,7 +28,7 @@
 			@include('partials.sidebar')
             <div class="col-8">
                 <div id="center-col">
-                    <div class="group-name">
+                    <div class="group-name" data-group-id="{{ $group->id }}">
                         <p>{{ $group->name }}</p>
                     </div>
 					@foreach ($posts as $post)
