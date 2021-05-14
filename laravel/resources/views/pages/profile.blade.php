@@ -8,6 +8,12 @@
 <link rel="stylesheet" href="{{ asset('css/profile.css') }}" />
 @endpush
 
+@push('js_scripts')
+<script src="{{ asset('js/friend_request.js') }}" defer></script>
+@endpush
+
+
+
 @section('content')
 
 @include("partials.profile")
