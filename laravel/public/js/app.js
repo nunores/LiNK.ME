@@ -38,3 +38,7 @@ function AJAX(method, relative_url, parameters, onLoadFunction) {
 function insertAfter(newNode, referenceNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
+
+function refreshPage() {
+    window.location = location;
+}

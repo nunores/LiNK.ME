@@ -39,8 +39,8 @@
 				</div>
                 @if ($post->picture != null)
                     <div class="post-content">
-                        @if (file_exists('images/posts/' . $post->user->id . '.png'))
-                            <img src="{{ asset($post->picture) . '.png' }}" alt="Post image">
+                        @if (file_exists('images/posts/' . $post->id . '.png'))
+                            <img src="{{ $post->picture . '.png' }}" alt="Post image">
                         @else
                             <img src="{{ asset('images/posts/default.png') }}" alt="Post image">
                         @endif

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Person;
 use App\Models\User;
 use App\Models\Post;
+use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -40,11 +41,13 @@ class PostController extends Controller
             }
             $post->group_id = null;
         }
-        if ($request->input('picture') != null)
-            $post->picture = public_path() . "images/posts/" . $post->id . ".png";
-
         $this->authorize('create', $post);
+        $post->save();
 
+        if ($request->has('picture')) {
+            $post->picture = asset("/images/posts/" . $post->id);
+            $request->file('picture')->move(public_path() . "/images/posts/", $post->id . ".png");
+        }
         $post->save();
 
         return $post;
