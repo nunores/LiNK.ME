@@ -9,6 +9,11 @@
 @endpush
 
 @push('js_scripts')
+<script src="{{ asset('js/likes.js') }}" defer></script>
+<script src="{{ asset('js/delete_post.js') }}" defer></script>
+<script src="{{ asset('js/delete_comment.js') }}" defer></script>
+<script src="{{ asset('js/comments.js') }}" defer></script>
+<script src="{{ asset('js/commentTextArea.js') }}" defer></script>
 <script src="{{ asset('js/friend_request.js') }}" defer></script>
 @endpush
 
