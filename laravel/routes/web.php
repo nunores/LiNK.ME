@@ -20,6 +20,7 @@ Route::post('api/user', 'UserController@getUserInfo');
 Route::put('api/user', 'UserController@create');
 Route::delete('api/user/{id}', 'UserController@delete');
 Route::get('users', 'UserController@search');
+Route::put('api/user/name', 'UserController@changeName');
 
 //Links
 Route::get('api/link', 'LinkController@showUserLinks');

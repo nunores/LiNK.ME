@@ -15,6 +15,7 @@
 <script src="{{ asset('js/comments.js') }}" defer></script>
 <script src="{{ asset('js/commentTextArea.js') }}" defer></script>
 <script src="{{ asset('js/friend_request.js') }}" defer></script>
+<script src="{{ asset('js/change_name.js') }}" defer></script>
 @endpush
 
 

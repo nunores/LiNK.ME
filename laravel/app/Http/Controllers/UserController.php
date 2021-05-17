@@ -67,5 +67,14 @@ class UserController extends Controller
         return $user;
     }
 
+    public function changeName(Request $request)
+    {
+        $user = Auth::user()->user;
+        $user->name = $request->input('text');
+        $user->save();
+
+        return $user;
+    }
+
 
 }
