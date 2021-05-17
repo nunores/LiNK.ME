@@ -1,6 +1,7 @@
 const change_name_buttons = document.querySelectorAll("#change-name-icon");
 const name_boxes = document.querySelector(".change-name-form");
 const submit_name_buttons = document.querySelectorAll(".change-name");
+const post_names = document.querySelectorAll("#person-name");
 
 submit_name_buttons.forEach(submit_button => {
     submit_button.onclick = changeName;
@@ -18,5 +19,8 @@ function changeName(){
         const replace = div.innerHTML.substring(oldname.length, div.innerHTML.length);
         div.innerHTML = text + replace;
         name_boxes.parentNode.remove();
+        post_names.forEach(post_name => {
+            post_name.innerHTML = text;
+        });
     });
 }
