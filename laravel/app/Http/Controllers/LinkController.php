@@ -43,6 +43,14 @@ class LinkController extends Controller
         $friend_request = new FriendRequest();
         $this->authorize('request', Group::class);
 
+        $old_friend_requests = FriendRequest::all()->where("user_id_request", "=", Auth::user()->user->id);
+        foreach ($old_friend_requests as $old_friend_request) {
+            if ($old_friend_request->notification->user_id == $request->input('user_id')) {
+                $old_friend_request->notification->delete();
+                $old_friend_request->delete();
+            }
+        }
+
 
         $notification->user_id = $request->input('user_id');
         $notification->save();
