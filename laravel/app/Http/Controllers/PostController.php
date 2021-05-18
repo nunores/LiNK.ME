@@ -110,7 +110,7 @@ class PostController extends Controller
         }
 
         if (Auth::check()) {
-            return view('pages.home', ['posts' => $final]);
+            return view('pages.search_posts', ['posts' => $final]);
         } else {
             return redirect('login');
         }
