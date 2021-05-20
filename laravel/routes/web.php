@@ -19,7 +19,7 @@ Route::get('user/{id}', 'UserController@show')->name('user');
 Route::post('api/user', 'UserController@getUserInfo');
 Route::put('api/user', 'UserController@create');
 Route::delete('api/user/{id}', 'UserController@delete');
-Route::get('users', 'UserController@search');
+Route::get('users', 'UserController@search')->name('users');
 
 //Links
 Route::get('api/link', 'LinkController@showUserLinks');

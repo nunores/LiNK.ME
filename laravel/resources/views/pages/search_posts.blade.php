@@ -18,7 +18,7 @@
                         <div class="row search-options-row">
                             <div class="search-options">
                                 <div class="col-3">
-                                    <a href="search_people.php" class="search-option search-option-people">
+                                    <a href="{{ route('users') }}" class="search-option search-option-people">
                                         People
                                     </a>
                                 </div>
@@ -39,7 +39,7 @@
                                 @for ($i = 0; $i < count($posts); $i++)
                                     @if ($i % 2 == 0)
                                         <div class="row people-row">
-                                        
+
                                     @endif
                                     @include('partials.post_header', ['post' => $posts[$i]])
                                     @if ($i % 2 == 1)

@@ -10,6 +10,7 @@
 
 @push('js_scripts')
 <script src="{{ asset('js/create_group.js') }}" defer></script>
+<script src="{{ asset('js/search_group.js') }}" defer></script>
 @endpush
 
 @section('content')
@@ -30,7 +31,7 @@
 					<h2>Choose the friends you want in your group</h2>
 
 					<div id="search-friends-group">
-						<form class="d-flex">
+						<form class="d-flex" id="search_group">
 							<input class="form-control" id="search-group" type="search" placeholder="Search" aria-label="Search">
 							<div id="search-icon-phone">
 								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

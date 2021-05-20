@@ -67,4 +67,23 @@ class UserController extends Controller
         return $user;
     }
 
+
+    public function search(Request $request)
+    {
+        //$users = DB::select('SELECT user.* FROM "user" JOIN "person" ON "user"."id" = "person"."id" WHERE UPPER("user"."name") LIKE UPPER(CONCAT(:search, \' % \')) OR UPPER("person"."username") LIKE UPPER(CONCAT(:search, \' % \')) OR to_tsvector("user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
+
+        $users = User::all(); //TODO: Arranjar a query
+
+        $final = [];
+        foreach ($users as $user) {
+            array_push($final, User::find($user->id));
+        }
+
+        if (Auth::check()) {
+            return view('pages.search_people', ['users' => $users]);
+        } else {
+            return redirect('login');
+        }
+    }
+
 }

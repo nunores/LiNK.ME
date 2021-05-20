@@ -11,7 +11,7 @@
 			<a href="{{ route('home') }}">LiNK.ME</a>
 		</h1>
 
-		<form class="d-flex" mehtod="GET" action="{{ route('posts') }}">
+		<form class="d-flex" method="GET" action="{{ route('posts') }}">
 			<input required class="form-control search" type="search" name="search" placeholder="Search" aria-label="Search">
 			<div id="search-icon-phone">
 				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
