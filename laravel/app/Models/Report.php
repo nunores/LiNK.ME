@@ -35,7 +35,7 @@ class Report extends Model
      */
     public function post()
     {
-        return $this->belongsTo(Post::class, 'foreign_key', 'other_key');
+        return $this->belongsTo(Post::class, 'post_id');
     }
 
     /**

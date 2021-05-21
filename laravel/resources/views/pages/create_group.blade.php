@@ -18,7 +18,7 @@
     @csrf
 	<div class="container-fluid">
 		<div class="row">
-			@include('partials.sidebar')
+			@include('partials.sidebar.sidebar', ["page" => "create_group"])
 			<div class="col-8">
 				<div id="center-col">
 					<h2>Choose the name of your group</h2>

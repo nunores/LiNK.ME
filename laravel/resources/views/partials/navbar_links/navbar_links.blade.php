@@ -5,7 +5,7 @@ use App\Models\User;
 
 @if (Auth::check())
     @if (Auth::user()->is_admin == true)
-        @include('partial.navbar_links.admin_links')
+        @include('partials.navbar_links.admin_links')
     @else
         @include('partials.navbar_links.normal_links')
     @endif

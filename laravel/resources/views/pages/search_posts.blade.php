@@ -11,14 +11,14 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            @include('partials.sidebar')
+            @include('partials.sidebar.sidebar', ["page" => "search"])
             <div class="col-10">
                 <div id="center-col">
                     <div class="container-fluid">
                         <div class="row search-options-row">
                             <div class="search-options">
                                 <div class="col-3">
-                                    <a href="{{ route('users') }}" class="search-option search-option-people">
+                                    <a href="{{ route('users', ['search' => $search]) }}" class="search-option search-option-people">
                                         People
                                     </a>
                                 </div>
@@ -28,7 +28,7 @@
                                     </a>
                                 </div>
                                 <div class="col-3">
-                                    <a href="search_groups.php" class="search-option search-option-groups">
+                                    <a href="{{ route('groups', ['search' => $search]) }}" class="search-option search-option-groups">
                                         Groups
                                     </a>
                                 </div>

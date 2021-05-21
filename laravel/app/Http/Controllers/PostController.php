@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BannedPost;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -53,12 +55,25 @@ class PostController extends Controller
         return $post;
     }
 
-    public function delete($id)
+    public function delete(Request $request, $id)
     {
         $post = Post::find($id);
 
         $this->authorize('delete', $post);
         $post->update(["banned" => 'true']);
+
+        if ($request->input("admin") == true) {
+            $notification = new Notification();
+            $banned_post = new BannedPost();
+            $notification->user_id = Auth::user()->id;
+            $banned_post->banned_post_id = $id;
+            DB::beginTransaction();;
+            $this->saveNotifications($notification, $banned_post);
+            if ( !$notification || !$banned_post)
+                DB::rollback();
+            else
+                DB::commit();
+        }
 
         return $post;
     }
@@ -94,15 +109,7 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        //$posts = DB::table('post')->join('user', "post.user_id", "=", "user.id")->whereRaw('to_tsvector("post"."description" || \' \' || "user"."name") @@ plainto_tsquery(?)', ['paper'])->get();
-        $posts = DB::select('SELECT post.* FROM "post" JOIN "user" ON "user"."id" = "post"."user_id" WHERE to_tsvector("post"."description" || \' \' || "user"."name") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
-
-        // $posts = Post::all()->where('to_tsvector(post.description)', '@@', 'plainto_tsquery(' . 'paper' .')');
-        // $users = User::all()->where('to_tsvector("user".name)', '@@', 'plainto_tsquery(' . 'paper' .')');
-
-        // foreach($users as $user) {
-            // $posts->merge($user->posts);
-        // }
+        $posts = DB::select('SELECT post.* FROM "post" JOIN "user" ON "user"."id" = "post"."user_id" JOIN "person" ON "person"."id" = "user"."id" WHERE to_tsvector("post"."description" || \' \' || "user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
 
         $final = [];
         foreach ($posts as $post) {
@@ -110,9 +117,25 @@ class PostController extends Controller
         }
 
         if (Auth::check()) {
-            return view('pages.search_posts', ['posts' => $final]);
+            return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search")]);
         } else {
             return redirect('login');
+        }
+    }
+
+    public function postOrder($recent, $general)
+    {
+        if ($recent == 'true' && $general == 'true'){
+            $posts = Post::all()->where('banned', '=', false)->take(20);
+            return view('partials.home_center_col',  ['posts' => $posts]);
+        }
+        else if ($recent == 'true' && $general == 'false'){
+            $links = Auth::user()->user->getLinks()->map(function($link) {
+                return $link->id;
+            });
+            Log::debug($links);
+            $posts = Post::all()->whereIn('user_id', $links)->where('banned', '=', false)->take(20);
+            return view('partials.home_center_col',  ['posts' => $posts]);
         }
     }
 

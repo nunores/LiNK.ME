@@ -7,24 +7,13 @@
                 <path d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995z" />
             </svg>
         </div>
-        <div class="card bg-dark border-secondary container-fluid">
-            <div class="row">
-                <div class="card-body col-8">
-                    This post has been reported by @SeixoPaulo
-                </div>
-            </div>
-        </div>
+        @foreach ($reports as $report)
+            @include('partials.report.report', ['report' => $report])
+        @endforeach
         <div class="card bg-dark border-secondary container-fluid">
             <div class="row">
                 <div class="card-body col-8">
                     This post has been reported by @joao0903
-                </div>
-            </div>
-        </div>
-        <div class="card bg-dark border-secondary container-fluid">
-            <div class="row">
-                <div class="card-body col-8">
-                    This comment has been reported by @20comer100saberes
                 </div>
             </div>
         </div>

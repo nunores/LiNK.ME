@@ -33,6 +33,7 @@ Route::get('api/post/{id}', 'PostController@showPostInfo');
 Route::delete('api/post/{id}', 'PostController@delete');
 Route::put('api/post/{id}', 'PostController@update');
 Route::get('posts', 'PostController@search')->name('posts');
+Route::get('api/posts/{recent}/{general}', 'PostController@postOrder');
 
 //Likes
 Route::get('api/like/{id}', 'LikeController@getLikesDislikes');
@@ -57,7 +58,7 @@ Route::get('group', 'GroupController@createForm')->name('create_group');
 Route::get('api/group', 'GroupController@getUserGroups');
 Route::post('api/group', 'GroupController@create');
 Route::post('api/group/request', 'GroupController@request');
-Route::get('groups', 'GroupController@search');
+Route::get('groups', 'GroupController@search')->name('groups');
 /*
 // Cards
 Route::get('cards', 'CardController@list');

@@ -7,6 +7,7 @@ function search_group_function(event) {
     event.preventDefault();
     const value = this.querySelector("input[type=search]").value;
     const headers = document.querySelectorAll(".people-row");
+    let searched = [];
     headers.forEach(header => {
         const div_search_people = header.querySelectorAll(".search-people")[0];
         const div_checkbox = div_search_people.nextElementSibling;
@@ -20,15 +21,33 @@ function search_group_function(event) {
         const username2 = div_search_people2.querySelector("#name-tag").innerHTML
         const name2 = div_search_people2.querySelector("#person-name").innerHTML
 
-        console.log(username1)
-        console.log(name1)
-        console.log(username2)
-        console.log(name2)
+        header.hidden = true;
 
+        if (username1.includes(value) || name1.includes(value)) {
+            searched.push(div_search_people);
+        }
+        if (username2.includes(value) || name2.includes(value)) {
+            searched.push(div_search_people2);
+        }
 
-        //TODO: tenho de tentar esconder o elemento, provavelmente vou ter de criar elementos novos e chapar onde deve ser
+        console.log(div_search_people);
 
+        //console.log(searched);
 
     });
 
+/*     let row;
+    for (let i = 0; i < searched.length; i++) {
+        if (i % 2 == 0) {
+            row = document.createElement('div');
+            row.className = "row people-row";
+        }
+        row.appendChild(searched[i]);
+        if (i % 2 == 1) {
+            headers.parent.appendChild(row);
+        }
+    }
+    if (searched.length % 2 == 1) {
+        headers.parent.appendChild(row);
+    } */
 }

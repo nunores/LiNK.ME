@@ -74,4 +74,20 @@ class GroupController extends Controller
         $group_request->save();
         return [$notification, $group_request];
     }
+
+    public function search(Request $request)
+    {
+        $groups = DB::select('SELECT "group".* FROM "group" WHERE UPPER("group"."name") LIKE UPPER(CONCAT(:search::text, \'%\'))', ['search' => $request->input('search')]);
+
+        $final = [];
+        foreach ($groups as $group) {
+            array_push($final, Group::find($group->id));
+        }
+
+        if (Auth::check()) {
+            return view('pages.search_groups', ['groups' => $final, 'search' => $request->input("search")]);
+        } else {
+            return redirect('login');
+        }
+    }
 }

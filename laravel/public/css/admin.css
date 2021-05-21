@@ -35,6 +35,16 @@
     margin: 1.5rem auto 0 auto;
     border-bottom: solid black 2px;
     padding-bottom: 1rem;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+#notifications::-webkit-scrollbar {
+	width: 2px;
+	border: solid #000 1px;
+}
+
+#notifications::-webkit-scrollbar-thumb {
+	border: solid var(--bs-light) 1px;
 }
 
 #notifications-title > p {

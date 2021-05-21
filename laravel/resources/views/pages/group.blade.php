@@ -26,7 +26,7 @@
     @csrf
 	<div class="container-fluid">
 		<div class="row">
-			@include('partials.sidebar')
+			@include('partials.sidebar.sidebar', ["page" => "group"])
             <div class="col-8">
                 <div id="center-col">
                     <div class="group-name" data-group-id="{{ $group->id }}">

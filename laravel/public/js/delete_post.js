@@ -7,9 +7,10 @@ delete_post_buttons.forEach(delete_post_button => {
 
 function delete_post() {
     const post_id = this.getAttribute("data-post-id");
+    const admin = this.getAttribute('data-admin');
     const clickedButton = this;
 
-    AJAX("DELETE", "/api/post/" + post_id, {_token: _token}, function() {
+    AJAX("DELETE", "/api/post/" + post_id, {_token: _token, admin: admin}, function() {
         console.log(this.responseText);
         const post = clickedButton.parentNode.parentNode.parentNode.parentNode;
         post.remove();

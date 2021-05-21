@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="{{ asset('css/mobile.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/post.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/left_col.css') }}" />
-<link rel="stylesheet" href="{{ asset('css/search_people.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/search_groups.css') }}" />
 @endpush
 
 {{-- @push('js_scripts')
@@ -22,7 +22,7 @@
                     <div class="row search-options-row">
                         <div class="search-options">
                             <div class="col-3">
-                                <a href="#" class="search-option search-option-people">
+                                <a href="{{ route('users', ['search' => $search]) }}" class="search-option search-option-people">
                                     People
                                 </a>
                             </div>
@@ -32,7 +32,7 @@
                                 </a>
                             </div>
                             <div class="col-3">
-                                <a href="{{ route('groups', ['search' => $search]) }}" class="search-option search-option-groups">
+                                <a href="#" class="search-option search-option-groups">
                                     Groups
                                 </a>
                             </div>
@@ -40,11 +40,11 @@
                     </div>
                     <div class="row people-section">
                         <div class="container-fluid">
-                            @for ($i = 0; $i < count($users); $i++)
+                            @for ($i = 0; $i < count($groups); $i++)
                                 @if ($i % 2 == 0)
                                     <div class="row people-row">
                                 @endif
-                                    @include('partials.search_people', ['user' => $users[$i]])
+                                    @include('partials.search_groups', ['group' => $groups[$i]])
                                 @if ($i % 2 == 1)
                                     </div>
                                 @endif
@@ -54,7 +54,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
