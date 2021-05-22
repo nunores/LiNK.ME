@@ -12,6 +12,7 @@ use App\Models\Post;
 use App\Models\Group;
 use App\Models\GroupRequest;
 use App\Models\Notification;
+use App\Models\Report;
 use App\Models\User_group;
 use Illuminate\Support\Facades\Log;
 
@@ -22,9 +23,14 @@ class GroupController extends Controller
         if (!Auth::check()) redirect("login");
         $group = Group::find($id);
         $this->authorize('show', $group);
-        $links = Auth::user()->user->getLinks();
         $posts = $group->posts->where("banned", "=", false)->sortByDesc('id');
-        return view('pages.group', ['group' => $group, 'posts' => $posts, 'links' => $links]);
+        if (!Auth::user()->is_admin) {
+            $links = Auth::user()->user->getLinks();
+            return view('pages.group', ['group' => $group, 'posts' => $posts, 'links' => $links]);
+        } else {
+            $reports = Report::all()->take(20);
+            return view('pages.group', ['group' => $group, 'posts' => $posts, 'reports' => $reports]);
+        }
     }
 
     public function createForm()

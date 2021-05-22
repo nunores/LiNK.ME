@@ -10,13 +10,6 @@
         @foreach ($reports as $report)
             @include('partials.report.report', ['report' => $report])
         @endforeach
-        <div class="card bg-dark border-secondary container-fluid">
-            <div class="row">
-                <div class="card-body col-8">
-                    This post has been reported by @joao0903
-                </div>
-            </div>
-        </div>
     </div>
     <div class="feed-change">
         <div id="feed-order">
@@ -35,8 +28,8 @@
         </div>
     </div>
     <div id="about-faq">
-        <a href="./about.php" class="link-light">About</a>
-        <span class="link-light"> | </span>
-        <a href="./faq.php" class="link-light">FAQ</a>
+		<a href="{{ route('about') }}" class="link-light">About</a>
+		<span class="link-light"> | </span>
+		<a href="{{ route('faq') }}" class="link-light">FAQ</a>
     </div>
 </div>
