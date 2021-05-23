@@ -8,9 +8,8 @@ function changePassword() {
     const old_pass = change_form.querySelector("#old-password").value;
     const new_pass = change_form.querySelector("#new-password").value;
     const confirm_pass = change_form.querySelector("#confirm-password").value;
-    const print = 
-
-    if (old_pass == ""){ //TODO Check if old pass is correct
+    console.log(test);
+    if (old_pass == test){ //TODO Check if old pass is correct
         console.log();
         if(new_pass == confirm_pass){
 
