@@ -1,4 +1,3 @@
-@csrf
 <div class="profile-info my-profile">
     <div>
         <a href="{{ route('user', ['id' => $user->id])}}">
@@ -61,10 +60,10 @@
     <div class="collapse" id="change-password-form">
         <div class="card bg-dark border-secondary">
             <form action="" class="">
-                <input type="text" class="form-control bg-dark change-password-input" placeholder="Old password">
-                <input type="text" class="form-control bg-dark change-password-input" placeholder="New password">
-                <input type="text" class="form-control bg-dark change-password-input" placeholder="Confirm password">
-                <input type="submit" class="form-control change-password-input bg-dark">
+                <input id="old-password" type="text" class="form-control bg-dark change-password-input" placeholder="Old password">
+                <input id="new-password" type="text" class="form-control bg-dark change-password-input" placeholder="New password">
+                <input id="confirm-password" type="text" class="form-control bg-dark change-password-input" placeholder="Confirm password">
+                <input id="submit-password-change" type="submit" class="form-control change-password-input bg-dark">
             </form>
         </div>
     </div>

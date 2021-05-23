@@ -18,6 +18,7 @@
 <script src="{{ asset('js/friend_request.js') }}" defer></script>
 <script src="{{ asset('js/change_name.js') }}" defer></script>
 <script src="{{ asset('js/add_post_profile.js') }}" defer></script>
+<script src="{{ asset('js/change_password.js') }}" defer></script>
 @endpush
 
 
