@@ -21,7 +21,7 @@ Route::put('api/user', 'UserController@create');
 Route::delete('api/user/{id}', 'UserController@delete');
 Route::get('users', 'UserController@search');
 Route::put('api/user/name', 'UserController@changeName');
-Route::get('users', 'UserController@search')->name('users');
+Route::get('users', 'UserController@search')->name('users'); // TODO This might be broken
 
 //Links
 Route::get('api/link', 'LinkController@showUserLinks');
