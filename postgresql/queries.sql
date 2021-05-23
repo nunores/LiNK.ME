@@ -1,3 +1,6 @@
+SELECT *
+FROM "group"
+WHERE UPPER(name) LIKE UPPER(CONCAT($search, '%'))
 ----------SELECT---------
 
 -- SELECT01 User's Information

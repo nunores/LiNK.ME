@@ -20,7 +20,7 @@ class CommentPolicy
     }
 
     public function delete(Person $person, Comment $comment) {
-        return Auth::user()->id == $comment->user->id;
+        return Auth::user()->id == $comment->user->id || Auth::user()->is_admin;
     }
 
     public function showComment(Person $person, Comment $comment) {

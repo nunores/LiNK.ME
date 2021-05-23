@@ -15,6 +15,7 @@
 <script src="{{ asset('js/delete_post.js') }}" defer></script>
 <script src="{{ asset('js/delete_comment.js') }}" defer></script>
 <script src="{{ asset('js/add_post.js') }}" defer></script>
+<script src="{{ asset('js/change_post_order.js') }}" defer></script>
 @endpush
 
 @section('content')
@@ -22,8 +23,8 @@
 <div class="container-fluid">
     @csrf
     <div class="row">
-        @include('partials.sidebar')
-        <div class="col-8">
+        @include('partials.sidebar.sidebar', ["page" => "home"])
+        <div class="col-8 center-col-col-8">
             <div id="center-col">
                 @foreach ($posts as $post)
                     @include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->take(2)])

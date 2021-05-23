@@ -86,8 +86,11 @@
     text-align: left;
 }
 
-#person-name {
+.post-description {
     font-weight: 400;
+    display: inline-block;
+    overflow: hidden;
+    max-height: 85px;
 }
 
 .search-profile-pic {

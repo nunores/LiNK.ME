@@ -1,4 +1,4 @@
-<div class="col-5 search-people">
+<div class="col-6 search-people">
     <div class="post-header">
         <div class="col-4">
         </div>
@@ -18,10 +18,5 @@
             </a>
             <span hidden>{{$user->id}}</span>
         </div>
-    </div>
-</div>
-<div class="col-1 checkbox">
-    <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
     </div>
 </div>

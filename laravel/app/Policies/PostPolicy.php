@@ -59,7 +59,7 @@ class PostPolicy
 
     public function delete(Person $person, Post $post)
     {
-        return Auth::user()->id == $post->user_id;
+        return Auth::user()->id == $post->user_id || Auth::user()->is_admin;
     }
 
     public function update(Person $person, Post $post)

@@ -12,6 +12,15 @@ class BannedComment extends Model
     public $timestamps  = false;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id', 'banned_comment_id'
+    ];
+
+    /**
      * The table associated with the model.
      *
      * @var string
@@ -33,7 +42,7 @@ class BannedComment extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function post()
+    public function comment()
     {
         return $this->belongsTo(Post::class, 'banned_comment_id');
     }

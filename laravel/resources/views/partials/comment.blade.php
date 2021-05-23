@@ -18,9 +18,9 @@
                     <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
                 </svg>
             </div>
-            @if (Auth::check() && Auth::user()->id == $comment->user->id)
+            @if (Auth::check() && (Auth::user()->id == $comment->user->id || Auth::user()->is_admin))
             <!-- Only shows if owner of the comment is the current user -->
-            <div id="delete-comment-{{ $comment->id }}" data-comment-id="{{ $comment->id }}" data-post-id="{{ $comment->post->id }}" class="comment-options collapse delete-comment">
+            <div id="delete-comment-{{ $comment->id }}" data-admin={{ Auth::user()->is_admin }} data-comment-id="{{ $comment->id }}" data-post-id="{{ $comment->post->id }}" class="comment-options collapse delete-comment">
                 <div class="card card-body bg-dark">
                     <span class="link link-danger">Delete Comment</span>
                 </div>
