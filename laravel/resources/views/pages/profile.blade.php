@@ -29,7 +29,7 @@
     @csrf
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 text-center collapse" id="left-col">
+            <div class="col-2 text-center collapse" id="left-col"><!--
                 <div class="feed-change">
                     <div id="feed-order">
                         <div class="form-check">
@@ -45,7 +45,7 @@
                             </label>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 @if ($checker)
                     @include('partials.notifications.notifications')
                 @endif
@@ -62,13 +62,15 @@
                         @include('partials.full_group_carousel')
                     @endif
                     <div>
-                        <a href="./about.php" class="link-light">About</a>
+                        <a href="{{ route('about') }}" class="link-light">About</a>
                         <span class="link-light"> | </span>
-                        <a href="./faq.php" class="link-light">FAQ</a>
+                        <a href="{{ route('faq') }}" class="link-light">FAQ</a>
                     </div>
-                    <div>
-                        <a href="#" class="link-danger">Delete account</a>
-                    </div>
+                    @if($checker)
+                        <div>
+                            <a href="#" class="link-danger">Delete account</a>
+                        </div>
+                    @endif
                 </div>
         @if (!$checker)
             </div>
