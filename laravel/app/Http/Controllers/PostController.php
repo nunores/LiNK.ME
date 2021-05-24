@@ -67,13 +67,14 @@ class PostController extends Controller
             $banned_post = new BannedPost();
             $notification->user_id = Auth::user()->id;
             $banned_post->banned_post_id = $id;
-            DB::beginTransaction();;
+            DB::beginTransaction();
             $this->saveNotifications($notification, $banned_post);
             if ( !$notification || !$banned_post)
                 DB::rollback();
             else
                 DB::commit();
         }
+        $this->clearNotifications($post);
 
         return $post;
     }
