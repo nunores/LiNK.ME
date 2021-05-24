@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Person;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Report;
 use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -118,7 +119,12 @@ class PostController extends Controller
         }
 
         if (Auth::check()) {
-            return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search")]);
+            if (!Auth::user()->is_admin) {
+                return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search")]);
+            } else {
+                $reports = Report::all()->take(20);
+                return view('pages.group', ['posts' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
+            }
         } else {
             return redirect('login');
         }

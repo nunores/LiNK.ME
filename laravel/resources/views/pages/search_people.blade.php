@@ -15,7 +15,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        @include('partials.sidebar.sidebar', ["page" => "search"])
+        @if (Auth::user()->is_admin)
+            @include('partials.sidebar.sidebar', ["page" => "admin"])
+        @else
+            @include('partials.sidebar.sidebar', ["page" => "search"])
+        @endif
         <div class="col-10">
             <div id="center-col">
                 <div class="container-fluid">
