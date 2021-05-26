@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="{{ asset('css/post.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/left_col.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/search_posts.css') }}" />
+@if (Auth::user()->is_admin)
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+@endif
 @endpush
 
 @section('content')
