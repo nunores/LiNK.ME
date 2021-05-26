@@ -95,7 +95,7 @@ class GroupController extends Controller
                 return view('pages.search_groups', ['groups' => $final, 'search' => $request->input("search")]);
             } else {
                 $reports = Report::all()->take(20);
-                return view('pages.group', ['groups' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
+                return view('pages.search_groups', ['groups' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
             }
         } else {
             return redirect('login');
