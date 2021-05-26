@@ -31,7 +31,7 @@
                                 </a>
                             </div>
                             <div class="col-3">
-                                <a href="{{ route('posts', ['search', $search]) }}" class="search-option search-option-posts">
+                                <a href="{{ route('posts', ['search' => $search]) }}" class="search-option search-option-posts">
                                     Posts
                                 </a>
                             </div>
