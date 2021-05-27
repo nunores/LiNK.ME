@@ -12,8 +12,8 @@
 <script src="{{ asset('js/likes.js') }}" defer></script>
 <script src="{{ asset('js/commentTextArea.js') }}" defer></script>
 <script src="{{ asset('js/comments.js') }}" defer></script>
-<script src="{{ asset('js/delete_post.js') }}" defer></script>
-<script src="{{ asset('js/delete_comment.js') }}" defer></script>
+<script src="{{ asset('js/post_options.js') }}" defer></script>
+<script src="{{ asset('js/comment_options.js') }}" defer></script>
 <script src="{{ asset('js/add_post.js') }}" defer></script>
 <script src="{{ asset('js/change_post_order.js') }}" defer></script>
 @endpush

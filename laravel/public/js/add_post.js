@@ -13,7 +13,9 @@ function add_post_form() {
 
         const div = document.createElement("div");
         div.innerHTML = this.responseText.trim();
-        div.querySelector("#group_id").value = group_name.getAttribute("data-group-id");
+        if (group_name != null) {
+            div.querySelector("#group_id").value = group_name.getAttribute("data-group-id");
+        }
         div.querySelector("#add-post-file").onchange = add_image;
 
         if (group_name != null) {
