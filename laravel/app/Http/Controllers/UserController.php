@@ -61,8 +61,12 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        $this->authorize('delete', $user);
-        $user->delete();
+        //$this->authorize('delete', $user);
+        //$user->delete();
+        
+        foreach ($user->comments()->get() as $comment){
+            $comment->update(["deleted" => 'true']);
+        }
 
         return $user;
     }

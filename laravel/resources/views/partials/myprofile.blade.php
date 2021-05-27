@@ -253,7 +253,7 @@
                 <a href="./faq.php" class="link-light">FAQ</a>
             </div>
             <div>
-                <a href="#" class="link-danger">Delete account</a>
+                <a href="#" class="link-danger delete_user" user-id = "{{ $user->id }}">Delete account</a>
             </div>
         </div>
         <div class="col-8">

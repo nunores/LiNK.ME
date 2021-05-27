@@ -8,7 +8,12 @@
 <link rel="stylesheet" href="{{ asset('css/profile.css') }}" />
 @endpush
 
+@push('js_scripts')
+<script src="{{ asset('js/deleteUser.js') }}" defer></script>
+@endpush
+
 @section('content')
+@csrf
 @if (Auth::user()->user == $user)
     @include("partials.myprofile")
 @else
