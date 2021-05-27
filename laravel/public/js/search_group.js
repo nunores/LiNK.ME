@@ -36,17 +36,22 @@ function search_group_function(event) {
 
         header.hidden = true;
 
-        if (username1.includes(value) || name1.includes(value)) {
-            let temp = [div_search_people, div_checkbox]
-            searched.push(temp);
-        }
-
-        if(username2 != "null" && name2 != "null"){
-            if (username2.includes(value) || name2.includes(value)) {
-                let temp = [div_search_people2, div_checkbox2]
+        if(typeof div_search_people !== "undefined"){
+            if (username1.toUpperCase().includes(value.toUpperCase()) || name1.toUpperCase().includes(value.toUpperCase()) || value == "") {
+                let temp = [div_search_people, div_checkbox]
                 searched.push(temp);
             }
         }
+
+        if(typeof div_search_people2 !== "undefined"){
+            if(username2 != "null" && name2 != "null"){
+                if (username2.toUpperCase().includes(value.toUpperCase()) || name2.toUpperCase().includes(value.toUpperCase()) || value == "") {
+                    let temp = [div_search_people2, div_checkbox2]
+                    searched.push(temp);
+                }
+            }
+        }
+
     });
 
     let row;
@@ -58,10 +63,11 @@ function search_group_function(event) {
         row.appendChild(searched[i][0]);
         row.appendChild(searched[i][1]);
         if (i % 2 == 1) {
-            headers[0].parentElement.appendChild(row);
+            headers[0].parentElement.appendChild(row); // Parent element should be the same for any header
         }
     }
     if (searched.length % 2 == 1) {
         headers[0].parentElement.appendChild(row);
     }
+
 }
