@@ -16,7 +16,6 @@
 @section('content')
 
 <div class="container-fluid">
-    @csrf
     <div class="row">
         @include('partials.sidebar.sidebar', ["page" => "admin", "reports" => $reports])
         <div class="col-8">

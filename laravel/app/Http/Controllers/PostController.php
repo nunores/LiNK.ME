@@ -122,7 +122,7 @@ class PostController extends Controller
             if (!Auth::user()->is_admin) {
                 return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search")]);
             } else {
-                $reports = Report::all()->take(20);
+                $reports = Report::all()->sortByDesc('id')->take(20);
                 return view('pages.search_posts', ['posts' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
             }
         } else {

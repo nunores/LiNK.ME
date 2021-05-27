@@ -28,7 +28,7 @@
 @section('content')
 
 <body>
-    @csrf
+
 	<div class="container-fluid">
 		<div class="row">
             @if (Auth::user()->is_admin)

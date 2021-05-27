@@ -33,7 +33,6 @@ class Controller extends BaseController
         $likedPosts = LikedPost::all()->where('liked_post_id', '=', $post->id);
         foreach ($likedPosts as $likedPost) {
             $notification = Notification::find($likedPost->id);
-            Log::debug($notification);
             DB::beginTransaction();
             $this->deleteNotifications($notification, $likedPost);
             DB::commit();
@@ -41,7 +40,6 @@ class Controller extends BaseController
         $postComments = PostComment::all()->where('post_comment_id', '=', $post->id);
         foreach ($postComments as $postComment) {
             $notification = Notification::find($postComment->id);
-            Log::debug($notification);
             DB::beginTransaction();
             $this->deleteNotifications($notification, $postComment);
             DB::commit();

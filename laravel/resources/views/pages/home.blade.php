@@ -21,7 +21,7 @@
 @section('content')
 
 <div class="container-fluid">
-    @csrf
+
     <div class="row">
         @include('partials.sidebar.sidebar', ["page" => "home"])
         <div class="col-8 center-col-col-8">
