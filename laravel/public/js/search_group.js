@@ -36,13 +36,13 @@ function search_group_function(event) {
 
         header.hidden = true;
 
-        if (username1.includes(value) || name1.includes(value)) {
+        if (username1.toUpperCase().includes(value.toUpperCase()) || name1.toUpperCase().includes(value.toUpperCase())) {
             let temp = [div_search_people, div_checkbox]
             searched.push(temp);
         }
 
         if(username2 != "null" && name2 != "null"){
-            if (username2.includes(value) || name2.includes(value)) {
+            if (username2.toUpperCase().includes(value.toUpperCase()) || name2.toUpperCase().includes(value.toUpperCase())) {
                 let temp = [div_search_people2, div_checkbox2]
                 searched.push(temp);
             }
@@ -64,4 +64,7 @@ function search_group_function(event) {
     if (searched.length % 2 == 1) {
         headers[0].parentElement.appendChild(row);
     }
+
+    // TODO: empty gives everyone
+    // TODO: problem with caps
 }
