@@ -133,7 +133,6 @@ class PostController extends Controller
             $links = Auth::user()->user->getLinks()->map(function($link) {
                 return $link->id;
             });
-            Log::debug($links);
             $posts = Post::all()->whereIn('user_id', $links)->where('banned', '=', false)->take(20);
             return view('partials.home_center_col',  ['posts' => $posts]);
         }

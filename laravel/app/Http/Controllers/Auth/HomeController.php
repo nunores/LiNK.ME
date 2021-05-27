@@ -23,7 +23,6 @@ class HomeController extends Controller
                 $links = Auth::user()->user->getLinks()->map(function($link) {
                     return $link->id;
                 });
-                Log::debug($links);
                 $posts = Post::all()->whereIn('user_id', $links)->where('banned', '=', false)->sortByDesc('id')->take(20);
                 return view('pages.home', ['posts' => $posts]);
             }

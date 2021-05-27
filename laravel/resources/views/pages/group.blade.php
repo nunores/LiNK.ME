@@ -21,8 +21,8 @@
     <script src="{{ asset('js/add_post.js') }}" defer></script>
     <script src="{{ asset('js/friends_search.js') }}" defer></script>
 @endif
-<script src="{{ asset('js/delete_post.js') }}" defer></script>
-<script src="{{ asset('js/delete_comment.js') }}" defer></script>
+<script src="{{ asset('js/post_options.js') }}" defer></script>
+<script src="{{ asset('js/comment_options.js') }}" defer></script>
 @endpush
 
 @section('content')
