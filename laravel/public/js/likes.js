@@ -1,6 +1,5 @@
 const like_buttons = document.querySelectorAll(".bi-hand-thumbs-up");
 const dislike_buttons = document.querySelectorAll(".bi-hand-thumbs-down");
-const _token = document.getElementsByName("_token")[0].getAttribute("value");
 
 like_buttons.forEach(like_button => {
     like_button.onclick = clickedLike;

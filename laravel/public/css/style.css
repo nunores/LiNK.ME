@@ -118,7 +118,7 @@ body > div.container-fluid {
     position: relative;
 }
 
-.delete-comment{
+.comment-options{
     position: absolute;
     right: 4rem;
     top: 1rem;
@@ -126,14 +126,14 @@ body > div.container-fluid {
     width: auto;
 }
 
-.delete-post {
+.post-options {
     position: absolute;
     right: 4rem;
     top: 2rem
 }
 
-.delete-comment > .card,
-.delete-post > .card {
+.comment-options > .card,
+.post-options > .card {
     padding: 0.3rem;
     cursor: pointer;
 }

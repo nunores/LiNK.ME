@@ -8,21 +8,14 @@ return_button.onclick = return_form;
 
 function add_post_form() {
     AJAX("GET", "/api/post/form", { _token: _token }, function () {
-        const group_name = document.querySelector(".group-name");
-        const center_col = document.querySelector("#center-col");
+        const user_name = document.querySelector(".profile-info");
 
         const div = document.createElement("div");
         div.innerHTML = this.responseText.trim();
-        if (group_name != null) {
-            div.querySelector("#group_id").value = group_name.getAttribute("data-group-id");
-        }
         div.querySelector("#add-post-file").onchange = add_image;
 
-        if (group_name != null) {
-            insertAfter(div.firstChild, group_name);
-        } else {
-            center_col.prepend(div.firstChild);
-        }
+        insertAfter(div.firstChild, user_name);
+
         add_post_button.hidden = true;
         return_button.hidden = false;
     });

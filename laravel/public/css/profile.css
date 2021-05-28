@@ -37,7 +37,7 @@
 	height: 3rem;
 }
 
-#name-tag.person-friends-name-tag {
+.person-friends-name-tag {
 	font-size: 80%;
 	color: var(--bs-light);
 }

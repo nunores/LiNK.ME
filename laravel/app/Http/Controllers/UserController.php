@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Person;
+use App\Models\Report;
 use App\Models\User;
 
 class UserController extends Controller
@@ -71,6 +72,24 @@ class UserController extends Controller
         return $user;
     }
 
+    public function changeName(Request $request)
+    {
+        $user = Auth::user()->user;
+        $user->name = $request->input('text');
+        $user->save();
+
+        return $user;
+    }
+
+    public function changePassword(Request $request)
+    {
+        $user = Auth::user()->user;
+        $user->person->password = $request->input('text');
+        $user->save();
+
+        return $user;
+    }
+
 
     public function search(Request $request)
     {
@@ -82,7 +101,12 @@ class UserController extends Controller
         }
 
         if (Auth::check()) {
-            return view('pages.search_people', ['users' => $final, 'search' => $request->input("search")]);
+            if (!Auth::user()->is_admin) {
+                return view('pages.search_posts', ['users' => $final, 'search' => $request->input("search")]);
+            } else {
+                $reports = Report::all()->sortByDesc('id')->take(20);
+                return view('pages.search_posts', ['users' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
+            }
         } else {
             return redirect('login');
         }

@@ -19,11 +19,14 @@ Route::get('user/{id}', 'UserController@show')->name('user');
 Route::post('api/user', 'UserController@getUserInfo');
 Route::put('api/user', 'UserController@create');
 Route::delete('api/user/{id}', 'UserController@delete')->name('deleteUser');
-Route::get('users', 'UserController@search')->name('users');
+Route::put('api/user/name', 'UserController@changeName');
+Route::put('api/user/password', 'UserController@changePassword');
+Route::get('users', 'UserController@search')->name('users'); // TODO This might be broken
 
 //Links
 Route::get('api/link', 'LinkController@showUserLinks');
 Route::post('api/link', 'LinkController@create');
+Route::post('api/link/request', 'LinkController@request');
 
 //Posts
 Route::get('post/{id}', 'PostController@show')->name('post');

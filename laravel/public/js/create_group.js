@@ -1,5 +1,4 @@
 const createButton = document.querySelector("#create-button-final");
-const _token = document.getElementsByName("_token")[0].getAttribute("value");
 createButton.onclick = createGroup;
 
 function createGroup() {

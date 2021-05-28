@@ -35,7 +35,7 @@ class Notification extends Model
      */
     public function friendRequest()
     {
-        return $this->hasOne(FriendRequest::class, 'user_id_request');
+        return $this->hasOne(FriendRequest::class, 'id');
     }
 
     /**
@@ -45,7 +45,7 @@ class Notification extends Model
      */
     public function postComment()
     {
-        return $this->hasOne(PostComment::class, 'post_comment_id');
+        return $this->hasOne(PostComment::class, 'id');
     }
 
     /**
@@ -55,7 +55,7 @@ class Notification extends Model
      */
     public function likedPost()
     {
-        return $this->hasOne(LikedPost::class, 'liked_post_id');
+        return $this->hasOne(LikedPost::class, 'id');
     }
 
     /**
@@ -65,7 +65,7 @@ class Notification extends Model
      */
     public function bannedPost()
     {
-        return $this->hasOne(BannedPost::class, 'banned_post_id');
+        return $this->hasOne(BannedPost::class, 'id');
     }
 
     /**
@@ -75,7 +75,7 @@ class Notification extends Model
      */
     public function bannedComment()
     {
-        return $this->hasOne(BannedComment::class, 'banned_comment_idd');
+        return $this->hasOne(BannedComment::class, 'id');
     }
 
     /**
@@ -85,6 +85,6 @@ class Notification extends Model
      */
     public function groupRequest()
     {
-        return $this->hasOne(GroupRequest::class, 'group_id');
+        return $this->hasOne(GroupRequest::class, 'id');
     }
 }
