@@ -4,7 +4,6 @@
 // host of the site, ex: http://localhost:8000
 const host = location.href.split(location.pathname)[0];
 const _token = document.querySelector("meta[name=csrf-token]").getAttribute("content");
-console.log(_token);
 /**
  *  This functions transforms an java object in ajax
  * @param {Object} data
