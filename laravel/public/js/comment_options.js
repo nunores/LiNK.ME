@@ -27,7 +27,9 @@ function delete_comment() {
 
 function report_comment() {
     const comment_id = this.parentNode.getAttribute("data-comment-id");
+    const clicked_button = this;
     AJAX("POST", "/api/comment/report/" + comment_id, {_token: _token}, function () {
         console.log(this.responseText);
+        clicked_button.remove();
     });
 }

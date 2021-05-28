@@ -27,7 +27,9 @@ function delete_post() {
 
 function report_post() {
     const post_id = this.parentNode.getAttribute("data-post-id");
+    const clicked_button = this;
     AJAX("POST", "/api/post/report/" + post_id, {_token: _token}, function () {
         console.log(this.responseText);
+        clicked_button.remove();
     });
 }
