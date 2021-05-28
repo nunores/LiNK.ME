@@ -20,6 +20,7 @@ class ReportController extends Controller
         $report->user_id = Auth::user()->id;
         $report->post_id = $id;
         $report->comment_id = null;
+        $report->save();
         return $report;
     }
 
@@ -30,6 +31,7 @@ class ReportController extends Controller
         $report->user_id = Auth::user()->id;
         $report->comment_id = $id;
         $report->post_id = null;
+        $report->save();
         return $report;
     }
 }

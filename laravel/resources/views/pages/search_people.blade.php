@@ -6,6 +6,9 @@
 <link rel="stylesheet" href="{{ asset('css/post.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/left_col.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/search_people.css') }}" />
+@if (Auth::user()->is_admin)
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+@endif
 @endpush
 
 {{-- @push('js_scripts')
@@ -15,7 +18,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        @include('partials.sidebar.sidebar', ["page" => "search"])
+        @if (Auth::user()->is_admin)
+            @include('partials.sidebar.sidebar', ["page" => "admin"])
+        @else
+            @include('partials.sidebar.sidebar', ["page" => "search"])
+        @endif
         <div class="col-10">
             <div id="center-col">
                 <div class="container-fluid">

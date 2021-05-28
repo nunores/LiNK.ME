@@ -15,7 +15,7 @@
 
 @section('content')
 <body>
-    @csrf
+
 	<div class="container-fluid">
 		<div class="row">
 			@include('partials.sidebar.sidebar', ["page" => "create_group"])
