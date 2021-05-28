@@ -2,6 +2,8 @@ const comment_buttons = document.querySelectorAll(".bi-chat-dots");
 const comment_boxes = document.querySelector(".add-comment-form");
 const submit_buttons = document.querySelectorAll(".bi-arrow-right-circle");
 
+console.log(submit_buttons);
+
 submit_buttons.forEach(submit_button => {
     submit_button.onclick = sendComment;
 });
