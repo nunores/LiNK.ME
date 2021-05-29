@@ -19,7 +19,7 @@
         </div>
     </div>
     <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
-    <form id="add-post-form" method="POST" action="{{ route("createPost") }}" onsubmit="refreshPage()" target="dummyframe" enctype="multipart/form-data">
+    <form id="add-post-form" method="POST" action="{{ route("createPost") }}" onsubmit="refresh()" target="dummyframe" enctype="multipart/form-data">
         @csrf
         <input type=hidden id="group_id" name="group_id">
         <textarea name="description" class="form-control add-post-textarea" aria-label="With textarea" placeholder="Insert text here..."></textarea>

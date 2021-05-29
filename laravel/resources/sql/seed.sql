@@ -170,7 +170,7 @@ $BODY$
 BEGIN
     IF EXISTS (SELECT user_id, COUNT(*) FROM "post"
         WHERE NEW."user_id" = "post"."user_id" AND "banned" = TRUE GROUP BY "user_id" HAVING COUNT(*) >= 3) THEN
-        UPDATE "user" SET "banned" = true WHERE "user"."id" = NEW."user_id";
+        UPDATE "user" SET "deleted" = true WHERE "user"."id" = NEW."user_id";
     END IF;
 	RETURN NEW;
 END
