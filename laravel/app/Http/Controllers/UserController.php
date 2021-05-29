@@ -22,7 +22,12 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $this->authorize('show', $user);
-        return view('pages.profile', ['user' => $user]);
+        if (Auth::check() && Auth::user()->is_admin) {
+            $reports = Report::all()->sortByDesc('id')->take(20);
+            return view('pages.profile', ['user' => $user, 'reports' => $reports]);
+        } else {
+            return view('pages.profile', ['user' => $user]);
+        }
     }
 
     public function getUserInfo(Request $request)
@@ -104,6 +109,8 @@ class UserController extends Controller
             array_push($final, User::find($user->id));
         }
 
+        //TODO: é preciso algum authorize aqui?
+
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
                 return view('pages.search_people', ['users' => $final, 'search' => $request->input("search")]);
@@ -112,7 +119,8 @@ class UserController extends Controller
                 return view('pages.search_people', ['users' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
             }
         } else {
-            return redirect('login');
+            return view('pages.search_people', ['users' => $final, 'search' => $request->input("search")]);
+            //return redirect('login');
         }
     }
 

@@ -22,7 +22,12 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $this->authorize('show', $post);
-        return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)]);
+        if (Auth::check() && Auth::user()->is_admin) {
+            $reports = Report::all()->sortByDesc('id')->take(20);
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false), "reports" => $reports]);
+        } else {
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)]);
+        }
     }
 
     public function create(Request $request)
@@ -75,7 +80,7 @@ class PostController extends Controller
             else
                 DB::commit();
         }
-        $this->clearNotifications($post);
+        $this->clearNotificationsPost($post);
 
         return $post;
     }
@@ -111,14 +116,15 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $posts = DB::select('SELECT post.* FROM "post" JOIN "user" ON "user"."id" = "post"."user_id" JOIN "person" ON "person"."id" = "user"."id" WHERE to_tsvector("post"."description" || \' \' || "user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
+        $posts = DB::select('SELECT post.* FROM "post" JOIN "user" ON "user"."id" = "post"."user_id" JOIN "person" ON "person"."id" = "user"."id" WHERE "post"."private" = false AND to_tsvector("post"."description" || \' \' || "user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
 
         $final = [];
         foreach ($posts as $post) {
             array_push($final, Post::find($post->id));
         }
 
-        // TODO: treat search while logged out
+        //TODO: é preciso algum authorize aqui?
+
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
                 return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search")]);
@@ -127,7 +133,8 @@ class PostController extends Controller
                 return view('pages.search_posts', ['posts' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
             }
         } else {
-            return redirect('login');
+            return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search")]);
+            //return redirect('login');
         }
     }
 
