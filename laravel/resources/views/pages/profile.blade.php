@@ -7,6 +7,9 @@
 <link rel="stylesheet" href="{{ asset('css/left_col.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/profile.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/add_post.css') }}" />
+@if (Auth::user()->is_admin)
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+@endif
 @endpush
 
 @push('js_scripts')
@@ -36,8 +39,8 @@
     @csrf
     <div class="container-fluid">
         <div class="row">
-            @if ($reports != null)
-                @include('partials.sidebar.sidebar', ['checker' => $checker, 'user' => $user, 'page' => "profile", 'reports' => $reports])
+            @if (Auth::check() && Auth::user()->is_admin)
+                @include('partials.sidebar.sidebar', ['reports' => $reports, 'page' => 'admin'])
             @else
                 @include('partials.sidebar.sidebar', ['checker' => $checker, 'user' => $user, 'page' => "profile"])
             @endif
