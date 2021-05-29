@@ -45,17 +45,19 @@
             Change password
         </a>
     @endif
-    @php
-        $checker1 = true
-    @endphp
-    @for ($i = 0; $i < count(Auth::user()->user->links); $i++)
-        @if (Auth::user()->user->links[$i]->id == $user->id)
-            {{ $checker1 = false}}
+    @if (Auth::check() && !Auth::user()->is_admin)
+        @php
+            $checker1 = true
+        @endphp
+        @for ($i = 0; $i < count(Auth::user()->user->links); $i++)
+            @if (Auth::user()->user->links[$i]->id == $user->id)
+                {{ $checker1 = false}}
+            @endif
+        @endfor
+        @if ($checker1 && !$checker)
+            <br>
+            <button type="button" id="link-us" class="btn btn-outline-primary friend-request-button" data-user-id="{{ $user->id }}">LiNK US</button>
         @endif
-    @endfor
-    @if ($checker1 && !$checker)
-        <br>
-        <button type="button" id="link-us" class="btn btn-outline-primary friend-request-button" data-user-id="{{ $user->id }}">LiNK US</button>
     @endif
     <div class="collapse" id="change-password-form">
         <div class="card bg-dark border-secondary">

@@ -119,7 +119,7 @@
         @if (count($comments) > 0)
             <hr>
         @endif
-        @if (Auth::check())
+        @if (Auth::check() && !Auth::user()->is_admin)
         <form>
             <div class="form-group add-comment-form add-comment collapse" id="add-comment-{{ $post->id }}" data-post-id="{{ $post->id }}" >
                 <div class="container">
