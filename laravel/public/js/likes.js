@@ -1,5 +1,5 @@
-const like_buttons = document.querySelectorAll(".bi-hand-thumbs-up");
-const dislike_buttons = document.querySelectorAll(".bi-hand-thumbs-down");
+let like_buttons = document.querySelectorAll(".bi-hand-thumbs-up");
+let dislike_buttons = document.querySelectorAll(".bi-hand-thumbs-down");
 
 like_buttons.forEach(like_button => {
     like_button.onclick = clickedLike;
