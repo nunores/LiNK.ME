@@ -96,6 +96,8 @@ class UserController extends Controller
             array_push($final, User::find($user->id));
         }
 
+        //TODO: é preciso algum authorize aqui?
+
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
                 return view('pages.search_people', ['users' => $final, 'search' => $request->input("search")]);
@@ -104,7 +106,8 @@ class UserController extends Controller
                 return view('pages.search_people', ['users' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
             }
         } else {
-            return redirect('login');
+            return view('pages.search_people', ['users' => $final, 'search' => $request->input("search")]);
+            //return redirect('login');
         }
     }
 
