@@ -10,6 +10,8 @@
     @if (Auth::user()->is_admin)
         <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
     @endif
+@else
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
 @endif
 @endpush
 
@@ -22,6 +24,8 @@
                 @else
                     @include('partials.sidebar.sidebar', ["page" => "search"])
                 @endif
+            @else
+                @include('partials.sidebar.sidebar', ["page" => "login"])
             @endif
 
             <div class="col-10">

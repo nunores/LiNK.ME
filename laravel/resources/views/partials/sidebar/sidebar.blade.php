@@ -4,6 +4,10 @@
     @if ($page == "profile")
         @include('partials.sidebar.sidebar_normal')
     @else
-        @include('partials.sidebar.sidebar_normal')
+        @if($page == "login")
+            @include('partials.sidebar.sidebar_login')
+        @else
+            @include('partials.sidebar.sidebar_normal')
+        @endif
     @endif
 @endif
