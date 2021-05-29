@@ -22,7 +22,12 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $this->authorize('show', $post);
-        return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)]);
+        if (Auth::check() && Auth::user()->is_admin) {
+            $reports = Report::all()->sortByDesc('id')->take(20);
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false), "reports" => $reports]);
+        } else {
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)]);
+        }
     }
 
     public function create(Request $request)
@@ -75,7 +80,7 @@ class PostController extends Controller
             else
                 DB::commit();
         }
-        $this->clearNotifications($post);
+        $this->clearNotificationsPost($post);
 
         return $post;
     }

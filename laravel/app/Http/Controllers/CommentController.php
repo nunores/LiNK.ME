@@ -60,6 +60,7 @@ class CommentController extends Controller
             else
                 DB::commit();
         }
+        $this->deleteNotificationsComment($comment);
 
         return $comment;
     }

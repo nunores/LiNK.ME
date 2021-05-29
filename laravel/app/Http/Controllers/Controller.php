@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\LikedPost;
 use App\Models\Notification;
 use App\Models\Post;
@@ -29,7 +30,7 @@ class Controller extends BaseController
         $notification_type->delete();
     }
 
-    public function clearNotifications(Post $post) {
+    public function clearNotificationsPost(Post $post) {
         $likedPosts = LikedPost::all()->where('liked_post_id', '=', $post->id);
         foreach ($likedPosts as $likedPost) {
             $notification = Notification::find($likedPost->id);
@@ -45,6 +46,18 @@ class Controller extends BaseController
             DB::commit();
         }
         $reports = Report::all()->where('post_id', '=', $post->id);
+        foreach ($reports as $report) {
+            $report->delete();
+        }
+
+        $post_comments = $post->comments;
+        foreach ($post_comments as $comment) {
+            $this->clearNotificationsComment($comment);
+        }
+    }
+
+    public function clearNotificationsComment(Comment $comment) {
+        $reports = Report::all()->where('comment_id', '=', $comment->id);
         foreach ($reports as $report) {
             $report->delete();
         }

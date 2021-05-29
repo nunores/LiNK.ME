@@ -29,7 +29,7 @@
 	<div class="container-fluid">
 		<div class="row">
             @if (Auth::user()->is_admin)
-			    @include('partials.sidebar.sidebar', ["page" => "admin", "reports" => App\Models\Report::all()])
+			    @include('partials.sidebar.sidebar', ["page" => "admin", "reports" => $reports])
             @else
 			    @include('partials.sidebar.sidebar', ["page" => "post"])
             @endif
