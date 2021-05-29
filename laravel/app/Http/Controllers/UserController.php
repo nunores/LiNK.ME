@@ -22,7 +22,12 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $this->authorize('show', $user);
-        return view('pages.profile', ['user' => $user]);
+        if (Auth::check() && Auth::user()->is_admin) {
+            $reports = Report::all()->sortByDesc('id')->take(20);
+            return view('pages.profile', ['user' => $user, 'reports' => $reports]);
+        } else {
+            return view('pages.profile', ['user' => $user]);
+        }
     }
 
     public function getUserInfo(Request $request)

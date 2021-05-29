@@ -10,15 +10,19 @@
 @endpush
 
 @push('js_scripts')
-<script src="{{ asset('js/likes.js') }}" defer></script>
-<script src="{{ asset('js/delete_post.js') }}" defer></script>
-<script src="{{ asset('js/delete_comment.js') }}" defer></script>
-<script src="{{ asset('js/comments.js') }}" defer></script>
-<script src="{{ asset('js/commentTextArea.js') }}" defer></script>
-<script src="{{ asset('js/friend_request.js') }}" defer></script>
-<script src="{{ asset('js/change_name.js') }}" defer></script>
-<script src="{{ asset('js/add_post_profile.js') }}" defer></script>
-<script src="{{ asset('js/change_password.js') }}" defer></script>
+@if (!Auth::user()->is_admin)
+    <script src="{{ asset('js/likes.js') }}" defer></script>
+    <script src="{{ asset('js/commentTextArea.js') }}" defer></script>
+    <script src="{{ asset('js/comments.js') }}" defer></script>
+    <script src="{{ asset('js/friend_request.js') }}" defer></script>
+    @if (Auth::user()->user == $user)
+    <script src="{{ asset('js/change_name.js') }}" defer></script>
+    <script src="{{ asset('js/add_post_profile.js') }}" defer></script>
+    <script src="{{ asset('js/change_password.js') }}" defer></script>
+    @endif
+@endif
+<script src="{{ asset('js/post_options.js') }}" defer></script>
+<script src="{{ asset('js/comment_options.js') }}" defer></script>
 @endpush
 
 
@@ -32,52 +36,11 @@
     @csrf
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 text-center collapse" id="left-col"><!--
-                <div class="feed-change">
-                    <div id="feed-order">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="feedOrder" id="feedOrderRelevance">
-                                Relevance
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="feedOrder" id="feedOrderRecent" checked>
-                                Recent
-                            </label>
-                        </div>
-                    </div>
-                </div> -->
-                @if ($checker)
-                    @include('partials.notifications.notifications')
-                @endif
-                <div class="person-friends">
-                    @php
-                        $links = $user->links;
-                        @endphp
-                    @for ($i = 0; $i < count($links) && $i < 300; $i++)
-                    @include('partials.friend', ['user' => $links[$i] ])
-                    @endfor
-                </div>
-                <div id="groups">
-                    @if ($checker)
-                        @include('partials.full_group_carousel')
-                    @endif
-                    <div>
-                        <a href="{{ route('about') }}" class="link-light">About</a>
-                        <span class="link-light"> | </span>
-                        <a href="{{ route('faq') }}" class="link-light">FAQ</a>
-                    </div>
-                    @if($checker)
-                        <div>
-                            <a href="#" class="link-danger">Delete account</a>
-                        </div>
-                    @endif
-                </div>
-        @if (!$checker)
-            </div>
-        @endif
+            @if ($reports != null)
+                @include('partials.sidebar.sidebar', ['checker' => $checker, 'user' => $user, 'page' => "profile", 'reports' => $reports])
+            @else
+                @include('partials.sidebar.sidebar', ['checker' => $checker, 'user' => $user, 'page' => "profile"])
+            @endif
             <div class="col-8">
                 <div id="center-col">
                     @include('partials.user_info', ['user' => $user, 'checker' => $checker])
