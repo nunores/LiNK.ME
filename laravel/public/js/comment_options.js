@@ -1,5 +1,5 @@
-const delete_comment_buttons = document.querySelectorAll(".delete-comment");
-const report_comment_buttons = document.querySelectorAll(".report-comment");
+let delete_comment_buttons = document.querySelectorAll(".delete-comment");
+let report_comment_buttons = document.querySelectorAll(".report-comment");
 
 
 delete_comment_buttons.forEach(delete_comment_button => {

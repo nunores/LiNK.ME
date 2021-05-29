@@ -103,10 +103,10 @@ class UserController extends Controller
 
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
-                return view('pages.search_posts', ['users' => $final, 'search' => $request->input("search")]);
+                return view('pages.search_people', ['users' => $final, 'search' => $request->input("search")]);
             } else {
                 $reports = Report::all()->sortByDesc('id')->take(20);
-                return view('pages.search_posts', ['users' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
+                return view('pages.search_people', ['users' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
             }
         } else {
             return redirect('login');
