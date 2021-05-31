@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Person;
 use App\Models\Report;
 use App\Models\User;
+use App\Models\Like;
 
 class UserController extends Controller
 {
@@ -76,6 +77,12 @@ class UserController extends Controller
 
         // foreach ($user->posts()->get() as $post){
         //     $post->update(["banned" => 'true']);
+        // }
+
+        Like::where('user_id', $id)->delete();
+
+        // foreach ($user->likes()->get() as $like){
+        //     $like->delete();
         // }
 
 
