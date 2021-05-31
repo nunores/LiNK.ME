@@ -66,9 +66,9 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $this->authorize('delete', $post);
-        $post->update(["banned" => 'true']);
-
         if ($request->input("admin") == true) {
+            $post->update(["banned" => 'true']);
+
             $notification = new Notification();
             $banned_post = new BannedPost();
             $notification->user_id = Auth::user()->id;
@@ -79,6 +79,8 @@ class PostController extends Controller
                 DB::rollback();
             else
                 DB::commit();
+        } else {
+            $post->update(['deleted' => 'true']);
         }
         $this->clearNotificationsPost($post);
 
@@ -141,14 +143,14 @@ class PostController extends Controller
     public function postOrder($recent, $general)
     {
         if ($recent == 'true' && $general == 'true'){
-            $posts = Post::all()->where('banned', '=', false)->take(20);
+            $posts = Post::all()->where('deleted', '=', false)->take(20);
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
         else if ($recent == 'true' && $general == 'false'){
             $links = Auth::user()->user->getLinks()->map(function($link) {
                 return $link->id;
             });
-            $posts = Post::all()->whereIn('user_id', $links)->where('banned', '=', false)->sortByDesc('id')->take(20);
+            $posts = Post::all()->whereIn('user_id', $links)->where('deleted', '=', false)->sortByDesc('id')->take(20);
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
     }

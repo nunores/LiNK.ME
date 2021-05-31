@@ -22,7 +22,7 @@
 						<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
 					</svg>
 				</div>
-				<div id="post-options-{{ $post->id }}" data-post-id="{{ $post->id }}" class="post-options collapse">
+				<div id="post-options-{{ $post->id }}" data-post-id="{{ $post->id }}" data-admin="{{ Auth::check() && Auth::user()->is_admin }}" class="post-options collapse">
 					@if (Auth::check() && (Auth::user()->id == $post->user->id || Auth::user()->is_admin))
 					<!-- Only shows if owner of the post is the current user -->
 					<div class="card card-body bg-dark delete-post">
