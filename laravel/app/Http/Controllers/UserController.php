@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Person;
 use App\Models\Report;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -85,10 +88,19 @@ class UserController extends Controller
     public function changePassword(Request $request)
     {
         $user = Auth::user()->user;
-        $user->person->password = $request->input('text');
-        $user->save();
 
-        return $user;
+        Validator::make($request->all(), [
+            'password' => 'required|string|min:6|confirmed',
+            'old_pass' => 'required|string|min:6',
+        ])->validate();
+
+        if (Hash::check($request->input('old_pass'), $user->person->password)) {
+            Log::debug("We are in here");
+            $user->person->update(['password' => bcrypt($request->input('password'))]);
+            $user->save();
+            return $user;
+        }
+        return ['id' => false];
     }
 
 

@@ -8,21 +8,11 @@ function changePassword() {
     const old_pass = change_form.querySelector("#old-password").value;
     const new_pass = change_form.querySelector("#new-password").value;
     const confirm_pass = change_form.querySelector("#confirm-password").value;
-    console.log(test);
-    if (old_pass == test){ //TODO Check if old pass is correct
-        console.log();
-        if(new_pass == confirm_pass){
-
-            const parameters = {text: new_pass, _token: _token }
-            AJAX("PUT", "/api/user/password", parameters, function() {
-                console.log(this.responseText);
-            });
-        }else{
-            console.log("Password does not match in both instances")
-        }
-    }else{
-        console.log("Password does not match real password")
+    //console.log(test);
+    if(new_pass == confirm_pass){
+        const parameters = {old_pass: old_pass, password: new_pass, password_confirmation: confirm_pass, _token: _token }
+        AJAX("PUT", "/api/user/password", parameters, function() {
+            console.log(this.responseText);
+        });
     }
-
-
 }

@@ -61,12 +61,10 @@
     @endif
     <div class="collapse" id="change-password-form">
         <div class="card bg-dark border-secondary">
-            <form action="" class="">
-                <input id="old-password" type="text" class="form-control bg-dark change-password-input" placeholder="Old password">
-                <input id="new-password" type="text" class="form-control bg-dark change-password-input" placeholder="New password">
-                <input id="confirm-password" type="text" class="form-control bg-dark change-password-input" placeholder="Confirm password">
-                <input id="submit-password-change" type="submit" class="form-control change-password-input bg-dark">
-            </form>
+            <input id="old-password" type="text" class="form-control bg-dark change-password-input" placeholder="Old password">
+            <input id="new-password" type="text" class="form-control bg-dark change-password-input" placeholder="New password">
+            <input id="confirm-password" type="text" class="form-control bg-dark change-password-input" placeholder="Confirm password">
+            <input id="submit-password-change" type="submit" class="form-control change-password-input bg-dark">
         </div>
     </div>
 </div>
