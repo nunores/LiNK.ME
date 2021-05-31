@@ -74,9 +74,10 @@ class UserController extends Controller
             $comment->update(["deleted" => 'true']);
         }
 
-        foreach ($user->posts()->get() as $post){
-            $post->update(["banned" => 'true']);
-        }
+        // foreach ($user->posts()->get() as $post){
+        //     $post->update(["banned" => 'true']);
+        // }
+
 
         return $user;
     }
