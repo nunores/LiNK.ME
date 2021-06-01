@@ -15,6 +15,7 @@ use App\Models\Report;
 use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -32,6 +33,11 @@ class PostController extends Controller
 
     public function create(Request $request)
     {
+        if ((strlen($request->input('description')) == 0 && !$request->has('picture')) ||
+            ($request->has('description') && strlen($request->input('description')) > 250)) {
+                return new Post();
+        }
+
         $post = new Post();
         $post->user_id = Auth::user()->id;
 
