@@ -82,11 +82,12 @@ class UserController extends Controller
         Like::where('user_id', $id)->delete();
 
         $user->links()->detach();
-        
 
-        // foreach ($user->likes()->get() as $like){
-        //     $like->delete();
+        // foreach ($user->groups() as $group){
+        //     $group->users()->detach($user->id);
         // }
+
+        //TODO: Falta apagar o proprio user e apagar as suas entradas em grupos
 
 
         return $user;

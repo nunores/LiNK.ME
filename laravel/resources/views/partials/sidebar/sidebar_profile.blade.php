@@ -21,7 +21,7 @@
     <div class="person-friends">
         @php
             $links = $user->links;
-            @endphp
+        @endphp
         @for ($i = 0; $i < count($links) && $i < 300; $i++)
         @include('partials.friend', ['user' => $links[$i] ])
         @endfor
@@ -37,8 +37,7 @@
         </div>
         @if($checker)
             <div>
-                {{$user->links}}
-                <a href="#" class="link-danger delete_user" user-id="{{ $user->id }}">Delete account</a>
+                <a href="{{route('logout')}}" class="link-danger delete_user" user-id="{{ $user->id }}">Delete account</a>
             </div>
         @endif
     </div>
