@@ -81,6 +81,9 @@ class UserController extends Controller
 
         Like::where('user_id', $id)->delete();
 
+        $user->links()->detach();
+        
+
         // foreach ($user->likes()->get() as $like){
         //     $like->delete();
         // }

@@ -37,7 +37,7 @@
         </div>
         @if($checker)
             <div>
-                {{$user->likes}}
+                {{$user->links}}
                 <a href="#" class="link-danger delete_user" user-id="{{ $user->id }}">Delete account</a>
             </div>
         @endif
