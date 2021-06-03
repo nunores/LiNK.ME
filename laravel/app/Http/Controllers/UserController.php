@@ -69,26 +69,22 @@ class UserController extends Controller
         $user = User::find($id);
 
         //$this->authorize('delete', $user);
-        //$user->delete();
         
         foreach ($user->comments()->get() as $comment){
             $comment->update(["deleted" => 'true']);
         }
-
-        // foreach ($user->posts()->get() as $post){
-        //     $post->update(["banned" => 'true']);
-        // }
-
+        
+        foreach ($user->posts()->get() as $post){
+            $post->update(["banned" => 'true']);
+        }
+        
         Like::where('user_id', $id)->delete();
-
+        
         $user->links()->detach();
-
-        // foreach ($user->groups() as $group){
-        //     $group->users()->detach($user->id);
-        // }
-
-        //TODO: Falta apagar o proprio user e apagar as suas entradas em grupos
-
+        
+        $user->groups()->wherePivot('user_id', '=', $user->id)->detach();
+        
+        User::where('id', $id)->update(['deleted' => 'true']);
 
         return $user;
     }
