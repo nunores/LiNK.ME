@@ -19,7 +19,8 @@ function delete_comment() {
 
     AJAX("DELETE", "/api/comment/" + comment_id, {_token: _token, admin: admin }, function() {
         console.log(this.responseText);
-        const comment = clicked_button.parentNode.parentNode.parentNode.parentNode;
+        const comment = clicked_button.parentNode.parentNode.parentNode;
+        console.log(comment);
         comment.remove();
         number_comments.innerHTML = parseInt(number_comments.innerHTML) - 1;
     });

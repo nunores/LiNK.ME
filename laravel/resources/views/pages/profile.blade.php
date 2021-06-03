@@ -54,7 +54,7 @@
                         $posts = $user->posts->where('deleted', '=', false);
                     @endphp
                     @foreach ($posts->reverse() as $post)
-                            @include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->take(2)])
+                            @include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->sortByDesc('id')->take(2)])
                     @endforeach
                 </div>
             </div>
