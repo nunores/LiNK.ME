@@ -21,6 +21,7 @@ Route::put('api/user', 'UserController@create');
 Route::delete('api/user/{id}', 'UserController@delete')->name('deleteUser');
 Route::put('api/user/name', 'UserController@changeName');
 Route::put('api/user/password', 'UserController@changePassword');
+Route::post('api/user/picture', 'UserController@changePicture')->name("changePicture");
 Route::get('users', 'UserController@search')->name('users');
 
 //Links

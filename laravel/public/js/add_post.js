@@ -10,6 +10,7 @@ function add_post_form() {
     AJAX("GET", "/api/post/form", { _token: _token }, function () {
         const group_name = document.querySelector(".group-name");
         const center_col = document.querySelector("#center-col");
+        const user_name = document.querySelector(".profile-info");
 
         const div = document.createElement("div");
         div.innerHTML = this.responseText.trim();
@@ -20,6 +21,8 @@ function add_post_form() {
 
         if (group_name != null) {
             insertAfter(div.firstChild, group_name);
+        }else if(user_name != null){
+            insertAfter(div.firstChild, user_name);
         } else {
             center_col.prepend(div.firstChild);
         }
@@ -80,9 +83,12 @@ function insert_added_post() {
 
                 const group_name = document.querySelector(".group-name");
                 const center_col = document.querySelector("#center-col");
+                const user_name = document.querySelector(".profile-info");
 
                 if (group_name != null) {
                     insertAfter(div.firstChild, group_name);
+                }else if(user_name != null){
+                    insertAfter(div.firstChild, user_name);
                 } else {
                     center_col.prepend(div.firstChild);
                 }

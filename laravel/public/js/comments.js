@@ -1,6 +1,7 @@
 const comment_buttons = document.querySelectorAll(".bi-chat-dots");
 const comment_boxes = document.querySelector(".add-comment-form");
 let submit_buttons = document.querySelectorAll(".bi-arrow-right-circle");
+let comment_parent;
 
 console.log(submit_buttons);
 
@@ -19,6 +20,7 @@ function sendComment(){
     AJAX("POST", "/api/comment/", parameters, function() {
         console.log(this.responseText);
         const json = JSON.parse(this.responseText);
+        comment_parent = document.querySelector('#add-comment-' + json["post_id"]).parentNode;
 
         addCommentHTML(json.id);
         row.querySelector("#comment-textarea").value = "";
@@ -34,8 +36,7 @@ function addCommentHTML(id){
         div.innerHTML = html.trim();
         div.querySelector(".delete-comment").onclick = delete_comment;
 
-        const form = document.querySelector('.post-comments > form');
-        insertAfter(div.firstChild, form);
+        insertAfter(div.firstChild, comment_parent);
     });
 }
 

@@ -25,9 +25,9 @@ class PostController extends Controller
         $this->authorize('show', $post);
         if (Auth::check() && Auth::user()->is_admin) {
             $reports = Report::all()->sortByDesc('id')->take(20);
-            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false), "reports" => $reports]);
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id'), "reports" => $reports]);
         } else {
-            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)]);
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id')]);
         }
     }
 
@@ -102,7 +102,7 @@ class PostController extends Controller
             return null;
         }
 
-        return view("partials.post", ["post" => $post, "comments" => $post->comments->where("deleted", "=", false)->take(2)]);
+        return view("partials.post", ["post" => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id')->take(2)]);
     }
 
     public function update(Request $request, $id)

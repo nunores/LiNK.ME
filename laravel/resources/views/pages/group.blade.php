@@ -41,7 +41,7 @@
                         <p>{{ $group->name }}</p>
                     </div>
 					@foreach ($posts as $post)
-						@include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->take(2)])
+						@include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->sortByDesc('id')->take(2)])
 					@endforeach
 				</div>
 			</div>
