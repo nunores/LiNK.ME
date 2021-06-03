@@ -161,7 +161,12 @@ class PostController extends Controller
         }
     }
 
-
+    public function morePosts(Request $request) {
+        $links = Auth::user()->user->getLinks()->map(function($link) {
+            return $link->id;
+        });
+        return Post::whereIn('user_id', $links)->where('deleted', '=', false)->orderBy('id')->paginate(20);
+    }
 }
 
 

@@ -16,14 +16,14 @@ class HomeController extends Controller
     public function home() {
         if (Auth::check()) {
             if (Auth::user()->is_admin) {
-                $posts = Post::all()->where('deleted', '=', false)->sortByDesc('id')->take(20);
+                $posts = Post::where('deleted', '=', false)->orderBy('id')->paginate(20);
                 $reports = Report::all()->sortByDesc('id')->take(20);
                 return view('pages.admin', ['posts' => $posts, 'reports' => $reports]);
             } else {
                 $links = Auth::user()->user->getLinks()->map(function($link) {
                     return $link->id;
                 });
-                $posts = Post::all()->whereIn('user_id', $links)->where('deleted', '=', false)->sortByDesc('id')->take(20);
+                $posts = Post::whereIn('user_id', $links)->where('deleted', '=', false)->orderBy('id')->paginate(20)->withPath('/api/more_posts');
                 return view('pages.home', ['posts' => $posts]);
             }
         } else {

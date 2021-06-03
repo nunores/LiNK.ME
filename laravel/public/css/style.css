@@ -137,3 +137,13 @@ body > div.container-fluid {
     padding: 0.3rem;
     cursor: pointer;
 }
+
+.bi.bi-chevron-compact-down {
+    color: var(--green);
+    cursor: pointer;
+}
+
+#load-more {
+    margin: 0 auto 2rem auto;
+    display: block;
+}
