@@ -149,7 +149,7 @@ class PostController extends Controller
     public function postOrder($recent, $general)
     {
         if ($recent == 'true' && $general == 'true'){
-            $posts = Post::all()->where('deleted', '=', false)->take(20);
+            $posts = Post::all()->where('deleted', '=', false)->sortByDesc('id')->take(20);
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
         else if ($recent == 'true' && $general == 'false'){
