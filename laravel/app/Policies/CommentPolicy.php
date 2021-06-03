@@ -51,7 +51,6 @@ class CommentPolicy
         return Auth::check() && (Auth::user()->id == $comment->user->id || Auth::user()->is_admin);
     }
 
-<<<<<<< HEAD
     public function showComment(Person $person, Comment $comment) {
         if ($comment->post->group_id != null) {
             foreach(Auth::user()->user->groups as $group) {
@@ -64,14 +63,6 @@ class CommentPolicy
         if ($comment->post->private == false) {
             return true;
         }
-=======
-    public function showComment(Person $person, Comment $comment)
-    {
-
-        // post de um grupo, tem de ser do grupo (ver Postpolicy, show())
-        // se post publico -> pode
-        // Se post privado, amigo ou owner
->>>>>>> 3ca8e87f6e68645a547db3b9e0d23dfa9d793766
 
         foreach(Auth::user()->user->links as $link) {
             if ($link->id === $comment->post->user_id)
