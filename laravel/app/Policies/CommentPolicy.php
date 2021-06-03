@@ -9,6 +9,7 @@ use App\Models\User;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CommentPolicy
 {
@@ -23,7 +24,7 @@ class CommentPolicy
 
         if ($comment->post->group_id != null) {
             foreach(Auth::user()->user->groups as $group) {
-                if ($group->id === $comment->group_id)
+                if ($group->id === $comment->post->group_id)
                     return true; // Post is for a group and user is on that group
             }
             return false;
@@ -49,14 +50,26 @@ class CommentPolicy
     }
 
     public function showComment(Person $person, Comment $comment) {
+        if ($comment->post->group_id != null) {
+            foreach(Auth::user()->user->groups as $group) {
+                if ($group->id === $comment->post->group_id)
+                    return true; // Post is for a group and user is on that group
+            }
+            return false;
+        }
 
-        //TODO
+        if ($comment->post->private == false) {
+            return true;
+        }
 
-        // post grupo user ser do grupo
-        // post publico pode
-        // post privado tem de ser amigo ou owner
-
-        return true;
+        foreach(Auth::user()->user->links as $link) { // TODO: fix. Only getting links and not reverselinks
+            if ($link->id === $comment->post->user_id)
+                return true; // Post is private and user is friend
+        }
+        foreach(Auth::user()->user->reversedLinks as $link) {
+            if ($link->id === $comment->post->user_id)
+                return true; // Post is private and user is friend
+        }
+        return false; // Post is private and user is not friend
     }
-
 }
