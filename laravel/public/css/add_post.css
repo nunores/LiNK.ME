@@ -45,3 +45,15 @@
     margin: 0 auto 1rem auto;
     display: none!important;
 }
+
+#add-post-form > .row {
+    display: inline;
+}
+
+#add-post-form > .row > .col-1 {
+    display: inline-block;
+}
+
+#add-post-form > .row > img {
+    width: 15%;
+}
