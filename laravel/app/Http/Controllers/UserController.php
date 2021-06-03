@@ -69,7 +69,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        //$this->authorize('delete', $user);
+        $this->authorize('delete', $user);
 
         foreach ($user->comments()->get() as $comment){
             $comment->update(["deleted" => 'true']);
@@ -82,6 +82,7 @@ class UserController extends Controller
         Like::where('user_id', $id)->delete();
 
         $user->links()->detach();
+        $user->reversedLinks()->detach();
 
         $user->groups()->wherePivot('user_id', '=', $user->id)->detach();
 
@@ -113,7 +114,7 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
-        $users = DB::select('SELECT "user".* FROM "user" JOIN "person" ON "user"."id" = "person"."id" WHERE UPPER("user"."name") LIKE UPPER(CONCAT(:search::text, \' % \')) OR UPPER("person"."username") LIKE UPPER(CONCAT(:search::text, \' % \')) OR to_tsvector("user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
+        $users = DB::select('SELECT "user".* FROM "user" JOIN "person" ON "user"."id" = "person"."id" WHERE "user"."deleted"=false AND (UPPER("user"."name") LIKE UPPER(CONCAT(:search::text, \' % \')) OR UPPER("person"."username") LIKE UPPER(CONCAT(:search::text, \' % \')) OR to_tsvector("user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search))', ["search" => $request->input("search")]);
 
         $final = [];
         foreach ($users as $user) {
