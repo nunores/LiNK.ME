@@ -23,6 +23,7 @@ function add_post_form() {
         } else {
             center_col.prepend(div.firstChild);
         }
+        window.scrollTo(0, 0);
         add_post_button.hidden = true;
         return_button.hidden = false;
     });
