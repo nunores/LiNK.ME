@@ -20,9 +20,7 @@
     @endif
     <div class="person-friends">
         @php
-            use App\Models\User;
             $links = $user->links;
-            $user = User::find($user->id);
         @endphp
         @for ($i = 0; $i < count($links) && $i < 300; $i++)
         @include('partials.friend', ['user' => $links[$i] ])
@@ -38,8 +36,8 @@
             <a href="{{ route('faq') }}" class="link-light">FAQ</a>
         </div>
         @if($checker)
-            <div><!--"{{route('logout')}}"-->
-                <a href="#" class="link-danger delete_user" user-id="{{ $user->id }}">Delete account</a>
+            <div>
+                <a href="{{route('logout')}}" class="link-danger delete_user" user-id="{{ $user->id }}">Delete account</a>
             </div>
         @endif
     </div>
