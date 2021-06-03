@@ -20,7 +20,7 @@
     <script src="{{ asset('js/friend_request.js') }}" defer></script>
     @if (Auth::user()->user == $user)
     <script src="{{ asset('js/change_name.js') }}" defer></script>
-    <script src="{{ asset('js/add_post_profile.js') }}" defer></script>
+    <script src="{{ asset('js/add_post.js') }}" defer></script>
     <script src="{{ asset('js/change_password.js') }}" defer></script>
     <script src="{{ asset('js/deleteUser.js') }}" defer></script>
     <script src="{{ asset('js/post_visibility.js') }}" defer></script>

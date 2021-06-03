@@ -12,7 +12,9 @@ function changePassword() {
     if(new_pass == confirm_pass){
         const parameters = {old_pass: old_pass, password: new_pass, password_confirmation: confirm_pass, _token: _token }
         AJAX("PUT", "/api/user/password", parameters, function() {
-            console.log(this.responseText);
+            console.log(this.responseText); // TODO response text is either the $user or id:false;
         });
+    }else{
+        console.log("New passwords don't match"); // TODO Make this display something
     }
 }

@@ -29,20 +29,6 @@
                 <p> <a href="{{ route('register') }}">Don't have an account? </a> </p>
             </div>
             <div class="feed-change">
-                <div id="feed-order">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="feedOrder" id="feedOrderRelevance">
-                            Relevance
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="feedOrder" id="feedOrderRecent" checked>
-                            Recent
-                        </label>
-                    </div>
-                </div>
             </div>
             <div class="about-split">
                 <a href="{{ route('about') }}" class="link-light">About</a>

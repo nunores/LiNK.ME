@@ -10,6 +10,7 @@ function add_post_form() {
     AJAX("GET", "/api/post/form", { _token: _token }, function () {
         const group_name = document.querySelector(".group-name");
         const center_col = document.querySelector("#center-col");
+        const user_name = document.querySelector(".profile-info");
 
         const div = document.createElement("div");
         div.innerHTML = this.responseText.trim();
@@ -20,6 +21,8 @@ function add_post_form() {
 
         if (group_name != null) {
             insertAfter(div.firstChild, group_name);
+        }else if(user_name != null){
+            insertAfter(div.firstChild, user_name);
         } else {
             center_col.prepend(div.firstChild);
         }
@@ -29,7 +32,7 @@ function add_post_form() {
 }
 
 function return_form() {
-    document.querySelector("#add-post-form").parentNode.remove();
+    document.querySelector("#add-post-form").parentNode.parentNode.remove();
     add_post_button.hidden = false;
     return_button.hidden = true;
 }
@@ -46,7 +49,8 @@ function add_image(event) {
             image_element.src = fileReader.result;
             image_element.height = 50;
             image_element.style.paddingRight = "1rem";
-            form.insertBefore(image_element, form.querySelector("#add-post-icon"));
+            form.querySelector("#add-post-icon").parentNode.insertBefore(image_element, form.querySelector("#add-post-icon"));
+            form.querySelector("#add-post-form-space").className = "col-7";
             image_element.onclick = function () {
                 image_element.remove();
                 image = null;
@@ -78,21 +82,25 @@ function insert_added_post() {
 
                 const group_name = document.querySelector(".group-name");
                 const center_col = document.querySelector("#center-col");
+                const user_name = document.querySelector(".profile-info");
 
                 if (group_name != null) {
                     insertAfter(div.firstChild, group_name);
+                }else if(user_name != null){
+                    insertAfter(div.firstChild, user_name);
                 } else {
                     center_col.prepend(div.firstChild);
                 }
                 const form = document.querySelector("#add-post-form");
-                form.parentNode.remove();
+                form.parentNode.parentNode.remove();
                 add_post_button.hidden = false;
                 return_button.hidden = true;
             });
         } else {
-            const p = document.querySelector('.add-post > p');
-            p.hidden = false;
-            setTimeout(function () { p.hidden = true; }, 3000);
+            const p = document.querySelector('.alert-danger');
+            p.style.setProperty("display", "flex", "important");
+            console.log(p);
+            setTimeout(function () { p.style.setProperty("display", "none", "important"); }, 3000);
         }
     }
 }

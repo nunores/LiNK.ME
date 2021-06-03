@@ -65,9 +65,9 @@
     @endif
     <div class="collapse" id="change-password-form">
         <div class="card bg-dark border-secondary">
-            <input id="old-password" type="text" class="form-control bg-dark change-password-input" placeholder="Old password">
-            <input id="new-password" type="text" class="form-control bg-dark change-password-input" placeholder="New password">
-            <input id="confirm-password" type="text" class="form-control bg-dark change-password-input" placeholder="Confirm password">
+            <input id="old-password" type="password" class="form-control bg-dark change-password-input" placeholder="Old password" minlength="6">
+            <input id="new-password" type="password" class="form-control bg-dark change-password-input" placeholder="New password" minlength="6">
+            <input id="confirm-password" type="password" class="form-control bg-dark change-password-input" placeholder="Confirm password" minlength="6">
             <input id="submit-password-change" type="submit" class="form-control change-password-input bg-dark">
         </div>
     </div>
