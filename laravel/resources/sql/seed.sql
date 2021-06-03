@@ -36,7 +36,7 @@ DROP TRIGGER IF EXISTS banned_post_notification on "post";
 CREATE TABLE person (
 	id SERIAL PRIMARY KEY,
 	username text NOT NULL CONSTRAINT uk_person_username UNIQUE,
-	"password" text NOT NULL,
+	"password" text NOT NULL CHECK(length("password") >= 6),
     is_admin boolean NOT NULL DEFAULT FALSE
 );
 

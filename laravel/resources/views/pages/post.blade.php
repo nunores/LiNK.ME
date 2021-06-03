@@ -18,6 +18,7 @@
     <script src="{{ asset('js/comments.js') }}" defer></script>
 @endif
 <script src="{{ asset('js/post_options.js') }}" defer></script>
+<script src="{{ asset('js/post_visibility.js') }}" defer></script>
 <script src="{{ asset('js/comment_options.js') }}" defer></script>
 @endpush
 

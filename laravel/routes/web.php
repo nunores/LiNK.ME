@@ -18,7 +18,7 @@ Route::get('/', 'Auth\HomeController@home');
 Route::get('user/{id}', 'UserController@show')->name('user');
 Route::post('api/user', 'UserController@getUserInfo');
 Route::put('api/user', 'UserController@create');
-Route::delete('api/user/{id}', 'UserController@delete');
+Route::delete('api/user/{id}', 'UserController@delete')->name('deleteUser');
 Route::put('api/user/name', 'UserController@changeName');
 Route::put('api/user/password', 'UserController@changePassword');
 Route::get('users', 'UserController@search')->name('users');
@@ -38,6 +38,7 @@ Route::put('api/post/{id}', 'PostController@update');
 Route::get('posts', 'PostController@search')->name('posts');
 Route::get('api/posts/{recent}/{general}', 'PostController@postOrder');
 Route::get('api/more_posts', 'PostController@morePosts');
+Route::put('api/post/{id}/visibility', 'PostController@changeVisibility');
 
 //Likes
 Route::get('api/like/{id}', 'LikeController@getLikesDislikes');

@@ -30,7 +30,7 @@ function add_post_form() {
 }
 
 function return_form() {
-    document.querySelector("#add-post-form").parentNode.remove();
+    document.querySelector("#add-post-form").parentNode.parentNode.remove();
     add_post_button.hidden = false;
     return_button.hidden = true;
 }
@@ -86,14 +86,15 @@ function insert_added_post() {
                     center_col.prepend(div.firstChild);
                 }
                 const form = document.querySelector("#add-post-form");
-                form.parentNode.remove();
+                form.parentNode.parentNode.remove();
                 add_post_button.hidden = false;
                 return_button.hidden = true;
             });
         } else {
-            const p = document.querySelector('.add-post > p');
-            p.hidden = false;
-            setTimeout(function () { p.hidden = true; }, 3000);
+            const p = document.querySelector('.alert-danger');
+            p.style.setProperty("display", "flex", "important");
+            console.log(p);
+            setTimeout(function () { p.style.setProperty("display", "none", "important"); }, 3000);
         }
     }
 }

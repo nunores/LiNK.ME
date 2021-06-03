@@ -4,33 +4,21 @@
 		<h2>{{ Auth::user()->user->name }}</h2>
 	</a>
 	<div class="feed-change">
-		<div id="feed-order">
-			<div class="form-check">
-				<label class="form-check-label">
-					<input class="form-check-input" type="radio" name="feedOrder" id="feedOrderRelevance">
-					Relevance
-				</label>
-			</div>
-			<div class="form-check">
-				<label class="form-check-label">
-					<input class="form-check-input" type="radio" name="feedOrder" id="feedOrderRecent" checked>
-					Recent
-				</label>
-			</div>
-		</div>
 		<div id="feed-type">
-			<div class="form-check">
-				<label class="form-check-label">
-					<input class="form-check-input" type="radio" name="feedType" id="feedTypeGeneral">
-					General
-				</label>
-			</div>
-			<div class="form-check">
-				<label class="form-check-label">
-					<input class="form-check-input" type="radio" name="feedType" id="feedTypeFriends" checked>
-					Friends
-				</label>
-			</div>
+			@if ($page != 'group')
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="feedType" id="feedTypeGeneral">
+						General
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="feedType" id="feedTypeFriends" checked>
+						Friends
+					</label>
+				</div>
+			@endif
 		</div>
 	</div>
 	<div id="notifications">
