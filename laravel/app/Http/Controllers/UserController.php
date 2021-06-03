@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Person;
 use App\Models\Report;
 use App\Models\User;
+use App\Models\Like;
+use App\Models\Notification;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -71,7 +73,25 @@ class UserController extends Controller
         $user = User::find($id);
 
         $this->authorize('delete', $user);
-        $user->delete();
+
+        foreach ($user->comments()->get() as $comment){
+            $comment->update(["deleted" => 'true']);
+        }
+
+        foreach ($user->posts()->get() as $post){
+            $post->update(["banned" => 'true']);
+        }
+
+        Like::where('user_id', $id)->delete();
+
+        $user->links()->detach();
+        $user->reversedLinks()->detach();
+
+        $user->groups()->wherePivot('user_id', '=', $user->id)->detach();
+
+        Notification::where('user_id', $id)->delete();
+
+        User::where('id', $id)->update(['deleted' => 'true']);
 
         return $user;
     }
@@ -106,7 +126,7 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
-        $users = DB::select('SELECT "user".* FROM "user" JOIN "person" ON "user"."id" = "person"."id" WHERE UPPER("user"."name") LIKE UPPER(CONCAT(:search::text, \' % \')) OR UPPER("person"."username") LIKE UPPER(CONCAT(:search::text, \' % \')) OR to_tsvector("user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
+        $users = DB::select('SELECT "user".* FROM "user" JOIN "person" ON "user"."id" = "person"."id" WHERE "user"."deleted"=false AND (UPPER("user"."name") LIKE UPPER(CONCAT(:search::text, \' % \')) OR UPPER("person"."username") LIKE UPPER(CONCAT(:search::text, \' % \')) OR to_tsvector("user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search))', ["search" => $request->input("search")]);
 
         $final = [];
         foreach ($users as $user) {

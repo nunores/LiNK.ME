@@ -7,7 +7,7 @@
         @if($page == "login")
             @include('partials.sidebar.sidebar_login')
         @else
-            @include('partials.sidebar.sidebar_normal')
+            @include('partials.sidebar.sidebar_normal', ['page' => $page])
         @endif
     @endif
 @endif

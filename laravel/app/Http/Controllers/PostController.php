@@ -15,6 +15,7 @@ use App\Models\Report;
 use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
@@ -32,6 +33,11 @@ class PostController extends Controller
 
     public function create(Request $request)
     {
+        if ((strlen($request->input('description')) == 0 && !$request->has('picture')) ||
+            ($request->has('description') && strlen($request->input('description')) > 250)) {
+                return new Post();
+        }
+
         $post = new Post();
         $post->user_id = Auth::user()->id;
 
@@ -118,14 +124,30 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $posts = DB::select('SELECT post.* FROM "post" JOIN "user" ON "user"."id" = "post"."user_id" JOIN "person" ON "person"."id" = "user"."id" WHERE "post"."private" = false AND to_tsvector("post"."description" || \' \' || "user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
+        $posts = DB::select('
+            SELECT post.*
+            FROM "post"
+            JOIN "user" ON "user"."id" = "post"."user_id"
+            JOIN "person" ON "person"."id" = "user"."id"
+            WHERE "post"."deleted" = false
+            AND ("post"."private" = false OR
+                "post"."user_id" IN (
+                    SELECT user1_id
+                    FROM link
+                    WHERE user2_id = :auth_user
+                ) OR "post"."user_id" IN (
+                    SELECT user2_id
+                    FROM link
+                    WHERE user1_id = :auth_user
+                )
+            )
+            AND to_tsvector("post"."description" || \' \' || "user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)',
+            ["search" => $request->input("search"), "auth_user" => Auth::check() && !Auth::user()->is_admin ? Auth::user()->id : -1]);
 
         $final = [];
         foreach ($posts as $post) {
             array_push($final, Post::find($post->id));
         }
-
-        //TODO: é preciso algum authorize aqui?
 
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
@@ -143,7 +165,7 @@ class PostController extends Controller
     public function postOrder($recent, $general)
     {
         if ($recent == 'true' && $general == 'true'){
-            $posts = Post::all()->where('deleted', '=', false)->take(20);
+            $posts = Post::all()->where('deleted', '=', false)->sortByDesc('id')->take(20);
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
         else if ($recent == 'true' && $general == 'false'){
@@ -156,6 +178,14 @@ class PostController extends Controller
     }
 
 
+    public function changeVisibility(Request $request, $id) {
+        $post = Post::find($id);
+        $this->authorize('changeVisibility', $post);
+
+        $post->private = $request->input('private') == "true" ? true : false;
+        $post->save();
+        return $post;
+    }
 }
 
 

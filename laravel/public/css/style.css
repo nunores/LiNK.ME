@@ -105,6 +105,45 @@ body > div.container-fluid {
     bottom: 2%;
 }
 
+.help-button:focus{
+    box-shadow: none;
+}
+
+.modal{
+    color: var(--bs-light);
+}
+
+.modal-header{
+    border-color: black;
+}
+
+.modal-title{
+    color: var(--green);
+}
+
+.modal-title > p{
+    margin-bottom: 0rem;
+}
+
+.modal-content{
+    background-color: #292d32;
+}
+
+.btn-close{
+    color: var(--green);
+    background: transparent;
+}
+
+.btn-close:focus{
+    color: var(--green);
+    box-shadow: none;
+}
+
+.btn-close:hover{
+    color: var(--green);
+}
+
+
 .link-danger {
 	color: var(--pink);
 }

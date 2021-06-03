@@ -20,11 +20,15 @@ class HomeController extends Controller
                 $reports = Report::all()->sortByDesc('id')->take(20);
                 return view('pages.admin', ['posts' => $posts, 'reports' => $reports]);
             } else {
-                $links = Auth::user()->user->getLinks()->map(function($link) {
-                    return $link->id;
-                });
-                $posts = Post::all()->whereIn('user_id', $links)->where('deleted', '=', false)->sortByDesc('id')->take(20);
-                return view('pages.home', ['posts' => $posts]);
+                if (Auth::user()->user->deleted == false) {
+                    $links = Auth::user()->user->getLinks()->map(function($link) {
+                        return $link->id;
+                    });
+                    $posts = Post::all()->whereIn('user_id', $links)->where('deleted', '=', false)->sortByDesc('id')->take(20);
+                    return view('pages.home', ['posts' => $posts]);
+                } else {
+                    return redirect('logout');
+                }
             }
         } else {
             return redirect('login');

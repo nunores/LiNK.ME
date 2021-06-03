@@ -16,6 +16,7 @@
 <script src="{{ asset('js/comment_options.js') }}" defer></script>
 <script src="{{ asset('js/add_post.js') }}" defer></script>
 <script src="{{ asset('js/change_post_order.js') }}" defer></script>
+<script src="{{ asset('js/post_visibility.js') }}" defer></script>
 @endpush
 
 @section('content')
