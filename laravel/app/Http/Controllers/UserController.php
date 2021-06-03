@@ -10,6 +10,7 @@ use App\Models\Person;
 use App\Models\Report;
 use App\Models\User;
 use App\Models\Like;
+use App\Models\Notification;
 
 class UserController extends Controller
 {
@@ -69,21 +70,23 @@ class UserController extends Controller
         $user = User::find($id);
 
         //$this->authorize('delete', $user);
-        
+
         foreach ($user->comments()->get() as $comment){
             $comment->update(["deleted" => 'true']);
         }
-        
+
         foreach ($user->posts()->get() as $post){
             $post->update(["banned" => 'true']);
         }
-        
+
         Like::where('user_id', $id)->delete();
-        
+
         $user->links()->detach();
-        
+
         $user->groups()->wherePivot('user_id', '=', $user->id)->detach();
-        
+
+        Notification::where('user_id', $id)->delete();
+
         User::where('id', $id)->update(['deleted' => 'true']);
 
         return $user;
