@@ -1,9 +1,11 @@
-const load_more_button = document.querySelector('#load-more');
+let load_more_button = document.querySelector('#load-more');
 
 load_more_button.onclick = load_more_posts;
 
 function load_more_posts() {
     const next_page = parseInt(load_more_button.getAttribute('data-page-id')) + 1;
+    const feedTypeFriends = document.querySelector("#feedTypeFriends");
+
     AJAX("GET", "/api/more_posts?page=" + next_page, {_token: _token}, function() {
         console.log(this.responseText);
         const response = JSON.parse(this.responseText);

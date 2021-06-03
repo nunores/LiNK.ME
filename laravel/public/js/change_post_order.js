@@ -7,7 +7,7 @@ feedTypeFriends.onclick = friends;
 console.log(feedTypeGeneral);
 
 function general(){
-    AJAX("GET", "/api/posts/" + 'true/' + 'true', {_token: _token}, function() {
+    AJAX("GET", "/api/posts/" + 'true', {_token: _token}, function() {
 
         const center_col = document.querySelector(".center-col-col-8");
         const div = document.createElement("div");
@@ -46,14 +46,16 @@ function general(){
         submit_buttons.forEach(submit_button => {
             submit_button.onclick = sendComment;
         });
-        
+
+        load_more_button = document.querySelector('#load-more');
+        load_more_button.onclick = load_more_posts;
     })
-    
+
 }
 
 function friends(){
-    AJAX("GET", "/api/posts/" + 'true/' + 'false', {_token: _token}, function() {
-        
+    AJAX("GET", "/api/posts/" + 'false', {_token: _token}, function() {
+
         const center_col = document.querySelector(".center-col-col-8");
         const div = document.createElement("div");
         div.innerHTML = this.responseText.trim();
@@ -62,7 +64,7 @@ function friends(){
             child.remove();
         });
         center_col.appendChild(div.firstChild);
-        
+
         like_buttons = document.querySelectorAll(".bi-hand-thumbs-up");
         dislike_buttons = document.querySelectorAll(".bi-hand-thumbs-down");
 
@@ -91,6 +93,9 @@ function friends(){
         submit_buttons.forEach(submit_button => {
             submit_button.onclick = sendComment;
         });
+
+        load_more_button = document.querySelector('#load-more');
+        load_more_button.onclick = load_more_posts;
     })
 
 }
