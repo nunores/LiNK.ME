@@ -145,9 +145,14 @@
 
 .change-password-input {
 	margin: 1rem 0.5rem;
-	width: calc(15rem - 2rem);
+	width: calc(15rem - 1.3rem);
 }
 
 #add-picture-file {
     display:none;
+}
+
+.wrong-pass {
+    display: none!important;
+    margin: auto;
 }

@@ -68,6 +68,9 @@
             <input id="old-password" type="password" class="form-control bg-dark change-password-input" placeholder="Old password" minlength="6">
             <input id="new-password" type="password" class="form-control bg-dark change-password-input" placeholder="New password" minlength="6">
             <input id="confirm-password" type="password" class="form-control bg-dark change-password-input" placeholder="Confirm password" minlength="6">
+            <span class="wrong-pass" role="alert">
+                Holder
+            </span>
             <input id="submit-password-change" type="submit" class="form-control change-password-input bg-dark">
         </div>
     </div>
