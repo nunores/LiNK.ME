@@ -35,6 +35,7 @@ function return_form() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 function add_post() {
     const text = form.querySelector("textarea").value;
     const url = form.querySelector("img") != null ? form.querySelector("img").src : null;
@@ -65,6 +66,8 @@ function add_post() {
 
 =======
 >>>>>>> master
+=======
+>>>>>>> e8a5e8a3f2dc9b0660b1eaf7c837003278eee13b
 function add_image(event) {
     image = event.target.files[0];
     const form = document.querySelector("#add-post-form");
