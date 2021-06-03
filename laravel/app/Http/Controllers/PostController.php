@@ -165,6 +165,9 @@ class PostController extends Controller
         if (!Auth::check()) {
             return Post::where('deleted', '=', false)->where('private', '=', false)->orderBy('id')->paginate(20);
         }
+        if (Auth::user()->is_admin) {
+            return Post::where('deleted', '=', false)->orderBy('id')->paginate(20);
+        }
         $links = Auth::user()->user->getLinks()->map(function($link) {
             return $link->id;
         });
