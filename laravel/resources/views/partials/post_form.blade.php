@@ -24,7 +24,8 @@
         <input type=hidden id="group_id" name="group_id">
         <textarea name="description" maxlength="250" class="form-control add-post-textarea" aria-label="With textarea" placeholder="Insert text here..."></textarea>
         <div class="row">
-            <label class="col-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Add a photo"><input name="picture" type="file" class="form-control" id="add-post-file" accept="image/*">
+            <label class="col-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Add a photo">
+                <input name="picture" type="file" class="form-control" id="add-post-file" accept="image/*">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-paperclip" viewBox="0 0 16 16">
                     <path d="M4.5 3a2.5 2.5 0 0 1 5 0v9a1.5 1.5 0 0 1-3 0V5a.5.5 0 0 1 1 0v7a.5.5 0 0 0 1 0V3a1.5 1.5 0 1 0-3 0v9a2.5 2.5 0 0 0 5 0V5a.5.5 0 0 1 1 0v7a3.5 3.5 0 1 1-7 0V3z" />
                 </svg>

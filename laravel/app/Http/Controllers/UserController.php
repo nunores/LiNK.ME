@@ -11,6 +11,7 @@ use App\Models\Report;
 use App\Models\User;
 use App\Models\Like;
 use App\Models\Notification;
+use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -123,6 +124,14 @@ class UserController extends Controller
         return ['id' => false];
     }
 
+    public function changePicture(Request $request)
+    {
+        $user = Auth::user()->user;
+
+        $request->file('picture')->move(public_path() . "/images/profile/", $user->id . ".png");
+
+        return redirect('user/3');
+    }
 
     public function search(Request $request)
     {

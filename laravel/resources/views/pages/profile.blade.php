@@ -24,6 +24,7 @@
     <script src="{{ asset('js/change_password.js') }}" defer></script>
     <script src="{{ asset('js/deleteUser.js') }}" defer></script>
     <script src="{{ asset('js/post_visibility.js') }}" defer></script>
+    <script src="{{ asset('js/change_profile_pic.js') }}" defer></script>
     @endif
 @endif
 <script src="{{ asset('js/post_options.js') }}" defer></script>
@@ -59,7 +60,7 @@
             </div>
         </div>
     </div>
-    @if (!Auth::user()->is_admin)
+    @if (!Auth::user()->is_admin && $checker)
 	<div id="add-post-icon" class="add-post-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="125" height="125" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
