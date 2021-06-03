@@ -27,9 +27,13 @@ class PostPolicy
             return false; // Post is for a group and user is not on that group
         } else {
             if ($post->private) {
-                foreach(Auth::user()->user->links as $link) { // TODO: fix. Only getting links and not reverselinks
+                foreach(Auth::user()->user->links as $link) {
                     if ($link->id === $post->user_id)
                         return true; // Post is private and user if friend
+                }
+                foreach(Auth::user()->user->reversedLinks as $link) {
+                    if ($link->id === $post->user_id)
+                        return true; // Post is private and user is friend
                 }
                 return false; // Post is private and user is not friend
             } else
