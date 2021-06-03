@@ -33,10 +33,10 @@ class CommentController extends Controller
     public function create(Request $request)
     {
         $comment = new Comment();
-        $this->authorize('create', $comment);
         $comment->user_id = Auth::user()->id;
         $comment->post_id = $request->input('post_id');
         $comment->text = $request->input('text');
+        $this->authorize('create', $comment);
         $comment->save();
         return $comment;
     }
