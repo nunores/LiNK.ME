@@ -105,6 +105,15 @@ body > div.container-fluid {
     bottom: 2%;
 }
 
+.help-button:focus{
+    box-shadow: none;
+}
+
+.modal{
+    color: #292d32;
+}
+
+
 .link-danger {
 	color: var(--pink);
 }
