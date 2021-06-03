@@ -46,7 +46,8 @@ function add_image(event) {
             image_element.src = fileReader.result;
             image_element.height = 50;
             image_element.style.paddingRight = "1rem";
-            form.insertBefore(image_element, form.querySelector("#add-post-icon"));
+            form.querySelector("#add-post-icon").parentNode.insertBefore(image_element, form.querySelector("#add-post-icon"));
+            form.querySelector("#add-post-form-space").className = "col-7";
             image_element.onclick = function () {
                 image_element.remove();
                 image = null;
