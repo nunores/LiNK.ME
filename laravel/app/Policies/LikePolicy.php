@@ -19,16 +19,23 @@ class LikePolicy
     }
 
     public function createLike(Person $person) {
+        // Auth::check()
+        // is_admin
+
         return Auth::check();
     }
 
     public function likeDislike(Person $person)
     {
+        // Auth::check()
+        // is_admin
         return Auth::check();
     }
 
     public function delete(Person $person)
     {
+        // Auth::check()
+        // is_admin
         return Auth::check();
         //return Auth::user() == $person && (Like::table('like')->where('post_id', '=', $post->id)->where('user_id', '=', $person->id) != null);
     }

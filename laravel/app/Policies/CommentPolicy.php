@@ -16,14 +16,30 @@ class CommentPolicy
 
     public function create(Person $person)
     {
-        return true; // TODO: handle the authorization for creating a post
+        // TODO: handle the authorization for creating a post
+
+        // Auth::check
+        // is_admin
+
+        // post grupo user ser do grupo
+        // post publico pode
+        // post privado tem de ser amigo ou owner
+
+        return true;
     }
 
     public function delete(Person $person, Comment $comment) {
-        return Auth::user()->id == $comment->user->id || Auth::user()->is_admin;
+        return Auth::check() && (Auth::user()->id == $comment->user->id || Auth::user()->is_admin);
     }
 
     public function showComment(Person $person, Comment $comment) {
+
+        //TODO
+
+        // post grupo user ser do grupo
+        // post publico pode
+        // post privado tem de ser amigo ou owner
+
         return true;
     }
 
