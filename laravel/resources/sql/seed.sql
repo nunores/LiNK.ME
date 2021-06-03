@@ -67,6 +67,7 @@ CREATE TABLE "post" (
 	description text CONSTRAINT ck_post_description_size CHECK (length(description) <= 250) ,
 	"date" TIMESTAMP WITH TIME zone DEFAULT now() NOT NULL CONSTRAINT ck_post_date_before_now CHECK ("date" <= now()),
 	banned boolean NOT NULL DEFAULT FALSE,
+	deleted boolean NOT NULL DEFAULT FALSE,
 	private boolean NOT NULL DEFAULT FALSE,
  	group_id INTEGER REFERENCES "group" (id)
 	CONSTRAINT ck_post_picture_andor_description CHECK (description != NULL OR picture != NULL),
@@ -287,6 +288,7 @@ BEGIN
                 WHERE post.id = New.id)
             RETURNING "id")
         INSERT INTO "banned_post" (id, banned_post_id) SELECT "return"."id", New.id FROM "return";
+        UPDATE post SET "deleted" = true WHERE post.id = NEW.id;
     END IF;
 	RETURN NEW;
 END
@@ -294,7 +296,7 @@ $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER banned_post_notification
-    AFTER INSERT OR UPDATE ON post
+    AFTER UPDATE OF "banned" ON "post"
     FOR EACH ROW
     EXECUTE PROCEDURE banned_post_notification();
 

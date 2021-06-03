@@ -49,7 +49,7 @@
                 <div id="center-col">
                     @include('partials.user_info', ['user' => $user, 'checker' => $checker])
                     @php
-                        $posts = $user->posts->where('banned', '=', false);
+                        $posts = $user->posts->where('deleted', '=', false);
                     @endphp
                     @foreach ($posts->reverse() as $post)
                             @include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->take(2)])

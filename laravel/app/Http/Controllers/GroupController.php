@@ -23,7 +23,7 @@ class GroupController extends Controller
         if (!Auth::check()) redirect("login");
         $group = Group::find($id);
         $this->authorize('show', $group);
-        $posts = $group->posts->where("banned", "=", false)->sortByDesc('id');
+        $posts = $group->posts->where("deleted", "=", false)->sortByDesc('id');
         if (!Auth::user()->is_admin) {
             $links = Auth::user()->user->getLinks();
             return view('pages.group', ['group' => $group, 'posts' => $posts, 'links' => $links]);
