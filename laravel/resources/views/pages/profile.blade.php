@@ -23,6 +23,7 @@
     <script src="{{ asset('js/add_post_profile.js') }}" defer></script>
     <script src="{{ asset('js/change_password.js') }}" defer></script>
     <script src="{{ asset('js/deleteUser.js') }}" defer></script>
+    <script src="{{ asset('js/post_visibility.js') }}" defer></script>
     @endif
 @endif
 <script src="{{ asset('js/post_options.js') }}" defer></script>

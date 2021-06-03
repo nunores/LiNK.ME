@@ -37,6 +37,7 @@ Route::delete('api/post/{id}', 'PostController@delete');
 Route::put('api/post/{id}', 'PostController@update');
 Route::get('posts', 'PostController@search')->name('posts');
 Route::get('api/posts/{recent}/{general}', 'PostController@postOrder');
+Route::put('api/post/{id}/visibility', 'PostController@changeVisibility');
 
 //Likes
 Route::get('api/like/{id}', 'LikeController@getLikesDislikes');

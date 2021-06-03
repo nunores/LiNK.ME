@@ -162,6 +162,14 @@ class PostController extends Controller
     }
 
 
+    public function changeVisibility(Request $request, $id) {
+        $post = Post::find($id);
+        $this->authorize('changeVisibility', $post);
+
+        $post->private = $request->input('private') == "true" ? true : false;
+        $post->save();
+        return $post;
+    }
 }
 
 

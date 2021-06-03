@@ -71,4 +71,8 @@ class PostPolicy
     {
         return Auth::check();
     }
+
+    public function changeVisibility(Person $person, Post $post) {
+        return Auth::check() && Auth::user()->id == $post->user_id;
+    }
 }
