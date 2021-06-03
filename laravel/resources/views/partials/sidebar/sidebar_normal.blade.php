@@ -5,18 +5,20 @@
 	</a>
 	<div class="feed-change">
 		<div id="feed-type">
-			<div class="form-check">
-				<label class="form-check-label">
-					<input class="form-check-input" type="radio" name="feedType" id="feedTypeGeneral">
-					General
-				</label>
-			</div>
-			<div class="form-check">
-				<label class="form-check-label">
-					<input class="form-check-input" type="radio" name="feedType" id="feedTypeFriends" checked>
-					Friends
-				</label>
-			</div>
+			@if ($page != 'group')
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="feedType" id="feedTypeGeneral">
+						General
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label">
+						<input class="form-check-input" type="radio" name="feedType" id="feedTypeFriends" checked>
+						Friends
+					</label>
+				</div>
+			@endif
 		</div>
 	</div>
 	<div id="notifications">
