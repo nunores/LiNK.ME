@@ -130,6 +130,7 @@ class UserController extends Controller
 
         $request->file('picture')->move(public_path() . "/images/profile/", $user->id . ".png");
 
+        return null;
         return redirect('user/3');
     }
 
