@@ -34,3 +34,8 @@
         left: 75%;
     }
 }
+
+.add-post > p {
+    color: var(--pink);
+    margin: 0.5rem 0 0 0;
+}
