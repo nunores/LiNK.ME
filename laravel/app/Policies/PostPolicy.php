@@ -39,8 +39,7 @@ class PostPolicy
 
     public function showPostInfo(Person $person)
     {
-        // Auth::check()
-        return true;
+        return Auth::check();
     }
 
     public function create(Person $person, Post $post)
