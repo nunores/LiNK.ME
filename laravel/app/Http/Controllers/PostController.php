@@ -162,21 +162,38 @@ class PostController extends Controller
         }
     }
 
-    public function postOrder($recent, $general)
+    public function postOrder($general)
     {
-        if ($recent == 'true' && $general == 'true'){
-            $posts = Post::all()->where('deleted', '=', false)->sortByDesc('id')->take(20);
+        if ($general == 'true'){
+            $posts = Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
-        else if ($recent == 'true' && $general == 'false'){
+        else if ($general == 'false'){
             $links = Auth::user()->user->getLinks()->map(function($link) {
                 return $link->id;
             });
-            $posts = Post::all()->whereIn('user_id', $links)->where('deleted', '=', false)->sortByDesc('id')->take(20);
+            $posts = Post::where('deleted', '=', false)->whereIn('user_id', $links)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
     }
 
+    public function morePosts(Request $request) {
+        if (!Auth::check()) {
+            return Post::where('deleted', '=', false)->where('private', '=', false)->orderByDesc('id')->paginate(20);
+        }
+        if (Auth::user()->is_admin) {
+            return Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20);
+        }
+        $links = Auth::user()->user->getLinks()->map(function($link) {
+            return $link->id;
+        });
+        Log::debug($request);
+        if ($request->input('general') == "true") {
+            return Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20);
+        } else {
+            return Post::whereIn('user_id', $links)->where('deleted', '=', false)->orderByDesc('id')->paginate(20);
+        }
+    }
 
     public function changeVisibility(Request $request, $id) {
         $post = Post::find($id);

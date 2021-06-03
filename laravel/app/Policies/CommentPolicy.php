@@ -14,16 +14,48 @@ class CommentPolicy
 {
     use HandlesAuthorization;
 
-    public function create(Person $person)
+    public function create(Person $person, Comment $comment)
     {
-        return true; // TODO: handle the authorization for creating a post
+        // TODO: handle the authorization for creating a post
+
+        if (!Auth::check() || Auth::user()->is_admin) return false;
+
+
+        if ($comment->post->group_id != null) {
+            foreach(Auth::user()->user->groups as $group) {
+                if ($group->id === $comment->group_id)
+                    return true; // Post is for a group and user is on that group
+            }
+            return false;
+        }
+
+        if ($comment->post->private == false) {
+            return true;
+        }
+
+        foreach(Auth::user()->user->links as $link) { // TODO: fix. Only getting links and not reverselinks
+            if ($link->id === $comment->post->user_id)
+                return true; // Post is private and user is friend
+        }
+        foreach(Auth::user()->user->reversedLinks as $link) {
+            if ($link->id === $comment->post->user_id)
+                return true; // Post is private and user is friend
+        }
+        return false; // Post is private and user is not friend
     }
 
     public function delete(Person $person, Comment $comment) {
-        return Auth::user()->id == $comment->user->id || Auth::user()->is_admin;
+        return Auth::check() && (Auth::user()->id == $comment->user->id || Auth::user()->is_admin);
     }
 
     public function showComment(Person $person, Comment $comment) {
+
+        //TODO
+
+        // post grupo user ser do grupo
+        // post publico pode
+        // post privado tem de ser amigo ou owner
+
         return true;
     }
 

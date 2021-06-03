@@ -76,4 +76,10 @@ class RegisterController extends Controller
         ]);
         return $person;
     }
+
+    public function showRegistrationForm()
+    {
+        $posts = Post::where('deleted', '=', false)->where('private', '=', false)->orderBy('id')->paginate(20)->withPath('/api/more_posts');
+        return view('auth.register', ["posts" => $posts]);
+    }
 }

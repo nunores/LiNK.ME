@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -45,5 +46,11 @@ class LoginController extends Controller
 
     public function home() {
         return view('pages.home');
+    }
+
+    public function showLoginForm()
+    {
+        $posts = Post::where('deleted', '=', false)->where('private', '=', false)->orderBy('id')->paginate(20)->withPath('/api/more_posts');
+        return view('auth.login', ['posts' => $posts]);
     }
 }

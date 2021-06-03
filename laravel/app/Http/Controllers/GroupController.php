@@ -62,10 +62,11 @@ class GroupController extends Controller
     public function request(Request $request) {
         $notification = new Notification();
         $group_request = new GroupRequest();
-        $this->authorize('request', Group::class);
+        $group = Group::find($request->input('group_id'));
+        $this->authorize('request', $group);
 
         // Removes all group request notifications similiar to the one being created
-        $old_group_requests = GroupRequest::all()->where("group_id", "=", $request->input('group_id'));
+        $old_group_requests = GroupRequest::all()->where("group_id", "=", $group->id);
         foreach ($old_group_requests as $old_group_request) {
             if ($old_group_request->notification->user_id == $request->input('user_id')) {
                 $old_group_request->notification->delete();
@@ -76,7 +77,7 @@ class GroupController extends Controller
         $notification->user_id = $request->input('user_id');
         $notification->save();
         $group_request->id = $notification->id;
-        $group_request->group_id = $request->input('group_id');
+        $group_request->group_id = $group->id;
         $group_request->save();
         return [$notification, $group_request];
     }

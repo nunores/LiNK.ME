@@ -27,7 +27,7 @@ class PostPolicy
             return false; // Post is for a group and user is not on that group
         } else {
             if ($post->private) {
-                foreach(Auth::user()->user->links as $link) {
+                foreach(Auth::user()->user->links as $link) { // TODO: fix. Only getting links and not reverselinks
                     if ($link->id === $post->user_id)
                         return true; // Post is private and user if friend
                 }
@@ -39,6 +39,7 @@ class PostPolicy
 
     public function showPostInfo(Person $person)
     {
+        // Auth::check()
         return true;
     }
 
@@ -59,17 +60,17 @@ class PostPolicy
 
     public function delete(Person $person, Post $post)
     {
-        return Auth::user()->id == $post->user_id || Auth::user()->is_admin;
+        return Auth::check() && (Auth::user()->id == $post->user_id || Auth::user()->is_admin);
     }
 
     public function update(Person $person, Post $post)
     {
-        return Auth::user() == $person && $person->id == $post->user_id;
+        return Auth::check() && Auth::user()->id == $post->user_id;
     }
 
     public function form(Person $person)
     {
-        return Auth::check();
+        return Auth::check() && !Auth::user()->is_admin;
     }
 
     public function changeVisibility(Person $person, Post $post) {

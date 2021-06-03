@@ -27,21 +27,34 @@ class GroupPolicy
 
     public function createForm(Person $person)
     {
+        // Auth::check()
+        // is_admin
+
         return true; //TODO: Fazer isto
     }
 
     public function getUserGroups(Person $person, Group $group)
     {
+        // Auth::check()
         return true; //TODO: Fazer isto
     }
 
     public function create(Person $person, Group $group)
     {
+        // Auth::check()
+        // is_admin
+
         return true; //TODO: Fazer isto
     }
 
-    public function request(Person $person)
+    public function request(Person $person, Group $group)
     {
-        return Auth::check();
+        // TODO
+        // Auth::check()
+        // is_admin
+
+        // Auth::user()->user in group
+
+        return true;
     }
 }
