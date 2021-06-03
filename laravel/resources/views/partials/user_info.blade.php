@@ -1,12 +1,10 @@
 <div class="profile-info my-profile">
     <div>
-        <a href="{{ route('user', ['id' => $user->id])}}">
-            @if (file_exists('images/profile/' . $user->id . '.png'))
-                <img src="{{ asset('images/profile/' . $user->id . '.png') }}" class="rounded-circle profile-info-picture" alt="Profile picture">
-            @else
-                <img src="{{ asset('images/profile/default.png') }}" class="rounded-circle profile-info-picture" alt="Profile picture">
-            @endif
-        </a>
+        @if (file_exists('images/profile/' . $user->id . '.png'))
+            <img src="{{ asset('images/profile/' . $user->id . '.png') }}" class="rounded-circle profile-info-picture" alt="Profile picture">
+        @else
+            <img src="{{ asset('images/profile/default.png') }}" class="rounded-circle profile-info-picture" alt="Profile picture">
+        @endif
         @if ($checker)
             <form id="add-picture-form" method="POST" action="{{ route("changePicture") }}" enctype="multipart/form-data">
                 @csrf
