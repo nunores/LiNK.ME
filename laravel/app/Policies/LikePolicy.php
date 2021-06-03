@@ -19,8 +19,8 @@ class LikePolicy
     }
 
     public function createLike(Person $person) {
-        // Auth::check()
-        // is_admin
+        // logado
+        // não pode ser admin
 
         return Auth::check() && !Auth::user()->is_admin;
     }
