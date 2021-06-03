@@ -162,6 +162,9 @@ class PostController extends Controller
     }
 
     public function morePosts(Request $request) {
+        if (!Auth::check()) {
+            return Post::where('deleted', '=', false)->where('private', '=', false)->orderBy('id')->paginate(20);
+        }
         $links = Auth::user()->user->getLinks()->map(function($link) {
             return $link->id;
         });

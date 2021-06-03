@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function home() {
         if (Auth::check()) {
             if (Auth::user()->is_admin) {
-                $posts = Post::where('deleted', '=', false)->orderBy('id')->paginate(20);
+                $posts = Post::where('deleted', '=', false)->orderBy('id')->paginate(20)->withPath('/api/more_posts');
                 $reports = Report::all()->sortByDesc('id')->take(20);
                 return view('pages.admin', ['posts' => $posts, 'reports' => $reports]);
             } else {
