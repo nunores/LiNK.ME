@@ -34,7 +34,7 @@ class CommentPolicy
             return true;
         }
 
-        foreach(Auth::user()->user->links as $link) { // TODO: fix. Only getting links and not reverselinks
+        foreach(Auth::user()->user->links as $link) {
             if ($link->id === $comment->post->user_id)
                 return true; // Post is private and user is friend
         }
@@ -62,7 +62,7 @@ class CommentPolicy
             return true;
         }
 
-        foreach(Auth::user()->user->links as $link) { // TODO: fix. Only getting links and not reverselinks
+        foreach(Auth::user()->user->links as $link) {
             if ($link->id === $comment->post->user_id)
                 return true; // Post is private and user is friend
         }

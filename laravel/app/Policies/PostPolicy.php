@@ -31,6 +31,10 @@ class PostPolicy
                     if ($link->id === $post->user_id)
                         return true; // Post is private and user if friend
                 }
+                foreach(Auth::user()->user->reversedLinks as $link) {
+                    if ($link->id === $post->user_id)
+                        return true; // Post is private and user is friend
+                }
                 return false; // Post is private and user is not friend
             } else
                 return true; // Post is public
