@@ -34,40 +34,6 @@ function return_form() {
     return_button.hidden = true;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-function add_post() {
-    const text = form.querySelector("textarea").value;
-    const url = form.querySelector("img") != null ? form.querySelector("img").src : null;
-    var parameters;
-    if (url != null) {
-        if (location.pathname.startsWith("/group")) {
-            const group_id = document.querySelector(".group-name").getAttribute("data-group-id");
-
-            parameters = { _token: _token, description: text, picture: image, group_id: group_id };
-        } else {
-            parameters = { _token: _token, description: text, picture: image };
-        }
-    } else {
-        if (location.pathname.startsWith("/group")) {
-            const group_id = document.querySelector(".group-name").getAttribute("data-group-id");
-
-            parameters = { _token: _token, description: text, group_id: group_id };
-        } else {
-            parameters = { _token: _token, description: text };
-        }
-    }
-    AJAX("POST", "/api/post", parameters, function () {
-        console.log(this.responseText);
-        const response = JSON.parse(this.responseText);
-        insert_added_post(response["id"]);
-    });
-}
-
-=======
->>>>>>> master
-=======
->>>>>>> e8a5e8a3f2dc9b0660b1eaf7c837003278eee13b
 function add_image(event) {
     image = event.target.files[0];
     const form = document.querySelector("#add-post-form");
