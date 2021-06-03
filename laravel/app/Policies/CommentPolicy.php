@@ -17,35 +17,7 @@ class CommentPolicy
 
     public function create(Person $person, Comment $comment)
     {
-        // se não tiver logado, false
-        // Admin não pode
-
-        if (!Auth::check() || Auth::user()->is_admin) return false;
-
-        if (Auth::user()->user->id == $comment->post->user_id)
-            return true;
-
-        if ($comment->post->group_id != null) {
-            foreach(Auth::user()->user->groups as $group) {
-                if ($group->id === $comment->post->group_id)
-                    return true; // Post is for a group and user is on that group
-            }
-            return false;
-        }
-
-        if ($comment->post->private == false) {
-            return true;
-        }
-
-        foreach(Auth::user()->user->links as $link) {
-            if ($link->id === $comment->post->user_id)
-                return true; // Post is private and user is friend
-        }
-        foreach (Auth::user()->user->reversedLinks as $link) {
-            if ($link->id === $comment->post->user_id)
-                return true; // Post is private and user is friend
-        }
-        return false; // Post is private and user is not friend
+        return Auth::check() && !Auth::user()->is_admin;
     }
 
     public function delete(Person $person, Comment $comment)
@@ -54,28 +26,6 @@ class CommentPolicy
     }
 
     public function showComment(Person $person, Comment $comment) {
-        if ($comment->post->group_id != null) {
-            foreach(Auth::user()->user->groups as $group) {
-                if ($group->id === $comment->post->group_id)
-                    return true; // Post is for a group and user is on that group
-            }
-            return false;
-        }
-        if (Auth::user()->user->id == $comment->post->user_id)
-            return true;
-
-        if ($comment->post->private == false) {
-            return true;
-        }
-
-        foreach(Auth::user()->user->links as $link) {
-            if ($link->id === $comment->post->user_id)
-                return true; // Post is private and user is friend
-        }
-        foreach(Auth::user()->user->reversedLinks as $link) {
-            if ($link->id === $comment->post->user_id)
-                return true; // Post is private and user is friend
-        }
-        return false; // Post is private and user is not friend
+        return true; // If a person can see a post they can see it's comments
     }
 }
