@@ -165,33 +165,33 @@ class PostController extends Controller
     public function postOrder($general)
     {
         if ($general == 'true'){
-            $posts = Post::where('deleted', '=', false)->orderBy('id')->paginate(20)->withPath('/api/more_posts');
+            $posts = Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
         else if ($general == 'false'){
             $links = Auth::user()->user->getLinks()->map(function($link) {
                 return $link->id;
             });
-            $posts = Post::where('deleted', '=', false)->whereIn('user_id', $links)->orderBy('id')->paginate(20)->withPath('/api/more_posts');
+            $posts = Post::where('deleted', '=', false)->whereIn('user_id', $links)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
     }
 
     public function morePosts(Request $request) {
         if (!Auth::check()) {
-            return Post::where('deleted', '=', false)->where('private', '=', false)->orderBy('id')->paginate(20);
+            return Post::where('deleted', '=', false)->where('private', '=', false)->orderByDesc('id')->paginate(20);
         }
         if (Auth::user()->is_admin) {
-            return Post::where('deleted', '=', false)->orderBy('id')->paginate(20);
+            return Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20);
         }
         $links = Auth::user()->user->getLinks()->map(function($link) {
             return $link->id;
         });
         Log::debug($request);
         if ($request->input('general') == "true") {
-            return Post::where('deleted', '=', false)->orderBy('id')->paginate(20);
+            return Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20);
         } else {
-            return Post::whereIn('user_id', $links)->where('deleted', '=', false)->orderBy('id')->paginate(20);
+            return Post::whereIn('user_id', $links)->where('deleted', '=', false)->orderByDesc('id')->paginate(20);
         }
     }
 
