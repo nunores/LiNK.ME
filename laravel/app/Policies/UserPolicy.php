@@ -18,4 +18,8 @@ class UserPolicy
         return !$user->deleted;
     }
 
+    public function delete(Person $person, User $user) {
+        return Auth::check() && Auth::user()->id == $user->id;
+    }
+
 }
