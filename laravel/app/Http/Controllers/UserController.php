@@ -69,7 +69,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        //$this->authorize('delete', $user);
+        $this->authorize('delete', $user);
 
         foreach ($user->comments()->get() as $comment){
             $comment->update(["deleted" => 'true']);
@@ -82,6 +82,7 @@ class UserController extends Controller
         Like::where('user_id', $id)->delete();
 
         $user->links()->detach();
+        $user->reversedLinks()->detach();
 
         $user->groups()->wherePivot('user_id', '=', $user->id)->detach();
 
