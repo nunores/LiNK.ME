@@ -124,7 +124,7 @@ class PostController extends Controller
 
     public function search(Request $request)
     {
-        $posts = DB::select('SELECT post.* FROM "post" JOIN "user" ON "user"."id" = "post"."user_id" JOIN "person" ON "person"."id" = "user"."id" WHERE "post"."private" = false AND to_tsvector("post"."description" || \' \' || "user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
+        $posts = DB::select('SELECT post.* FROM "post" JOIN "user" ON "user"."id" = "post"."user_id" JOIN "person" ON "person"."id" = "user"."id" WHERE "post"."deleted"=false AND to_tsvector("post"."description" || \' \' || "user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)', ["search" => $request->input("search")]);
 
         $final = [];
         foreach ($posts as $post) {
