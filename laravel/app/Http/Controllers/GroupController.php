@@ -36,7 +36,7 @@ class GroupController extends Controller
     public function createForm()
     {
         $users = Auth::user()->user->getLinks();
-        //$this->authorize('createForm'); //TODO: arranjar isto
+        $this->authorize('createForm');
         return view('pages.create_group', ['users' => $users]);
     }
 

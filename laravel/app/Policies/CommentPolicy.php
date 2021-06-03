@@ -16,11 +16,7 @@ class CommentPolicy
 
     public function create(Person $person, Comment $comment)
     {
-        // se não tiver logado, false
-        // Admin não pode
-
         if (!Auth::check() || Auth::user()->is_admin) return false;
-
 
         if ($comment->post->group_id != null) {
             foreach (Auth::user()->user->groups as $group) {

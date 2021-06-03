@@ -48,6 +48,6 @@ class LikeController extends Controller
         $like = DB::table('like')->where('post_id', '=', $id)->where('user_id', '=', Auth::user()->id);
         $this->authorize('delete', Like::class);
         $like->delete();
-        return true; //maybe needs to change
+        return true; //TODO: maybe needs to change
     }
 }
