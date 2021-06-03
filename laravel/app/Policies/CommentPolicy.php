@@ -22,6 +22,8 @@ class CommentPolicy
 
         if (!Auth::check() || Auth::user()->is_admin) return false;
 
+        if (Auth::user()->user->id == $comment->post->user_id)
+            return true;
 
         if ($comment->post->group_id != null) {
             foreach(Auth::user()->user->groups as $group) {
@@ -59,6 +61,8 @@ class CommentPolicy
             }
             return false;
         }
+        if (Auth::user()->user->id == $comment->post->user_id)
+            return true;
 
         if ($comment->post->private == false) {
             return true;

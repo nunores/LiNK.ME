@@ -18,6 +18,8 @@ class PostPolicy
         if ($post->banned) return false; // Banned post
         if (!Auth::check()) return !$post->private; // For guests
         if (Auth::user()->is_admin) return true; // For admins
+        if (Auth::user()->user->id == $post->user_id)
+            return true;
 
         if ($post->group_id != null) {
             foreach(Auth::user()->user->groups as $group) {
