@@ -25,9 +25,14 @@ class PostController extends Controller
         $this->authorize('show', $post);
         if (Auth::check() && Auth::user()->is_admin) {
             $reports = Report::all()->sortByDesc('id')->take(20);
-            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id'), "reports" => $reports]);
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id'),
+                "reports" => $reports
+            ]);
         } else {
-            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id')]);
+            $notifications = Auth::user()->user->notifications;
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id'),
+                'notifications' => $notifications
+            ]);
         }
     }
 
@@ -151,7 +156,8 @@ class PostController extends Controller
 
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
-                return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search")]);
+                $notifications = Auth::user()->user->notifications;
+                return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search"), "notifications" => $notifications]);
             } else {
                 $reports = Report::all()->sortByDesc('id')->take(20);
                 return view('pages.search_posts', ['posts' => $final, 'reports' => $reports, 'search' => $request->input("search")]);

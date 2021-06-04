@@ -25,7 +25,7 @@
 			@endif
 		</div>
 	</div>
-	@include('partials.notifications.notifications')
+	@include('partials.notifications.notifications', ["notifications" => $notifications])
 	<div id="groups">
         @php
             $groups = Auth::user()->user->groups;

@@ -32,7 +32,8 @@ class UserController extends Controller
             $reports = Report::all()->sortByDesc('id')->take(20);
             return view('pages.profile', ['user' => $user, 'reports' => $reports]);
         } else {
-            return view('pages.profile', ['user' => $user]);
+            $notifications = Auth::user()->user->notifications;
+            return view('pages.profile', ['user' => $user, 'notificaitons' => $notifications]);
         }
     }
 

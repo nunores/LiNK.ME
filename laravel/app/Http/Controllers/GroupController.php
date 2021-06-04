@@ -26,7 +26,8 @@ class GroupController extends Controller
         $posts = $group->posts->where("deleted", "=", false)->sortByDesc('id');
         if (!Auth::user()->is_admin) {
             $links = Auth::user()->user->getLinks();
-            return view('pages.group', ['group' => $group, 'posts' => $posts, 'links' => $links]);
+            $notifications = Auth::user()->user->notifications;
+            return view('pages.group', ['group' => $group, 'posts' => $posts, 'links' => $links, 'notifications' => $notifications]);
         } else {
             $reports = Report::all()->sortByDesc('id')->take(20);
             return view('pages.group', ['group' => $group, 'posts' => $posts, 'reports' => $reports]);
@@ -93,7 +94,8 @@ class GroupController extends Controller
 
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
-                return view('pages.search_groups', ['groups' => $final, 'search' => $request->input("search")]);
+            $notifications = Auth::user()->user->notifications;
+            return view('pages.search_groups', ['groups' => $final, 'search' => $request->input("search"), 'notifications' => $notifications]);
             } else {
                 $reports = Report::all()->sortByDesc('id')->take(20);
                 return view('pages.search_groups', ['groups' => $final, 'reports' => $reports, 'search' => $request->input("search")]);

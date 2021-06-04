@@ -21,7 +21,8 @@ class HomeController extends Controller
                         return $link->id;
                     });
                     $posts = Post::where('deleted', '=', false)->whereIn('user_id', $links)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
-                    return view('pages.home', ['posts' => $posts]);
+                    $notifications = Auth::user()->user->notifications;
+                    return view('pages.home', ['posts' => $posts, 'notifications' => $notifications]);
                 } else {
                     return redirect('logout');
                 }
