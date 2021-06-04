@@ -187,7 +187,6 @@ class PostController extends Controller
         $links = Auth::user()->user->getLinks()->map(function($link) {
             return $link->id;
         });
-        Log::debug($request);
         if ($request->input('general') == "true") {
             return Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20);
         } else {

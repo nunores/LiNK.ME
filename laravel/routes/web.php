@@ -53,7 +53,7 @@ Route::post('api/post/report/{id}', 'ReportController@reportPost');
 Route::post('api/comment/report/{id}', 'ReportController@reportComment');
 
 //Comments
-Route::get('api/comment', 'CommentController@showCommentsFromPost');
+Route::get('api/comment', 'CommentController@showCommentsFromPost'); // Not used
 Route::post('api/comment', 'CommentController@create');
 Route::get('api/comment/{id}', 'CommentController@showComment');
 Route::delete('api/comment/{id}', 'CommentController@delete');

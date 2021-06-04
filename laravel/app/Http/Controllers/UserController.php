@@ -36,15 +36,13 @@ class UserController extends Controller
         }
     }
 
-    public function getUserInfo(Request $request)
+/*     public function getUserInfo(Request $request)
     {
         $id = $request->input('id');
         $user = User::find($id);
         $this->authorize('getUserInfo', $user);
         return $user;
-    }
-
-
+    } */
 
     /**
      * Creates a new user.
@@ -100,6 +98,7 @@ class UserController extends Controller
     public function changeName(Request $request)
     {
         $user = Auth::user()->user;
+        $this->authorize('changeName', $user);
         $user->name = $request->input('text');
         $user->save();
 
@@ -109,6 +108,8 @@ class UserController extends Controller
     public function changePassword(Request $request)
     {
         $user = Auth::user()->user;
+
+        $this->authorize('changePassword', $user);
 
         Validator::make($request->all(), [
             'password' => 'required|string|min:6|confirmed',
@@ -128,9 +129,11 @@ class UserController extends Controller
     {
         $user = Auth::user()->user;
 
+        $this->authorize('changePicture', $user);
+
         $request->file('picture')->move(public_path() . "/images/profile/", $user->id . ".png");
 
-        return redirect('user/' . $user->id);
+        return redirect('user/' + $user->id);
     }
 
     public function search(Request $request)
@@ -142,8 +145,6 @@ class UserController extends Controller
             array_push($final, User::find($user->id));
         }
 
-        //TODO: é preciso algum authorize aqui?
-
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
                 return view('pages.search_people', ['users' => $final, 'search' => $request->input("search")]);
@@ -153,7 +154,6 @@ class UserController extends Controller
             }
         } else {
             return view('pages.search_people', ['users' => $final, 'search' => $request->input("search")]);
-            //return redirect('login');
         }
     }
 
