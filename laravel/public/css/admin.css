@@ -33,7 +33,6 @@
 #notifications {
     width: 60%;
     margin: 1.5rem auto 0 auto;
-    border-bottom: solid black 2px;
     padding-bottom: 1rem;
     max-height: 50vh;
     overflow-y: scroll;
@@ -101,4 +100,9 @@
     width: 7rem;
     padding: 0;
     margin: 0 1rem
+}
+
+.report-box {
+    width: 90%;
+    display: inline-flex;
 }
