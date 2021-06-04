@@ -81,6 +81,15 @@ function insert_added_post() {
                 div.querySelector(".bi-hand-thumbs-down").onclick = clickedDislike;
                 div.querySelector(".delete-post").onclick = delete_post;
 
+                const make_public = div.querySelector('.make-post-public');
+                const make_private = div.querySelector('.make-post-private');
+                if (make_public != null) {
+                    make_public.onclick = make_post_public;
+                }
+                if (make_private != null) {
+                    make_private.onclick = make_post_private;
+                }
+
                 const group_name = document.querySelector(".group-name");
                 const center_col = document.querySelector("#center-col");
                 const user_name = document.querySelector(".profile-info");
