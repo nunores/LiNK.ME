@@ -32,12 +32,8 @@
 @endpush
 
 
-
 @section('content')
 
-@php
-    $checker = (Auth::user()->user == $user ? true : false)
-@endphp
 <body>
     @csrf
     <div class="container-fluid">
@@ -45,14 +41,11 @@
             @if (Auth::check() && Auth::user()->is_admin)
                 @include('partials.sidebar.sidebar', ['reports' => $reports, 'page' => 'admin'])
             @else
-                @include('partials.sidebar.sidebar', ['checker' => $checker, 'user' => $user, 'page' => "profile"])
+                @include('partials.sidebar.sidebar', ['my_profile' => $my_profile, 'user' => $user, 'page' => "profile"])
             @endif
             <div class="col-8">
                 <div id="center-col">
-                    @include('partials.user_info', ['user' => $user, 'checker' => $checker])
-                    @php
-                        $posts = $user->posts->where('deleted', '=', false);
-                    @endphp
+                    @include('partials.user_info', ['user' => $user, 'my_profile' => $my_profile])
                     @foreach ($posts->reverse() as $post)
                             @include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->sortByDesc('id')->take(2)])
                     @endforeach
@@ -60,7 +53,7 @@
             </div>
         </div>
     </div>
-    @if (!Auth::user()->is_admin && $checker)
+    @if (!Auth::user()->is_admin && $my_profile)
 	<div id="add-post-icon" class="add-post-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="125" height="125" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />

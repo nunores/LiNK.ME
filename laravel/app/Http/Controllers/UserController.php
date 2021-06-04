@@ -30,9 +30,14 @@ class UserController extends Controller
         $this->authorize('show', $user);
         if (Auth::check() && Auth::user()->is_admin) {
             $reports = Report::all()->sortByDesc('id')->take(20);
-            return view('pages.profile', ['user' => $user, 'reports' => $reports]);
-        } else {
-            return view('pages.profile', ['user' => $user]);
+            $my_profile = false;
+            return view('pages.profile', ['user' => $user, 'reports' => $reports, 'my_profile' => $my_profile]);
+        } else if (Auth::user()->user == $user){
+            $my_profile = true;
+            return view('pages.profile', ['user' => $user, 'my_profile' => $my_profile, 'posts' => $user->posts->where('deleted', '=', false)]);
+        }else{
+            $my_profile = false;
+            return view('pages.profile', ['user' => $user, 'my_profile' => $my_profile, 'posts' => $user->posts->where('deleted', '=', false)]);
         }
     }
 
