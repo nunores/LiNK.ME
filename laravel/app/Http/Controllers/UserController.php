@@ -11,7 +11,6 @@ use App\Models\Report;
 use App\Models\User;
 use App\Models\Like;
 use App\Models\Notification;
-use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;

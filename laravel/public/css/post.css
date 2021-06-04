@@ -28,7 +28,7 @@
     cursor: pointer;
 }
 
-#name-tag {
+.name-tag {
     text-align: left;
     font-size: 70%;
 }
@@ -49,7 +49,7 @@
     padding-right: 3rem;
 }
 
-.post-name #name-tag {
+.post-name .name-tag {
     color: var(--bs-gray);
 }
 
@@ -86,11 +86,11 @@
 }
 
 
-#post-like > * {
+.post-like > * {
     vertical-align: middle;
 }
 
-#post-dislike > * {
+.post-dislike > * {
     vertical-align: middle;
 }
 
@@ -99,7 +99,7 @@
     margin: auto;
 }
 
-#post-comment-icon > * {
+.post-comment-icon > * {
     vertical-align: middle;
 }
 

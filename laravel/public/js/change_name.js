@@ -1,7 +1,7 @@
 const change_name_buttons = document.querySelectorAll("#change-name-icon");
 const name_boxes = document.querySelector(".change-name-form");
 const submit_name_buttons = document.querySelectorAll(".change-name");
-const post_names = document.querySelectorAll("#person-name");
+const post_names = document.querySelectorAll(".person-name");
 
 console.log(submit_name_buttons);
 

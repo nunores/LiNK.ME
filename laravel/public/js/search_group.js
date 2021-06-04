@@ -23,15 +23,15 @@ function search_group_function(event) {
         let username1 = "null";
         let name1 = "null";
         if(typeof div_search_people !== "undefined"){
-            username1 = div_search_people.querySelector("#name-tag").innerHTML
-            name1 = div_search_people.querySelector("#person-name").innerHTML
+            username1 = div_search_people.querySelector(".name-tag").innerHTML
+            name1 = div_search_people.querySelector(".person-name").innerHTML
         }
 
         let username2 = "null";
         let name2 = "null";
         if(typeof div_search_people2 !== "undefined"){
-            username2 = div_search_people2.querySelector("#name-tag").innerHTML
-            name2 = div_search_people2.querySelector("#person-name").innerHTML
+            username2 = div_search_people2.querySelector(".name-tag").innerHTML
+            name2 = div_search_people2.querySelector(".person-name").innerHTML
         }
 
         header.hidden = true;

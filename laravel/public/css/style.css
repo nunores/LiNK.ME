@@ -51,15 +51,15 @@
     }
 
 
-    .post-name > a >#name-tag.person-friends-name-tag{
+    .post-name > a >.name-tag.person-friends-name-tag{
         font-size: 50%;
     }
 
-    #post-like{
+    .post-like{
         display: inline-flex;
     }
 
-    #post-dislike{
+    .post-dislike{
         display: inline-flex;
     }
 

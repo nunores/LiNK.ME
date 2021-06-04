@@ -24,8 +24,8 @@
                 </div>
                 <div class="post-name col-10">
                     <a href="{{ route("user", ["id" => Auth::user()->id])}}">
-                        <span id="name-tag"> {{ "@" . Auth::user()->username }} </span>
-                        <span id="person-name"> {{ Auth::user()->user->name }} </span>
+                        <span class="name-tag"> {{ "@" . Auth::user()->username }} </span>
+                        <span class="person-name"> {{ Auth::user()->user->name }} </span>
                     </a>
                 </div>
             </div>
