@@ -15,9 +15,10 @@ function changeName(){
     const parameters = {text: text, _token: _token }
     AJAX("PUT", "/api/user/name", parameters, function() {
         const div = document.querySelector('#profile-person-name');
-        const replace = div.innerHTML.substring(oldname.length, div.innerHTML.length);
-        div.innerHTML = text + replace;
-        name_boxes.parentNode.remove();
+        const pencil = document.querySelector("#change-name-icon");
+        div.innerHTML = text;
+        div.appendChild(pencil);
+        name_boxes.className = "collapse";
         post_names.forEach(post_name => {
             post_name.innerHTML = text;
         });
