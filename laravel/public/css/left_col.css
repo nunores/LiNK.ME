@@ -60,10 +60,12 @@
 
 .bi-check {
     color: var(--green);
+    cursor: pointer;
 }
 
 .bi-x{
     color: var(--pink);
+    cursor: pointer;
 }
 
 .bi-arrow-up-right-circle{

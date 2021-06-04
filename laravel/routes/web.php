@@ -26,7 +26,8 @@ Route::get('users', 'UserController@search')->name('users');
 
 //Links
 Route::get('api/link', 'LinkController@showUserLinks');
-Route::post('api/link', 'LinkController@create');
+Route::post('api/link/accept', 'LinkController@create');
+Route::post('api/link/deny', 'LinkController@deny');
 Route::post('api/link/request', 'LinkController@request');
 
 //Posts

@@ -17,6 +17,7 @@
 <script src="{{ asset('js/add_post.js') }}" defer></script>
 <script src="{{ asset('js/change_post_order.js') }}" defer></script>
 <script src="{{ asset('js/infinite_scrolling.js') }}" defer></script>
+<script src="{{ asset('js/friend_request.js') }}" defer></script>
 <script src="{{ asset('js/post_visibility.js') }}" defer></script>
 @endpush
 

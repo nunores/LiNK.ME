@@ -28,20 +28,28 @@ class LinkController extends Controller
 
     public function create(Request $request)
     {
-        $link = new Link();
-        $this->authorize('create', $link);
+        $user1 = User::find($request->input('user_id'));
+        $user2 = USer::find(Auth::user()->id);
 
-        $link->user1_id = $request->input('user1_id');
-        $link->user2_id = $request->input('user2_id');
+        $user1->links()->attach($user2);
+        $user2->reversedLinks()->sync($user1);
+        return null;
+    }
 
-        $link->save();
-        return $link;
+    public function deny(Request $request) {
+        $friend_requests = FriendRequest::all()->where("user_id_request", '=', $request->input('user_id'));
+        foreach($friend_requests as $friend_request) {
+            if ($friend_request->notification->user_id == Auth::user()->id) {
+                $this->deleteNotifications($friend_request->notification, $friend_request);
+                return null;
+            }
+        }
+        return null;
     }
 
     public function request(Request $request) {
         $notification = new Notification();
         $friend_request = new FriendRequest();
-        $this->authorize('request', Group::class);
 
         $old_friend_requests = FriendRequest::all()->where("user_id_request", "=", Auth::user()->user->id);
         foreach ($old_friend_requests as $old_friend_request) {

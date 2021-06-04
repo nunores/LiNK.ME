@@ -19,6 +19,7 @@
     <script src="{{ asset('js/comments.js') }}" defer></script>
     <script src="{{ asset('js/group_request.js') }}" defer></script>
     <script src="{{ asset('js/add_post.js') }}" defer></script>
+    <script src="{{ asset('js/friend_request.js') }}" defer></script>
     <script src="{{ asset('js/friends_search.js') }}" defer></script>
 @endif
 <script src="{{ asset('js/post_options.js') }}" defer></script>
