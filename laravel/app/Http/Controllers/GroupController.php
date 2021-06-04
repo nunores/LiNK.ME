@@ -38,7 +38,8 @@ class GroupController extends Controller
     {
         $users = Auth::user()->user->getLinks();
         $this->authorize('createForm', Group::class);
-        return view('pages.create_group', ['users' => $users]);
+        $notifications = Auth::user()->user->notifications;
+        return view('pages.create_group', ['users' => $users, "notifications" => $notifications]);
     }
 
     public function getUserGroups(Request $request)
