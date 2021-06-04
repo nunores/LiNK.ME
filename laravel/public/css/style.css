@@ -76,6 +76,7 @@ body {
     --gray: #c2c2c2;
     --dark-gray: #292d32;
     font-family: 'Helvetica', 'Open Sans', sans-serif;
+    line-height: 1.5;
 
     /*font-weight: 600;*/
 }
