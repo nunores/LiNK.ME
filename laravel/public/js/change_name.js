@@ -3,14 +3,15 @@ const name_boxes = document.querySelector(".change-name-form");
 const submit_name_buttons = document.querySelectorAll(".change-name");
 const post_names = document.querySelectorAll("#person-name");
 
+console.log(submit_name_buttons);
+
 submit_name_buttons.forEach(submit_button => {
     submit_button.onclick = changeName;
 });
 
 function changeName(){
     const row = this.parentNode.parentNode.parentNode;
-    const text = row.querySelector("#comment-textarea").value;
-    const oldname = document.querySelector('#profile-person-name').getAttribute("data-user-name");
+    const text = row.querySelector(".name-textarea").value;
 
     const parameters = {text: text, _token: _token }
     AJAX("PUT", "/api/user/name", parameters, function() {

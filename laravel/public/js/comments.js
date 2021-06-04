@@ -1,6 +1,6 @@
 const comment_buttons = document.querySelectorAll(".bi-chat-dots");
 const comment_boxes = document.querySelector(".add-comment-form");
-let submit_buttons = document.querySelectorAll(".bi-arrow-right-circle");
+let submit_buttons = document.querySelectorAll(".send-comment");
 let comment_parent;
 
 submit_buttons.forEach(submit_button => {
@@ -9,7 +9,8 @@ submit_buttons.forEach(submit_button => {
 
 function sendComment(){
     const row = this.parentNode.parentNode.parentNode;
-    const text = row.querySelector("#comment-textarea").value;
+    const text = row.querySelector(".comment-textarea").value;
+    console.log(text);
     const post_id = row.parentNode.parentNode.getAttribute('data-post-id');
     const number_comments = document.querySelector("#comments-number-" + post_id);
 
@@ -20,7 +21,7 @@ function sendComment(){
         comment_parent = document.querySelector('#add-comment-' + json["post_id"]).parentNode;
 
         addCommentHTML(json.id);
-        row.querySelector("#comment-textarea").value = "";
+        row.querySelector(".comment-textarea").value = "";
         number_comments.innerHTML = parseInt(number_comments.innerHTML) + 1;
     });
 }
