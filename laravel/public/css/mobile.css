@@ -47,7 +47,6 @@
 
     #center-col > .invite-card {
         display: inherit;
-        max-height: auto;
     }
 
 
@@ -60,8 +59,5 @@
         overflow: auto;
     }
 
-    .invite-card {
-        max-height: auto;
-    }
 
 }
