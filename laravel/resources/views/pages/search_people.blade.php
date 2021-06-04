@@ -64,6 +64,9 @@
                                     </div>
                                 @endif
                             @endfor
+                            @if (count($users) == 0)
+                                <h1 class="no-results-found">No Results Found</h1>
+                            @endif
                         </div>
                     </div>
                 </div>
