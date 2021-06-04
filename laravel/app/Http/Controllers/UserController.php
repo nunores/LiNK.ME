@@ -26,19 +26,22 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        if (!Auth::check() && !$user->deleted) {
+            return view('pages.profile', ['user' => $user, 'my_profile' => false, 'posts' => $user->posts->where('deleted', '=', false)->where('group_id', '=', NULL)->sortByDesc('id')]);
+        }
         $this->authorize('show', $user);
         if (Auth::check() && Auth::user()->is_admin) {
             $reports = Report::all()->sortByDesc('id')->take(20);
-            return view('pages.profile', ['user' => $user, 'reports' => $reports, 'my_profile' => false]);
-        } else if (Auth::user()->user == $user){
-            return view('pages.profile', ['user' => $user, 'my_profile' => true, 'posts' => $user->posts->where('deleted', '=', false), 'groups' => $user->groups, 'linkable' => false, 'notifications' => $user->notifications, 'links' => $user->links]);
-        }else{
+            return view('pages.profile', ['user' => $user, 'reports' => $reports, 'my_profile' => false, 'posts' => $user->posts->where('deleted', '=', false)->sortByDesc('id')]);
+        } else if (Auth::check() && Auth::user()->user == $user){
+            return view('pages.profile', ['user' => $user, 'my_profile' => true, 'posts' => $user->posts->where('deleted', '=', false)->where('group_id', '=', NULL)->sortByDesc('id'), 'groups' => $user->groups, 'linkable' => false, 'notifications' => $user->notifications, 'links' => $user->links]);
+        }else {
             $linkable = true;
             for ($i = 0; $i < count(Auth::user()->user->links); $i++){
                 if (Auth::user()->user->links[$i]->id == $user->id)
                     $linkable = false;
             }
-            return view('pages.profile', ['user' => $user, 'my_profile' => false, 'posts' => $user->posts->where('deleted', '=', false), 'linkable' => $linkable, 'links' => $user->links]);
+            return view('pages.profile', ['user' => $user, 'my_profile' => false, 'posts' => $user->posts->where('deleted', '=', false)->where('group_id', '=', NULL)->sortByDesc('id'), 'linkable' => $linkable, 'links' => $user->links]);
         }
     }
 

@@ -7,18 +7,21 @@
 <link rel="stylesheet" href="{{ asset('css/left_col.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/profile.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/add_post.css') }}" />
-@if (Auth::user()->is_admin)
+@if (Auth::check() && Auth::user()->is_admin)
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
+@endif
+@if (!Auth::check())
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}" />
 @endif
 @endpush
 
 @push('js_scripts')
-@if (!Auth::user()->is_admin)
+@if (Auth::check() && !Auth::user()->is_admin)
     <script src="{{ asset('js/likes.js') }}" defer></script>
     <script src="{{ asset('js/commentTextArea.js') }}" defer></script>
     <script src="{{ asset('js/comments.js') }}" defer></script>
     <script src="{{ asset('js/friend_request.js') }}" defer></script>
-    @if (Auth::user()->user->id == $user->id)
+    @if (Auth::check() && Auth::user()->user->id == $user->id)
     <script src="{{ asset('js/change_name.js') }}" defer></script>
     <script src="{{ asset('js/add_post.js') }}" defer></script>
     <script src="{{ asset('js/change_password.js') }}" defer></script>
@@ -41,7 +44,11 @@
             @if (Auth::check() && Auth::user()->is_admin)
                 @include('partials.sidebar.sidebar', ['reports' => $reports, 'page' => 'admin'])
             @else
-                @include('partials.sidebar.sidebar', ['my_profile' => $my_profile, 'user' => $user, 'page' => "profile"])
+                @if (!Auth::check())
+                    @include('partials.sidebar.sidebar_login')
+                @else
+                    @include('partials.sidebar.sidebar', ['my_profile' => $my_profile, 'user' => $user, 'page' => "profile"])
+                @endif
             @endif
             <div class="col-8">
                 <div id="center-col">
@@ -53,7 +60,7 @@
             </div>
         </div>
     </div>
-    @if (!Auth::user()->is_admin && $my_profile)
+    @if (Auth::check() && !Auth::user()->is_admin && $my_profile)
 	<div id="add-post-icon" class="add-post-icon">
         <svg xmlns="http://www.w3.org/2000/svg" width="125" height="125" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />

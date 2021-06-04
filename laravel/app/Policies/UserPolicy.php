@@ -15,7 +15,7 @@ class UserPolicy
 
     public function show(Person $person, User $user)
     {
-        return !$user->deleted;
+        return Auth::check() && !$user->deleted;
     }
 
     public function delete(Person $person, User $user) {

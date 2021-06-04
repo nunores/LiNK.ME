@@ -31,7 +31,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-11 add-comment-textarea">
-                        <textarea class="form-control name-textarea" data-user-id="{{ Auth::user()->id }}" rows="1" placeholder="Add a new username..." maxlength="25"></textarea>
+                        <textarea class="form-control name-textarea" data-user-id="{{ Auth::check() ? Auth::user()->id : -1 }}" rows="1" placeholder="Add a new username..." maxlength="25"></textarea>
                     </div>
                     <div class="col-1 send-button">
                         <span class="clickable-pointer">
