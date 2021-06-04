@@ -14,7 +14,7 @@
 
 <div id="center-col">
     <h1><span id="error-number-4">4</span><span id="error-number-1">2</span><span id="error-number-4">0</span></h1>
-    <img src= {{ asset("./images/broken_chain.png")}} id="broken-chain">
+    <img src= {{ asset("./images/broken_chain.png")}} id="broken-chain" alt="broken chain">
     <h2 id="error-text">We could not link you to this page!</h2>
 </div>
 
