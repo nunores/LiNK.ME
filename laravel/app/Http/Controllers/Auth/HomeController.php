@@ -20,7 +20,7 @@ class HomeController extends Controller
                     $links = Auth::user()->user->getLinks()->map(function($link) {
                         return $link->id;
                     });
-                    $posts = Post::where('deleted', '=', false)->whereIn('user_id', $links)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
+                    $posts = Post::where('deleted', '=', false)->whereIn('user_id', $links)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
                     $notifications = Auth::user()->user->notifications;
                     return view('pages.home', ['posts' => $posts, 'notifications' => $notifications]);
                 } else {

@@ -185,7 +185,7 @@ class PostController extends Controller
 
     public function morePosts(Request $request) {
         if (!Auth::check()) {
-            return Post::where('deleted', '=', false)->where('private', '=', false)->orderByDesc('id')->paginate(20);
+            return Post::where('deleted', '=', false)->where('private', '=', false)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20);
         }
         if (Auth::user()->is_admin) {
             return Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20);
@@ -194,9 +194,9 @@ class PostController extends Controller
             return $link->id;
         });
         if ($request->input('general') == "true") {
-            return Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20);
+            return Post::where('deleted', '=', false)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20);
         } else {
-            return Post::whereIn('user_id', $links)->where('deleted', '=', false)->orderByDesc('id')->paginate(20);
+            return Post::whereIn('user_id', $links)->where('deleted', '=', false)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20);
         }
     }
 
