@@ -14,7 +14,7 @@
         </div>
         <div class="post-name col-6">
             <a href="{{ route('post', ['id' => $post->id]) }}">
-                <span id="name-tag"> {{ '@' . $post->user->person->username }} </span>
+                <span class="name-tag"> {{ '@' . $post->user->person->username }} </span>
                 <span class="post-description" id="description-{{$post->id}}"> {{$post->description}} </span>
             </a>
         </div>

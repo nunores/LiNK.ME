@@ -11,7 +11,7 @@
         </div>
         <div class="post-name col-6">
             <a href="{{ route('group', ['id' => $group->id])}}">
-                <span id="person-name" class="person-name"> {{ $group->name }} </span>
+                <span class="person-name"> {{ $group->name }} </span>
             </a>
             <span hidden>{{$group->id}}</span>
         </div>

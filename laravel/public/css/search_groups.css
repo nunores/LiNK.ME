@@ -90,7 +90,7 @@
     color: var(--bs-light);
 }
 
-#person-name {
+.person-name {
     font-weight: 500;
 }
 

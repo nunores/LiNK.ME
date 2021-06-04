@@ -13,8 +13,8 @@
         </div>
         <div class="post-name col-6">
             <a href="{{ route('user', ['id' => $user->id])}}">
-                <span id="name-tag" class="name-tag"> {{ '@' . $user->person->username }} </span>
-                <span id="person-name" class="person-name"> {{ $user->name }} </span>
+                <span class="name-tag"> {{ '@' . $user->person->username }} </span>
+                <span class="person-name"> {{ $user->name }} </span>
             </a>
             <span hidden>{{$user->id}}</span>
         </div>

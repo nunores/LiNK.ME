@@ -29,5 +29,5 @@
             <span class="visually-hidden">Next</span>
         </div>
     @endif
-    <a href="{{ route('create_group') }}" type="button" id="create-group-button" class="btn btn-dark">Create Group</a>
+    <a href="{{ route('create_group') }}" id="create-group-button" class="btn btn-dark">Create Group</a>
 </div>
