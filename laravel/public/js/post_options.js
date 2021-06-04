@@ -1,5 +1,5 @@
-const delete_post_buttons = document.querySelectorAll(".delete-post");
-const report_post_buttons = document.querySelectorAll(".report-post");
+let delete_post_buttons = document.querySelectorAll(".delete-post");
+let report_post_buttons = document.querySelectorAll(".report-post");
 
 delete_post_buttons.forEach(delete_post_button => {
     delete_post_button.onclick = delete_post;

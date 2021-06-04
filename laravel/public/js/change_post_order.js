@@ -69,6 +69,17 @@ function updatePost() {
         submit_button.onclick = sendComment;
     });
 
+    delete_post_buttons = document.querySelectorAll(".delete-post");
+    report_post_buttons = document.querySelectorAll(".report-post");
+
+    delete_post_buttons.forEach(delete_post_button => {
+        delete_post_button.onclick = delete_post;
+    });
+
+    report_post_buttons.forEach(report_post_button => {
+        report_post_button.onclick = report_post;
+    });
+
     load_more_button = document.querySelector('#load-more');
     load_more_button.onclick = load_more_posts;
 }
