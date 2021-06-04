@@ -23,7 +23,7 @@ function changePassword() {
                 popUp.innerHTML = "The password provided does not match your password";
                 showResultMessage(popUp);
             }else{
-                popUp.innerHTML = "Password changed succefully";
+                popUp.innerHTML = "Password changed successfully";
                 showResultMessage(popUp);
             }
         });

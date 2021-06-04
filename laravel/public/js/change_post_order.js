@@ -27,7 +27,7 @@ function friends(){
 
         const center_col = document.querySelector(".center-col-col-8");
         const div = document.createElement("div");
-        div.innerHTML = this.responseText.trim(); 
+        div.innerHTML = this.responseText.trim();
         var children = Array.from(center_col.children);
         children.forEach(child => {
             child.remove();
@@ -35,7 +35,7 @@ function friends(){
         center_col.appendChild(div.firstChild);
 
         updatePost();
-        
+
     })
 }
 
@@ -68,6 +68,28 @@ function updatePost() {
     submit_buttons.forEach(submit_button => {
         submit_button.onclick = sendComment;
     });
+
+    delete_post_buttons = document.querySelectorAll(".delete-post");
+    report_post_buttons = document.querySelectorAll(".report-post");
+
+    delete_post_buttons.forEach(delete_post_button => {
+        delete_post_button.onclick = delete_post;
+    });
+
+    report_post_buttons.forEach(report_post_button => {
+        report_post_button.onclick = report_post;
+    });
+
+    const public_buttons = document.querySelectorAll('.make-post-public');
+    const private_buttons = document.querySelectorAll('.make-post-private');
+
+    public_buttons.forEach(button => {
+        button.onclick = make_post_public;
+    });
+
+    private_buttons.forEach(button => {
+        button.onclick = make_post_private;
+    })
 
     load_more_button = document.querySelector('#load-more');
     load_more_button.onclick = load_more_posts;

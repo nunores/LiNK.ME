@@ -178,14 +178,14 @@ class PostController extends Controller
     public function postOrder($general)
     {
         if ($general == 'true'){
-            $posts = Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
+            $posts = Post::where('deleted', '=', false)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
         else if ($general == 'false'){
             $links = Auth::user()->user->getLinks()->map(function($link) {
                 return $link->id;
             });
-            $posts = Post::where('deleted', '=', false)->whereIn('user_id', $links)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
+            $posts = Post::where('deleted', '=', false)->whereIn('user_id', $links)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
             return view('partials.home_center_col',  ['posts' => $posts]);
         }
     }

@@ -920,7 +920,7 @@ INSERT INTO "group" (name) VALUES('ERASMUS');
 INSERT INTO "group" (name) VALUES('DRIP');
 INSERT INTO "group" (name) VALUES('VACATION');
 INSERT INTO "group" (name) VALUES('MEMES');
-INSERT INTO "group" (name) VALUES( 'FOOD');
+INSERT INTO "group" (name) VALUES('FOOD');
 
 ---------------------------------------------- POSTS (250) ----------------------------------------------------------
 
