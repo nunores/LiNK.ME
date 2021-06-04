@@ -44,6 +44,6 @@ class BannedComment extends Model
      */
     public function comment()
     {
-        return $this->belongsTo(Post::class, 'banned_comment_id');
+        return $this->belongsTo(Comment::class, 'banned_comment_id');
     }
 }

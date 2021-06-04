@@ -31,7 +31,6 @@
 #notifications {
     width: 60%;
     margin: 1.5rem auto 0 auto;
-    border-bottom: solid black 2px;
 }
 
 #notifications-title > p {

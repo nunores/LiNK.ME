@@ -51,14 +51,16 @@ class CommentController extends Controller
         if ($request->input("admin") == true) {
             $notification = new Notification();
             $banned_comment = new BannedComment();
-            $notification->user_id = Auth::user()->id;
+            $notification->user_id = $comment->user_id;
             $banned_comment->banned_comment_id = $id;
-            DB::beginTransaction();;
+            DB::beginTransaction();
             $this->saveNotifications($notification, $banned_comment);
-            if ( !$notification || !$banned_comment)
+            if (!$notification || !$banned_comment) {
                 DB::rollback();
-            else
+            }
+            else {
                 DB::commit();
+            }
         }
         $this->clearNotificationsComment($comment);
 

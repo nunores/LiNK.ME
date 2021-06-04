@@ -1,4 +1,4 @@
-<div class="card bg-dark border-secondary container-fluid">
+<div class="card bg-dark border-secondary container-fluid report-box">
     <div class="row">
         <a href={{ route('post', ['id' => $report->comment->post]) }}>
             <div class="card-body">
