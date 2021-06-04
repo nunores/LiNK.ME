@@ -19,7 +19,7 @@ function changePassword() {
     if(new_pass == confirm_pass){
         const parameters = {old_pass: old_pass, password: new_pass, password_confirmation: confirm_pass, _token: _token }
         AJAX("PUT", "/api/user/password", parameters, function() {
-            console.log(this.responseText["id"]); // TODO response text is either the $user or id:false;
+            console.log(this.responseText);
             const response = JSON.parse(this.responseText);
             if(response["id"] !== null && response["id"] === false){
                 p.innerHTML = "The password provided does not match your password";
