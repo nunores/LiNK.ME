@@ -45,14 +45,6 @@ class UserController extends Controller
         }
     }
 
-/*     public function getUserInfo(Request $request)
-    {
-        $id = $request->input('id');
-        $user = User::find($id);
-        $this->authorize('getUserInfo', $user);
-        return $user;
-    } */
-
     /**
      * Creates a new user.
      *

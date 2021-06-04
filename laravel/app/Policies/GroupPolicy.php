@@ -42,12 +42,6 @@ class GroupPolicy
 
     public function request(Person $person, Group $group)
     {
-        // cagar pra ja
-        // logado
-        // não pode ser admin
-
-        // Auth::user nao ta no grupo
-
         return Auth::check();
     }
 }

@@ -16,14 +16,6 @@ use Illuminate\Support\Facades\Log;
 
 class CommentController extends Controller
 {
-
-    /*public function showCommentsFromPost(Request $request)
-    {
-        $comments = Comment::table('comment')->where('post_id', '=', $request->input('post_id'));
-        $this->authorize('showCommentsFromPost', $comments);
-        return $comments;
-    } */
-
     public function showComment($id)
     {
         $comment = Comment::find($id);
@@ -67,13 +59,4 @@ class CommentController extends Controller
 
         return $comment;
     }
-
-/*     public function update(Request $request, $id)
-    {
-        $comment = Comment::table('comment')->where('id', '=', $id);
-        $this->authorize('update', $comment);
-        $comment->text = $request->input('text');
-        return $comment;
-    } */
-
 }
