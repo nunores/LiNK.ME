@@ -53,15 +53,18 @@
                         <div class="row people-section">
                             <div class="container-fluid">
                                 @for ($i = 0; $i < count($posts); $i++)
-                                    @if ($i % 2 == 0)
-                                        <div class="row people-row">
-
+                                @if ($i % 2 == 0)
+                                <div class="row people-row">
+                                    
                                     @endif
                                     @include('partials.post_header', ['post' => $posts[$i]])
                                     @if ($i % 2 == 1)
-                                        </div>
-                                    @endif
+                                </div>
+                                @endif
                                 @endfor
+                                @if (count($posts) == 0)
+                                    <h1 class="no-results-found">No Results Found</h1>
+                                @endif
                                 @if (count($posts) % 2 == 1)
                                     </div>
                                 @endif
