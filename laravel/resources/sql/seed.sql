@@ -3461,3 +3461,4 @@ INSERT INTO "user_group" (user_id, group_id) VALUES (15,1);
 -- For tests with user 3
 INSERT INTO "user_group" (user_id, group_id) VALUES (3,1);
 INSERT INTO "user_group" (user_id, group_id) VALUES (3,5);
+INSERT INTO "user_group" (user_id, group_id) VALUES (3,7);
