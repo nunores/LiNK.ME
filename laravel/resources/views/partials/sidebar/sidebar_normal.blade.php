@@ -1,6 +1,10 @@
 <div class="col-2 text-center collapse" id="left-col">
 	<a href="{{ route('user', ['id' => Auth::user()->id]) }}">
-		<img src="{{ asset('images/profile/' . Auth::user()->id . '.png') }}" class="rounded-circle profile-picture" alt="Profile picture">
+        @if (file_exists('images/profile/' . Auth::user()->id . '.png'))
+            <img src="{{ asset('images/profile/' . Auth::user()->id . '.png') }}" class="rounded-circle profile-picture" alt="Profile picture">
+        @else
+            <img src="{{ asset('images/profile/default.png') }}" class="rounded-circle profile-picture" alt="Profile picture">
+        @endif
 		<h2>{{ Auth::user()->user->name }}</h2>
 	</a>
 	<div class="feed-change">
