@@ -6,7 +6,6 @@ function search_friends(event) {
     event.preventDefault();
     const value = this.querySelector("input[type=search]").value;
     const headers = document.querySelectorAll(".person-friends-header");
-    console.log(value);
     headers.forEach(header => {
         const name_tag = header.querySelector(".person-friends-name-tag");
         const name = name_tag.getAttribute("data-user-name");

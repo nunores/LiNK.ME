@@ -100,7 +100,6 @@ function insert_added_post() {
         } else {
             const p = document.querySelector('.alert-danger');
             p.style.setProperty("display", "flex", "important");
-            console.log(p);
             setTimeout(function () { p.style.setProperty("display", "none", "important"); }, 3000);
         }
     }

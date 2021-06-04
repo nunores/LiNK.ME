@@ -3,8 +3,6 @@ const comment_boxes = document.querySelector(".add-comment-form");
 let submit_buttons = document.querySelectorAll(".bi-arrow-right-circle");
 let comment_parent;
 
-console.log(submit_buttons);
-
 submit_buttons.forEach(submit_button => {
     submit_button.onclick = sendComment;
 });
@@ -12,7 +10,6 @@ submit_buttons.forEach(submit_button => {
 function sendComment(){
     const row = this.parentNode.parentNode.parentNode;
     const text = row.querySelector("#comment-textarea").value;
-    const user = row.querySelector('#comment-textarea').getAttribute("data-user-id");
     const post_id = row.parentNode.parentNode.getAttribute('data-post-id');
     const number_comments = document.querySelector("#comments-number-" + post_id);
 

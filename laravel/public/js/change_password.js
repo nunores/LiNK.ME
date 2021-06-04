@@ -1,5 +1,4 @@
 const submit_button = document.querySelector("#submit-password-change");
-console.log(submit_button);
 submit_button.onclick = changePassword;
 
 
@@ -8,10 +7,9 @@ function changePassword() {
     const old_pass = change_form.querySelector("#old-password").value;
     const new_pass = change_form.querySelector("#new-password").value;
     const confirm_pass = change_form.querySelector("#confirm-password").value;
-    const p = document.querySelector('.wrong-pass');
-    //console.log(test);
+    const popUp = document.querySelector('.wrong-pass');
     if(old_pass.length < 6 || new_pass.length < 6 || confirm_pass.length < 6){
-        p.innerHTML = "All passwords must be at least 6 characters long";
+        popUp.innerHTML = "All passwords must be at least 6 characters long";
         showResultMessage(p);
         return;
     }
@@ -22,22 +20,21 @@ function changePassword() {
             console.log(this.responseText);
             const response = JSON.parse(this.responseText);
             if(response["id"] !== null && response["id"] === false){
-                p.innerHTML = "The password provided does not match your password";
-                showResultMessage(p);
+                popUp.innerHTML = "The password provided does not match your password";
+                showResultMessage(popUp);
             }else{
-                p.innerHTML = "Password changed succefully";
-                showResultMessage(p);
+                popUp.innerHTML = "Password changed succefully";
+                showResultMessage(popUp);
             }
         });
     }else{
-        p.innerHTML = "New passwords do not match";
-        showResultMessage(p);
+        popUp.innerHTML = "New passwords do not match";
+        showResultMessage(popUp);
     }
 }
 
-function showResultMessage(p){
-    p.style.setProperty("display", "flex", "important");
-    console.log(p);
-    setTimeout(function () { p.style.setProperty("display", "none", "important"); }, 5000);
+function showResultMessage(popUp){
+    popUp.style.setProperty("display", "flex", "important");
+    setTimeout(function () { popUp.style.setProperty("display", "none", "important"); }, 5000);
 
 }
