@@ -21,6 +21,3 @@
         </div>
     @endif
     </div>
-@if (!$my_profile)
-</div>
-@endif
