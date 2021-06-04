@@ -130,7 +130,7 @@ class UserController extends Controller
 
         $request->file('picture')->move(public_path() . "/images/profile/", $user->id . ".png");
 
-        return redirect('user/3');
+        return redirect('user/' . $user->id);
     }
 
     public function search(Request $request)
