@@ -16,6 +16,9 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        if (!Auth::check() && !$post->private && $post->group_id == null) {
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id')]);
+        }
         $this->authorize('show', $post);
         if (Auth::check() && Auth::user()->is_admin) {
             $reports = Report::all()->sortByDesc('id')->take(20);
