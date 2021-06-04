@@ -3,11 +3,8 @@
         @include('partials.notifications.notifications')
     @endif
     <div class="person-friends">
-        @php
-            $links = $user->links;
-        @endphp
         @for ($i = 0; $i < count($links) && $i < 300; $i++)
-        @include('partials.friend', ['user' => $links[$i] ])
+            @include('partials.friend', ['user' => $links[$i] ])
         @endfor
     </div>
     <div id="groups">

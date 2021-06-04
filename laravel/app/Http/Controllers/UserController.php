@@ -30,14 +30,16 @@ class UserController extends Controller
         $this->authorize('show', $user);
         if (Auth::check() && Auth::user()->is_admin) {
             $reports = Report::all()->sortByDesc('id')->take(20);
-            $my_profile = false;
-            return view('pages.profile', ['user' => $user, 'reports' => $reports, 'my_profile' => $my_profile]);
+            return view('pages.profile', ['user' => $user, 'reports' => $reports, 'my_profile' => false]);
         } else if (Auth::user()->user == $user){
-            $my_profile = true;
-            return view('pages.profile', ['user' => $user, 'my_profile' => $my_profile, 'posts' => $user->posts->where('deleted', '=', false)]);
+            return view('pages.profile', ['user' => $user, 'my_profile' => true, 'posts' => $user->posts->where('deleted', '=', false), 'groups' => $user->groups, 'linkable' => false, 'notifications' => $user->notifications, 'links' => $user->links]);
         }else{
-            $my_profile = false;
-            return view('pages.profile', ['user' => $user, 'my_profile' => $my_profile, 'posts' => $user->posts->where('deleted', '=', false)]);
+            $linkable = true;
+            for ($i = 0; $i < count(Auth::user()->user->links); $i++){
+                if (Auth::user()->user->links[$i]->id == $user->id)
+                    $linkable = false;
+            }
+            return view('pages.profile', ['user' => $user, 'my_profile' => false, 'posts' => $user->posts->where('deleted', '=', false), 'linkable' => $linkable, 'links' => $user->links]);
         }
     }
 

@@ -18,9 +18,6 @@
                 </div>
             </div>
             <div id="groups">
-                @php
-                    $groups = Auth::user()->user->groups;
-                @endphp
                 @if (count($groups) > 0)
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
@@ -64,10 +61,6 @@
         <div class="col-8">
             <div id="center-col">
                 @include('partials.user_info')
-                @php
-                use App\Models\Post;
-                    $posts = Post::all()->where('banned', '=', false);
-                @endphp
                 @foreach ($posts as $post)
                     @if($post->user->id == Auth::user()->user->id)
                         @include('partials.post', ['post' => $post, 'comments' => $post->comments])

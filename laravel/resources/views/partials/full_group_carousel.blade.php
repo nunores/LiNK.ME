@@ -1,6 +1,3 @@
-@php
-    $groups = Auth::user()->user->groups;
-@endphp
 @if (count($groups) > 0)
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">

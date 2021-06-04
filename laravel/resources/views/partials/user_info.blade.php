@@ -50,15 +50,7 @@
         </a>
     @endif
     @if (Auth::check() && !Auth::user()->is_admin)
-        @php
-            $my_profile1 = true
-        @endphp
-        @for ($i = 0; $i < count(Auth::user()->user->links); $i++)
-            @if (Auth::user()->user->links[$i]->id == $user->id)
-                {{ $my_profile1 = false}}
-            @endif
-        @endfor
-        @if ($my_profile1 && !$my_profile)
+        @if ($linkable)
             <br>
             <button type="button" id="link-us" class="btn btn-outline-primary friend-request-button" data-user-id="{{ $user->id }}">LiNK US</button>
         @endif
