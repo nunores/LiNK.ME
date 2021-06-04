@@ -54,6 +54,19 @@ class GroupController extends Controller
         $group = new Group();
         $this->authorize('create', $group);
         $group->name = $request->input('name');
+
+        $inGroups = false;
+        $groups = Group::all();
+
+        foreach ($groups as $groupTemp) {
+            if($groupTemp->name == $request->input('name'))
+                $inGroups = true;
+        }
+
+        if($inGroups){
+            return ['id' => false];
+        }
+
         $group->save();
 
         $group->users()->attach(Auth::user()->id);

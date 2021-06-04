@@ -15,9 +15,14 @@ function createGroup() {
         });
 
         AJAX("POST", "/api/group", {'name': groupName, _token: _token}, function() {
-            console.log(this.responseText);
-
             const groupId = JSON.parse(this.responseText)['id'];
+
+            console.log(groupId);
+
+            if(groupId !== null && groupId === false) {
+                showError();
+                return;
+            }
 
             userIds.forEach(userId => {
                 AJAX("POST", "/api/group/request", {'user_id': userId, 'group_id': groupId, _token: _token}, function() {
@@ -31,9 +36,12 @@ function createGroup() {
 
     }
     else{
-        const p = document.querySelector('.alert-danger');
-        p.style.setProperty("display", "flex", "important");
-        setTimeout(function () { p.style.setProperty("display", "none", "important"); }, 3000);
+        showError()
     }
 }
 
+function showError() {
+    const p = document.querySelector('.alert-danger');
+    p.style.setProperty("display", "flex", "important");
+    setTimeout(function () { p.style.setProperty("display", "none", "important"); }, 3000);
+}
