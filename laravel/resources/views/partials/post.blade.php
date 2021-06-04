@@ -23,7 +23,7 @@
 					</svg>
 				</div>
 				<div id="post-options-{{ $post->id }}" data-post-id="{{ $post->id }}" data-admin="{{ Auth::check() && Auth::user()->is_admin }}" class="post-options collapse">
-					@if (Auth::check() && Auth::user()->id == $post->user->id)
+					@if (Auth::check() && Auth::user()->id == $post->user->id && $post->group_id == null)
                     <!-- Only shows if it's the owner of the post -->
                         @if ($post->private)
                             <div class="card card-body bg-dark post-visibility make-post-public">
