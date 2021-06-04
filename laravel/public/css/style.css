@@ -273,3 +273,9 @@ body > div.container-fluid {
 #notifications::-webkit-scrollbar-thumb {
 	border: transparent;
 }
+
+.no-results-found {
+    margin: 0 auto;
+    display: table;
+    font-size: 3rem;
+}
