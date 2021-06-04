@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="t02MMApIIsYZdOxaUIVq5WdVJbKRllXvtqbKjN2t">
+
+    <title>LiNK.ME</title>
+
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous" defer=""></script>
+    <script src="http://localhost:8000/js/app.js"></script><script data-dapp-detection="">!function(){let e=!1;function n(){if(!e){const n=document.createElement("meta");n.name="dapp-detected",document.head.appendChild(n),e=!0}}if(window.hasOwnProperty("ethereum")){if(window.__disableDappDetectionInsertion=!0,void 0===window.ethereum)return;n()}else{var t=window.ethereum;Object.defineProperty(window,"ethereum",{configurable:!0,enumerable:!1,set:function(e){window.__disableDappDetectionInsertion||n(),t=e},get:function(){if(!window.__disableDappDetectionInsertion){const e=arguments.callee;e&&e.caller&&e.caller.toString&&-1!==e.caller.toString().indexOf("getOwnPropertyNames")||n()}return t}})}}();</script>
+    <link rel="stylesheet" href="http://localhost:8000/css/style.css">
+<link rel="stylesheet" href="http://localhost:8000/css/mobile.css">
+<link rel="stylesheet" href="http://localhost:8000/css/post.css">
+<link rel="stylesheet" href="http://localhost:8000/css/left_col.css">
+<link rel="stylesheet" href="http://localhost:8000/css/profile.css">
+<link rel="stylesheet" href="http://localhost:8000/css/add_post.css">
+        <script src="http://localhost:8000/js/likes.js" defer=""></script>
+    <script src="http://localhost:8000/js/commentTextArea.js" defer=""></script>
+    <script src="http://localhost:8000/js/comments.js" defer=""></script>
+    <script src="http://localhost:8000/js/friend_request.js" defer=""></script>
+        <script src="http://localhost:8000/js/change_name.js" defer=""></script>
+    <script src="http://localhost:8000/js/add_post.js" defer=""></script>
+    <script src="http://localhost:8000/js/change_password.js" defer=""></script>
+    <script src="http://localhost:8000/js/deleteUser.js" defer=""></script>
+    <script src="http://localhost:8000/js/post_visibility.js" defer=""></script>
+    <script src="http://localhost:8000/js/change_profile_pic.js" defer=""></script>
+    <script src="http://localhost:8000/js/post_options.js" defer=""></script>
+<script src="http://localhost:8000/js/comment_options.js" defer=""></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&amp;display=swap" rel="stylesheet">
+
+</head>
+  <body>
+    <main>
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+	<div class="container-fluid">
+
+		<div id="list-icon" class="link link-primary" data-bs-toggle="collapse" data-bs-target="#left-col" aria-expanded="false" aria-controls="left-col">
+			<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+				<path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+			</svg>
+		</div>
+
+		<h1 class="link-primary">
+			<a href="http://localhost:8000/home">LiNK.ME</a>
+		</h1>
+
+		<form class="d-flex" method="GET" action="http://localhost:8000/posts">
+			<input required="" class="form-control search" type="search" name="search" placeholder="Search" aria-label="Search">
+			<div id="search-icon-phone">
+				<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+				</svg>
+			</div>
+		</form>
+
+
+		<div>
+			<a href="http://localhost:8000/user/3" class="link-primary">My Profile</a>
+<span class="link-primary"> | </span>
+<a href="http://localhost:8000/logout" class=" link-primary">Log Out</a>    		</div>
+	</div>
+</nav>
+      </header>
+      <section id="content">
+        
+
+    <input type="hidden" name="_token" value="t02MMApIIsYZdOxaUIVq5WdVJbKRllXvtqbKjN2t">    <div class="container-fluid">
+        <div class="row">
+                                                <div class="col-2 text-center collapse" id="left-col">
+            <div id="notifications">
+    <div id="notifications-title">
+        <p class="text-center">Notifications</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+            <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"></path>
+        </svg>
+    </div>
+            <div class="card bg-dark border-secondary container-fluid">
+    <a href="http://localhost:8000/post/184">
+        <div class="row">
+            <div class="card-body col-8">
+                You have new likes in a post
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="col-4 bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"></path>
+            </svg>
+        </div>
+    </a>
+</div>
+
+
+
+            <div class="card bg-dark border-secondary container-fluid">
+    <a href="http://localhost:8000/post/174">
+        <div class="row">
+            <div class="card-body col-8">
+                You have new likes in a post
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="col-4 bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"></path>
+            </svg>
+        </div>
+    </a>
+</div>
+
+
+
+            <div class="card bg-dark border-secondary container-fluid">
+    <a href="http://localhost:8000/post/216">
+        <div class="row">
+            <div class="card-body col-8">
+                You have new likes in a post
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="col-4 bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"></path>
+            </svg>
+        </div>
+    </a>
+</div>
+
+
+
+            <div class="card bg-dark border-secondary container-fluid">
+    <a href="http://localhost:8000/post/174">
+        <div class="row">
+            <div class="card-body col-8">
+                You have new comments in a post
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="col-4 bi bi-arrow-up-right-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 10.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"></path>
+            </svg>
+        </div>
+    </a>
+</div>
+
+
+
+
+    </div>
+        <div class="person-friends">
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/4">
+                            <img src="http://localhost:8000/images/profile/4.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/4">
+            <span id="name-tag-4" class="person-friends-name-tag"> @mine4phatom </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/6">
+                            <img src="http://localhost:8000/images/profile/6.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/6">
+            <span id="name-tag-6" class="person-friends-name-tag"> @ajeskins0 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/7">
+                            <img src="http://localhost:8000/images/profile/7.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/7">
+            <span id="name-tag-7" class="person-friends-name-tag"> @ccosby1 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/9">
+                            <img src="http://localhost:8000/images/profile/9.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/9">
+            <span id="name-tag-9" class="person-friends-name-tag"> @sscupham3 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/10">
+                            <img src="http://localhost:8000/images/profile/10.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/10">
+            <span id="name-tag-10" class="person-friends-name-tag"> @rhew4 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/11">
+                            <img src="http://localhost:8000/images/profile/11.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/11">
+            <span id="name-tag-11" class="person-friends-name-tag"> @pbullerwell5 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/13">
+                            <img src="http://localhost:8000/images/profile/13.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/13">
+            <span id="name-tag-13" class="person-friends-name-tag"> @wgillebert7 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/14">
+                            <img src="http://localhost:8000/images/profile/14.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/14">
+            <span id="name-tag-14" class="person-friends-name-tag"> @mbrigden8 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/15">
+                            <img src="http://localhost:8000/images/profile/15.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/15">
+            <span id="name-tag-15" class="person-friends-name-tag"> @psimoncello9 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/17">
+                            <img src="http://localhost:8000/images/profile/17.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/17">
+            <span id="name-tag-17" class="person-friends-name-tag"> @acysterb </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/18">
+                            <img src="http://localhost:8000/images/profile/18.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/18">
+            <span id="name-tag-18" class="person-friends-name-tag"> @ihowellsc </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/19">
+                            <img src="http://localhost:8000/images/profile/19.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/19">
+            <span id="name-tag-19" class="person-friends-name-tag"> @tgladdend </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/21">
+                            <img src="http://localhost:8000/images/profile/21.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/21">
+            <span id="name-tag-21" class="person-friends-name-tag"> @dblythingf </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/22">
+                            <img src="http://localhost:8000/images/profile/22.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/22">
+            <span id="name-tag-22" class="person-friends-name-tag"> @scowdryg </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/23">
+                            <img src="http://localhost:8000/images/profile/23.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/23">
+            <span id="name-tag-23" class="person-friends-name-tag"> @smostinh </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/24">
+                            <img src="http://localhost:8000/images/profile/24.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/24">
+            <span id="name-tag-24" class="person-friends-name-tag"> @lbrombyi </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/25">
+                            <img src="http://localhost:8000/images/profile/25.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/25">
+            <span id="name-tag-25" class="person-friends-name-tag"> @ofardoej </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/26">
+                            <img src="http://localhost:8000/images/profile/26.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/26">
+            <span id="name-tag-26" class="person-friends-name-tag"> @scockink </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/27">
+                            <img src="http://localhost:8000/images/profile/27.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/27">
+            <span id="name-tag-27" class="person-friends-name-tag"> @hmainsl </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/28">
+                            <img src="http://localhost:8000/images/profile/28.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/28">
+            <span id="name-tag-28" class="person-friends-name-tag"> @eboakem </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/29">
+                            <img src="http://localhost:8000/images/profile/29.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/29">
+            <span id="name-tag-29" class="person-friends-name-tag"> @rthornleyn </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/30">
+                            <img src="http://localhost:8000/images/profile/30.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/30">
+            <span id="name-tag-30" class="person-friends-name-tag"> @kpelzero </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/32">
+                            <img src="http://localhost:8000/images/profile/32.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/32">
+            <span id="name-tag-32" class="person-friends-name-tag"> @hkibbleq </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/34">
+                            <img src="http://localhost:8000/images/profile/34.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/34">
+            <span id="name-tag-34" class="person-friends-name-tag"> @obalnavess </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/35">
+                            <img src="http://localhost:8000/images/profile/35.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/35">
+            <span id="name-tag-35" class="person-friends-name-tag"> @rturbittt </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/37">
+                            <img src="http://localhost:8000/images/profile/37.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/37">
+            <span id="name-tag-37" class="person-friends-name-tag"> @aoxleev </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/39">
+                            <img src="http://localhost:8000/images/profile/39.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/39">
+            <span id="name-tag-39" class="person-friends-name-tag"> @clathyx </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/41">
+                            <img src="http://localhost:8000/images/profile/41.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/41">
+            <span id="name-tag-41" class="person-friends-name-tag"> @kkirckmanz </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/42">
+                            <img src="http://localhost:8000/images/profile/42.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/42">
+            <span id="name-tag-42" class="person-friends-name-tag"> @oantonazzi10 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/45">
+                            <img src="http://localhost:8000/images/profile/45.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/45">
+            <span id="name-tag-45" class="person-friends-name-tag"> @shalfpenny13 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/46">
+                            <img src="http://localhost:8000/images/profile/46.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/46">
+            <span id="name-tag-46" class="person-friends-name-tag"> @ymargaritelli14 </span>
+        </a>
+    </div>
+</div>
+                    <div class="post-header person-friends-header">
+    <div class="col-1">
+        <a href="http://localhost:8000/user/49">
+                            <img src="http://localhost:8000/images/profile/49.png" class="rounded-circle person-friends-profile-pic" alt="Profile picture">
+                    </a>
+    </div>
+    <div class="post-name col-6">
+        <a href="http://localhost:8000/user/49">
+            <span id="name-tag-49" class="person-friends-name-tag"> @eprynne17 </span>
+        </a>
+    </div>
+</div>
+            </div>
+            <div id="groups">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+                                                <div class="carousel-item">
+                                                        <div class="group-carousel">
+    <a href="http://localhost:8000/group/1">
+        <div class="group-image-name">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people icon-group-carousel" viewBox="0 0 16 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
+            </svg>
+            <span class="span-group-name"> MIEIC </span>
+        </div>
+    </a>
+</div>
+                                                                    <div class="group-carousel">
+    <a href="http://localhost:8000/group/5">
+        <div class="group-image-name">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people icon-group-carousel" viewBox="0 0 16 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
+            </svg>
+            <span class="span-group-name"> TRIP </span>
+        </div>
+    </a>
+</div>
+                                    </div>
+                                                                        <div class="carousel-item active">
+                                                            <div class="group-carousel">
+    <a href="http://localhost:8000/group/7">
+        <div class="group-image-name">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-people icon-group-carousel" viewBox="0 0 16 16">
+                <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
+            </svg>
+            <span class="span-group-name"> DRIP </span>
+        </div>
+    </a>
+</div>
+                                                                </div>
+                    </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="false"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="false"></span>
+            <span class="visually-hidden">Next</span>
+        </button></div>
+        <a href="http://localhost:8000/group" id="create-group-button" class="btn btn-dark">Create Group</a>
+</div>
+        <div>
+        <a href="http://localhost:8000/about" class="link-light">About</a>
+        <span class="link-light"> | </span>
+        <a href="http://localhost:8000/faq" class="link-light">FAQ</a>
+    </div>
+            <div>
+            <a href="http://localhost:8000/logout" class="link-danger delete_user" data-user-id="3">Delete account</a>
+        </div>
+        </div>
+                                            <div class="col-8">
+                <div id="center-col">
+                    <div class="profile-info my-profile">
+    <div>
+                    <img src="http://localhost:8000/images/profile/3.png" class="rounded-circle profile-info-picture" alt="Profile picture">
+                            <form id="add-picture-form" method="POST" action="http://localhost:8000/api/user/picture" enctype="multipart/form-data">
+                <input type="hidden" name="_token" value="t02MMApIIsYZdOxaUIVq5WdVJbKRllXvtqbKjN2t">                <label>
+                    <input name="picture" type="file" class="form-control" id="add-picture-file" accept="image/*">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-pencil" id="change-photo" viewBox="0 0 16 16">
+                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"></path>
+                    </svg>
+                </label>
+            </form>
+            </div>
+    <span id="profile-name-tag">@xamas</span>
+    <br>
+    <span id="profile-person-name" data-user-name="Xamas">Xamas
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil collapsed" id="change-name-icon" viewBox="0 0 16 16" data-bs-toggle="collapse" data-bs-target="#change-name-pop" aria-expanded="false" aria-controls="change-name-pop">
+                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"></path>
+            </svg>
+            </span>
+    <form>
+        <div class="form-group name-box change-name-form collapse" id="change-name-pop">
+            <div class="container">
+                <div class="row">
+                    <div class="col-11 add-comment-textarea">
+                        <textarea class="form-control name-textarea" data-user-id="3" rows="1" placeholder="Add a new username..." maxlength="25"></textarea>
+                    </div>
+                    <div class="col-1 send-button">
+                        <span class="clickable-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-arrow-right-circle change-name" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+            <a class="link-primary" data-bs-toggle="collapse" href="#change-password-form" role="button" aria-expanded="false" aria-controls="change-password-form" id="change-password">
+            Change password
+        </a>
+                        <div class="collapse" id="change-password-form">
+        <div class="card bg-dark border-secondary">
+            <input id="old-password" type="password" class="form-control bg-dark change-password-input" placeholder="Old password" minlength="6">
+            <input id="new-password" type="password" class="form-control bg-dark change-password-input" placeholder="New password" minlength="6">
+            <input id="confirm-password" type="password" class="form-control bg-dark change-password-input" placeholder="Confirm password" minlength="6">
+            <span class="wrong-pass" role="alert">
+                Holder
+            </span>
+            <input id="submit-password-change" type="submit" class="form-control change-password-input bg-dark">
+        </div>
+    </div>
+</div>
+                                                <div class="post" data-id="174">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="post-header">
+				<div class="col-1">
+					<a href="http://localhost:8000/user/3">
+                        						    <img src="http://localhost:8000/images/profile/3.png" class="rounded-circle post-profile-pic" alt="Profile picture">
+                        					</a>
+				</div>
+				<div class="post-name col-10">
+					<a href="http://localhost:8000/user/3">
+						<span class="name-tag"> @xamas </span>
+						<span class="person-name"> Xamas </span>
+					</a>
+				</div>
+				<div class="col-1 three-dots collapsed" data-bs-toggle="collapse" data-bs-target="#post-options-174" aria-expanded="false" aria-controls="post-options-174">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+						<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+					</svg>
+				</div>
+				<div id="post-options-174" data-post-id="174" data-admin="" class="post-options collapse">
+					                    <!-- Only shows if it's the owner of the post -->
+                                                    <div class="card card-body bg-dark post-visibility make-post-public" hidden="">
+                                <span class="link">Make Public</span>
+                            </div>
+                            <div class="card card-body bg-dark post-visibility make-post-private">
+                                <span class="link">Make Private</span>
+                            </div>
+                                                                					<!-- Only shows if owner of the post is the current user -->
+					<div class="card card-body bg-dark delete-post">
+						<span class="link link-danger">Delete Post</span>
+					</div>
+														</div>
+			</div>
+		</div>
+		<div class="row">
+			<a href="http://localhost:8000/post/174">
+				<div class="post-text">
+					<span class="text-description"> We are about three weeks away from knowing everyone’s true hair color.</span>
+				</div>
+                			</a>
+		</div>
+		<div class="row">
+			<div class="post-icons">
+				<div class="row align-items-center">
+					<div class="col-2">
+						<div class="post-like">
+							                                <svg id="like-button-174" data-post-id="174" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                                    <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"></path>
+                                </svg>
+							
+							<span id="number-likes-174"> 6 </span>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="post-dislike">
+															<svg id="dislike-button-174" data-post-id="174" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
+									<path d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856 0 .289-.036.586-.113.856-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a9.877 9.877 0 0 1-.443-.05 9.364 9.364 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964l-.261.065zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a8.912 8.912 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.224 2.224 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.866.866 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1z"></path>
+								</svg>
+														<span id="number-dislikes-174"> 0 </span>
+						</div>
+					</div>
+					<div class="col">
+						<div class="post-comment-icon" data-bs-toggle="collapse" data-bs-target="#add-comment-174" aria-expanded="false" aria-controls="add-comment-174">
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+								<path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+								<path d="M2.165 15.803l.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"></path>
+							</svg>
+							<span id="comments-number-174" data-post-id="174"> 1 </span>
+						</div>
+					</div>
+					<div class="col">
+						<div class="row">
+							<div class="post-date-date">
+								<span> 12-12-2020 </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="post-date-time">
+								<span> 22:22 </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="post-comments">
+                    <hr>
+                        <form>
+            <div class="form-group add-comment-form add-comment collapse" id="add-comment-174" data-post-id="174">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-11 add-comment-textarea">
+                            <textarea class="form-control comment-textarea" data-user-id="3" rows="1" placeholder="Add a comment..." maxlength="250" style="height:0px;overflow-y:hidden;"></textarea>
+                        </div>
+                        <div class="col-1 send-button">
+                            <span class="clickable-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-arrow-right-circle send-comment" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+		<!-- Reverse Order for inverse chronological sorting -->
+                    <div class="comment">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <a href="http://localhost:8000/user/40">
+                                            <img src="http://localhost:8000/images/profile/40.png" class="rounded-circle post-comment-pic" alt="Profile picture">
+                                    </a>
+            </div>
+            <div class="col-9 post-comment-div">
+                <span class="post-comment-text"> Beastly m8 I want to make love to the use of hero and fold! </span>
+            </div>
+            <div class="col-1 three-dots post-comment-div collapsed" data-bs-toggle="collapse" data-bs-target="#comment-options-46" aria-expanded="false" aria-controls="comment-options-46">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                    <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+                </svg>
+            </div>
+            <div id="comment-options-46" data-admin="" data-comment-id="46" data-post-id="174" class="comment-options collapse">
+                                                <!-- Only shows if logged in, not owner and not admin -->
+                <div class="card card-body bg-dark report-comment">
+                    <span class="link">Report Comment</span>
+                </div>
+                            </div>
+        </div>
+    </div>
+</div>
+        
+	</div>
+</div>
+                                                <div class="post" data-id="184">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="post-header">
+				<div class="col-1">
+					<a href="http://localhost:8000/user/3">
+                        						    <img src="http://localhost:8000/images/profile/3.png" class="rounded-circle post-profile-pic" alt="Profile picture">
+                        					</a>
+				</div>
+				<div class="post-name col-10">
+					<a href="http://localhost:8000/user/3">
+						<span class="name-tag"> @xamas </span>
+						<span class="person-name"> Xamas </span>
+					</a>
+				</div>
+				<div class="col-1 three-dots collapsed" data-bs-toggle="collapse" data-bs-target="#post-options-184" aria-expanded="false" aria-controls="post-options-184">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+						<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+					</svg>
+				</div>
+				<div id="post-options-184" data-post-id="184" data-admin="" class="post-options collapse">
+					                    <!-- Only shows if it's the owner of the post -->
+                                                    <div class="card card-body bg-dark post-visibility make-post-public" hidden="">
+                                <span class="link">Make Public</span>
+                            </div>
+                            <div class="card card-body bg-dark post-visibility make-post-private">
+                                <span class="link">Make Private</span>
+                            </div>
+                                                                					<!-- Only shows if owner of the post is the current user -->
+					<div class="card card-body bg-dark delete-post">
+						<span class="link link-danger">Delete Post</span>
+					</div>
+														</div>
+			</div>
+		</div>
+		<div class="row">
+			<a href="http://localhost:8000/post/184">
+				<div class="post-text">
+					<span class="text-description"> Before Coronavirus, I'd cough to cover a fart. Now I fart to cover a cough</span>
+				</div>
+                			</a>
+		</div>
+		<div class="row">
+			<div class="post-icons">
+				<div class="row align-items-center">
+					<div class="col-2">
+						<div class="post-like">
+							                                <svg id="like-button-184" data-post-id="184" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                                    <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"></path>
+                                </svg>
+							
+							<span id="number-likes-184"> 4 </span>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="post-dislike">
+															<svg id="dislike-button-184" data-post-id="184" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
+									<path d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856 0 .289-.036.586-.113.856-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a9.877 9.877 0 0 1-.443-.05 9.364 9.364 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964l-.261.065zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a8.912 8.912 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.224 2.224 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.866.866 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1z"></path>
+								</svg>
+														<span id="number-dislikes-184"> 3 </span>
+						</div>
+					</div>
+					<div class="col">
+						<div class="post-comment-icon" data-bs-toggle="collapse" data-bs-target="#add-comment-184" aria-expanded="false" aria-controls="add-comment-184">
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+								<path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+								<path d="M2.165 15.803l.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"></path>
+							</svg>
+							<span id="comments-number-184" data-post-id="184"> 0 </span>
+						</div>
+					</div>
+					<div class="col">
+						<div class="row">
+							<div class="post-date-date">
+								<span> 23-12-2020 </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="post-date-time">
+								<span> 01:48 </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="post-comments">
+                        <form>
+            <div class="form-group add-comment-form add-comment collapse" id="add-comment-184" data-post-id="184">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-11 add-comment-textarea">
+                            <textarea class="form-control comment-textarea" data-user-id="3" rows="1" placeholder="Add a comment..." maxlength="250" style="height:0px;overflow-y:hidden;"></textarea>
+                        </div>
+                        <div class="col-1 send-button">
+                            <span class="clickable-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-arrow-right-circle send-comment" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+		<!-- Reverse Order for inverse chronological sorting -->
+        
+	</div>
+</div>
+                                                <div class="post" data-id="216">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="post-header">
+				<div class="col-1">
+					<a href="http://localhost:8000/user/3">
+                        						    <img src="http://localhost:8000/images/profile/3.png" class="rounded-circle post-profile-pic" alt="Profile picture">
+                        					</a>
+				</div>
+				<div class="post-name col-10">
+					<a href="http://localhost:8000/user/3">
+						<span class="name-tag"> @xamas </span>
+						<span class="person-name"> Xamas </span>
+					</a>
+				</div>
+				<div class="col-1 three-dots collapsed" data-bs-toggle="collapse" data-bs-target="#post-options-216" aria-expanded="false" aria-controls="post-options-216">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+						<path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
+					</svg>
+				</div>
+				<div id="post-options-216" data-post-id="216" data-admin="" class="post-options collapse">
+					                    <!-- Only shows if it's the owner of the post -->
+                                                    <div class="card card-body bg-dark post-visibility make-post-public" hidden="">
+                                <span class="link">Make Public</span>
+                            </div>
+                            <div class="card card-body bg-dark post-visibility make-post-private">
+                                <span class="link">Make Private</span>
+                            </div>
+                                                                					<!-- Only shows if owner of the post is the current user -->
+					<div class="card card-body bg-dark delete-post">
+						<span class="link link-danger">Delete Post</span>
+					</div>
+														</div>
+			</div>
+		</div>
+		<div class="row">
+			<a href="http://localhost:8000/post/216">
+				<div class="post-text">
+					<span class="text-description"> If you don’t get hired for an unpaid internship it literally makes no difference. Just show up and start working. What are they gonna do, pay you?</span>
+				</div>
+                			</a>
+		</div>
+		<div class="row">
+			<div class="post-icons">
+				<div class="row align-items-center">
+					<div class="col-2">
+						<div class="post-like">
+							                                <svg id="like-button-216" data-post-id="216" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
+                                    <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"></path>
+                                </svg>
+							
+							<span id="number-likes-216"> 6 </span>
+						</div>
+					</div>
+					<div class="col-2">
+						<div class="post-dislike">
+															<svg id="dislike-button-216" data-post-id="216" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hand-thumbs-down" viewBox="0 0 16 16">
+									<path d="M8.864 15.674c-.956.24-1.843-.484-1.908-1.42-.072-1.05-.23-2.015-.428-2.59-.125-.36-.479-1.012-1.04-1.638-.557-.624-1.282-1.179-2.131-1.41C2.685 8.432 2 7.85 2 7V3c0-.845.682-1.464 1.448-1.546 1.07-.113 1.564-.415 2.068-.723l.048-.029c.272-.166.578-.349.97-.484C6.931.08 7.395 0 8 0h3.5c.937 0 1.599.478 1.934 1.064.164.287.254.607.254.913 0 .152-.023.312-.077.464.201.262.38.577.488.9.11.33.172.762.004 1.15.069.13.12.268.159.403.077.27.113.567.113.856 0 .289-.036.586-.113.856-.035.12-.08.244-.138.363.394.571.418 1.2.234 1.733-.206.592-.682 1.1-1.2 1.272-.847.283-1.803.276-2.516.211a9.877 9.877 0 0 1-.443-.05 9.364 9.364 0 0 1-.062 4.51c-.138.508-.55.848-1.012.964l-.261.065zM11.5 1H8c-.51 0-.863.068-1.14.163-.281.097-.506.229-.776.393l-.04.025c-.555.338-1.198.73-2.49.868-.333.035-.554.29-.554.55V7c0 .255.226.543.62.65 1.095.3 1.977.997 2.614 1.709.635.71 1.064 1.475 1.238 1.977.243.7.407 1.768.482 2.85.025.362.36.595.667.518l.262-.065c.16-.04.258-.144.288-.255a8.34 8.34 0 0 0-.145-4.726.5.5 0 0 1 .595-.643h.003l.014.004.058.013a8.912 8.912 0 0 0 1.036.157c.663.06 1.457.054 2.11-.163.175-.059.45-.301.57-.651.107-.308.087-.67-.266-1.021L12.793 7l.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315l-.353-.354.353-.354c.047-.047.109-.176.005-.488a2.224 2.224 0 0 0-.505-.804l-.353-.354.353-.354c.006-.005.041-.05.041-.17a.866.866 0 0 0-.121-.415C12.4 1.272 12.063 1 11.5 1z"></path>
+								</svg>
+														<span id="number-dislikes-216"> 1 </span>
+						</div>
+					</div>
+					<div class="col">
+						<div class="post-comment-icon" data-bs-toggle="collapse" data-bs-target="#add-comment-216" aria-expanded="false" aria-controls="add-comment-216">
+							<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chat-dots" viewBox="0 0 16 16">
+								<path d="M5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"></path>
+								<path d="M2.165 15.803l.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125zm.8-3.108a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2z"></path>
+							</svg>
+							<span id="comments-number-216" data-post-id="216"> 0 </span>
+						</div>
+					</div>
+					<div class="col">
+						<div class="row">
+							<div class="post-date-date">
+								<span> 21-02-2021 </span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="post-date-time">
+								<span> 08:05 </span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="post-comments">
+                        <form>
+            <div class="form-group add-comment-form add-comment collapse" id="add-comment-216" data-post-id="216">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-11 add-comment-textarea">
+                            <textarea class="form-control comment-textarea" data-user-id="3" rows="1" placeholder="Add a comment..." maxlength="250" style="height:0px;overflow-y:hidden;"></textarea>
+                        </div>
+                        <div class="col-1 send-button">
+                            <span class="clickable-pointer">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-arrow-right-circle send-comment" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+		<!-- Reverse Order for inverse chronological sorting -->
+        
+	</div>
+</div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    	<div id="add-post-icon" class="add-post-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="125" height="125" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+        </svg>
+	</div>
+	<div hidden="" id="return-icon" class="add-post-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="125" height="125" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"></path>
+        </svg>
+	</div>
+    
+
+      </section>
+    </main>
+  
+
+</body></html>

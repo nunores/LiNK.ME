@@ -17,7 +17,7 @@
     </div>
     @if($my_profile)
         <div>
-            <a href="{{route('logout')}}" class="link-danger delete_user" user-id="{{ $user->id }}">Delete account</a>
+            <a href="{{route('logout')}}" class="link-danger delete_user" data-user-id="{{ $user->id }}">Delete account</a>
         </div>
     @endif
     </div>
