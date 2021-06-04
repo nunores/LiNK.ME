@@ -91,8 +91,6 @@ class GroupController extends Controller
             array_push($final, Group::find($group->id));
         }
 
-        //TODO: é preciso algum authorize aqui?
-
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
                 return view('pages.search_groups', ['groups' => $final, 'search' => $request->input("search")]);
@@ -102,7 +100,6 @@ class GroupController extends Controller
             }
         } else {
             return view('pages.search_groups', ['groups' => $final, 'search' => $request->input("search")]);
-            //return redirect('login');
         }
     }
 }

@@ -22,4 +22,20 @@ class UserPolicy
         return Auth::check() && Auth::user()->id == $user->id;
     }
 
+    public function create(Person $person) {
+        return true; // Anyone can create a new account
+    }
+
+    public function changeName(Person $person, User $user) {
+        return Auth::check() && Auth::user()->id == $user->id;
+    }
+
+    public function changePassword(Person $person, User $user) {
+        return Auth::check() && Auth::user()->id == $user->id;
+    }
+
+    public function changePicture(Person $person, User $user) {
+        return Auth::check() && Auth::user()->id == $user->id;
+    }
+
 }
