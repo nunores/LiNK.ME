@@ -53,7 +53,7 @@
             <div class="col-8">
                 <div id="center-col">
                     @include('partials.user_info', ['user' => $user, 'my_profile' => $my_profile])
-                    @foreach ($posts->reverse() as $post)
+                    @foreach ($posts as $post)
                             @include('partials.post', ['post' => $post, 'comments' => $post->comments->where('deleted', '=', false)->sortByDesc('id')->take(2)])
                     @endforeach
                 </div>
