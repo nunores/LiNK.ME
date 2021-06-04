@@ -10,7 +10,6 @@ function load_more_posts() {
         console.log(this.responseText);
         const response = JSON.parse(this.responseText);
         if (response['current_page'] >= response['last_page']) {
-            console.log('here');
             load_more_button.style.display = "none";
         }
         load_more_button.setAttribute("data-page-id", next_page);
