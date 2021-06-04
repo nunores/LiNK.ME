@@ -50,7 +50,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        $posts = Post::where('deleted', '=', false)->where('private', '=', false)->orderBy('id')->paginate(20)->withPath('/api/more_posts');
+        $posts = Post::where('deleted', '=', false)->where('private', '=', false)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20)->withPath('/api/more_posts');
         return view('auth.login', ['posts' => $posts]);
     }
 }
