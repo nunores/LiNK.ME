@@ -146,6 +146,13 @@ class PostController extends Controller
                     WHERE user1_id = :auth_user
                 )
             )
+            AND ("post"."group_id" is NULL OR
+                "post"."group_id" IN (
+                    SELECT group_id
+                    FROM user_group
+                    WHERE user_id = :auth_user
+                )
+            )
             AND to_tsvector("post"."description" || \' \' || "user"."name" || \' \' || "person"."username") @@ plainto_tsquery(:search)',
             ["search" => $request->input("search"), "auth_user" => Auth::check() && !Auth::user()->is_admin ? Auth::user()->id : -1]);
 
