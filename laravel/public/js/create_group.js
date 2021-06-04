@@ -31,8 +31,9 @@ function createGroup() {
 
     }
     else{
-        console.log("Name of the group can't be empty"); // TODO: ver como apresentar este tipo de mensagens
-        return;
+        const p = document.querySelector('.alert-danger');
+        p.style.setProperty("display", "flex", "important");
+        setTimeout(function () { p.style.setProperty("display", "none", "important"); }, 3000);
     }
 }
 

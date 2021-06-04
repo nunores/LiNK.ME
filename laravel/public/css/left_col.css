@@ -101,6 +101,15 @@
     text-overflow: ellipsis;
 }
 
+.span-group-name {
+    width: 60px;
+}
+
+.icon-group-carousel {
+    overflow: hidden;
+    margin: auto;
+}
+
 .group-image-name {
     display: grid;
     margin: auto;

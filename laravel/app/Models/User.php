@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class User extends Model
@@ -151,4 +152,9 @@ class User extends Model
         return $this->hasMany(FriendRequest::class, 'user_id_request');
     }
 
+    public function likesPost($post_id) {
+        $like = $this->likes->where('post_id', '=', $post_id)->first();
+        $likes = $like === null ? null : $like->likes;
+        return $likes;
+    }
 }

@@ -154,7 +154,8 @@ class UserController extends Controller
 
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
-                return view('pages.search_people', ['users' => $final, 'search' => $request->input("search")]);
+                $notifications = Auth::user()->user->notifications;
+                return view('pages.search_people', ['users' => $final, 'search' => $request->input("search"), "notifications" => $notifications]);
             } else {
                 $reports = Report::all()->sortByDesc('id')->take(20);
                 return view('pages.search_people', ['users' => $final, 'reports' => $reports, 'search' => $request->input("search")]);

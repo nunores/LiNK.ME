@@ -25,9 +25,14 @@ class PostController extends Controller
         $this->authorize('show', $post);
         if (Auth::check() && Auth::user()->is_admin) {
             $reports = Report::all()->sortByDesc('id')->take(20);
-            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id'), "reports" => $reports]);
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id'),
+                "reports" => $reports
+            ]);
         } else {
-            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id')]);
+            $notifications = Auth::user()->user->notifications;
+            return view('pages.post', ['post' => $post, "comments" => $post->comments->where("deleted", "=", false)->sortByDesc('id'),
+                'notifications' => $notifications
+            ]);
         }
     }
 
@@ -151,7 +156,8 @@ class PostController extends Controller
 
         if (Auth::check()) {
             if (!Auth::user()->is_admin) {
-                return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search")]);
+                $notifications = Auth::user()->user->notifications;
+                return view('pages.search_posts', ['posts' => $final, 'search' => $request->input("search"), "notifications" => $notifications]);
             } else {
                 $reports = Report::all()->sortByDesc('id')->take(20);
                 return view('pages.search_posts', ['posts' => $final, 'reports' => $reports, 'search' => $request->input("search")]);
@@ -179,7 +185,7 @@ class PostController extends Controller
 
     public function morePosts(Request $request) {
         if (!Auth::check()) {
-            return Post::where('deleted', '=', false)->where('private', '=', false)->orderByDesc('id')->paginate(20);
+            return Post::where('deleted', '=', false)->where('private', '=', false)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20);
         }
         if (Auth::user()->is_admin) {
             return Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20);
@@ -188,9 +194,9 @@ class PostController extends Controller
             return $link->id;
         });
         if ($request->input('general') == "true") {
-            return Post::where('deleted', '=', false)->orderByDesc('id')->paginate(20);
+            return Post::where('deleted', '=', false)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20);
         } else {
-            return Post::whereIn('user_id', $links)->where('deleted', '=', false)->orderByDesc('id')->paginate(20);
+            return Post::whereIn('user_id', $links)->where('deleted', '=', false)->where('group_id', '=', NULL)->orderByDesc('id')->paginate(20);
         }
     }
 
