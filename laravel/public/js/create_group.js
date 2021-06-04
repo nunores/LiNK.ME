@@ -16,7 +16,6 @@ function createGroup() {
 
         AJAX("POST", "/api/group", {'name': groupName, _token: _token}, function() {
             console.log(this.responseText);
-            console.log(JSON.parse(this.responseText));
 
             const groupId = JSON.parse(this.responseText)['id'];
 

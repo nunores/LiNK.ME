@@ -14,7 +14,6 @@ function changeName(){
 
     const parameters = {text: text, _token: _token }
     AJAX("PUT", "/api/user/name", parameters, function() {
-        console.log(this.responseText);
         const div = document.querySelector('#profile-person-name');
         const replace = div.innerHTML.substring(oldname.length, div.innerHTML.length);
         div.innerHTML = text + replace;
