@@ -1165,6 +1165,32 @@ paths:
                 "200":
                     description: "Ok. Show [UI09](http://lbaw2145-piu.lbaw-prod.fe.up.pt/search_groups.php)"
 
+    /api/group/request:
+        post:
+            operationId: R406
+            summary: "R404: Create a group request"
+            description: "Create a group request. Access: USR"
+            tags:
+                - "M04: Groups"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                group_id:
+                                    type: integer
+                                user_id:
+                                    type: integer
+                            required:
+                                - group_id
+                                - user_id
+            responses:
+                "200":
+                    description: "Ok. Show [UI11](http://lbaw2145-piu.lbaw-prod.fe.up.pt/group_page.php)"
+
+
 
     /api/comment/ban/{id}:
         delete:
