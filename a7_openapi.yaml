@@ -323,29 +323,6 @@ paths:
                                   - user_id: 19
                                     username: "mike"
                                     name: "Litoris"
-        post:
-            operationId: R206
-            summary: "R206: Link 2 users"
-            description: "Create a friendship between 2 users. Access: USR"
-            tags:
-                - "M02: Users and Links"
-            requestBody:
-                required: true
-                content:
-                    application/x-www-form-urlencoded:
-                        schema:
-                            type: object
-                            properties:
-                                user1_id:
-                                    type: integer
-                                user2_id:
-                                    type: integer
-                            required:
-                                - user1_id
-                                - user2_id
-            responses:
-                "204":
-                    description: "No Content"
 
         
 
@@ -377,6 +354,161 @@ paths:
                                     302Failure:
                                         description: 'Redirect to home page.'
                                         value: '/home'
+    /api/user/name:
+        put:
+            operationId: R208
+            summary: "R208: Change user name"
+            description: "Change a users name. Access: OWN"
+            tags:
+                - "M02: Users and Links"
+            
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                name:
+                                    type: string
+                            required:
+                                - id
+                                - name
+            responses:
+                "200":
+                    description: "Ok. Show [UI07](http://lbaw2145-piu.lbaw-prod.fe.up.pt/profile.php)"
+    /api/user/password:
+        put:
+            operationId: R209
+            summary: "R209: Change user password"
+            description: "Change a users password. Access: OWN"
+            tags:
+                - "M02: Users and Links"
+            
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                old_password:
+                                    type: string
+                                password:
+                                    type: string
+                                password_confirmation:
+                                    type: string
+                            required:
+                                - id
+                                - old_password
+                                - password
+                                - password_confirmation
+            responses:
+                "200":
+                    description: "Ok. Show [UI07](http://lbaw2145-piu.lbaw-prod.fe.up.pt/profile.php)"
+    /api/user/picture:
+        put:
+            operationId: R210
+            summary: "R210: Change user picture"
+            description: "Change a users picture. Access: OWN"
+            tags:
+                - "M02: Users and Links"
+            
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                id:
+                                    type: integer
+                                picture:
+                                    type: image
+                            required:
+                                - id
+                                - picture
+            responses:
+                "200":
+                    description: "Ok. Show [UI07](http://lbaw2145-piu.lbaw-prod.fe.up.pt/profile.php)"
+    /api/link/accept:
+        post:
+            operationId: R206
+            summary: "R206: Link 2 users"
+            description: "Create a friendship between 2 users. Access: USR"
+            tags:
+                - "M02: Users and Links"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                user1_id:
+                                    type: integer
+                                user2_id:
+                                    type: integer
+                            required:
+                                - user1_id
+                                - user2_id
+            responses:
+                "204":
+                    description: "No Content"
+    /api/link/deny:
+        post:
+            operationId: R211
+            summary: "R211: Reject a link request"
+            description: "Reject a link request between 2 users. Access: USR"
+            tags:
+                - "M02: Users and Links"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                user1_id:
+                                    type: integer
+                                user2_id:
+                                    type: integer
+                            required:
+                                - user1_id
+                                - user2_id
+            responses:
+                "204":
+                    description: "No Content"
+    /api/link/request:
+        post:
+            operationId: R212
+            summary: "R212: Create a link request"
+            description: "Create a link request between 2 users. Access: USR"
+            tags:
+                - "M02: Users and Links"
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                user1_id:
+                                    type: integer
+                                user2_id:
+                                    type: integer
+                            required:
+                                - user1_id
+                                - user2_id
+            responses:
+                "204":
+                    description: "No Content"
+
+
 
     /post/{id}:
         get:
@@ -480,6 +612,22 @@ paths:
                     description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
 
     /api/post/{id}:
+        get:
+            operationId: R318
+            summary: "R318: Get post info"
+            description: "Get the post. Access PUB"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+            responses:
+                '200':
+                    description: 'Success. Returns HTML for the post'
         delete:
             operationId: R304
             summary: "R304: Delete post"
@@ -823,6 +971,75 @@ paths:
             responses:
                 "204":
                     description: "No content"
+    /api/post/form:
+        get:
+            operationId: R319
+            summary: "R319: Create post form"
+            description: "Get the html for the form to create a post. Access PUB"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+            responses:
+                '200':
+                    description: 'Success. Returns HTML for the form'
+    /api/post/{general}:
+        get:
+            operationId: R320
+            summary: "R320: Change posts order"
+            description: "Get posts from a page in a different order. Access PUB"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+              - in: path
+                name: general
+                description: "If it's genreal possts or friends posts"
+                schema:
+                    type: boolean
+                required: true
+            responses:
+                '200':
+                    description: 'Success. Returns HTML for the posts'
+    /api/more_post:
+        get:
+            operationId: R321
+            summary: "R321: Retrieves posts for infinite scrolling"
+            description: "Get more posts for the current page. Access PUB"
+            tags:
+                - "M03: Posts and Comments"
+            parameters:
+            responses:
+                '200':
+                    description: 'Success. Returns HTML for the posts'
+    /api/post/{id}/vilibility:
+        put:
+            operationId: R322
+            summary: "R322: Change a post visibility"
+            description: "Change a post visibility to public or private. Access: OWN"
+            tags:
+                - "M03: Posts and Comments"
+            
+            parameters:
+              - in: path
+                name: id
+                description: 'Identifier from post'
+                schema:
+                    type: integer
+                required: true
+            requestBody:
+                required: true
+                content:
+                    application/x-www-form-urlencoded:
+                        schema:
+                            type: object
+                            properties:
+                                private:
+                                    type: boolean
+                            required:
+                                - private
+            responses:
+                "200":
+                    description: "Ok. Show [UI01](http://lbaw2145-piu.lbaw-prod.fe.up.pt)"
+
 
     /group/{id}:
         get:
