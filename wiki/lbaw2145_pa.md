@@ -147,7 +147,7 @@ Our product can be found in the following URL: http://lbaw2145.lbaw-prod.fe.up.p
 
 ### 2. Video presentation
 
-[!video](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2145/-/blob/master/docs/video.png)
+![video](https://git.fe.up.pt/lbaw/lbaw2021/lbaw2145/-/blob/master/docs/video.png)
 
 Our video is uploaded on the [Google folder](https://drive.google.com/drive/folders/1HDNOZ4y834m7pXgJ0XjNa_ZC26e9-Xge?usp=sharing "Videos folder").
 
