@@ -1,8 +1,6 @@
 # FEUP-LBAW (Laboratório de Bases de Dados e Aplicações Web)
 
-![Tuca](./docs/lbawgif.gif)  
-
-[Watch the full demo video](./docs/lbaw2145.mp4)
+![LiNK.ME short demonstration](./docs/lbawgif.gif)  
 
 This project is a social media web application with features similar to Twitter and Facebook. It works on a Restful API, connecting a Laravel backend to an HTML, CSS and Javascript frontend interface. Docker was used for deployment.
 
