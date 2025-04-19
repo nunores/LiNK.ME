@@ -2,7 +2,7 @@
 
 ![LiNK.ME short demonstration](./docs/lbawgif.gif)  
 
-LiNK.ME is a social networking web application that blends features inspired by Twitter and Facebook, offering users a clean and interactive experience to connect, share, and engage with each other. Built with **Laravel** and **PostgreSQL** and containerzied using **Docker**, it operates on a **RESTful API** architecture, supporting full CRUD operations for posts and comments, user following, search, notifications, and more. 
+LiNK.ME is a social networking web application that blends features inspired by Twitter and Facebook, offering users a clean and interactive experience to connect, share, and engage with each other. Built with **Laravel** and **PostgreSQL** and containerized using **Docker**, it operates on a **RESTful API** architecture, supporting full CRUD operations for posts and comments, user following, search, notifications, and more. 
 
 The project emphasized learning development methodologies, including managing user stories, gathering requirements, and designing wireframes.
 
