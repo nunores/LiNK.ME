@@ -56,7 +56,7 @@ This project was developed as part of the [LBAW](https://sigarra.up.pt/feup/pt/u
 | Name                | GitHub Username                                 | 
 |---------------------|--------------------------------------------------|
 | Nuno Resende          | [@nunores](https://github.com/nunores)           
-| João Gonçalves        | [@joao0903](https://github.com/joao0903)   |
+| João Gonçalves        | [@joao0903](https://github.com/SouOCalves)   |
 | Xavier Pisco      | [@Xavier-Pisco](https://github.com/Xavier-Pisco)         |
 | Pedro Coelho       | [@Mine4Phantom](https://github.com/Mine4Phantom)           | 
 
